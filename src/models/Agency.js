@@ -23,9 +23,20 @@ var Agency = {
 
 		})
 	},
+
+	programs: [],
+	loadPrograms: function(){
+		return m.request({
+			method: "GET",
+			url: "http://localhost:8080/api/programs?agency_id=" + Agency.selected.id,
+			withCredentials: false,
+		}).then(function(result){
+			Agency.programs = result
+
+		})
+	}
 	
 }
 
 module.exports = Agency
-
 window.Agency = Agency
