@@ -34,9 +34,21 @@ var Agency = {
 			Agency.programs = result
 
 		})
-	}
+	},
+
+	selected_program: {},
+	loadProgram: function(id){
+		return m.request({
+			method: "GET",
+			url: "http://localhost:8080/api/programs?id=" + id,
+			withCredentials: false,
+		}).then(function(result){
+			Agency.selected_program = result[0]
+
+		})
 	
+	}
 }
 
-module.exports = Agency
+module.exports = Agency;
 window.Agency = Agency
