@@ -18,7 +18,7 @@ view: function() {
 					m("input.pure-u-23-24[type=text]",{ value: "" })]),
 				//m("div.pure-u-1 pure-u-md-1-2", [
 					m("label", "Description"),
-					m("textarea.pure-input-1-2 .programdesc",Agency.selected_program.description)
+					m("textarea.pure-input-1-2 .programdesc", Agency.selected_program.description)
 
 
 
