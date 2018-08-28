@@ -82,18 +82,14 @@ module.exports = {
                 m(".pure-control-group",[
                     m("label.agency_phone", "Edit phone number."),
                     m("input[type=text].agency_phone pure-input-1-3", {value: Agency.selected.phone_number})]),
-                // m("div.pure-controls", 
-                //     m("button[type=submit].pure-button pure-button-primary", {
-                //         href: "/program/" + Agency.selected.id,
-                //         disabled: Agency.selected.name === undefined,
-                //         oncreate: m.route.link,
-                //         },"Continue")
-                //  )
+     
 
 
                ]),
-
-          m("[id=programenu].pure-menu pure-menu-scrollable custom-restricted2",
+          //m(".pure-control-group", [
+            m("label.selectProgramlabel", {hidden: Agency.selected.name == undefined }, "Select a program to edit."),
+            //]),
+          m("[id=programenu].pure-menu pure-menu-scrollable custom-restricted2", { hidden: Agency.selected.name == undefined },
           m("ul.pure-menu-list",
           Agency.programs.map(function(program){
             return(
@@ -106,7 +102,14 @@ module.exports = {
 
             })
             )
-          )
+          ),
+                     m("div.pure-controls", 
+                    m("button[type=submit][id=continue1].pure-button pure-button-primary", {
+                        href: "/program/" + Agency.selected.id,
+                        disabled: Agency.selected.name === undefined,
+                        oncreate: m.route.link,
+                        },"Continue")
+                 )
 
 
             ])
