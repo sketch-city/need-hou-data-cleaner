@@ -19,11 +19,6 @@ function selectAgency(clickEvent)
     .then(Agency.loadPrograms)
   }
 
-
-function loadAutocomplete(){
-    autocomplete(document.getElementById("myInput"), Agency.list.map(function(agency){ return(agency.name)}))
-}
-
 function filterAgencies() {
     // Declare variables
     var input, filter, ul, li, a, i;
