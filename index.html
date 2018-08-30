@@ -3,6 +3,45 @@
     <head>
     	<style>
 
+      
+.active {
+    background-color: #4CAF50;
+}
+
+/* Style the list */
+ul.breadcrumb {
+    margin-top: 0px;
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #eee;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 18px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+
 .autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
@@ -51,6 +90,10 @@
     font-size: 12px;
 }
 
+.pure-menu-link {
+  color: black !important;
+}
+
 
 .custom-restricted2 {
     width: 400px;
@@ -75,15 +118,24 @@
   margin-bottom: 40px;
   margin-left: 175px;
   margin-right: auto;
-
 }
 
-#agencysearch, #agencymenu {
+ #agencymenu {
   margin-top: 0px;
   margin-bottom: 40px;
   margin-left: 175px;
   margin-right: auto;
   }
+
+#agencysearch {
+
+  margin-top: 0px;
+  margin-bottom: 20px;
+  margin-left: 175px;
+  margin-right: auto;
+}
+
+
 
 .programform{
   margin-top: 10px;
@@ -96,7 +148,7 @@
 
 .selectProgramlabel{
   margin-left: -15px;
-  margin-top: 20px;
+  margin-top: 40px !important;
 }
 
 

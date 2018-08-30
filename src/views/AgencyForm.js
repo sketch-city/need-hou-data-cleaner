@@ -1,6 +1,17 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 
+var state = {
+    term: "",
+    search: function() {
+        // save the state for this route
+        // this is equivalent to `history.replaceState({term: state.term}, null, location.href)`
+        m.route.set(m.route.get(), null, {replace: true, state: {term: state.term}})
+
+        // navigate away
+        location.href = "https://google.com/?q=" + state.term
+    }
+}
 
 function selectAgency(clickEvent) 
 {  
@@ -33,39 +44,18 @@ function filterAgencies() {
 
 module.exports = {
 	oninit: Agency.loadList,
+
     view: function() {
     	return( 
             m("div.page",[
-            //     m(".pure-control-group", [
-            //        m("form.pure-form pure-form-aligned[autocomplete=off][action=/action_page.php]",[
-            //                 m("div.autocomplete[style=width:300px]",[
-            //                 m("input[id=myInput][type=text]", { onclick: loadAutocomplete ,
-            //                                                     onselect: function(vnode) { Agency.loadAgency
-            //                                                         (vnode.attrs.name)}})
-            //                     ])
-            //                 ])
-            //          ]),
-
-            //  m(".pure-control-group", [
-            //         m("label.agency_address", "Edit address."),
-            //         m("input[type=text].agency_address", {value: Agency.selected.physical_address })]),
-            // m(".pure-control-group",[
-            //         m("label.agency_phone", "Edit phone number."),
-            //         m("input[type=text].agency_phone pure-input-1-3", {value: Agency.selected.phone_number})]),
-            //  m("div.pure-controls", 
-            //         m("button[type=submit].pure-button pure-button-primary", {
-            //             href: "/programlist/" + Agency.selected.id,
-            //             disabled: Agency.selected.name === undefined,
-            //             oncreate: m.route.link,
-            //             },"Continue")
-            //      )
-            //    ])
-            // )
+                
                    
     		m("form.pure-form pure-form-aligned", [
             m(".pure-control-group", [ 
                m("label.orgselect")]),
                m("input.pure-input-1-3[type=text][id=agencysearch]", { onkeyup: filterAgencies}),
+
+
     		   m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
     		   m("ul.pure-menu-list[id=agencylist]",
                     m("li", m("a[href=#][id=newOrg].pure-menu-link", "New organization")),
@@ -78,10 +68,20 @@ module.exports = {
 
                 m(".pure-control-group", [
                     m("label.agency_address", "Edit address."),
-				    m("input[type=text].agency_address", {value: Agency.selected.physical_address })]),
+				    m("input[type=text].agency_address", {value: Agency.selected.physical_address,
+                                                            oninput: function(e) {
+                                                                        Agency.selected.physical_address = e.currentTarget.value;
+                                                          }
+
+                                                         })]),
                 m(".pure-control-group",[
                     m("label.agency_phone", "Edit phone number."),
-                    m("input[type=text].agency_phone pure-input-1-3", {value: Agency.selected.phone_number})]),
+                    m("input[type=text].agency_phone pure-input-1-3", { value:  Agency.selected.phone_number ,
+                                                                        oninput: function(e) {
+                                                                        Agency.selected.phone_number = e.currentTarget.value;
+                                                                        }
+                                                                    }
+                                                                      )]),
      
 
 
@@ -105,10 +105,11 @@ module.exports = {
           ),
                      m("div.pure-controls", 
                     m("button[type=submit][id=continue1].pure-button pure-button-primary", {
-                        href: "/program/" + Agency.selected.id,
-                        disabled: Agency.selected.name === undefined,
+                        href: "/review", 
+                        disabled: Agency.selected_program.name === undefined,
                         oncreate: m.route.link,
-                        },"Continue")
+                        onclick: state.search
+                        },"Submit")
                  )
 
 
