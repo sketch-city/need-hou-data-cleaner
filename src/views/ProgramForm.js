@@ -14,8 +14,7 @@ var state = {
 
 module.exports = {
 oninit: function(vnode) { 
-	Agency.loadProgram(vnode.attrs.id).then(function(result) {state.description = result.description})
-	
+		Agency.loadProgram(vnode.attrs.id).then(function(result) {state.description = result.description})
 	} 
 ,
 view: function() {

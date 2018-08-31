@@ -53,7 +53,11 @@ module.exports = {
 
     		   m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
     		   m("ul.pure-menu-list[id=agencylist]",
-                    m("li", m("a[href=#][id=newOrg].pure-menu-link", "New organization")),
+                    m("li", m("a[href=#][id=newOrg].pure-menu-link", 
+                    {  
+
+
+                    }, "New organization")),
                     Agency.list.map(function(agency) {
                         return(m("li", m("a[href=#].pure-menu-link", {onclick: selectAgency} , agency.name)))
                      })
@@ -62,7 +66,7 @@ module.exports = {
     		),
                m("p", {hidden: Agency.selected.name===undefined}, "Organization selected: " + Agency.selected.name),
 
-                m(".pure-control-group", [
+                m(".pure-control-group", {hidden: Agency.selected.name == undefined}, [
                     m("label.agency_address", "Edit address."),
 				    m("input[type=text].agency_address", {value: Agency.selected.physical_address,
                                                             oninput: function(e) {
@@ -70,7 +74,7 @@ module.exports = {
                                                           }
 
                                                          })]),
-                m(".pure-control-group",[
+                m(".pure-control-group", {hidden: Agency.selected.name == undefined}, [
                     m("label.agency_phone", "Edit phone number."),
                     m("input[type=text].agency_phone pure-input-1-3", { value:  Agency.selected.phone_number ,
                                                                         oninput: function(e) {
@@ -102,6 +106,7 @@ module.exports = {
                      m("div.pure-controls", 
                     m("button[type=submit][id=continue1].pure-button pure-button-primary", {
                         href: "/review", 
+                        hidden: Agency.selected.name == undefined,
                         disabled: Agency.selected_program.name === undefined,
                         oncreate: m.route.link,
 
