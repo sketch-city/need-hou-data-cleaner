@@ -7,20 +7,20 @@ module.exports = {
         return m("main.layout organization", [
         	m("ul.breadcrumb ", [
         		m("li.organization-breadcrumb",
-        			m("a[href='/agencyform']", { oncreate: m.route.link } , "Organization")),
+        			m("a[href='/agencyform']", { oncreate: m.route.link } , "Organization Menu")),
         		m("li", { hidden: Agency.selected_program.id === undefined },
         			m("a", { 
         				 oncreate: m.route.link, 
                          hidden: Agency.selected_program.id === undefined,
         				 href: "/programform/" + Agency.selected_program.id,
                       
-        				  }, "Program ")),
+        				  }, "Edit Program")),
                 
                 m("li",{ hidden: Agency.selected_program.id === undefined },
                     m("a", {
                         oncreate: m.route.link,
                         href: "/review",
-                    }, "Review"))
+                    }, "Review Changes"))
                 
 
         		]),

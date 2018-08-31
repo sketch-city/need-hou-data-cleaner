@@ -54,13 +54,12 @@ var Agency = {
 			url: "http://localhost:8080/api/programs?id=" + id,
 			withCredentials: false,
 		}).then(function(result){
-			selected_program_ids.push(result[0].id)
-			if(Agency.selected_program.id === undefined || Agency.selected_program.id !== result[0].id){
-				console.log(Agency.selected_program.id)
-				console.log(result[0].id)
+			if(Agency.selected_program.id === undefined || !selected_program_ids.includes(result[0].id)){
 				console.log('init program')
 				Agency.selected_program = result[0]
 			}
+			selected_program_ids.push(result[0].id)
+			return(Agency.selected_program)
 
 		})
 	

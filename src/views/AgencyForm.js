@@ -47,7 +47,7 @@ module.exports = {
                    
     		m("form.pure-form pure-form-aligned", [
             m(".pure-control-group", [ 
-               m("label.orgselect")]),
+               m("label.orgselect", "Search Organizations.")]),
                m("input.pure-input-1-3[type=text][id=agencysearch]", { onkeyup: filterAgencies}),
 
 
@@ -60,6 +60,7 @@ module.exports = {
                     )
 
     		),
+               m("p", {hidden: Agency.selected.name===undefined}, "Organization selected: " + Agency.selected.name),
 
                 m(".pure-control-group", [
                     m("label.agency_address", "Edit address."),
