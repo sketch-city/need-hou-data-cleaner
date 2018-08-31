@@ -104,7 +104,7 @@ module.exports = {
                         href: "/review", 
                         disabled: Agency.selected_program.name === undefined,
                         oncreate: m.route.link,
-                        onclick: state.search
+
                         },"Submit")
                  )
 

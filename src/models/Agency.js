@@ -54,15 +54,15 @@ var Agency = {
 			url: "http://localhost:8080/api/programs?id=" + id,
 			withCredentials: false,
 		}).then(function(result){
-			if(Agency.selected_program.id === undefined || !selected_program_ids.includes(result[0].id)){
+			if(result[0].id !== Agency.selected_program.id){
 				console.log('init program')
 				Agency.selected_program = result[0]
 			}
+			
+			
 			selected_program_ids.push(result[0].id)
 			return(Agency.selected_program)
-
-		})
-	
+		})	
 	}
 }
 

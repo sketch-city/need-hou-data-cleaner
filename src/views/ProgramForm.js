@@ -3,21 +3,21 @@ var Agency = require("../models/Agency")
 
 var state = {
     description: "",
-    search: function() {
+    save: function() {
         // save the state for this route
         // this is equivalent to `history.replaceState({term: state.term}, null, location.href)`
-        m.route.set(m.route.get(), null, {replace: true, state: {term: state.term}})
+        m.route.set(m.route.get(), null, {replace: true, state: {description: state.description}})
 
-        // navigate away
-        location.href = "https://google.com/?q=" + state.term
     }
 }
 
 
 module.exports = {
 oninit: function(vnode) { 
-	Agency.loadProgram(vnode.attrs.id).then(function(result){ state.description = result.description})
-},
+	Agency.loadProgram(vnode.attrs.id).then(function(result) {state.description = result.description})
+	
+	} 
+,
 view: function() {
 	return(
 		m("form.pure-form pure-form-stacked", [
@@ -36,13 +36,14 @@ view: function() {
 							m("input.pure-u-23-24[type=text]",{ value: "" })]),
 						//m("div.pure-u-1 pure-u-md-1-2", [
 							m("label", "Description"),
-							m("textarea.pure-input-3-4 programdesc",{ value: state.description,
-								oninput: function(e) { state.description = e.currentTarget.value }
-																					// oninput: function(e) {
-		                   //                                                      Agency.selected_program.description  = e.currentTarget.value;
-		                                                                         
-		                   //                                                  }
-		                                                          }),
+							m("textarea.pure-input-3-4 programdesc",{ 
+								//Agency.selected_program.description, 
+								//oninput: m.withAttr("value", function(v) {state.term = v}), value: state.term}
+								value: state.description,
+								oninput: function(e) { state.description = e.currentTarget.value 
+													 Agency.selected_program.description  = e.currentTarget.value;
+													}
+																}),
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Address"),
 							m("input.pure-u-23-24[type=text]",{ value: Agency.selected_program.physical_address,
@@ -58,7 +59,7 @@ view: function() {
 
 							]),
 
-						//referral process
+						
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Need Domain"),
 							m("input.pure-u-23-24[type=text]",{ value: Agency.selected_program.service_type,
@@ -67,13 +68,14 @@ view: function() {
 		                                                                    }
 		                                                          })]),
 
-						m("div.pure-u-1 pure-u-md-1-2",[
+						//m("div.pure-u-1 pure-u-md-1-2",[
 							m("label", "How to refer"),
-							m("textarea.application_process",{ value: Agency.selected_program.application_process,
+							m("textarea.pure-input-1-3 application_process",{ value: Agency.selected_program.application_process,
 																					oninput: function(e) {
 		                                                                        Agency.selected_program.application_process  = e.currentTarget.value;
 		                                                                    }
-		                                                                    })]),
+		                                                                    }),
+							//]),
 							m("label", "Payment Options"),
 							m("textarea.pure-input-1-3 payment options",{ value: Agency.selected_program.fee_structure,
 																					oninput: function(e) {
@@ -86,9 +88,11 @@ view: function() {
 								m("option", ""),
 								m("option", "Yes"),
 								m("option", "No")),
-							m("button[type=submit].pure-button pure-button-primary", {onclick: state.search}, "Save")
-
-
+							m("button[type=submit].pure-button pure-button-primary", 
+								{onclick: state.save,
+							 	 href: "/review", 
+							 	 oncreate: m.route.link 
+							 	}, "Save")
 							])
 
 						])
