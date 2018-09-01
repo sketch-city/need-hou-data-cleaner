@@ -1,5 +1,8 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
+var NewAgency = require("./NewAgency")
+var ProgramList = require("./ProgramList")
+
 
 var state = {
     term: "",
@@ -13,11 +16,19 @@ var state = {
     }
 }
 
-function selectAgency(clickEvent) 
-{  
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+function selectAgency(clickEvent) {  
     Agency.loadAgency(clickEvent.target.text)
     .then(Agency.loadPrograms)
-  }
+}
 
 function filterAgencies() {
     // Declare variables
@@ -53,10 +64,10 @@ module.exports = {
 
     		   m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
     		   m("ul.pure-menu-list[id=agencylist]",
-                    m("li", m("a[href=#][id=newOrg].pure-menu-link", 
+                    m("li", m("a[id=newOrg].pure-menu-link", 
                     {  
-
-
+                        href: "/newagency",
+                        oncreate: m.route.link
                     }, "New organization")),
                     Agency.list.map(function(agency) {
                         return(m("li", m("a[href=#].pure-menu-link", {onclick: selectAgency} , agency.name)))
@@ -82,27 +93,9 @@ module.exports = {
                                                                         }
                                                                     }
                                                                       )]),
-     
-
-
+    
                ]),
-          //m(".pure-control-group", [
-            m("label.selectProgramlabel", {hidden: Agency.selected.name == undefined }, "Select a program to edit."),
-            //]),
-          m("[id=programenu].pure-menu pure-menu-scrollable custom-restricted2", { hidden: Agency.selected.name == undefined },
-          m("ul.pure-menu-list",
-          Agency.programs.map(function(program){
-            return(
-              m("a.pure-menu-link", { 
-                            href: "/programform/" + program.id,
-                            oncreate: m.route.link,
-                        }, program.name)
-
-                            )
-
-            })
-            )
-          ),
+                m(ProgramList),
                      m("div.pure-controls", 
                     m("button[type=submit][id=continue1].pure-button pure-button-primary", {
                         href: "/review", 

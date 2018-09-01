@@ -12,9 +12,11 @@ var state = {
 }
 
 
+
 module.exports = {
 oninit: function(vnode) { 
-		Agency.loadProgram(vnode.attrs.id).then(function(result) {state.description = result.description})
+	Agency.loadProgram(vnode.attrs.id)
+		//Agency.loadProgram(vnode.attrs.id).then(function(result) {state.description = result.description})
 	} 
 ,
 view: function() {
@@ -36,9 +38,9 @@ view: function() {
 						//m("div.pure-u-1 pure-u-md-1-2", [
 							m("label", "Description"),
 							m("textarea.pure-input-3-4 programdesc",{ 
-								//Agency.selected_program.description, 
+								value: Agency.selected_program.description, 
 								//oninput: m.withAttr("value", function(v) {state.term = v}), value: state.term}
-								value: state.description,
+								//value: state.description,
 								oninput: function(e) { state.description = e.currentTarget.value 
 													 Agency.selected_program.description  = e.currentTarget.value;
 													}
@@ -88,7 +90,8 @@ view: function() {
 								m("option", "Yes"),
 								m("option", "No")),
 							m("button[type=submit].pure-button pure-button-primary", 
-								{onclick: state.save,
+								{
+								//onclick: state.save,
 							 	 href: "/review", 
 							 	 oncreate: m.route.link 
 							 	}, "Save")
