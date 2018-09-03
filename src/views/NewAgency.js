@@ -1,6 +1,7 @@
 
 var m = require("mithril")
 var Agency = require("../models/Agency")
+var NewProgram= require("./ProgramForm.js")
 
 function guid() {
   function s4() {
@@ -19,51 +20,73 @@ var newAgency = {
     phone_number: "",
     mailing_address: "",
     disability: "",
-    hours: ""
+    hours: "",
+    selected_program:{
+    	name: "",
+    	description: "",
+    	physical_address: "",
+    	service_type: "",
+    	application_process: "",
+    	fee_structure: ""
+    }
+
+
 }
 
 
 module.exports = {
-// oninit: function(vnode) { 
-	
-// 	},
 view: function() {
-    	return( 
-    		m("form.pure-form pure-form-aligned", [
-				m(".pure-control-group", [
-			                    m("label.agency_name", "Add organization name."),
-							    m("input[type=text].agency_name", {value: newAgency.name ,
+    	return(
+    	m("form.pure-form pure-form-stacked", [
+			m("fieldset", [
+			m("legend[style=margin-left:15px]",  "New Organization Form"),
+    		m("div.newagencyform", [
+    			m("form.pure-form pure-form-stacked", [
+				m("div.pure-u-1 pure-u-md-1-5", [
+			                    m("label.agency_name", "Name."),
+							    m("input[type=text].agency_name pure-u-23-24[type=text]", {value: newAgency.name ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.name = e.currentTarget.value;
 			                                                          }
 
 			                                                         })]),
-			   m(".pure-control-group", [
-			                    m("label.", "Add organizationaddress."),
-							    m("input[type=text]", {value: newAgency.physical_address ,
+			   m("div.pure-u-1 pure-u-md-1-5", [
+			                    m("label.", "Address."),
+							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.physical_address ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.physical_address = e.currentTarget.value;
 			                                                          }
 
 			                                                         })]),
-			   		m("button[type=submit].pure-button pure-button-primary", 
-								{
-								//onclick: state.save,
-							 	 href: "/review", 
-							 	 oncreate: m.route.link 
-							 	 //onclick: Agency.list.push(newAgency)
+			   		  m("div.pure-u-1 pure-u-md-1-5", [
+			                    m("label.", "Phone Number."),
+							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.phone_number ,
+			                                                            oninput: function(e) {
+			                                                                        newAgency.phone_number = e.currentTarget.value;
+			                                                          }
 
-							 	}, "Add Organization")
+			                                                         })]),
+
+
+			   				])
+
+
+			   			]),
+    		m("legend[style=margin-left:15px]",  "New Program Form"),
+
+    		////program form
 
 
 
-			   ])
+
+
+			   		])
+    			])
 			  
-                )
+    		)
     }
 
 }
-
 
 
 window.newAgency = newAgency

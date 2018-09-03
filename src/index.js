@@ -5,6 +5,7 @@ var ProgramForm = require("./views/ProgramForm")
 var Layout = require("./views/Layout")
 var Review = require("./views/Review")
 var NewAgency = require("./views/NewAgency")
+var NewReview = require("./views/NewReview")
 
 
 m.route(document.body, "/agencyform", {
@@ -19,13 +20,12 @@ m.route(document.body, "/agencyform", {
     	}
     },
 
-    // "/newprogramform/:id": {
-    //     render: function(vnode){
-    //         return m(Layout, m(NewProgramForm, vnode.attrs))
-    //     }
+    "/newprogramform": {
+        render: function(vnode){
+            return m(Layout, m(ProgramForm, vnode.attrs))
+        }
 
-    // },
-
+    },
 
     "/newagency": {
         render: function(vnode){
@@ -33,15 +33,19 @@ m.route(document.body, "/agencyform", {
         }
 
     },
+
     "/review":{
         render: function(vnode){
             return m(Layout, m(Review, vnode.attrs))
         }
+    },
+
+       "/newagencyreview":{
+        render: function(vnode){
+            return m(Layout, m(NewReview, vnode.attrs))
+        }
     }
+
+
+
 })
-
-
-// m.route(document.body, "/agencyform", {
-//     "/agencyform": AgencyForm,
-//     "/programform/:id": ProgramForm,
-// })

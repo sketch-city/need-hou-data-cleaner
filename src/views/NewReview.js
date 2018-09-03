@@ -21,9 +21,9 @@ view: function() {
 						]),
 					m("tbody", [
 						m("tr", [
-							m("td",m("a[href=#]", Agency.selected.name)),
-							m("td", Agency.selected.physical_address),
-							m("td", Agency.selected.phone_number)
+							m("td", newAgency.name),
+							m("td", newAgency.physical_address),
+							m("td", newAgency.phone_number)
 					
 							])
 
@@ -45,13 +45,12 @@ view: function() {
 						]),
 					m("tbody", [
 						m("tr", [
-							m("td", m("a", { href: "/programform/" + Agency.selected_program.id,
-											oncreate: m.route.link  }, Agency.selected_program.name)),
-							m("td", Agency.selected_program.description),
-							m("td", Agency.selected_program.physical_address),
-							m("td", Agency.selected_program.service_type),
-							m("td", Agency.selected_program.application_process),
-							m("td", Agency.selected_program.fee_structure)
+							m("td", newAgency.selected_program.name),
+							m("td", newAgency.selected_program.description),
+							m("td", newAgency.selected_program.physical_address),
+							m("td", newAgency.selected_program.service_type),
+							m("td", newAgency.selected_program.application_process),
+							m("td", newAgency.selected_program.fee_structure)
 
 							])
 

@@ -7,17 +7,14 @@ var state = {
         // save the state for this route
         // this is equivalent to `history.replaceState({term: state.term}, null, location.href)`
         m.route.set(m.route.get(), null, {replace: true, state: {description: state.description}})
-
     }
 }
-
-
 
 module.exports = {
 oninit: function(vnode) { 
 	Agency.loadProgram(vnode.attrs.id)
-		//Agency.loadProgram(vnode.attrs.id).then(function(result) {state.description = result.description})
-	} 
+
+}
 ,
 view: function() {
 	return(
@@ -85,16 +82,24 @@ view: function() {
 		                                                                    }),
 
 							m("label", "Accepting Clients?"),
-							m("select[id= acceptingclients]",
+							m("select[id= acceptingclients]", [
 								m("option", ""),
 								m("option", "Yes"),
-								m("option", "No")),
+								m("option", "No")
+								] ),
+								m("label", "Appointment Required?"),
+							m("select[id= appointmentreq]", [
+								m("option", ""),
+								m("option", "Yes"),
+								m("option", "No")
+								] ),
+
 							m("button[type=submit].pure-button pure-button-primary", 
 								{
 								//onclick: state.save,
 							 	 href: "/review", 
 							 	 oncreate: m.route.link 
-							 	}, "Save")
+							 	}, "Continue")
 							])
 
 						])

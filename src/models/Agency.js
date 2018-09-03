@@ -3,7 +3,10 @@ var m = require('mithril')
 var selected_program_ids = []
 var selected_agency_ids = []
 
+
+
 var Agency = {
+
 	list: [],
 	loadList: function() {
 		return m.request({
@@ -47,6 +50,7 @@ var Agency = {
 	},
 
 	selected_program: {},
+	new_program: {},
 	
 	loadProgram: function(id){
 		return m.request({ 
@@ -54,15 +58,28 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/programs?id=" + id,
 			withCredentials: false,
 		}).then(function(result){
-			if(result[0].id !== Agency.selected_program.id){
-				console.log('init program')
-				Agency.selected_program = result[0]
+			if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
+				console.log('init program since it has not been initialized before')
+				Agency.selected_program = result[0]	
 			}
-		
 			selected_program_ids.push(result[0].id)
-		}).catch(function(error){
-			console.log('program id does not already exist')
-		})	
+		}).catch(function(result) {
+			console.log('this program does not have an ID so create a new program')
+			// new_vals = {
+			// 	id: guid(),
+			// 	name: "",
+			// 	description: "",
+			// 	physical_address: "",
+			// 	service_type: "",
+			// 	application_process: "",
+			// 	fee_structure: ""
+
+			// }
+
+			// Agency.selected_program = new_vals
+			
+
+		})
 	}
 }
 

@@ -9,12 +9,10 @@ module.exports = {
             //]),
           m("[id=programenu].pure-menu pure-menu-scrollable custom-restricted2", { hidden: Agency.selected.name == undefined },
           m("ul.pure-menu-list", 
-            m("li", m("a[href=#][id=newProgram].pure-menu-link", 
+            m("li", m("a[id=newProgram].pure-menu-link", 
                     {  
-                     href: "/programform/" ,
+                     href: "/newprogramform" ,
                      oncreate: m.route.link
-
-
                     }, "New Program")),
           Agency.programs.map(function(program){
             return(
@@ -28,18 +26,6 @@ module.exports = {
             })
             )
           )
-
-
-
-
-
-
-
-
-
-
-
-
 
 		)
 
