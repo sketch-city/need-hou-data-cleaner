@@ -8,6 +8,12 @@ var NewAgency = require("./views/NewAgency")
 var NewReview = require("./views/NewReview")
 
 
+server.listen(config.port, function () {
+  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+});
+
+
+
 m.route(document.body, "/agencyform", {
     "/agencyform" : {
 		render:function(){
