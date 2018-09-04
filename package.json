@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack src/index.js --output bin/app.js -d --watch",
-    "build":"webpack src/index.js --output bin/app.js -p",
-    "heroku-postbuild": "webpack src/index.js --output bin/app.js -p",
+    "start": "webpack -d --watch",
+        "build": "webpack -p",
+        "heroku-postbuild": "webpack -p",
+
     "test": "ospec"
   },
   "keywords": [],
