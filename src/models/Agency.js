@@ -7,6 +7,7 @@ var selected_agency_ids = []
 
 var Agency = {
 
+	review: false,
 	list: [],
 	loadList: function() {
 		return m.request({

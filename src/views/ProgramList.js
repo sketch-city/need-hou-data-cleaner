@@ -16,18 +16,22 @@ module.exports = {
                     }, "New Program")),
           Agency.programs.map(function(program){
             return(
+             m("div.tooltip", [
+              m("span.tooltiptext tooltip-left", program.last_updated),
               m("a.pure-menu-link", { 
                             href: "/programform/" + program.id,
                             oncreate: m.route.link,
                         }, program.name)
+              
+              ])
 
-                            )
-
-            })
-            )
+                    
+              )
+          })
+        )
+      )
           )
 
-		)
 
 	}
 }

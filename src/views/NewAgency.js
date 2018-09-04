@@ -39,7 +39,7 @@ view: function() {
     	return(
     	m("form.pure-form pure-form-stacked", [
 			m("fieldset", [
-			m("legend[style=margin-left:15px]",  "New Organization Form"),
+			m("legend[style=margin-left:15px]",  "Add New Organization."),
     		m("div.newagencyform", [
     			m("form.pure-form pure-form-stacked", [
 				m("div.pure-u-1 pure-u-md-1-5", [
@@ -72,7 +72,7 @@ view: function() {
 
 
 			   			]),
-    		m("legend[style=margin-left:15px]",  "New Program Form"),
+    		m("legend[style=margin-left:15px]",  "Add New Program."),
 
     		////program form
 

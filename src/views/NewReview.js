@@ -8,7 +8,6 @@ oninit: function(vnode){
 
 view: function() {
 		return(
-
 			m("div.reviewpage", [
 				m("table[id=agencyreviewtabl].pure-table pure-table-horizontal",[
 					m("thead", [

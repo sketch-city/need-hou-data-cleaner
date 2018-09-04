@@ -94,13 +94,13 @@ view: function() {
 								m("option", "No")
 								] ),
 
-							m("button[type=submit].pure-button pure-button-primary", 
+						
+							]),
+					m("button[id=submitprogram].pure-button pure-button-primary", 
 								{
-								//onclick: state.save,
 							 	 href: "/review", 
 							 	 oncreate: m.route.link 
 							 	}, "Continue")
-							])
 
 						])
 					])

@@ -16,11 +16,11 @@ module.exports = {
                       
         				  }, "Edit Program")),
                 
-                m("li",//{ hidden: Agency.selected_program.id === undefined || newAgency.id === undefined},
+                m("li", { hidden: true},
                     m("a", {
                         oncreate: m.route.link,
                         href: "/review",
-                    }, "Review Changes"))
+                    }, "Review"))
                 
 
         		]),
