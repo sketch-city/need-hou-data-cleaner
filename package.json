@@ -5,14 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack src/index.js --output bin/app.js -d --watch",
+    "build":"webpack src/index.js --output bin/app.js -p",
+    "heroku-postbuild": "webpack src/index.js --output bin/app.js -p",
     "test": "ospec"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.3",
     "mithril": "^1.1.6",
-    "mithril-modal": "^1.0.0"
+    "mithril-modal": "^1.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "webpack": "^4.16.5",
