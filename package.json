@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack -d --watch",
-        "build": "webpack -p",
-        "heroku-postbuild": "webpack -p",
-
+    "build": "webpack -p",
+    "heroku-postbuild": "webpack -p",
     "test": "ospec"
   },
   "keywords": [],
