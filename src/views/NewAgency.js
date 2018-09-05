@@ -2,6 +2,7 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var NewProgram= require("./ProgramForm.js")
+var ProgramBase = require("./ProgramBase")
 
 function guid() {
   function s4() {
@@ -30,7 +31,6 @@ var newAgency = {
     	fee_structure: ""
     }
 
-
 }
 
 
@@ -39,7 +39,7 @@ view: function() {
     	return(
     	m("form.pure-form pure-form-stacked", [
 			m("fieldset", [
-			m("legend[style=margin-left:15px]",  "New Organization Form"),
+			m("legend[style=margin-left:15px]",  "Organization Form"),
     		m("div.newagencyform", [
     			m("form.pure-form pure-form-stacked", [
 				m("div.pure-u-1 pure-u-md-1-5", [
@@ -72,16 +72,14 @@ view: function() {
 
 
 			   			]),
-    		m("legend[style=margin-left:15px]",  "New Program Form"),
-
-    		////program form
-
-
+            m(ProgramBase, { agency: newAgency, program: newAgency.selected_program})
 
 
 
 			   		])
     			])
+
+            
 			  
     		)
     }
