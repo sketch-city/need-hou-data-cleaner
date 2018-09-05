@@ -100,8 +100,9 @@ module.exports = {
                     m("button[type=submit][id=continue1].pure-button pure-button-primary", {
                         href: "/review", 
                         hidden: Agency.selected.name == undefined,
-                        disabled: Agency.selected.name === undefined,
+                        disabled: Agency.selected_program.name === undefined,
                         oncreate: m.route.link,
+
                         },"Submit")
                  )
 

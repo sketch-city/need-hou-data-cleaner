@@ -96,7 +96,7 @@ view: function() {
 		                                                                    }
 		                                                                    }),
 							//]),
-							m("label", "Payment Options"),2
+							m("label", "Payment Options"),
 							m("textarea.pure-input-1-3 payment options",{ value: Agency.selected_program.fee_structure,
 																					oninput: function(e) {
 		                                                                        Agency.selected_program.fee_structure  = e.currentTarget.value;

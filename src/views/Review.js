@@ -58,11 +58,7 @@ view: function() {
 						])
 
 
-					]),
-					m("button[id=reviewsubmit].pure-button pure-button-primary", 
-								{
-			
-							 	}, "Submit")
+					])
 
 				])
 
