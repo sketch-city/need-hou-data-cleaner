@@ -7,6 +7,8 @@ view: function(vnode) {
 		return(
 
 			m("div.reviewpage", [
+
+				m("div.agencyreview", 
 				m("table[id=agencyreviewtabl].pure-table pure-table-horizontal",[
 					m("thead", [
 						m("tr", [
@@ -26,14 +28,27 @@ view: function(vnode) {
 
 						])
 					]),
+				 m("button[type=submit][id=edit1].pure-button pure-button-primary", {
+                  
+                        },"Edit")
+				 ),
+
+
+
+
+
+
+
+
 				m("table[id=programreviewtabl].pure-table pure-table-horizontal",[
 					m("thead", [
 						m("tr", [
 							m("td", "Program Name"),
+							m("td", "Alternative Name"),
 							m("td", "Description"),
 							m("td", "Physical Address"),
-							m("td", "Service Type"),
-							m("td", "Application Process"),
+							m("td", "Program Need Domain"),
+							m("td", "How to Refer"),
 							m("td", "Fee Structure")
 					
 
@@ -44,6 +59,7 @@ view: function(vnode) {
 						m("tr", [
 							m("td", m("a", { href: "/programform/" + vnode.attrs.program.id,
 											oncreate: m.route.link  },vnode.attrs.program.name)),
+							m("td", vnode.attrs.program.alternative_name),
 							m("td", vnode.attrs.program.description),
 							m("td", vnode.attrs.program.physical_address),
 							m("td", vnode.attrs.program.service_type),

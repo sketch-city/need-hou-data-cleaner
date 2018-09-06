@@ -18,7 +18,9 @@ view: function(vnode) {
 		                                                                    } })]),
 						m("div.pure-u-1 pure-u-md-1-5",[
 							m("label", "Alternative Name"),
-							m("input.pure-u-23-24[type=text]",{ value: "" })]),
+							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.alternative_name,oninput: function(e) {
+		                                                                       vnode.attrs.program.alternative_name = e.currentTarget.value;
+		                                                                    }                       })]),
 						//m("div.pure-u-1 pure-u-md-1-2", [
 							m("label", "Description"),
 							m("textarea.pure-input-3-4 programdesc",{ 
@@ -39,7 +41,11 @@ view: function(vnode) {
 
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Website"),
-							m("input.pure-u-23-24[type=text]",{ value: "" })]),
+							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.website,
+								oninput: function(e) {
+													vnode.attrs.program.website  = e.currentTarget.value;
+													}
+										 })]),
 
 
 							]),
@@ -69,7 +75,8 @@ view: function(vnode) {
 		                                                                    }),
 
 							m("label", "Accepting Clients?"),
-							m("select[id= acceptingclients]", [
+							m("select[id= acceptingclients]", { value: vnode.attrs.program.accepting_clients, onchange: function(e){ vnode.attrs.program.accepting_clients =  e.currentTarget.value } 
+								 } [
 								m("option", ""),
 								m("option", "Yes"),
 								m("option", "No")
