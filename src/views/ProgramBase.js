@@ -75,7 +75,7 @@ view: function(vnode) {
 		                                                                    }),
 
 							m("label", "Accepting Clients?"),
-							m("select[id= acceptingclients]", { value: vnode.attrs.program.accepting_clients, onchange: function(e){ vnode.attrs.program.accepting_clients =  e.currentTarget.value } 
+						m("select[id= acceptingclients]", { value: vnode.attrs.program.accepting_clients, onchange: function(e){ vnode.attrs.program.accepting_clients =  e.currentTarget.value } 
 								 } [
 								m("option", ""),
 								m("option", "Yes"),
@@ -88,7 +88,7 @@ view: function(vnode) {
 								m("option", "No")
 								] ),
 
-							m("button[type=submit].pure-button pure-button-primary", 
+							m("button[type=submit][id=submit.pure-button pure-button-primary", 
 								{
 							 	 href: vnode.attrs.next_route, 
 							 	 oncreate: m.route.link 

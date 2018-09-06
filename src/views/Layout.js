@@ -16,7 +16,7 @@ module.exports = {
                       
         				  }, "Edit Program")),
                 
-                // m("li",//{ hidden: Agency.selected_program.id === undefined || newAgency.id === undefined},
+                // m("li",{ },
                 //     m("a", {
                 //         oncreate: m.route.link,
                 //         href: vnode.attrs.review_route,

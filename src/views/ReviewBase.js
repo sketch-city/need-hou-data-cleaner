@@ -28,9 +28,12 @@ view: function(vnode) {
 
 						])
 					]),
-				 m("button[type=submit][id=edit1].pure-button pure-button-primary", {
+
+				 // m("button[type=submit][id=edit1].pure-button pure-button-primary", {
                   
-                        },"Edit")
+     //                    },"Edit")
+
+				 
 				 ),
 
 

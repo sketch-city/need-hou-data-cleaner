@@ -1,11 +1,10 @@
 
 
 $(document).ready(function() {
-    
-$('#submitprogram').click(function () {
 
+$('button').click(function () {
 
-     console.log('clicked me')
+		alert('Submit 1 clicked');
 });
 
 

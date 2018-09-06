@@ -57,9 +57,9 @@ module.exports = {
                 
                    
     		m("form.pure-form pure-form-aligned", [
-            m(".pure-control-group", [ 
-               m("label.orgselect", "Search Organizations.")]),
-               m("input.pure-input-1-3[type=text][id=agencysearch]", { onkeyup: filterAgencies}),
+
+               m("input.pure-input-1-3[type=text][id=agencysearch][placeholder=Search for organization]", { onkeyup: filterAgencies}),
+               m("span.fas fa-search searchspan"),
 
 
     		   m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
