@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack src/index.js --output bin/app.js -d --watch",
+    "start": "node server.js",
     "heroku-postbuild": "webpack -p",
     "test": "ospec"
   },
