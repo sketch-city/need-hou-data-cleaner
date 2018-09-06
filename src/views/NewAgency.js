@@ -23,6 +23,7 @@ var newAgency = {
     disability: "",
     hours: "",
     selected_program:{
+        id: guid(),
     	name: "",
     	description: "",
     	physical_address: "",
@@ -63,16 +64,13 @@ view: function() {
 							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.phone_number ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.phone_number = e.currentTarget.value;
-			                                                          }
-
-			                                                         })]),
+			                                                          }			                                                         })]),
 
 
 			   				])
 
-
 			   			]),
-            m(ProgramBase, { agency: newAgency, program: newAgency.selected_program})
+            m(ProgramBase, { agency: newAgency, program: newAgency.selected_program, next_route: "/newagencyreview"})
 
 
 

@@ -16,12 +16,11 @@ module.exports = {
                       
         				  }, "Edit Program")),
                 
-                m("li",//{ hidden: Agency.selected_program.id === undefined || newAgency.id === undefined},
-                    m("a", {
-                        oncreate: m.route.link,
-                        href: "/review",
-                    }, "Review Changes"))
-                
+                // m("li",//{ hidden: Agency.selected_program.id === undefined || newAgency.id === undefined},
+                //     m("a", {
+                //         oncreate: m.route.link,
+                //         href: vnode.attrs.review_route,
+                //     }, "Review Changes"))
 
         		]),
             m("section", vnode.children)

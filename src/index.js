@@ -7,7 +7,10 @@ var ProgramForm = require("./views/ProgramForm")
 var Layout = require("./views/Layout")
 var Review = require("./views/Review")
 var NewAgency = require("./views/NewAgency")
-var NewReview = require("./views/NewReview")
+var ReviewBase = require("./views/ReviewBase")
+var NewAgencyReview = require("./views/NewAgencyReview")
+var NewProgramReview = require("./views/NewProgramReview")
+var NewProgram = require("./views/NewProgram")
 
 m.route(document.body, "/agencyform", {
     "/agencyform" : {
@@ -23,14 +26,14 @@ m.route(document.body, "/agencyform", {
 
     "/newprogramform": {
         render: function(vnode){
-            return m(Layout, m(ProgramForm, vnode.attrs))
+            return m(Layout, m(NewProgram, vnode.attrs))
         }
 
     },
 
     "/newagency": {
         render: function(vnode){
-            return m(Layout, m(NewAgency, vnode.attrs))
+           return m(Layout, m(NewAgency, vnode.attrs))
         }
 
     },
@@ -41,9 +44,15 @@ m.route(document.body, "/agencyform", {
         }
     },
 
-       "/newagencyreview":{
+    "/newagencyreview":{
         render: function(vnode){
-            return m(Layout, m(NewReview, vnode.attrs))
+            return m(Layout, m(NewAgencyReview, vnode.attrs))
+        }
+    },
+
+    "/newprogramreview":{
+        render: function(vnode){
+            return m(Layout, m(NewProgramReview, vnode.attrs))
         }
     }
 

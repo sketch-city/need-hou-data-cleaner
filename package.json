@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "webpack -p",
+    "dev": "webpack src/index.js --output bin/app.js -d --watch",
     "test": "ospec"
   },
   "keywords": [],

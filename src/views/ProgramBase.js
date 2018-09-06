@@ -83,8 +83,7 @@ view: function(vnode) {
 
 							m("button[type=submit].pure-button pure-button-primary", 
 								{
-								//onclick: state.save,
-							 	 href: "/review", 
+							 	 href: vnode.attrs.next_route, 
 							 	 oncreate: m.route.link 
 							 	}, "Continue")
 							])

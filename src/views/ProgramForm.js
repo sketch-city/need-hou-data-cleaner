@@ -9,13 +9,6 @@ oninit: function(vnode) {
 }
 ,
 view: function() {
-	return m(ProgramBase, { agency: Agency.selected, program: Agency.selected_program })
-	}
-
-
-
-
-
-
-	
+	return m(ProgramBase, { agency: Agency.selected, program: Agency.selected_program, next_route: "/review" })
+	}	
 }
