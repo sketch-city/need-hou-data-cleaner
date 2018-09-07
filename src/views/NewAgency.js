@@ -13,8 +13,12 @@ function guid() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
 
+
+
+var agency_id = guid();
+
 var newAgency = {
-	id: guid(),
+	id: agency_id,
     name: "",
     physical_address: "",
     description: "",
@@ -23,13 +27,26 @@ var newAgency = {
     disability: "",
     hours: "",
     selected_program:{
+        agency_id: agency_id,
         id: guid(),
     	name: "",
+        alternative_name: "",
     	description: "",
     	physical_address: "",
     	service_type: "",
     	application_process: "",
-    	fee_structure: ""
+    	fee_structure: "",
+        hours:"",
+        eligibility: "",
+        application_process: "",
+        fee_structure: "",
+        service_type: "",
+        website: "",
+        appointment_required: "",
+        accepting_clients: "",
+        holiday_schedule:"",
+        transportation: ""
+
     }
 
 }
@@ -70,7 +87,8 @@ view: function() {
 			   				])
 
 			   			]),
-            m(ProgramBase, { agency: newAgency, program: newAgency.selected_program, next_route: "/newagencyreview"})
+            m(ProgramBase, { agency: newAgency, program: newAgency.selected_program, next_route: "/newagencyreview", agencyfunction : Agency.addNewAgency(newAgency), 
+                                })
 
 
 

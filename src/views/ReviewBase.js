@@ -35,14 +35,6 @@ view: function(vnode) {
 
 				 
 				 ),
-
-
-
-
-
-
-
-
 				m("table[id=programreviewtabl].pure-table pure-table-horizontal",[
 					m("thead", [
 						m("tr", [
@@ -78,19 +70,16 @@ view: function(vnode) {
 				
 			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
 				onclick: function(e) {
-					e.preventDefault()
-                    Agency.addNewAgency(vnode.attrs.agency)
+					vnode.attrs.agencyfunction
+
+        
                 }
 			},
 				"Submit")
 
 				])
 
-
           )
-		
-
-
 
 	}
 }
