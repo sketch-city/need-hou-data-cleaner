@@ -63,17 +63,6 @@ view: function(vnode) {
 										 })])
 
 
-
-
-
-
-
-
-
-
-
-
-
 							]),
 
 						
@@ -87,35 +76,45 @@ view: function(vnode) {
 
 						//m("div.pure-u-1 pure-u-md-1-2",[
 							m("label", "How to refer"),
-							m("textarea.pure-input-1-3 application_process",{ value: vnode.attrs.program.application_process,
+							m("textarea.pure-input-1-2 application_process",{ value: vnode.attrs.program.application_process,
 																					oninput: function(e) {
 		                                                                        vnode.attrs.program.application_process  = e.currentTarget.value;
 		                                                                    }
 		                                                                    }),
 							//]),
 							m("label", "Payment Options"),
-							m("textarea.pure-input-1-3 payment options",{ value: vnode.attrs.program.fee_structure,
+							m("textarea.pure-input-1-2 payment options",{ value: vnode.attrs.program.fee_structure,
 																					oninput: function(e) {
 		                                                                       vnode.attrs.program.fee_structure  = e.currentTarget.value;
 		                                                                    }
 		                                                                    }),
-
-							m("label", "Accepting Clients?"),
-						m("select[id= acceptingclients]", { value: vnode.attrs.program.accepting_clients, onchange: function(e){ vnode.attrs.program.accepting_clients =  e.currentTarget.value } 
-								 } [
-								m("option", ""),
-								m("option", "Yes"),
-								m("option", "No")
-								] ),
-								m("label", "Appointment Required?"),
-							m("select[id= appointmentreq]", [
-								m("option", ""),
-								m("option", "Yes"),
-								m("option", "No")
-								] ),
+					m("div.pure-u-1 pure-u-md-1-4",[
+						m("label", "Accepting Clients?"),
+							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.accepting_clients,
+																					oninput: function(e) {
+		                                                                        vnode.attrs.program.accepting_clients = e.currentTarget.value;
+		                                                                    }
+		                                                          })]),
+						// m("select[id= acceptingclients]", [
+						// 		m("option", ""),
+						// 		m("option", "Yes"),
+						// 		m("option", "No")
+						// 		] ),
+					m("div.pure-u-1 pure-u-md-1-4",[
+						m("label", "Appointment Required?"),
+						m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.appointment_required,
+																					oninput: function(e) {
+		                                                                        vnode.attrs.program.appointment_required = e.currentTarget.value;
+		                                                                    }
+		                                                          })]),
+						// m("select[id= appointmentreq]", [
+						// 		m("option", ""),
+						// 		m("option", "Yes"),
+						// 		m("option", "No")
+						// 		] ),
 			
 							m("label", "Eligibility"),
-							m("textarea.pure-input-3-4 eligibility",{ value: vnode.attrs.program.eligibility,
+							m("textarea.pure-input-1-2 eligibility",{ value: vnode.attrs.program.eligibility,
 								oninput: function(e) {
 													vnode.attrs.program.eligibility  = e.currentTarget.value;
 													}
