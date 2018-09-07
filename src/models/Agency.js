@@ -65,22 +65,30 @@ var Agency = {
 			selected_program_ids.push(result[0].id)
 		}).catch(function(result) {
 			console.log('this program does not have an ID so create a new program')
-			// new_vals = {
-			// 	id: guid(),
-			// 	name: "",
-			// 	description: "",
-			// 	physical_address: "",
-			// 	service_type: "",
-			// 	application_process: "",
-			// 	fee_structure: ""
-
-			// }
-
-			// Agency.selected_program = new_vals
-			
 
 		})
-	}
+	},
+
+	addNewAgency: function(new_data) {
+        return m.request({
+            method: "POST",
+            url: "https://need-hou-api.herokuapp.com/api/agencies",
+            data: new_data,
+            withCredentials: false,
+        })
+    },
+
+
+    addNewProgram: function(new_data) {
+        return m.request({
+            method: "POST",
+            url: "https://need-hou-api.herokuapp.com/api/programs",
+            data: new_data,
+            withCredentials: false,
+        })
+    }
+
+
 }
 
 module.exports = Agency, selected_program_ids, selected_agency_ids;

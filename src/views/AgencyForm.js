@@ -4,18 +4,6 @@ var NewAgency = require("./NewAgency")
 var ProgramList = require("./ProgramList")
 
 
-var state = {
-    term: "",
-    search: function() {
-        // save the state for this route
-        // this is equivalent to `history.replaceState({term: state.term}, null, location.href)`
-        m.route.set(m.route.get(), null, {replace: true, state: {term: state.term}})
-
-        // navigate away
-        location.href = "https://google.com/?q=" + state.term
-    }
-}
-
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -59,7 +47,7 @@ module.exports = {
     		m("form.pure-form pure-form-aligned", [
 
                m("input.pure-input-1-3[type=text][id=agencysearch][placeholder=Search for organization]", { onkeyup: filterAgencies}),
-               m("span.fas fa-search searchspan"),
+              // m("span.fas fa-search searchspan"),
 
 
     		   m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
@@ -103,7 +91,7 @@ module.exports = {
                         disabled: Agency.selected_program.name === undefined,
                         oncreate: m.route.link,
 
-                        },"Submit")
+                        },"Continue")
                  )
 
 

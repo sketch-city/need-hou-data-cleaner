@@ -74,7 +74,15 @@ view: function(vnode) {
 						])
 
 
-					])
+					]),
+				
+			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
+				onclick: function(e) {
+					e.preventDefault()
+                    Agency.addNewAgency(vnode.attrs.agency)
+                }
+			},
+				"Submit")
 
 				])
 

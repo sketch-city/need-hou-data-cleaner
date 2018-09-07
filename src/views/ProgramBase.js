@@ -46,6 +46,32 @@ view: function(vnode) {
 													vnode.attrs.program.website  = e.currentTarget.value;
 													}
 										 })]),
+						m("div.pure-u-1 pure-u-md-1-4"),
+						m("div.pure-u-1 pure-u-md-1-3",[
+							m("label", "Schedule"),
+							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.hours,
+								oninput: function(e) {
+													vnode.attrs.program.hours  = e.currentTarget.value;
+													}
+										 })]),
+						m("div.pure-u-1 pure-u-md-1-3",[
+							m("label", "Holiday Schedule"),
+							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.holiday_schedule,
+								oninput: function(e) {
+													vnode.attrs.program.holiday_schedule  = e.currentTarget.value;
+													}
+										 })])
+
+
+
+
+
+
+
+
+
+
+
 
 
 							]),
@@ -87,8 +113,16 @@ view: function(vnode) {
 								m("option", "Yes"),
 								m("option", "No")
 								] ),
+			
+							m("label", "Eligibility"),
+							m("textarea.pure-input-3-4 eligibility",{ value: vnode.attrs.program.eligibility,
+								oninput: function(e) {
+													vnode.attrs.program.eligibility  = e.currentTarget.value;
+													}
+										 }),
 
-							m("button[type=submit][id=submit.pure-button pure-button-primary", 
+
+							m("button[type=submit].pure-button pure-button-primary", 
 								{
 							 	 href: vnode.attrs.next_route, 
 							 	 oncreate: m.route.link 
