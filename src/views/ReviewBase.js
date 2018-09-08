@@ -70,9 +70,14 @@ view: function(vnode) {
 				
 			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
 				onclick: function(e) {
-					vnode.attrs.agencyfunction
+						if(vnode.attrs.agencyFunction === "new_agency"){
+							Agency.addNewAgency(vnode.attrs.agency).then(Agency.addNewProgram(vnode.attrs.program))
+						}
 
-        
+						else if(vnode.attrs.agencyFunction === "new_program"){
+							Agency.addNewProgram(vnode.attrs.program)
+						}
+
                 }
 			},
 				"Submit")

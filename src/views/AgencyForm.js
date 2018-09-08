@@ -14,6 +14,7 @@ function guid() {
 }
 
 function selectAgency(clickEvent) {  
+  console.log(clickEvent)
     Agency.loadAgency(clickEvent.target.text)
     .then(Agency.loadPrograms)
 }

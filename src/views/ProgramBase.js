@@ -61,8 +61,6 @@ view: function(vnode) {
 													vnode.attrs.program.holiday_schedule  = e.currentTarget.value;
 													}
 										 })])
-
-
 							]),
 
 						

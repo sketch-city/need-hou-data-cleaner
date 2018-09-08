@@ -1,7 +1,6 @@
 
 var m = require("mithril")
 var Agency = require("../models/Agency")
-var NewProgram= require("./ProgramForm.js")
 var ProgramBase = require("./ProgramBase")
 
 function guid() {
@@ -87,10 +86,10 @@ view: function() {
 			   				])
 
 			   			]),
-            m(ProgramBase, { agency: newAgency, program: newAgency.selected_program, next_route: "/newagencyreview", agencyfunction : Agency.addNewAgency(newAgency), 
-                                })
-
-
+            m(ProgramBase, { agency: newAgency, 
+                            program: newAgency.selected_program, 
+                            next_route: "/newagencyreview"
+                            })
 
 			   		])
     			])
