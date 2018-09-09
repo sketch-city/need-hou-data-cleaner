@@ -17,6 +17,7 @@ var newProgram = {
     hours:"",
     eligibility: "",
     application_process: "",
+    documents_required: "",
     fee_structure: "",
     service_type: "",
     website: "",

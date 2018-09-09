@@ -6,88 +6,67 @@ module.exports = {
 view: function(vnode) {
 		return(
 
-			m("div.reviewpage", [
-
-				m("div.agencyreview", 
-				m("table[id=agencyreviewtabl].pure-table pure-table-horizontal",[
-					m("thead", [
-						m("tr", [
-							m("td", "Organization Name"),
-							m("td", "Physical Address"),
-							m("td", "Phone Number")
-					
-							])
-						]),
-					m("tbody", [
-						m("tr", [
-							m("td",m("a[href=#]", vnode.attrs.agency.name)),
-							m("td", vnode.attrs.agency.physical_address),
-							m("td", vnode.attrs.agency.phone_number)
-					
-							])
-
-						])
+			m("div.reviewpage[id=wrap_all]", [
+				m("div.orgreview", [
+					m("h2", "Organization Details"),
+					m("p", m("strong", "Name: " ), vnode.attrs.agency.name),
+					m("p", m("strong", "Address: "), vnode.attrs.agency.physical_address),
+					m("p", m("strong", "Phone Number: "), vnode.attrs.agency.phone_number),
 					]),
+				m("div.programreview", [
+					m("h2", "Program Details"),
+					m("p", m("strong", "Name: "), vnode.attrs.program.name),
+					m("p", m("strong", "Alternative Name: "), vnode.attrs.program.alternative_name),
+					m("p", m("strong", "Description: "), vnode.attrs.program.description),
+					m("p", m("strong", "Address: "), vnode.attrs.program.physical_address),
+					m("p", m("strong", "Website: "), vnode.attrs.program.website),
+					m("p", m("strong", "Schedule: "), vnode.attrs.program.hours),
+					m("p", m("strong", "Holiday Schedule: "), vnode.attrs.program.holiday_schedule),
+					m("p", m("strong", "Transportation: "), vnode.attrs.program.transportation),
+					m("p", m("strong", "Contact First Name: "), vnode.attrs.program.contact_firstname),
+					m("p", m("strong", "Contact Last Name: "), vnode.attrs.program.contact_lastname),
+					m("p", m("strong", "Contact Title: "), vnode.attrs.program.contact_title),
+					m("p", m("strong", "Contact Department: "), vnode.attrs.program.contact_department),
+					m("p", m("strong", "Contact Email: "), vnode.attrs.program.contact_email),
+					m("p", m("strong", "Contact Phone: "), vnode.attrs.program.contact_phonenumber),
+					m("p", m("strong", "Need Domain: "), vnode.attrs.program.service_type),
+					m("p", m("strong", "Languages: "), vnode.attrs.program.languages),
+					m("p", m("strong", "How to Refer: "), vnode.attrs.program.application_process),
+					m("p", m("strong", "Documents Required: "), vnode.attrs.program.documents_required),
+					m("p", m("strong", "Payment Options: "), vnode.attrs.program.fee_structure),
+					m("p", m("strong", "Aceepting Clients?: "), vnode.attrs.program.accepting_clients),
+					m("p", m("strong", "Appointment Required: "), vnode.attrs.program.appointment_required),
+					m("p", m("strong", "Eligibility: "), vnode.attrs.program.eligibility),
 
-				 // m("button[type=submit][id=edit1].pure-button pure-button-primary", {
-                  
-     //                    },"Edit")
 
-				 
-				 ),
-				m("table[id=programreviewtabl].pure-table pure-table-horizontal",[
-					m("thead", [
-						m("tr", [
-							m("td", "Program Name"),
-							m("td", "Alternative Name"),
-							m("td", "Description"),
-							m("td", "Physical Address"),
-							m("td", "Program Need Domain"),
-							m("td", "How to Refer"),
-							m("td", "Fee Structure")
-					
 
-							])
 
-						]),
-					m("tbody", [
-						m("tr", [
-							m("td", m("a", { href: "/programform/" + vnode.attrs.program.id,
-											oncreate: m.route.link  },vnode.attrs.program.name)),
-							m("td", vnode.attrs.program.alternative_name),
-							m("td", vnode.attrs.program.description),
-							m("td", vnode.attrs.program.physical_address),
-							m("td", vnode.attrs.program.service_type),
-							m("td", vnode.attrs.program.application_process),
-							m("td", vnode.attrs.program.fee_structure)
 
-							])
-
-						])
 
 
 					]),
+
+				
 				
 			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addNewAgency(vnode.attrs.agency)
 							.then(Agency.addNewProgram(vnode.attrs.program))
-							.then(Agency.addNewLanguage(vnode.attrs.program))
+							.then(Agency.addNewLanguage({program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
 						}
 
 						else if(vnode.attrs.agencyFunction === "new_program"){
 							Agency.addNewProgram(vnode.attrs.program)
-							.then(Agency.addNewLanguage(vnode.attrs.program))
+							.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
 						}
 
                 }
 			},
 				"Submit")
+			])
 
-				])
-
-          )
+			)
 
 	}
 }

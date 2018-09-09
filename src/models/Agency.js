@@ -85,13 +85,12 @@ var Agency = {
 			Agency.selected_program.languages = languages_arr.join(',')
 
 
+			}).catch(function(result){
+				console.log('this program does not have languages')
+
+
 			})
 	},
-
-
-
-
-
 
 	addNewAgency: function(new_data) {
         return m.request({
