@@ -69,6 +69,30 @@ var Agency = {
 		})
 	},
 
+	languages:[],
+	loadLanguages: function(program_id){
+		return m.request({
+			method: "GET",
+			url: "https://need-hou-api.herokuapp.com/api/languages?program_id=" + program_id,
+			withCredentials: false,
+		}).then(function(result){
+			languages_arr = []
+
+			result.map(function(language_obj) {
+				languages_arr.push(language_obj.language)
+			})
+
+			Agency.selected_program.languages = languages_arr.join(',')
+
+
+			})
+	},
+
+
+
+
+
+
 	addNewAgency: function(new_data) {
         return m.request({
             method: "POST",
@@ -92,7 +116,21 @@ var Agency = {
         }).catch(function(error){
         	console.log('there was a problem with this request blah')
         })
+    },
+
+
+    addNewLanguage: function(new_data) {
+    	return m.request({
+    		method: "POST",
+    		mode: 'cors',
+    		url: "https://need-hou-api.herokuapp.com/api/languages",
+    		data: new_data,
+    		withCredentials: false,
+    	}).catch(function(error){
+    		console.log('there was a problem with the request')
+    	})
     }
+
 
 
 }

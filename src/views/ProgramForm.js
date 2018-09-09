@@ -5,7 +5,7 @@ var ProgramBase = require("./ProgramBase")
 
 module.exports = {
 oninit: function(vnode) { 
-	Agency.loadProgram(vnode.attrs.id)
+	Agency.loadProgram(vnode.attrs.id).then(Agency.loadLanguages(vnode.attrs.id))
 }
 ,
 view: function() {

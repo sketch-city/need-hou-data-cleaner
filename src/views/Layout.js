@@ -8,19 +8,19 @@ module.exports = {
         	m("ul.breadcrumb ", [
         		m("li.organization-breadcrumb",
         			m("a[href='/agencyform']", { oncreate: m.route.link } , "Organization Menu")),
-        		m("li", { hidden: Agency.selected_program.id === undefined },
+        		m("li", {
+                      },
         			m("a", { 
-        				 oncreate: m.route.link, 
-                         hidden: Agency.selected_program.id === undefined,
-        				 href: "/programform/" + Agency.selected_program.id,
+        				 oncreate: m.route.link,
+        				 href: vnode.attrs.program_href,
                       
         				  }, "Edit Program")),
                 
-                // m("li",{ },
-                //     m("a", {
-                //         oncreate: m.route.link,
-                //         href: vnode.attrs.review_route,
-                //     }, "Review Changes"))
+                m("li",{ },
+                    m("a", {
+                        oncreate: m.route.link,
+                        href: vnode.attrs.review_href,
+                    }, "Review Changes"))
 
         		]),
             m("section", vnode.children)

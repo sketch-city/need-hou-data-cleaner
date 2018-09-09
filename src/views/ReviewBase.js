@@ -71,11 +71,14 @@ view: function(vnode) {
 			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
-							Agency.addNewAgency(vnode.attrs.agency).then(Agency.addNewProgram(vnode.attrs.program))
+							Agency.addNewAgency(vnode.attrs.agency)
+							.then(Agency.addNewProgram(vnode.attrs.program))
+							.then(Agency.addNewLanguage(vnode.attrs.program))
 						}
 
 						else if(vnode.attrs.agencyFunction === "new_program"){
 							Agency.addNewProgram(vnode.attrs.program)
+							.then(Agency.addNewLanguage(vnode.attrs.program))
 						}
 
                 }

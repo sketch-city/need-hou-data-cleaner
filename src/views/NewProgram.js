@@ -23,8 +23,14 @@ var newProgram = {
     appointment_required: "",
     accepting_clients: "",
     holiday_schedule:"",
-    transportation: ""
-
+    transportation: "",
+    languages: "",
+    contact_firstname: "",
+    contact_lastname: "",
+    contact_title: "",
+    contact_department: "",
+    contact_email: "",
+    contact_phonenumber: ""
  }
 
 
