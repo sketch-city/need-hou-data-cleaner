@@ -58,7 +58,7 @@ module.exports = {
                         oncreate: m.route.link
                     }, "New organization")),
                     Agency.list.map(function(agency) {
-                        return(m("li", m("a[href=#].pure-menu-link", {onclick: selectAgency} , agency.name)))
+                        return(m("li", m("a.pure-menu-link", {onclick: selectAgency} , agency.name)))
                      })
                     )
 

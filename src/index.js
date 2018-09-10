@@ -22,7 +22,6 @@ m.route(document.body, "/login", {
 
     },
 
-
     "/agencyform" : {
 		render:function(){
 			return m(Layout,m(AgencyForm))

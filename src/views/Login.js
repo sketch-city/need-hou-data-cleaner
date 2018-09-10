@@ -15,7 +15,7 @@ view: function() {
 					m("input[placholder=Email]"),
 					m("label", "Password"),
 					m("input[placholder=Password]"),
-					m("button.pure-button pure-button-primary", {href: "/agencyform/",
+					m("button.pure-button pure-button-primary", {href: "/agencyform",
                             oncreate: m.route.link}, 'Sign In')
 					),
 				),
