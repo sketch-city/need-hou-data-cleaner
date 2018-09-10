@@ -76,7 +76,7 @@ view: function() {
 
 			                                                         })]),
 			   m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.", "Address."),
+			                    m("label.", "Full Physical Address"),
 							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.physical_address ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.physical_address = e.currentTarget.value;
@@ -84,7 +84,7 @@ view: function() {
 
 			                                                         })]),
 			   		  m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.", "Phone Number."),
+			                    m("label.", "Phone Number"),
 							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.phone_number ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.phone_number = e.currentTarget.value;

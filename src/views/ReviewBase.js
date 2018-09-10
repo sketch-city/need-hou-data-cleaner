@@ -38,7 +38,6 @@ view: function(vnode) {
 					m("p", m("strong", "Contact First Name: "), vnode.attrs.program.contact_firstname),
 					m("p", m("strong", "Contact Last Name: "), vnode.attrs.program.contact_lastname),
 					m("p", m("strong", "Contact Title: "), vnode.attrs.program.contact_title),
-					m("p", m("strong", "Contact Department: "), vnode.attrs.program.contact_department),
 					m("p", m("strong", "Contact Email: "), vnode.attrs.program.contact_email),
 					m("p", m("strong", "Contact Phone: "), vnode.attrs.program.contact_phonenumber),
 					m("p", m("strong", "Need Domain: "), vnode.attrs.program.service_type),

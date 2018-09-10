@@ -70,7 +70,7 @@ module.exports = {
 
 
                 m(".pure-control-group[id=agencysearch]", {hidden: Agency.selected.name == undefined}, [
-                    m("label.agency_address", "Physical Address."),
+                    m("label.agency_address", "Full Physical Address"),
 				    m("input[type=text].agency_address pure-input-1-2", {value: Agency.selected.physical_address,
                                                             oninput: function(e) {
                                                                         Agency.selected.physical_address = e.currentTarget.value;
@@ -78,7 +78,7 @@ module.exports = {
 
                                                          })]),
                 m(".pure-control-group[id=agencysearch]", {hidden: Agency.selected.name == undefined}, [
-                    m("label.agency_phone", "Phone number."),
+                    m("label.agency_phone", "Phone Number"),
                     m("input[type=text].agency_phone pure-input-1-2", { value:  Agency.selected.phone_number ,
                                                                         oninput: function(e) {
                                                                         Agency.selected.phone_number = e.currentTarget.value;

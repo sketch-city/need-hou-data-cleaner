@@ -82,19 +82,15 @@ view: function(vnode) {
 							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.contact_lastname,oninput: function(e) {
 		                                                                       vnode.attrs.program.contact_lastname = e.currentTarget.value;
 		                                                                    }                       })]),
-						m("div.pure-u-1 pure-u-md-1-2"),
+						
 					
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Contact Title"),
 							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.contact_title,oninput: function(e) {
 		                                                                       vnode.attrs.program.contact_title = e.currentTarget.value;
 		                                                                    }                       })]),
-						m("div.pure-u-1 pure-u-md-1-4",[
-							m("label", "Program Contact Department"),
-							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.contact_department,oninput: function(e) {
-		                                                                       vnode.attrs.program.contact_department = e.currentTarget.value;
-		                                                                    }                       })]),
-						m("div.pure-u-1 pure-u-md-1-2"),
+						m("div.pure-u-1 pure-u-md-1-4"),
+
 					
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Contact Email"),
