@@ -45,13 +45,12 @@ module.exports = {
             m("div.page",[
                 
                    
-    		m("form.pure-form pure-form-aligned", [
+    		m("form.pure-form pure-form-stacked", [
+           m("input.pure-input-1-3[type=text][id=agencysearch][placeholder=Search for organization]", { onkeyup: filterAgencies}),
+    		   m("span.pure-form-message[id=agencysearch]", "1. Select existing organization or select 'New Organization' to create one."),
 
-               m("input.pure-input-1-3[type=text][id=agencysearch][placeholder=Search for organization]", { onkeyup: filterAgencies}),
-              // m("span.fas fa-search searchspan"),
 
-
-    		   m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
+           m("[id=agencymenu].pure-menu pure-menu-scrollable custom-restricted1",
     		   m("ul.pure-menu-list[id=agencylist]",
                     m("li", m("a[id=newOrg].pure-menu-link", 
                     {  
@@ -64,36 +63,43 @@ module.exports = {
                     )
 
     		),
-               m("p", {hidden: Agency.selected.name===undefined}, "Organization selected: " + Agency.selected.name),
 
-                m(".pure-control-group", {hidden: Agency.selected.name == undefined}, [
-                    m("label.agency_address", "Edit address."),
-				    m("input[type=text].agency_address", {value: Agency.selected.physical_address,
+
+               m("h5[id=agencysearch]", {hidden: Agency.selected.name===undefined}, "Organization selected: " + Agency.selected.name), 
+               m("p.span.pure-form-message[id=agencysearch]",{hidden: Agency.selected.name===undefined}, "2. Edit organization details"),
+
+
+                m(".pure-control-group[id=agencysearch]", {hidden: Agency.selected.name == undefined}, [
+                    m("label.agency_address", "Physical Address."),
+				    m("input[type=text].agency_address pure-input-1-2", {value: Agency.selected.physical_address,
                                                             oninput: function(e) {
                                                                         Agency.selected.physical_address = e.currentTarget.value;
                                                           }
 
                                                          })]),
-                m(".pure-control-group", {hidden: Agency.selected.name == undefined}, [
-                    m("label.agency_phone", "Edit phone number."),
-                    m("input[type=text].agency_phone pure-input-1-3", { value:  Agency.selected.phone_number ,
+                m(".pure-control-group[id=agencysearch]", {hidden: Agency.selected.name == undefined}, [
+                    m("label.agency_phone", "Phone number."),
+                    m("input[type=text].agency_phone pure-input-1-2", { value:  Agency.selected.phone_number ,
                                                                         oninput: function(e) {
                                                                         Agency.selected.phone_number = e.currentTarget.value;
                                                                         }
                                                                     }
                                                                       )]),
     
-               ]),
-                m(ProgramList),
-                     m("div.pure-controls", 
-                    m("button[type=submit][id=continue1].pure-button pure-button-primary", {
+                m("span.pure-form-message[id=agencysearch]", {hidden: Agency.selected.name == undefined}, "3. Click `Review` to review changes, or select a program from below to edit."),
+                m("div.pure-controls", 
+                    m("button[type=submit][id=continue1][style=font-size:13px !important].pure-button pure-button-primary", {
                         href: "/review", 
                         hidden: Agency.selected.name == undefined,
-                        disabled: Agency.selected_program.name === undefined,
+                        disabled: Agency.selected.name === undefined,
                         oncreate: m.route.link,
 
-                        },"Continue")
-                 )
+                        },"Review")
+                 ),
+                m(ProgramList),
+                ])
+                
+      
 
 
             ])

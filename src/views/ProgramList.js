@@ -18,8 +18,9 @@ return(newdate)
 module.exports = {
 	view: function() {
     	return(
-    		m("label.selectProgramlabel", {hidden: Agency.selected.name == undefined }, "Select a program to edit."),
-            //]),
+
+      m("div.programlist[style=margin-top:40px;]",[ 
+        m("span.pure-form-message[id=agencysearch]", {hidden: Agency.selected.name == undefined}, "4. Select a program from below to edit."),
           m("[id=programenu].pure-menu pure-menu-scrollable custom-restricted2", { hidden: Agency.selected.name == undefined },
           m("ul.pure-menu-list", 
             m("li", m("a[id=newProgram].pure-menu-link", 
@@ -42,6 +43,7 @@ module.exports = {
             })
             )
           )
+          ])
 
 		)
 

@@ -9,6 +9,6 @@ oninit: function(vnode) {
 }
 ,
 view: function() {
-	return m(ProgramBase, { agency: Agency.selected, program: Agency.selected_program, next_route: "/review" })
+	return m(ProgramBase, { agency: Agency.selected, program: Agency.selected_program, next_route: "/review"})
 	}	
 }

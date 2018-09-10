@@ -7,7 +7,7 @@ var NewProgram = require("./NewProgram")
 module.exports = {
 
 view: function() {
-		return( m(ReviewBase, { agency: Agency.selected, program: newProgram , agencyFunction: "new_program"})
+		return( m(ReviewBase, { agency: Agency.selected, program: newProgram , agencyFunction: "new_program", org_route: "/agencyform",  program_route: "/newprogramform"})
           )
 	}
 

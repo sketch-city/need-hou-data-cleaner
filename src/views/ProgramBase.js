@@ -191,7 +191,7 @@ view: function(vnode) {
 								{
 							 	 href: vnode.attrs.next_route, 
 							 	 oncreate: m.route.link 
-							 	}, "Continue")
+							 	}, "Review")
 							])
 
 						])
