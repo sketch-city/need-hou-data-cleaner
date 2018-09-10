@@ -11,8 +11,18 @@ var ReviewBase = require("./views/ReviewBase")
 var NewAgencyReview = require("./views/NewAgencyReview")
 var NewProgramReview = require("./views/NewProgramReview")
 var NewProgram = require("./views/NewProgram")
+var Login = require("./views/Login")
 
-m.route(document.body, "/agencyform", {
+m.route(document.body, "/login", {
+
+    "/login": {
+        render:function(){
+            return m(Login)
+        }
+
+    },
+
+
     "/agencyform" : {
 		render:function(){
 			return m(Layout,m(AgencyForm))
