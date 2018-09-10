@@ -103,8 +103,8 @@ view: function(vnode) {
 		                                                                    }                       })]),
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Contact Phone"),
-							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.contact_email,oninput: function(e) {
-		                                                                       vnode.attrs.program.contact_email = e.currentTarget.value;
+							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.contact_phone,oninput: function(e) {
+		                                                                       vnode.attrs.program.contact_phone = e.currentTarget.value;
 		                                                                    }                       })]),
 
 

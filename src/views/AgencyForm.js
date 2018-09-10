@@ -86,7 +86,7 @@ module.exports = {
                                                                     }
                                                                       )]),
     
-                m("span.pure-form-message[id=agencysearch]", {hidden: Agency.selected.name == undefined}, "3. Click `Review` to review changes, or select a program from below to edit."),
+                m("span.pure-form-message[id=agencysearch]", {hidden: Agency.selected.name == undefined}, "3. Click `Review` to review changes."),
                 m("div.pure-controls", 
                     m("button[type=submit][id=continue1][style=font-size:13px !important].pure-button pure-button-primary", {
                         href: "/review", 

@@ -71,6 +71,8 @@ view: function(vnode) {
 						}
 
 					document.getElementById("submitfinal").disabled = true;
+				
+
                 },
 
 			},
