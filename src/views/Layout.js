@@ -7,14 +7,14 @@ module.exports = {
         return m("main.layout organization", [
         	m("ul.breadcrumb ", [
         		m("li[id=home]",
-        			m("a[href='/agencyform']", { oncreate: m.route.link } , "Organization Menu")),
+        			m("a[href='/agencyform']", { oncreate: m.route.link } , "Organization & Program Menu")),
         		m("li[id=editorg]", {
                       },
         			m("a", { 
         				 oncreate: m.route.link,
         				 href: vnode.attrs.program_href,
                       
-        				  }, "Edit Program")),
+        				  }, "Edit Content")),
                 
                 m("li[id=review]",{ },
                     m("a", {
