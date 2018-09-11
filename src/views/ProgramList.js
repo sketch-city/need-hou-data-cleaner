@@ -31,7 +31,7 @@ module.exports = {
           Agency.programs.map(function(program){
             return(
               m("div.tooltip", [
-              m("span.tooltiptext tooltip-left", parse_date(program.last_updated)),
+              m("span.tooltiptext tooltip-left", "Updated: " + parse_date(program.last_updated)),
               m("a.pure-menu-link", { 
                             href: "/programform/" + program.id,
                             oncreate: m.route.link,
