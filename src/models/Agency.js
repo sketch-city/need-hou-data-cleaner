@@ -109,6 +109,31 @@ var Agency = {
         })
     },
 
+	updateAgency: function(new_data) {
+        return m.request({
+            method: "PUT",
+            mode :'cors',
+            url: "https://need-hou-api.herokuapp.com/api/agencies",
+            data: new_data,
+            withCredentials: false,
+        }).catch(function(error){
+        	console.log('there was a problem with this request blah')
+        })
+    },
+
+
+    updateProgram: function(new_data) {
+        return m.request({
+            method: "PUT",
+            mode :'cors',
+            url: "https://need-hou-api.herokuapp.com/api/programs",
+            data: new_data,
+            withCredentials: false,
+        }).catch(function(error){
+        	console.log('there was a problem with this request blah')
+        })
+    },
+
 
     addNewProgram: function(new_data) {
         return m.request({

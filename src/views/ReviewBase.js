@@ -64,15 +64,19 @@ view: function(vnode) {
 						}
 
 						else if(vnode.attrs.agencyFunction === "new_program"){
-							Agency.addNewProgram(vnode.attrs.program)
-							.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
-							
+							Agency.updateAgency(vnode.attrs.agency)
+							.then(Agency.addNewProgram(vnode.attrs.program))
+							.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))							
+						}
+
+						else if(vnode.attrs.agencyFunction === "existing_program"){
+							Agency.updateAgency(vnode.attrs.agency)
+							.then(Agency.updateProgram(vnode.attrs.program))
 						}
 
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
 					document.getElementById("editfinal").hidden = false;
-
                 },
 
 			},

@@ -1,7 +1,5 @@
 var m = require("mithril")
 
-
-
 var AgencyForm= require("./views/AgencyForm")
 var ProgramForm = require("./views/ProgramForm")
 var Layout = require("./views/Layout")
@@ -65,7 +63,4 @@ m.route(document.body, "/login", {
             return m(Layout, {review_href: "/newprogramreview"}, m(NewProgramReview, vnode.attrs))
         }
     }
-
-
-
 })

@@ -7,7 +7,8 @@ var ReviewBase = require("./ReviewBase")
 module.exports = {
 
 view: function() {
-		return( m(ReviewBase, { agency: Agency.selected, program: Agency.selected_program, org_route: "/agencyform",  program_route: "/programform/" + Agency.selected_program.id})
+		return( m(ReviewBase, { agency: Agency.selected, program: Agency.selected_program, org_route: "/agencyform",  program_route: "/programform/" + Agency.selected_program.id,
+								 agencyFunction: "existing_program"})
           )
 	}
 
