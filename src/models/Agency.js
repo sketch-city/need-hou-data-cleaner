@@ -44,7 +44,12 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/programs?agency_id=" + Agency.selected.id,
 			withCredentials: false,
 		}).then(function(result){
+			console.log(result)
 			Agency.programs = result
+
+
+		}).catch(function(error){
+			Agency.programs = []
 
 		})
 	},
@@ -63,7 +68,7 @@ var Agency = {
 				Agency.selected_program = result[0]	
 			}
 			selected_program_ids.push(result[0].id)
-		}).catch(function(result) {
+		}).catch(function(error) {
 			console.log('this program does not have an ID so create a new program')
 
 		})
@@ -85,7 +90,7 @@ var Agency = {
 			Agency.selected_program.languages = languages_arr.join(',')
 
 
-			}).catch(function(result){
+			}).catch(function(error){
 				console.log('this program does not have languages')
 
 

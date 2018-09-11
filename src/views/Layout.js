@@ -13,6 +13,7 @@ function getPageClass(path) {
 }
 
 
+
 module.exports = {
     view: function(vnode) {
         window.ROUTE = m.route;
@@ -20,7 +21,7 @@ module.exports = {
         return m("main.layout", {
             class: pageClass,
         }, [
-        	m("ul.breadcrumb ", [
+        	m("ul.breadcrumb[id=header] ", [
                 m("li",
                     m("a[href=#]", "NEEDHOU")),
         		m("li[id=home]",

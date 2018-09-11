@@ -15,7 +15,7 @@ view: function(vnode) {
 	return(
 		m("form.pure-form pure-form-stacked", [
 			m("fieldset", [
-				m("legend[style=margin-left:15px]",  vnode.attrs.agency.name +  " Program Form"),
+				m("legend[style=margin-left:15px;font-weight: bold;]",  vnode.attrs.agency.name +  " Program Form"),
 				m("div.programform", [
 					m("legend", "Program Contact Info"),
 					m("div.programcontactinfo", [
