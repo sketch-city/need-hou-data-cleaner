@@ -15,7 +15,7 @@ view: function(vnode) {
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
 					m("p", m("strong", "Name: " ), vnode.attrs.agency.name),
-					m("p", m("strong", "Address: "), vnode.attrs.agency.physical_address),
+					m("p", m("strong", "Full Physical 	Address: "), vnode.attrs.agency.physical_address),
 					m("p", m("strong", "Phone Number: "), vnode.attrs.agency.phone_number),
 					
 					]),
@@ -30,7 +30,7 @@ view: function(vnode) {
 					m("p", m("strong", "Name: "), vnode.attrs.program.name),
 					m("p", m("strong", "Alternative Name: "), vnode.attrs.program.alternative_name),
 					m("p", m("strong", "Description: "), vnode.attrs.program.description),
-					m("p", m("strong", "Address: "), vnode.attrs.program.physical_address),
+					m("p", m("strong", "Full Physical Address: "), vnode.attrs.program.physical_address),
 					m("p", m("strong", "Website: "), vnode.attrs.program.website),
 					m("p", m("strong", "Schedule: "), vnode.attrs.program.hours),
 					m("p", m("strong", "Holiday Schedule: "), vnode.attrs.program.holiday_schedule),
@@ -43,9 +43,9 @@ view: function(vnode) {
 					m("p", m("strong", "Need Domain: "), vnode.attrs.program.service_type),
 					m("p", m("strong", "Languages: "), vnode.attrs.program.languages),
 					m("p", m("strong", "How to Refer: "), vnode.attrs.program.application_process),
-					m("p", m("strong", "Documents Required: "), vnode.attrs.program.documents_required),
+					m("p", m("strong", "Required Document Links: "), vnode.attrs.program.documents_required),
 					m("p", m("strong", "Payment Options: "), vnode.attrs.program.fee_structure),
-					m("p", m("strong", "Accepting Clients?: "), vnode.attrs.program.accepting_clients),
+					m("p", m("strong", "Accepting Clients?: "), vnode.attrs.program.accepting_clients),				
 					m("p", m("strong", "Appointment Required?: "), vnode.attrs.program.appointment_required),
 					m("p", m("strong", "Eligibility: "), vnode.attrs.program.eligibility),
 				

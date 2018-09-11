@@ -2,6 +2,14 @@ var m = require("mithril")
 var Agency = require("../models/Agency")
 
 
+function formatMapQuery(address){
+	var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="
+	var queryp2 = "&travelmode=transit"
+	var formatted = queryp1 + escape(address) + queryp2
+	return(formatted)
+}
+
+
 module.exports = {
 view: function(vnode) {
 	return(
@@ -33,7 +41,7 @@ view: function(vnode) {
 													}
 																}),
 						m("div.pure-u-1 pure-u-md-1-3",[
-							m("label", "Program Address"),
+							m("label", "Program Full Physical Address"),
 							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.physical_address,
 																					oninput: function(e) {
 		                                                                        vnode.attrs.program.physical_address = e.currentTarget.value;
@@ -63,14 +71,14 @@ view: function(vnode) {
 													}
 										 }),
 						
-						m("div.pure-u-1 pure-u-md-1-3",[
+						//m("div.pure-u-1 pure-u-md-1-3",[
 							m("label", "Program Transportation"),
-							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.transportation,
-								oninput: function(e) {
-													vnode.attrs.program.transportation  = e.currentTarget.value;
-													}
-										 })]),
-						m("div.pure-u-1 pure-u-md-2-3"),
+							m("textarea.pure-input-3-4",{ value: vnode.attrs.program.transportation  = formatMapQuery(vnode.attrs.program.physical_address)
+								// oninit: function(e) {
+								// 					vnode.attrs.program.transportation  = formatMapQuery(vnode.attrs.program.physical_address)
+								// 					//e.currentTarget.value;
+								// 					}
+										 }),
 						m("div.pure-u-1 pure-u-md-1-4" ,[
 							m("label", "Program Contact First Name"),
 							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.contact_firstname,
@@ -135,7 +143,7 @@ view: function(vnode) {
 		                                                                        vnode.attrs.program.application_process  = e.currentTarget.value;
 		                                                                    }
 		                                                                    }),
-						m("label", "Program Documents Required"),
+						m("label", "Program Required Document Links"),
 							m("textarea.pure-input-3-4 application_process",{ value: vnode.attrs.program.documents_required,
 																					oninput: function(e) {
 		                                                                        vnode.attrs.program.documents_required  = e.currentTarget.value;

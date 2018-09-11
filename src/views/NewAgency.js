@@ -68,7 +68,7 @@ view: function() {
     		m("div.newagencyform", [
     			m("form.pure-form pure-form-stacked", [
 				m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.agency_name", "Name."),
+			                    m("label.agency_name", "Organization Name"),
 							    m("input[type=text].agency_name pure-u-23-24[type=text]", {value: newAgency.name ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.name = e.currentTarget.value;
@@ -76,7 +76,7 @@ view: function() {
 
 			                                                         })]),
 			   m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.", "Full Physical Address"),
+			                    m("label.", "Organization Full Physical Address"),
 							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.physical_address ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.physical_address = e.currentTarget.value;
@@ -84,7 +84,7 @@ view: function() {
 
 			                                                         })]),
 			   		  m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.", "Phone Number"),
+			                    m("label.", "Organization Phone Number"),
 							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.phone_number ,
 			                                                            oninput: function(e) {
 			                                                                        newAgency.phone_number = e.currentTarget.value;
