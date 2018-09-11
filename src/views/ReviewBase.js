@@ -70,12 +70,13 @@ view: function(vnode) {
 						}
 
 					document.getElementById("submitfinal").disabled = true;
-				
-
+					document.getElementById("submitmessage").hidden = false;
                 },
 
 			},
-				"Submit")
+				"Submit"),
+
+			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
 			])
 
 			)
