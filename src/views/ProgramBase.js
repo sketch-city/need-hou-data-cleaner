@@ -49,7 +49,7 @@ view: function(vnode) {
 		                                                          })]),
 
 						m("div.pure-u-1 pure-u-md-1-3",[
-							m("label", "Program Website"),
+							m("label", "Program Webpage"),
 							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.website,
 								oninput: function(e) {
 													vnode.attrs.program.website  = e.currentTarget.value;

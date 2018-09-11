@@ -53,7 +53,7 @@ view: function(vnode) {
 					]),
 
 				
-				
+			m("div.reviewbuttons",
 			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
@@ -71,11 +71,20 @@ view: function(vnode) {
 
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
+					document.getElementById("editfinal").hidden = false;
+
                 },
 
 			},
 				"Submit"),
+			m("button[type=submit][id=editfinal].pure-button pure-button-primary", { 
+				hidden: true,
+				href: "/agencyform", 
+				oncreate: m.route.link 
 
+			}, "Edit Additional Program")
+
+			),
 			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
 			])
 

@@ -27,7 +27,7 @@ module.exports = {
                     {  
                      href: "/newprogramform" ,
                      oncreate: m.route.link
-                    }, "Add New Program")),
+                    }, "ADD NEW PROGRAM")),
           Agency.programs.map(function(program){
             return(
               m("div.tooltip", [
