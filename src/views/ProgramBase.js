@@ -10,6 +10,7 @@ function formatMapQuery(address){
 }
 
 
+
 module.exports = {
 view: function(vnode) {
 	return(
@@ -112,10 +113,6 @@ view: function(vnode) {
 		                                                                    }                       })]),
 
 
-
-
-
-
 							]),
 					m("div.programrefferalinfo", [
 						m("legend", "Program Referral Info"),
@@ -123,11 +120,25 @@ view: function(vnode) {
 						
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Need Domain"),
-							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.service_type,
-																					oninput: function(e) {
-		                                                                        vnode.attrs.program.service_type = e.currentTarget.value;
-		                                                                    }
-		                                                          })]),
+							m("select[multiple=multiple][id=needareaselect]",
+							
+							[
+								m("option[value=1]", "Education"),
+								m("option[value=2]", "Legal"),
+								m("option[value=3]", "Food"),
+								m("option[value=1]", "Housing"),
+								m("option[value=1]", "Employment"),
+								m("option[value=1]", "Family"),
+								m("option[value=1]", "Health"),
+
+
+								])
+							// m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.service_type,
+							// 														oninput: function(e) {
+		     //                                                                    vnode.attrs.program.service_type = e.currentTarget.value;
+		     //                                                                }
+		     //                                                      })
+							]),
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Languages Spoken"),
 							m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.languages,

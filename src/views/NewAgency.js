@@ -52,7 +52,9 @@ var newAgency = {
         contact_title: "",
         contact_department: "",
         contact_email: "",
-        contact_phonenumber: ""
+        contact_phonenumber: "",
+        latitude: 0, 
+        longitude:0
 
     }
 

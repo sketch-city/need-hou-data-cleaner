@@ -69,7 +69,7 @@ var Agency = {
 			}
 			selected_program_ids.push(result[0].id)
 		}).catch(function(error) {
-			console.log('this program does not have an ID so create a new program')
+			console.log(error)
 
 		})
 	},
@@ -81,19 +81,9 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/languages?program_id=" + program_id,
 			withCredentials: false,
 		}).then(function(result){
-			languages_arr = []
-
-			result.map(function(language_obj) {
-				languages_arr.push(language_obj.language)
-			})
-
-			Agency.selected_program.languages = languages_arr.join(',')
-
-
+			Agency.selected_program.languages = result.language_arr.join(', ')
 			}).catch(function(error){
-				console.log('this program does not have languages')
-
-
+				console.log(error)
 			})
 	},
 
@@ -105,7 +95,7 @@ var Agency = {
             data: new_data,
             withCredentials: false,
         }).catch(function(error){
-        	console.log('there was a problem with this request blah')
+        	console.log(error)
         })
     },
 
@@ -117,7 +107,7 @@ var Agency = {
             data: new_data,
             withCredentials: false,
         }).catch(function(error){
-        	console.log('there was a problem with this request blah')
+        	console.log(error)
         })
     },
 
@@ -130,7 +120,7 @@ var Agency = {
             data: new_data,
             withCredentials: false,
         }).catch(function(error){
-        	console.log('there was a problem with this request blah')
+        	console.log(error)
         })
     },
 
@@ -143,7 +133,7 @@ var Agency = {
             data: new_data,
             withCredentials: false,
         }).catch(function(error){
-        	console.log('there was a problem with this request blah')
+        	console.log(error)
         })
     },
 
@@ -156,7 +146,7 @@ var Agency = {
     		data: new_data,
     		withCredentials: false,
     	}).catch(function(error){
-    		console.log('there was a problem with the request')
+    		console.log(error)
     	})
     }
 
