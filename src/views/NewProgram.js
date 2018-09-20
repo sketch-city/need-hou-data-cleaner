@@ -25,15 +25,13 @@ var newProgram = {
     accepting_clients: "",
     holiday_schedule:"",
     transportation: "",
-    languages: "",
+    language_arr: "",
     contact_firstname: "",
     contact_lastname: "",
     contact_title: "",
     contact_department: "",
     contact_email: "",
-    contact_phonenumber: "",
-    latitude: 0,
-    longitude: 0
+    contact_phonenumber: ""
  }
 
 

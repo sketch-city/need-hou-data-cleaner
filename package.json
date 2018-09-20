@@ -17,7 +17,9 @@
     "express": "^4.16.3",
     "mithril": "^1.1.6",
     "mithril-modal": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "powerform": "^3.1.4",
+    "validate.js": "^0.12.0"
   },
   "devDependencies": {
     "webpack": "^4.16.5",

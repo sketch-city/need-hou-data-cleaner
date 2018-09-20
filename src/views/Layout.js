@@ -14,6 +14,9 @@ function getPageClass(path) {
 
 
 
+
+
+
 module.exports = {
     view: function(vnode) {
         window.ROUTE = m.route;
@@ -35,7 +38,7 @@ module.exports = {
         				  }, "Edit Content")),
                 
                 m("li[id=review]",{ },
-                    m("a", {
+                    m("a[id=reviewlink][class=disabled]", {
                         oncreate: m.route.link,
                         href: vnode.attrs.review_href,
                     }, "Review Changes"))

@@ -1,8 +1,12 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 
+function activateReview(){
+	document.getElementById("reviewlink").classList.remove("disabled")
+}
 
 module.exports = {
+oninit: activateReview,
 view: function(vnode) {
 		return(
 
@@ -59,19 +63,20 @@ view: function(vnode) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addNewAgency(vnode.attrs.agency)
 							.then(Agency.addNewProgram(vnode.attrs.program))
-							.then(Agency.addNewLanguage({program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
+							//.then(Agency.addNewLanguage({program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
 							
 						}
 
 						else if(vnode.attrs.agencyFunction === "new_program"){
 							Agency.updateAgency(vnode.attrs.agency)
 							.then(Agency.addNewProgram(vnode.attrs.program))
-							.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))							
+							//.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))							
 						}
 
 						else if(vnode.attrs.agencyFunction === "existing_program"){
 							Agency.updateAgency(vnode.attrs.agency)
 							.then(Agency.updateProgram(vnode.attrs.program))
+							//.then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))	
 						}
 
 					document.getElementById("submitfinal").disabled = true;

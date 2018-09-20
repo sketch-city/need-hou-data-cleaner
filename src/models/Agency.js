@@ -124,6 +124,18 @@ var Agency = {
         })
     },
 
+     updateLanguage: function(new_data) {
+        return m.request({
+            method: "PUT",
+            mode :'cors',
+            url: "https://need-hou-api.herokuapp.com/api/languages",
+            data: new_data,
+            withCredentials: false,
+        }).catch(function(error){
+        	console.log(error)
+        })
+    },
+
 
     addNewProgram: function(new_data) {
         return m.request({

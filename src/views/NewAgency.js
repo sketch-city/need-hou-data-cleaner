@@ -16,6 +16,7 @@ function guid() {
 
 var agency_id = guid();
 
+
 var newAgency = {
 	id: agency_id,
     name: "",
@@ -27,6 +28,7 @@ var newAgency = {
     hours: "",
     selected_program:{
         agency_id: agency_id,
+        error: "",
         id: guid(),
     	name: "",
         alternative_name: "",
@@ -46,19 +48,52 @@ var newAgency = {
         accepting_clients: "",
         holiday_schedule:"",
         transportation: "",
-        languages: "",
+        language_arr: "",
         contact_firstname: "",
         contact_lastname: "",
         contact_title: "",
         contact_department: "",
         contact_email: "",
-        contact_phonenumber: "",
-        latitude: 0, 
-        longitude:0
+        contact_phonenumber: ""
 
     }
 
 }
+
+function nameExists(name){
+var hasName = false;
+for (var i = 0; i < Agency.list.length; i++) {
+  if (Agency.list[i].name === name) {
+    hasName = true;
+    break;
+  }
+}
+return(hasName)
+
+}
+
+
+
+function validateName(name) {
+
+
+    if(name === ""){
+       console.log('name missing')
+    }
+
+    else if(nameExists(name)){
+        //document.getElementById("agencyname").innerHTML = "You shall not pass"
+        document.getElementById("programsubmit").disabled = true;
+        document.getElementById("reviewlink").classList.add("disabled")
+    }
+    else{
+        document.getElementById("programsubmit").disabled = false;
+        document.getElementById("reviewlink").classList.remove("disabled")
+        
+    }
+    newAgency.name = name;                                                                               
+}
+
 
 
 module.exports = {
@@ -71,12 +106,15 @@ view: function() {
     			m("form.pure-form pure-form-stacked", [
 				m("div.pure-u-1 pure-u-md-1-5", [
 			                    m("label.agency_name", "Organization Name"),
-							    m("input[type=text].agency_name pure-u-23-24[type=text]", {value: newAgency.name ,
-			                                                            oninput: function(e) {
-			                                                                        newAgency.name = e.currentTarget.value;
-			                                                          }
+							    m("input[type=text][id=agencyname].agency_name pure-u-23-24[type=text]", {value: newAgency.name,
+			                                                            onblur: function(e){
+                                                                            validateName(e.currentTarget.value)
+                                                                        },
+                                                
 
-			                                                         })]),
+			                                                         }),
+                                m("span.pure-form-message", "Required")
+                                ]),
 			   m("div.pure-u-1 pure-u-md-1-5", [
 			                    m("label.", "Organization Full Physical Address"),
 							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.physical_address ,
@@ -113,3 +151,4 @@ view: function() {
 
 
 window.newAgency = newAgency
+window.nameExists = nameExists
