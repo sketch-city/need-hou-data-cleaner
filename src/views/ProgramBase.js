@@ -30,14 +30,20 @@ function getSelectedOptions(sel) {
 }
 
 
+function removeSticky(){
+	document.getElementById("header").classList.remove("sticky")
+}
+
+
 module.exports = {
 
+oninit: removeSticky,
 
 view: function(vnode) {	
 	return(
 		m("form.pure-form pure-form-stacked", [
 			m("fieldset", [
-				m("legend[style=margin-left:15px;]",  vnode.attrs.agency.name +  " Program Form"),
+				m("legend[style=margin-left:15px;][id=programformtitle][class=sticky][style=background-color:white]",  vnode.attrs.agency.name +  " Program Form"),
 				m("div.programform", [
 					m("legend", "Program Contact Info"),
 					m("div.programcontactinfo", [

@@ -3,6 +3,7 @@ var Agency = require("../models/Agency")
 
 function activateReview(){
 	document.getElementById("reviewlink").classList.remove("disabled")
+	document.getElementById("header").classList.add("sticky")
 }
 
 module.exports = {

@@ -2,6 +2,9 @@ var m = require("mithril")
 var Agency = require("../models/Agency")
 
 
+
+
+
 function getPageClass(path) {
     if (path === '/agencyform') {
         return 'select-organization-page';
@@ -20,7 +23,7 @@ module.exports = {
         return m("main.layout", {
             class: pageClass,
         }, [
-        	m("ul.breadcrumb[id=header] ", [
+        	m("ul.breadcrumb sticky[id=header]", [
                 m("li",
                     m("a[href=#]", "NEEDHOU")),
         		m("li[id=home]",

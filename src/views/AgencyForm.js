@@ -36,8 +36,15 @@ function filterAgencies() {
         }
     }}
 
+
+
+    function addSticky(){
+    document.getElementById("header").classList.add("sticky")
+}
+
 module.exports = {
 	oninit: Agency.loadList,
+    oncreate: addSticky,
     view: function() {
     	return( 
             m("div.page",[                   
