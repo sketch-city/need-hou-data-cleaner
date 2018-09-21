@@ -78,22 +78,25 @@ function validateName(name) {
 
 
     if(name === ""){
-       console.log('name missing')
+        alert('Please Enter an Organization Name');
+        document.getElementById("reviewlink").classList.add("disabled")
+        document.getElementById("programsubmit").disabled = true;
     }
 
     else if(nameExists(name)){
         //document.getElementById("agencyname").innerHTML = "You shall not pass"
         document.getElementById("programsubmit").disabled = true;
         document.getElementById("reviewlink").classList.add("disabled")
+        document.getElementById("agencyname").classList.add("invalid")
     }
     else{
         document.getElementById("programsubmit").disabled = false;
         document.getElementById("reviewlink").classList.remove("disabled")
+        document.getElementById("agencyname").classList.remove("invalid")
         
     }
     newAgency.name = name;                                                                               
 }
-
 
 
 module.exports = {

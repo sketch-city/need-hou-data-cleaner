@@ -38,12 +38,9 @@ function filterAgencies() {
 
 module.exports = {
 	oninit: Agency.loadList,
-
     view: function() {
     	return( 
-            m("div.page",[
-                
-                   
+            m("div.page",[                   
     		m("form.pure-form pure-form-stacked", [
            m("input.pure-input-1-3[type=text][id=agencysearch][placeholder=Search for organization]", { onkeyup: filterAgencies}),
     		   m("span.pure-form-message[id=agencysearch]", "1. Select existing organization or select 'New Organization' to create one."),

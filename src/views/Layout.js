@@ -13,10 +13,6 @@ function getPageClass(path) {
 }
 
 
-
-
-
-
 module.exports = {
     view: function(vnode) {
         window.ROUTE = m.route;

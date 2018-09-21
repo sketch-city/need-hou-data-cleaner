@@ -1,7 +1,8 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
-var Form = require("powerform")
-var Field = require("powerform")
+
+
+
 
 
 
@@ -10,6 +11,22 @@ function formatMapQuery(address){
 	var queryp2 = "&travelmode=transit"
 	var formatted = queryp1 + escape(address) + queryp2
 	return(formatted)
+}
+
+function getSelectedOptions(sel) {
+
+  var opts = [],
+    opt;
+  var len = sel.options.length;
+  for (var i = 0; i < len; i++) {
+    opt = sel.options[i];
+
+    if (opt.selected) {
+      opts.push(opt.label);
+    }
+  }
+
+  return opts;
 }
 
 
@@ -121,25 +138,30 @@ view: function(vnode) {
 						
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Need Domain"),
-							m("select[multiple=multiple][id=needareaselect]",
+							m("select[name=needareaselect][multiple=multiple][id=needareaselect]",
+								{	value: vnode.attrs.program.service_type ,
+									onblur: function(e) { 
+										vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('needareaselect'))
+									}
+
+								},
 							
 							[
 								m("option[value=1]", "Education"),
 								m("option[value=2]", "Legal"),
 								m("option[value=3]", "Food"),
-								m("option[value=1]", "Housing"),
-								m("option[value=1]", "Employment"),
-								m("option[value=1]", "Family"),
-								m("option[value=1]", "Health"),
+								m("option[value=4]", "Housing"),
+								m("option[value=5]", "Employment"),
+								m("option[value=6]", "Family"),
+								m("option[value=7]", "Health"),
 
 
 								])
-							// m("input.pure-u-23-24[type=text]",{ value: vnode.attrs.program.service_type,
-							// 														oninput: function(e) {
-		     //                                                                    vnode.attrs.program.service_type = e.currentTarget.value;
-		     //                                                                }
-		     //                                                      })
-							]),
+	
+							]
+							),
+
+
 						m("div.pure-u-1 pure-u-md-1-4",[
 							m("label", "Program Languages Spoken"),
 							m("input.pure-u-23-24[type=text][id=languages]",{ value: vnode.attrs.program.languages,

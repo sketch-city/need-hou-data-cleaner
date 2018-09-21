@@ -113,6 +113,9 @@ var Agency = {
 
 
     updateProgram: function(new_data) {
+    	delete new_data['longitude']
+    	delete new_data['latitude']
+
         return m.request({
             method: "PUT",
             mode :'cors',
