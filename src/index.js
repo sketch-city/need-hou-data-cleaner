@@ -1,6 +1,8 @@
 var m = require("mithril")
 
 var AgencySelect = require('./views/AgencySelect')
+var AgencyEdit = require('./views/AgencyEdit')
+var ProgramSelect = require('./views/ProgramSelect')
 // var AgencyForm= require("./views/AgencyForm")
 // var ProgramForm = require("./views/ProgramForm")
 var Layout = require("./views/Layout")
@@ -13,18 +15,27 @@ var Layout = require("./views/Layout")
 // var Login = require("./views/Login")
 
 
-m.route(document.body, "/agencyselect", {
-    "/agencyselect" : {
+m.route(document.body, "/selectagency", {
+    "/selectagency" : {
         render:function(){
             return m(Layout, m(AgencySelect))
         }
     },
 
-        // "/newagency": {
-        // render: function(vnode){
-        //    return m(Layout,  m(NewAgency, vnode.attrs)
-        //     )
-        // }
+
+    "/editagency": {
+        render: function(){
+            return m(Layout, m(AgencyEdit))
+        }
+
+    },
+
+    "/selectprogram": {
+        render: function(){
+           return m(Layout,  m(ProgramSelect))
+            
+        }
+    }
 
     })
 
