@@ -38,7 +38,7 @@ function filterAgencies() {
 
 
 
-    function addSticky(){
+function addSticky(){
     document.getElementById("header").classList.add("sticky")
 }
 

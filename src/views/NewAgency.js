@@ -13,7 +13,6 @@ function guid() {
 }
 
 
-
 var agency_id = guid();
 
 
@@ -72,26 +71,19 @@ return(hasName)
 
 }
 
-
-
 function validateName(name) {
-
-
     if(name === ""){
         alert('Please Enter an Organization Name');
-        document.getElementById("reviewlink").classList.add("disabled")
         document.getElementById("programsubmit").disabled = true;
     }
 
     else if(nameExists(name)){
         //document.getElementById("agencyname").innerHTML = "You shall not pass"
         document.getElementById("programsubmit").disabled = true;
-        document.getElementById("reviewlink").classList.add("disabled")
         document.getElementById("agencyname").classList.add("invalid")
     }
     else{
         document.getElementById("programsubmit").disabled = false;
-        document.getElementById("reviewlink").classList.remove("disabled")
         document.getElementById("agencyname").classList.remove("invalid")
         
     }
@@ -102,49 +94,52 @@ function validateName(name) {
 module.exports = {
 view: function() {
     	return(
-    	m("form.pure-form pure-form-stacked", [
-			m("fieldset", [
-			m("legend[style=margin-left:15px]",  "Organization Form"),
-    		m("div.newagencyform", [
-    			m("form.pure-form pure-form-stacked", [
-				m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.agency_name", "Organization Name"),
-							    m("input[type=text][id=agencyname].agency_name pure-u-23-24[type=text]", {value: newAgency.name,
-			                                                            onblur: function(e){
-                                                                            validateName(e.currentTarget.value)
-                                                                        },
-                                                
 
-			                                                         }),
-                                m("span.pure-form-message", "Required")
-                                ]),
-			   m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.", "Organization Full Physical Address"),
-							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.physical_address ,
-			                                                            oninput: function(e) {
-			                                                                        newAgency.physical_address = e.currentTarget.value;
-			                                                          }
+                m("div.agencyedit",
+                	m("form.pure-form pure-form-stacked", [
+            			m("fieldset", [
+            			//m("legend[style=margin-left:15px]",  "Organization Form"),
+            				m("div.pure-u-1 pure-u-md-1-2", [
+            			                    m("label.agency_name", "Organization Name"),
+            							    m("input[type=text][id=agencyname].agency_name pure-u-23-24[type=text]", {value: newAgency.name,
+            			                                                            onblur: function(e){
+                                                                                        validateName(e.currentTarget.value)
+                                                                                    },
+                                                            
 
-			                                                         })]),
-			   		  m("div.pure-u-1 pure-u-md-1-5", [
-			                    m("label.", "Organization Phone Number"),
-							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.phone_number ,
-			                                                            oninput: function(e) {
-			                                                                        newAgency.phone_number = e.currentTarget.value;
-			                                                          }			                                                         })]),
+            			                                                         }),
+                                            m("span.pure-form-message", "Required"),
+                                            ]),
+                           m("div.pure-u-1 pure-u-md-1-2"),
+            			   m("div.pure-u-1 pure-u-md-1-2", [
+            			                    m("label.", "Organization Full Physical Address"),
+            							    m("input[type=text].pure-u-23-24 agency_address[type=text]", {value: newAgency.physical_address ,
+            			                                                            oninput: function(e) {
+            			                                                                        newAgency.physical_address = e.currentTarget.value;
+            			                                                          }
+
+            			                                                         }),
+                                            ]),
+                           m("div.pure-u-1 pure-u-md-1-2"), 
+            			   		  m("div.pure-u-1 pure-u-md-1-2", [
+            			                    m("label.", "Organization Phone Number"),
+            							    m("input[type=text].pure-u-23-24[type=text]", {value: newAgency.phone_number ,
+            			                                                            oninput: function(e) {
+            			                                                                        newAgency.phone_number = e.currentTarget.value;
+            			                                                          }			                                                         })]),
 
 
-			   				])
+            			   		
 
-			   			]),
-            m(ProgramBase, { agency: newAgency, 
-                            program: newAgency.selected_program, 
-                            next_route: "/newagencyreview"
-                            })
+            		
+                        // m(ProgramBase, { agency: newAgency, 
+                        //                 program: newAgency.selected_program, 
+                        //                 next_route: "/newagencyreview"
+                        //                 })
 
-			   		])
-    			])
-
+            			   		])
+                			])
+                        )
             
 			  
     		)
@@ -154,4 +149,3 @@ view: function() {
 
 
 window.newAgency = newAgency
-window.nameExists = nameExists

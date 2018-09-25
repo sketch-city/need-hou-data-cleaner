@@ -1,9 +1,18 @@
 var m = require('mithril')
 
-var selected_program_ids = []
-var selected_agency_ids = []
-
-
+function moveProgress(width, intervalStart, intervalEnd) {
+    var elem = document.getElementById("myBar"); 
+    var width = width;
+    var id = setInterval(frame, intervalStart);
+    function frame() {
+        if (width >= intervalEnd) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
 
 var Agency = {
 
@@ -15,7 +24,6 @@ var Agency = {
 			withCredentials: false
 		}).then(function(result){
 			 if(Agency.list === undefined || Agency.list.length == 0 ){
-			 	console.log('initializing agency list')
 			   Agency.list = result 
 			}
 
@@ -30,8 +38,6 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/agencies?name=" + name,
 			withCredentials: false,
 		}).then(function(result){
-			selected_agency_ids.push(result[0].id)
-			console.log('select agency fires')
 			Agency.selected = result[0]
 			
 		})
@@ -44,7 +50,6 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/programs?agency_id=" + Agency.selected.id,
 			withCredentials: false,
 		}).then(function(result){
-			console.log(result)
 			Agency.programs = result
 
 
@@ -64,10 +69,8 @@ var Agency = {
 			withCredentials: false,
 		}).then(function(result){
 			if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
-				console.log('init program since it has not been initialized before')
 				Agency.selected_program = result[0]	
 			}
-			selected_program_ids.push(result[0].id)
 		}).catch(function(error) {
 			console.log(error)
 
@@ -169,7 +172,5 @@ var Agency = {
 
 }
 
-module.exports = Agency, selected_program_ids, selected_agency_ids;
-window.selected_program_ids = selected_program_ids
-window.Agency = Agency
-window.selected_agency_ids = selected_agency_ids
+module.exports = Agency; moveProgress;
+window.Agency = Agency; moveProgress;
