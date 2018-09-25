@@ -16,11 +16,19 @@ module.exports = {
 	view: function() {
     	return(
         m("div.row",[ 
-          m("div.col-md-12",[
+          m("div.programselect col-md-12",[
              m("form", [
-          m("select.form-control",
-          m("option", Agency.programs.map(function(program){ return(program.name) })))
-
+              m("div.form-group[style=width:310px]",
+              m("label", "Select program to edit"),
+               m("select.form-control", 
+                 Agency.programs.map(function(program){ 
+                  return(
+                    m("option", program.name)
+                    ) 
+                })
+               
+               )
+              )
 
           ])
         ])

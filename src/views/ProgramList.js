@@ -16,7 +16,13 @@ module.exports = {
 	view: function() {
     	return(
         m("select.form-control",
-          m("option", Agency.programs.map(function(program){ return(program.name) })))
+          Agency.programs.map(function(program){ 
+            return(
+              m("option", program.name)
+              )
+              })) 
+
+
 
           
 

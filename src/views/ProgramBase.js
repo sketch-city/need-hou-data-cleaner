@@ -1,11 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 
-
-
-
-
-
 function formatMapQuery(address){
 	var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="
 	var queryp2 = "&travelmode=transit"
@@ -30,14 +25,7 @@ function getSelectedOptions(sel) {
 }
 
 
-function removeSticky(){
-	document.getElementById("header").classList.remove("sticky")
-}
-
-
 module.exports = {
-
-oninit: removeSticky,
 
 view: function(vnode) {	
 	return(
