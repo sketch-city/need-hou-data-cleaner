@@ -1,18 +1,5 @@
 var m = require('mithril')
 
-function moveProgress(width, intervalStart, intervalEnd) {
-    var elem = document.getElementById("myBar"); 
-    var width = width;
-    var id = setInterval(frame, intervalStart);
-    function frame() {
-        if (width >= intervalEnd) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
 
 var Agency = {
 
@@ -172,5 +159,6 @@ var Agency = {
 
 }
 
-module.exports = Agency; moveProgress;
-window.Agency = Agency; moveProgress;
+module.exports = Agency;
+window.Agency = Agency; 
+

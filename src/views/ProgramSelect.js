@@ -1,6 +1,20 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 
+function moveProgress(width, intervalStart, intervalEnd) {
+    var elem = document.getElementById("myBar"); 
+    var width = width;
+    var id = setInterval(frame, intervalStart);
+    function frame() {
+        if (width >= intervalEnd) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
+
 function parse_date(dt){
 var mydate = new Date(dt);
 var month = mydate.getUTCMonth() + 1; //months from 1-12
@@ -25,6 +39,7 @@ function selectProgram(){
 
 
 module.exports = {
+  oninit: function() { moveProgress(20, 20, 30) } ,
 	view: function() {
     	return(
         m("div.row",[ 

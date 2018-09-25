@@ -1,7 +1,21 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 
+function moveProgress(width, intervalStart, intervalEnd) {
+    var elem = document.getElementById("myBar"); 
+    var width = width;
+    var id = setInterval(frame, intervalStart);
+    function frame() {
+        if (width >= intervalEnd) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
 module.exports = {
+    oninit: function() { moveProgress(10, 10, 20) } ,
     view: function() {
     	return( 
     		m("div.row",[  

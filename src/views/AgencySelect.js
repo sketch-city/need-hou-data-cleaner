@@ -33,7 +33,6 @@ function autocomplete(inp, arr) {
               b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-              console.log(inp.value)
 
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
@@ -114,7 +113,7 @@ module.exports = {
                     m("label", "Enter organization to edit"),
                     m("input.form-control[id=agencyselect][type=text]", {
                      value: Agency.selected.name,
-                     onblur: function(){ 
+                     onchange: function(){ 
                               Agency.selected.name = document.getElementById("agencyselect").value 
                               Agency.loadAgency(Agency.selected.name).then(Agency.loadPrograms)
                             },
