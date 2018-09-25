@@ -33,10 +33,12 @@ module.exports = {
               m("div.form-group[style=width:310px]",
               m("label", "Select program to edit"),
                m("select.form-control[id=programselect]", {
+                value: Agency.selected_program.name,
                 onchange: function() { 
                   selectProgram()
                 }
                },
+               m("option", ""),
                  Agency.programs.map(function(program){ 
                   return(
                     m("option",
@@ -47,7 +49,19 @@ module.exports = {
                )
               )
 
-          ])
+          ]),
+               m("div.buttons",
+                  m("button.btn btn-default[type=submit]", {
+                        href: "/selectagency", 
+                        oncreate: m.route.link
+
+                        },"Previous"),
+
+                  m("button.btn btn-default[type=submit][style=margin-left:10px]", {
+                        href: "/editprogramcontact", 
+                        oncreate: m.route.link
+                        },"Next")
+                    )
         ])
 
       ])

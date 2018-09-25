@@ -4,6 +4,7 @@ var AgencySelect = require('./views/AgencySelect')
 var AgencyEdit = require('./views/AgencyEdit')
 var ProgramSelect = require('./views/ProgramSelect')
 var EditProgramContact = require('./views/EditProgramContact')
+var EditProgramReferral = require('./views/EditProgramReferral')
 // var AgencyForm= require("./views/AgencyForm")
 // var ProgramForm = require("./views/ProgramForm")
 var Layout = require("./views/Layout")
@@ -40,10 +41,21 @@ m.route(document.body, "/selectagency", {
 
 
     "/editprogramcontact":{
-        render: function(){
+        render: function(vnode){
             return m(Layout, m(EditProgramContact, vnode.attrs))
         }
+    },
+
+    "/editprogramreferral":{
+        render: function(vnode){
+            return m(Layout, m(EditProgramReferral, vnode.attrs))
+        }
     }
+
+
+
+
+
 
     })
 
