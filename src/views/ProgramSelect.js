@@ -12,6 +12,18 @@ newdate = year + "-" + month + "-" + day;
 return(newdate)
 }
 
+
+function selectProgram(){
+  program_name = document.getElementById('programselect').value;
+  var filteredArr = Agency.programs.filter(function (el) {
+  return el.name === program_name      
+    });
+  program_id = filteredArr[0].id
+  Agency.loadProgram(program_id).then(Agency.loadLanguages(program_id))
+}
+
+
+
 module.exports = {
 	view: function() {
     	return(
@@ -20,12 +32,17 @@ module.exports = {
              m("form", [
               m("div.form-group[style=width:310px]",
               m("label", "Select program to edit"),
-               m("select.form-control", 
+               m("select.form-control[id=programselect]", {
+                onchange: function() { 
+                  selectProgram()
+                }
+               },
                  Agency.programs.map(function(program){ 
                   return(
-                    m("option", program.name)
+                    m("option",
+                      program.name)
                     ) 
-                })
+                  })
                
                )
               )
@@ -37,3 +54,5 @@ module.exports = {
 		  )
 	}
 }
+
+window.selectProgram = selectProgram
