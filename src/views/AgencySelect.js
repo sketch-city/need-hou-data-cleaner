@@ -110,11 +110,11 @@ module.exports = {
               m("div.agencyselect col-md-12",[                  
     		      m("form[autocomplete=off]", [
                 m("div.autocomplete form-group[style=width:300px]",
-                    m("label", "Enter organization to edit"),
+                    m("label", "Enter organization to edit."),
                     m("input.form-control[id=agencyselect][type=text]", {
                      value: Agency.selected.name,
-                     onchange: function(){ 
-                              Agency.selected.name = document.getElementById("agencyselect").value 
+                     onchange: function(e){ 
+                              Agency.selected.name = e.currentTarget.value
                               Agency.loadAgency(Agency.selected.name).then(Agency.loadPrograms)
                             },
                      onclick: function(e){
@@ -131,8 +131,8 @@ module.exports = {
                     m("button.btn btn-default[type=submit]", {
                   
                         href: "/editagency", 
-                        oncreate: m.route.link
-
+                        oncreate: m.route.link,
+                        disabled: Agency.selected.name === undefined
                         },"Next")
           
                 

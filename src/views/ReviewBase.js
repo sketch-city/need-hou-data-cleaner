@@ -1,20 +1,31 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 
-function activateReview(){
-	document.getElementById("reviewlink").classList.remove("disabled")
-	document.getElementById("header").classList.add("sticky")
+function moveProgress(width, intervalStart, intervalEnd) {
+    var elem = document.getElementById("myBar"); 
+    var width = width;
+    var id = setInterval(frame, intervalStart);
+    function frame() {
+        if (width >= intervalEnd) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
 }
 
+
+
 module.exports = {
-oninit: activateReview,
+oninit: function() { moveProgress(70, 70, 90) } ,
 view: function(vnode) {
 		return(
 
 			m("div.reviewpage[id=wrap_all]", [
 				m("div.orgreview", [
 					m("h2", "Organization Details. ",
-						m("button[type=submit][style=font-size:10px; margin-left:50px;].pure-button pure-button-primary", 
+						m("button[type=submit][style=font-size:10px; margin-left:50px;].btn btn-default", 
 								{
 							 	 href: vnode.attrs.org_route, 
 							 	 oncreate: m.route.link 
@@ -27,13 +38,12 @@ view: function(vnode) {
 
 				m("div.programreview", [
 					m("h2", "Program Details. ",
-						m("button[type=submit][style=font-size:10px;margin-left:50px;].pure-button pure-button-primary", 
+						m("button[type=submit][style=font-size:10px;margin-left:50px;].btn btn-default", 
 								{
 							 	 href: vnode.attrs.program_route, 
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
 					m("p", m("strong", "Name: "), vnode.attrs.program.name),
-					m("p", m("strong", "Alternative Name: "), vnode.attrs.program.alternative_name),
 					m("p", m("strong", "Description: "), vnode.attrs.program.description),
 					m("p", m("strong", "Full Physical Address: "), vnode.attrs.program.physical_address),
 					m("p", m("strong", "Website: "), vnode.attrs.program.website),
@@ -59,7 +69,7 @@ view: function(vnode) {
 
 				
 			m("div.reviewbuttons",
-			m("button[type=submit][id=submitfinal].pure-button pure-button-primary", {
+			m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addNewAgency(vnode.attrs.agency)
@@ -82,14 +92,13 @@ view: function(vnode) {
 
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
-					document.getElementById("editfinal").hidden = false;
+					document.getElementById("editfinal").classList.remove("hidden")
                 },
 
 			},
 				"Submit"),
-			m("button[type=submit][id=editfinal].pure-button pure-button-primary", { 
-				hidden: true,
-				href: "/agencyform", 
+			m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
+				href: "/selectagency", 
 				oncreate: m.route.link 
 
 			}, "Edit Additional Program")

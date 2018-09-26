@@ -15,13 +15,14 @@ function moveProgress(width, intervalStart, intervalEnd) {
     }
 }
 module.exports = {
-    oninit: function() { moveProgress(10, 10, 20) } ,
+    oninit: function() { moveProgress(10, 10, 30) } ,
     view: function() {
     	return( 
     		m("div.row",[  
                 m("div.agencyedit col-md-12",[                 
     		    m("form", [
                 m("div.form-group[style=width:300px]",
+                    m("legend[style=font-size:16px]", Agency.selected.name),
                     m("label", "Full Physical Address"),
                     m("input.form-control[type=text]", {value: Agency.selected.physical_address,
                                             oninput: function(e) {

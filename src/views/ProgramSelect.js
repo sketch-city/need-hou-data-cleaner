@@ -39,13 +39,14 @@ function selectProgram(){
 
 
 module.exports = {
-  oninit: function() { moveProgress(20, 20, 30) } ,
+  oninit: function() { moveProgress(30, 30, 50) } ,
 	view: function() {
     	return(
         m("div.row",[ 
           m("div.programselect col-md-12",[
              m("form", [
               m("div.form-group[style=width:310px]",
+              m("legend[style=font-size:16px]", Agency.selected.name),
               m("label", "Select program to edit"),
                m("select.form-control[id=programselect]", {
                 value: Agency.selected_program.name,
@@ -74,7 +75,8 @@ module.exports = {
 
                   m("button.btn btn-default[type=submit][style=margin-left:10px]", {
                         href: "/editprogramcontact", 
-                        oncreate: m.route.link
+                        oncreate: m.route.link,
+                        disabled: Agency.selected_program.name === undefined
                         },"Next")
                     )
         ])

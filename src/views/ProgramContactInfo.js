@@ -8,18 +8,33 @@ function formatMapQuery(address){
   return(formatted)
 }
 
-module.exports = {
+function moveProgress(width, intervalStart, intervalEnd) {
+    var elem = document.getElementById("myBar"); 
+    var width = width;
+    var id = setInterval(frame, intervalStart);
+    function frame() {
+        if (width >= intervalEnd) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+        }
+    }
+}
 
+module.exports = {
+oninit: function() { moveProgress(40, 40, 50) } ,
 view: function(vnode) {	
 	return(
 		    m("div.row",[  
                 m("div.agencyedit col-md-12",[                 
     		    m("form", [
                 m("div.form-group[style=width:400px]",
+                  m("legend[style=font-size:16px]", Agency.selected.name),
               		m("label", "Program Name"),
 							m("input.form-control[type=text]",{ value: vnode.attrs.program.name,
 																oninput: function(e) { 
-		                                                                       vnode.attrs.program.name = e.currentTarget.value;
+		                                                    vnode.attrs.program.name = e.currentTarget.value;
 		                                                                    } }),
 					m("label", "Program Description"),
 							m("textarea.form-control",{ 
