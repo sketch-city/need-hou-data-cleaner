@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
+var AgencyForm = require("./AgencyForm")
 
 function moveProgress(width, intervalStart, intervalEnd) {
     var elem = document.getElementById("myBar"); 
@@ -19,27 +20,8 @@ module.exports = {
     view: function() {
     	return( 
     		m("div.row",[  
-                m("div.agencyedit col-md-12",[                 
-    		    m("form", [
-                m("div.form-group[style=width:300px]",
-                    m("legend[style=font-size:16px]", Agency.selected.name),
-                    m("label", "Full Physical Address"),
-                    m("input.form-control[type=text]", {value: Agency.selected.physical_address,
-                                            oninput: function(e) {
-                                                    Agency.selected.physical_address = e.currentTarget.value;
-                                                }
-                                            }
-                        ),
-                    m("label", "Phone Number"),
-                    m("input.form-control[type=text]", { value:  Agency.selected.phone_number ,
-                                                oninput: function(e) {
-                                                   Agency.selected.phone_number = e.currentTarget.value;
-                                                    }
-                                            }
-                                    )
-                    ),
-
-                	]),
+                m("div.agencyedit col-md-12",[  
+                    m(AgencyForm, {agency: Agency.selected} ),
 
                   m("div.buttons",
                   m("button.btn btn-default[type=submit]", {
@@ -53,7 +35,7 @@ module.exports = {
                         oncreate: m.route.link
                         },"Next")
                     )
-    		    ])
+    		      ])
             ])
 
     	)

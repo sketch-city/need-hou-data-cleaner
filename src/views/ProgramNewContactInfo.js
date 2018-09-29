@@ -1,11 +1,9 @@
 var m = require("mithril")
-var ProgramBase = require("./ProgramBase")
 var Agency = require("../models/Agency")
-var NewAgency = require("./NewAgency")
-var current_agency_id = Agency.selected.id
+var ProgramContactInfo = require("./ProgramContactInfo")
+
 
 var newProgram = {
-    //agency_id: current_agency_id,
     id: guid(),
 	name: "",
     alternative_name: "",
@@ -47,16 +45,11 @@ function guid() {
 
 
 module.exports = {
-
-
 oninit: function(){
-	newProgram.agency_id = Agency.selected.id 
+        newProgram.agency_id = Agency.selected.id
 },
-
 view: function() {
-	return(m(ProgramBase, {agency: Agency.selected , program: newProgram  , next_route: "/newprogramreview"})
-
-
+	return(m(ProgramContactInfo, { program: newProgram, previous_link: "/selectprogram", next_link: "/newprogramreferral"})
 	 	)
 	}
 }

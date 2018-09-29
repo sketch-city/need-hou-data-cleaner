@@ -66,6 +66,8 @@ module.exports = {
               )
 
           ]),
+              m("span", "Don't see your program? Click ", 
+                        m("a", {href: "/newprogramcontact", oncreate: m.route.link }, "here"), " to add a new program"),
                m("div.buttons",
                   m("button.btn btn-default[type=submit]", {
                         href: "/selectagency", 

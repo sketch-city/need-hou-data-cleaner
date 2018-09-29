@@ -7,6 +7,7 @@ function autocomplete(inp, arr) {
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
+      console.log('input event')
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
@@ -30,10 +31,12 @@ function autocomplete(inp, arr) {
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/
-              b.addEventListener("click", function(e) {
+          b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
-
+              Agency.selected.name = inp.value
+              Agency.loadAgency(Agency.selected.name).then(Agency.loadPrograms)
+              console.log(inp.value)
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -102,40 +105,36 @@ document.addEventListener("click", function (e) {
 
 
 module.exports = {
-	oninit: Agency.loadList,
-    
+	oninit: function() {
+          Agency.loadList().then(function() { autocomplete(document.getElementById("agencyselect"), Agency.list.map(function(agency) { return(agency.name) }))} )
+    },
     view: function() {
     	return( 
             m("div.row",[  
               m("div.agencyselect col-md-12",[                  
     		      m("form[autocomplete=off]", [
                 m("div.autocomplete form-group[style=width:300px]",
-                    m("label", "Enter organization to edit."),
+                    m("label", "Enter the organization you'd like to edit."),
                     m("input.form-control[id=agencyselect][type=text]", {
                      value: Agency.selected.name,
-                     onchange: function(e){ 
-                              Agency.selected.name = e.currentTarget.value
-                              Agency.loadAgency(Agency.selected.name).then(Agency.loadPrograms)
-                            },
-                     onclick: function(e){
-                      autocomplete(document.getElementById("agencyselect"), Agency.list.map(function(agency) { return(agency.name) }))
-                     }
-
-
+          
                     })                    
                         
                     )
 
                   ]),
+                    m("span", "Don't see your organization? Click ", 
+                        m("a", {href: "/newagency", oncreate: m.route.link }, "here"), " to add a new organization"),
+                    m("div.row"),
 
-                    m("button.btn btn-default[type=submit]", {
+                    m("button.btn btn-default[type=submit][style=margin-top:50px]", {
                   
                         href: "/editagency", 
                         oncreate: m.route.link,
-                        disabled: Agency.selected.name === undefined
+                        //disabled: Agency.selected.name === undefined
                         },"Next")
+
           
-                
                 ])
 
             ])
