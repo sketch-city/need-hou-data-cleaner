@@ -12,9 +12,8 @@ var Review = require("./views/Review")
 var AgencyNew = require("./views/AgencyNew")
 var AgencyNewProgramContactInfo = require("./views/AgencyNewProgramContactInfo")
 var AgencyNewProgramReferral = require("./views/AgencyNewProgramReferral")
-// var NewAgencyReview = require("./views/NewAgencyReview")
-// var NewProgramReview = require("./views/NewProgramReview")
-// var NewProgram = require("./views/NewProgram")
+var AgencyNewReview = require("./views/AgencyNewReview")
+var ProgramNewReview = require("./views/ProgramNewReview")
 // var Login = require("./views/Login")
 
 
@@ -93,6 +92,18 @@ m.route(document.body, "/selectagency", {
     "/review":{
         render: function(vnode){
             return m(Layout, m(Review, vnode.attrs))
+        }
+    },
+
+    "/newagencyreview":{
+        render: function(vnode){
+            return m(Layout, m(AgencyNewReview, vnode.attrs))
+        }
+    },
+
+    "/newprogramreview":{
+        render: function(vnode){
+            return m(Layout, m(ProgramNewReview, vnode.attrs))
         }
     }
 

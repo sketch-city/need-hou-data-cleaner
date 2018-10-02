@@ -16,19 +16,20 @@ function moveProgress(width, intervalStart, intervalEnd) {
 }
 
 function parse_date(dt){
-var mydate = new Date(dt);
-var month = mydate.getUTCMonth() + 1; //months from 1-12
-var day = mydate.getUTCDate();
-var year = mydate.getUTCFullYear();
+  var mydate = new Date(dt);
+  var month = mydate.getUTCMonth() + 1; //months from 1-12
+  var day = mydate.getUTCDate();
+  var year = mydate.getUTCFullYear();
 
-newdate = year + "-" + month + "-" + day;
+  newdate = year + "-" + month + "-" + day;
 
-return(newdate)
+  return(newdate)
 }
 
 
 function selectProgram(){
   program_name = document.getElementById('programselect').value;
+  datestamp = document.getElementById('datestamp').hidden = false;
   var filteredArr = Agency.programs.filter(function (el) {
   return el.name === program_name      
     });
@@ -62,7 +63,8 @@ module.exports = {
                     ) 
                   })
                
-               )
+               ),
+               m("span[id=datestamp]", {hidden: true}, "Last Updated: " + parse_date(Agency.selected_program.last_updated))
               )
 
           ]),

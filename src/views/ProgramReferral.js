@@ -132,7 +132,7 @@ view: function(vnode) {
                         },"Previous"),
 
                   m("button.btn btn-default[type=submit][style=margin-left:10px]", {
-                        href: "/review", 
+                        href: "/newprogramreview", 
                         oncreate: m.route.link
                         },"Next")
                     )
