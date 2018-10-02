@@ -131,7 +131,7 @@ module.exports = {
                   
                         href: "/editagency", 
                         oncreate: m.route.link,
-                        //disabled: Agency.selected.name === undefined
+                        disabled: Agency.selected.name === undefined
                         },"Next")
 
           

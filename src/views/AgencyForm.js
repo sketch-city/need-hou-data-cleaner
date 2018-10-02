@@ -16,16 +16,18 @@ return(hasName)
 }
 
 function validateName(name) {
-    if(name === ""){
-        document.getElementById("orgname").classList.add("has-error")
-        document.getElementById("nextbutton").disabled = true;
-    }
-
-    else if(nameExists(name)){
+    console.log(name)
+   if(nameExists(name)){
         document.getElementById("nextbutton").disabled = true;
         document.getElementById("orgname").classList.add("has-error")
         document.getElementById("errormessage").innerHTML = "This organization already exists."
     }
+
+    else if(name === ""){
+        document.getElementById("nextbutton").disabled = true;
+        document.getElementById("errormessage").innerHTML = "Please enter an organization name."
+    }
+
     else{
         document.getElementById("nextbutton").disabled = false;
         document.getElementById("orgname").classList.remove("has-error")
@@ -44,15 +46,11 @@ view: function(vnode) {
                 m("div.form-group[style=width:300px]",
                     m("legend[style=font-size:16px]"),
                         m("div.form-group[id=orgname]",
-                            m("label.control-label", "Organization Name"),
+                            m("label.control-label", "Organization Name *"),
                             m("input.form-control[type=text][id=agencyname]", {value: vnode.attrs.agency.name,
                                             oninput: function(e) {
-                                                    vnode.attrs.agency.name = e.currentTarget.value;
-                                                },
-
-                                            onblur: function(e){
-                                                validateName(e.currentTarget.value);
-                                            }
+                                                    vnode.attrs.agency.name = validateName(e.currentTarget.value);
+                                                }
 
                                             }
                         ),

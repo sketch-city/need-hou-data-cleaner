@@ -76,8 +76,9 @@ view: function() {
                         },"Previous"),
 
                   m("button.btn btn-default[type=submit][id=nextbutton][style=margin-left:10px]", {
-                        // href: "/selectprogram", 
-                        // oncreate: m.route.link
+                        disabled: true,
+                        href: "/newagencyprogramcontact", 
+                        oncreate: m.route.link
                         },"Next")
                     )
 			     ])

@@ -10,6 +10,8 @@ var EditProgramReferral = require('./views/EditProgramReferral')
 var Layout = require("./views/Layout")
 var Review = require("./views/Review")
 var AgencyNew = require("./views/AgencyNew")
+var AgencyNewProgramContactInfo = require("./views/AgencyNewProgramContactInfo")
+var AgencyNewProgramReferral = require("./views/AgencyNewProgramReferral")
 // var NewAgencyReview = require("./views/NewAgencyReview")
 // var NewProgramReview = require("./views/NewProgramReview")
 // var NewProgram = require("./views/NewProgram")
@@ -36,7 +38,23 @@ m.route(document.body, "/selectagency", {
         render: function(){
                return m(Layout, m(AgencyNew))
         }
-    },   
+    },  
+
+    "/newagencyprogramcontact": {
+        render: function(vnode){
+            return m(Layout, m(AgencyNewProgramContactInfo, vnode.attrs))
+
+        }
+
+    },
+
+    "/newagencyprogramreferral": {
+        render: function(vnode){
+            return m(Layout, m(AgencyNewProgramReferral, vnode.attrs))
+
+        }
+
+    },
 
     "/selectprogram": {
         render: function(){
@@ -46,15 +64,15 @@ m.route(document.body, "/selectagency", {
     },
 
     "/newprogramcontact": {
-        render:function(){
-            return m(Layout, m(ProgramNewContactInfo))
+        render:function(vnode){
+            return m(Layout, m(ProgramNewContactInfo, vnode.attrs))
         }
 
     },
 
     "/newprogramreferral": {
-        render: function(){
-            return m(Layout, m(ProgramNewReferral))
+        render: function(vnode){
+            return m(Layout, m(ProgramNewReferral, vnode.attrs))
         }
     },
 
@@ -77,12 +95,6 @@ m.route(document.body, "/selectagency", {
             return m(Layout, m(Review, vnode.attrs))
         }
     }
-
-    //add new program form
-    //add new agency review view
-    // add new program review view
-
-
 
     })
 

@@ -8,7 +8,6 @@ function getSelectedOptions(sel) {
   var len = sel.options.length;
   for (var i = 0; i < len; i++) {
     opt = sel.options[i];
-
     if (opt.selected) {
       opts.push(opt.label);
     }
@@ -42,8 +41,21 @@ view: function(vnode) {
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
                   m("label", "Program Need Domain"),
+                  // m("div.checkbox",
+                  //   m("label",m("input[type=checkbox]"), "Education"),
+                  //   m("label",m("input[type=checkbox]"), "Legal"),
+                  //   m("label",m("input[type=checkbox]"), "Food"),
+                  //   m("label",m("input[type=checkbox]"), "Health")
+                  //   ),
+                  // m("div.checkbox",
+                  //   m("label",m("input[type=checkbox]"), "Housing"),
+                  //   m("label",m("input[type=checkbox]"), "Employment"),
+                  //   m("label",m("input[type=checkbox]"), "Family")
+                  //   ),
+            
+
                    m("select.form-control[name=needareaselect][multiple=multiple][id=needareaselect]",
-                      { value: vnode.attrs.program.service_type ,
+                      { 
                         onblur: function(e) { 
                           vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('needareaselect'))
                         }
@@ -52,7 +64,7 @@ view: function(vnode) {
               
               [
                 m("option[value=1]", "Education"),
-                m("option[value=2]", "Legal"),
+                m("option[value=2]" , "Legal"),
                 m("option[value=3]", "Food"),
                 m("option[value=4]", "Housing"),
                 m("option[value=5]", "Employment"),
@@ -61,6 +73,8 @@ view: function(vnode) {
 
 
                 ]),
+
+
               m("label", "Program Languages Spoken"),
               m("input.form-control[type=text][id=languages]",{ value: vnode.attrs.program.languages,
                                           oninput: function(e) { vnode.attrs.program.languages = e.currentTarget.value;
