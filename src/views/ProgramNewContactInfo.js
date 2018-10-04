@@ -2,7 +2,6 @@ var m = require("mithril")
 var Agency = require("../models/Agency")
 var ProgramContactInfo = require("./ProgramContactInfo")
 
-
 var newProgram = {
     id: guid(),
 	name: "",
@@ -34,6 +33,7 @@ var newProgram = {
 
 
 
+
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
@@ -47,6 +47,7 @@ function guid() {
 module.exports = {
 oninit: function(){
         newProgram.agency_id = Agency.selected.id
+        
 },
 view: function() {
 	return(m(ProgramContactInfo, { program: newProgram, previous_link: "/selectprogram", next_link: "/newprogramreferral"})

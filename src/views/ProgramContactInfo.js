@@ -22,6 +22,44 @@ function moveProgress(width, intervalStart, intervalEnd) {
     }
 }
 
+function nameExists(name){
+var hasName = false;
+for (var i = 0; i < Agency.programs.length; i++) {
+  if (Agency.programs[i].name === name) {
+    hasName = true;
+    break;
+  }
+}
+return(hasName)
+
+}
+
+function validateName(name) {
+    console.log(name)
+   if(nameExists(name)){
+        document.getElementById("nextbutton").disabled = true;
+        document.getElementById("programname").classList.add("has-error")
+        document.getElementById("errormessage").innerHTML = "This program already exists."
+    }
+
+    else if(name === ""){
+        document.getElementById("nextbutton").disabled = true;
+        document.getElementById("errormessage").innerHTML = "Please enter a program name."
+    }
+
+    else{
+        document.getElementById("nextbutton").disabled = false;
+        document.getElementById("programname").classList.remove("has-error")
+        document.getElementById("errormessage").innerHTML = ""
+        
+    }
+    
+    return(name)                                                                              
+}
+
+
+
+
 module.exports = {
 oninit: function() { moveProgress(40, 40, 50) } ,
 view: function(vnode) {	
@@ -32,9 +70,9 @@ view: function(vnode) {
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]"),
               		m("label", "Program Name"),
-							m("input.form-control[type=text]",{ value: vnode.attrs.program.name,
-																oninput: function(e) { 
-		                                                    vnode.attrs.program.name = e.currentTarget.value;
+							m("input.form-control[type=text][id=programname]",{ value: vnode.attrs.program.name,
+																onchange: function(e) { 
+		                                                    vnode.attrs.program.name = validateName(e.currentTarget.value);
 		                                                                    } }),
 					m("label", "Program Description"),
 							m("textarea.form-control",{ 
@@ -104,7 +142,7 @@ view: function(vnode) {
 
                         },"Previous"),
 
-                  m("button.btn btn-default[type=submit][style=margin-left:10px]", {
+                  m("button.btn btn-default[type=submit][style=margin-left:10px][id=nextbutton]", {
                         href: vnode.attrs.next_link,
                         oncreate: m.route.link
                         },"Next")
