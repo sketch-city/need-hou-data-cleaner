@@ -1,24 +1,11 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
-
-function moveProgress(width, intervalStart, intervalEnd) {
-    var elem = document.getElementById("myBar"); 
-    var width = width;
-    var id = setInterval(frame, intervalStart);
-    function frame() {
-        if (width >= intervalEnd) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
+var helper = require("./helper") 
 
 
 
 module.exports = {
-oninit: function() { moveProgress(70, 70, 90) } ,
+oninit: function() { helper.moveProgress(70, 70, 90) } ,
 view: function(vnode) {
 		return(
 

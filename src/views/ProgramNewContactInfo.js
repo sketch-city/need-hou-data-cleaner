@@ -1,9 +1,10 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var ProgramContactInfo = require("./ProgramContactInfo")
+var helper = require("./helper")
 
 var newProgram = {
-    id: guid(),
+    id: helper.guid(),
 	name: "",
     alternative_name: "",
 	description: "",
@@ -31,17 +32,6 @@ var newProgram = {
     contact_phonenumber: ""
  }
 
-
-
-
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
 
 
 module.exports = {

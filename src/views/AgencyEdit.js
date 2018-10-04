@@ -1,22 +1,10 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var AgencyForm = require("./AgencyForm")
+var helper = require("./helper")
 
-function moveProgress(width, intervalStart, intervalEnd) {
-    var elem = document.getElementById("myBar"); 
-    var width = width;
-    var id = setInterval(frame, intervalStart);
-    function frame() {
-        if (width >= intervalEnd) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
 module.exports = {
-    oninit: function() { moveProgress(10, 10, 30) } ,
+    oninit: function() { helper.moveProgress(10, 10, 30) } ,
     view: function() {
     	return( 
     		m("div.row",[  

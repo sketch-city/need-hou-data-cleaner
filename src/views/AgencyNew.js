@@ -2,20 +2,11 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var AgencyForm = require("./AgencyForm")
+var helper = require("./helper")
 
 
 
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
-
-
-var agency_id = guid();
+var agency_id = helper.guid();
 
 
 var newAgency = {
@@ -30,7 +21,7 @@ var newAgency = {
     selected_program:{
         agency_id: agency_id,
         error: "",
-        id: guid(),
+        id: helper.guid(),
     	name: "",
         alternative_name: "",
     	description: "",

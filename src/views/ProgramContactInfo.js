@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
+var helper = require("./helper")
 
 function formatMapQuery(address){
   var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="
@@ -8,19 +9,7 @@ function formatMapQuery(address){
   return(formatted)
 }
 
-function moveProgress(width, intervalStart, intervalEnd) {
-    var elem = document.getElementById("myBar"); 
-    var width = width;
-    var id = setInterval(frame, intervalStart);
-    function frame() {
-        if (width >= intervalEnd) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
+
 
 function nameExists(name){
 var hasName = false;
@@ -61,7 +50,7 @@ function validateName(name) {
 
 
 module.exports = {
-oninit: function() { moveProgress(40, 40, 50) } ,
+oninit: function() { helper.moveProgress(40, 40, 50) } ,
 view: function(vnode) {	
 	return(
 		    m("div.row",[  

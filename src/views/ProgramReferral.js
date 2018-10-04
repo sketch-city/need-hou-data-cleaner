@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
+var helper = require("./helper")
 
 function getSelectedOptions(sel) {
 
@@ -16,23 +17,9 @@ function getSelectedOptions(sel) {
   return opts;
 }
 
-function moveProgress(width, intervalStart, intervalEnd) {
-    var elem = document.getElementById("myBar"); 
-    var width = width;
-    var id = setInterval(frame, intervalStart);
-    function frame() {
-        if (width >= intervalEnd) {
-            clearInterval(id);
-        } else {
-            width++; 
-            elem.style.width = width + '%'; 
-        }
-    }
-}
-
 
 module.exports = {
-oninit: function() { moveProgress(50, 50, 70) } ,
+oninit: function() { helper.moveProgress(50, 50, 70) } ,
 view: function(vnode) {	
 	return(
 		    m("div.row",[  
