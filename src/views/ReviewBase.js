@@ -1,6 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
-var helper = require("./helper") 
+var helper = require("../helper") 
 
 
 

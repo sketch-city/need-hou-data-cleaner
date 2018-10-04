@@ -1,7 +1,7 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var ProgramContactInfo = require("./ProgramContactInfo")
-var helper = require("./helper")
+var helper = require("../helper")
 
 
 module.exports = {

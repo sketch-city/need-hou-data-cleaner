@@ -1,6 +1,5 @@
 var m = require('mithril')
 
-
 var Agency = {
 
 	list: [],

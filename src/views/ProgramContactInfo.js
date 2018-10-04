@@ -1,6 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
-var helper = require("./helper")
+var helper = require("../helper")
 
 function formatMapQuery(address){
   var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="

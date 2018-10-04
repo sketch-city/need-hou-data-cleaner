@@ -2,13 +2,9 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var AgencyForm = require("./AgencyForm")
-var helper = require("./helper")
-
-
+var helper = require("../helper")
 
 var agency_id = helper.guid();
-
-
 var newAgency = {
 	id: agency_id,
     name: "",
