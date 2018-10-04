@@ -14,7 +14,7 @@ function guid() {
 
 module.exports = {
 view: function() {
-	return(m(ProgramReferral, { program: newAgency.selected_program, next_route: "/newprogramreview"})
+	return(m(ProgramReferral, { program: newAgency.selected_program, next_link: "/newagencyreview"})
 
 
 	 	)
