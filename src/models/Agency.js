@@ -71,7 +71,7 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/languages?program_id=" + program_id,
 			withCredentials: false,
 		}).then(function(result){
-			Agency.selected_program.languages = result.language_arr.join(', ')
+			Agency.selected_program.language_arr = result.language_arr.join(', ')
 			}).catch(function(error){
 				console.log(error)
 			})

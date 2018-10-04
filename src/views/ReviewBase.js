@@ -56,7 +56,7 @@ view: function(vnode) {
 					m("p", m("strong", "Contact Email: "), vnode.attrs.program.contact_email),
 					m("p", m("strong", "Contact Phone: "), vnode.attrs.program.contact_phonenumber),
 					m("p", m("strong", "Need Domain: "), vnode.attrs.program.service_type),
-					m("p", m("strong", "Languages: "), vnode.attrs.program.languages),
+					m("p", m("strong", "Languages: "), vnode.attrs.program.language_arr),
 					m("p", m("strong", "How to Refer: "), vnode.attrs.program.application_process),
 					m("p", m("strong", "Required Document Links: "), vnode.attrs.program.documents_required),
 					m("p", m("strong", "Payment Options: "), vnode.attrs.program.fee_structure),
@@ -87,7 +87,7 @@ view: function(vnode) {
 						else if(vnode.attrs.agencyFunction === "existing_program"){
 							Agency.updateAgency(vnode.attrs.agency)
 							.then(Agency.updateProgram(vnode.attrs.program))
-							//.then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))	
+							.then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, language_arr: vnode.attrs.program.language_arr.split(", ")}))	
 						}
 
 					document.getElementById("submitfinal").disabled = true;

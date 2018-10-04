@@ -76,8 +76,8 @@ view: function(vnode) {
 
 
               m("label", "Program Languages Spoken"),
-              m("input.form-control[type=text][id=languages]",{ value: vnode.attrs.program.languages,
-                                          oninput: function(e) { vnode.attrs.program.languages = e.currentTarget.value;
+              m("input.form-control[type=text][id=languages]",{ value: vnode.attrs.program.language_arr,
+                                          oninput: function(e) { vnode.attrs.program.language_arr = e.currentTarget.value;
                                                                 }
                                                               }),
               m("label", "How to refer"),

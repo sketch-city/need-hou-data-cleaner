@@ -7,7 +7,8 @@ module.exports = {
 
             m("section", 
             	m("ul",
-        			m("li", "Login")), vnode.children,
+        			m("li",
+        				m("a", "Logout"))), vnode.children,
             m("div[id=myProgress]",
                 m("div[id=myBar]"))
             ))
