@@ -6,7 +6,14 @@ var helper = require("../helper")
 function validateLanguage(languages){
   language_arr = languages.split(" ")
   if(language_arr.length > 1 &&  !languages.includes(',')) {
-    console.log('not gooch')
+    document.getElementById("nextbutton").disabled = true;
+    document.getElementById("languages").classList.add("has-error")
+    document.getElementById("languageerror").innerHTML = "Please separate multiple languages with a comma."
+
+  } else{
+    document.getElementById("nextbutton").disabled = false;
+    document.getElementById("languages").classList.remove("has-error")
+    document.getElementById("languageerror").innerHTML = ""
 
   }
 
@@ -74,13 +81,14 @@ view: function(vnode) {
 
                 ]),
 
-
-              m("label", "Program Languages Spoken"),
+            m("div.form-group[id=languages]",
+              m("label.control-label", "Program Languages Spoken"),
               m("input.form-control[type=text][id=languages]",{ value: vnode.attrs.program.language_arr,
                                           oninput: function(e) { vnode.attrs.program.language_arr = e.currentTarget.value;
                                                                 },
                                           onblur: function() { validateLanguage(vnode.attrs.program.language_arr) } 
                                                               }),
+              m("span[id=languageerror]")),
               m("label", "How to refer"),
               m("textarea.form-control application_process",{ value: vnode.attrs.program.application_process,
                                           oninput: function(e) {
@@ -132,7 +140,7 @@ view: function(vnode) {
 
                         },"Previous"),
 
-                  m("button.btn btn-default[type=submit][style=margin-left:10px]", {
+                  m("button[id = nextbutton].btn btn-default[type=submit][style=margin-left:10px]", {
                         href: vnode.attrs.next_link, 
                         oncreate: m.route.link
                         },"Next")

@@ -16,7 +16,6 @@ return(hasName)
 }
 
 function validateName(name) {
-    console.log(name)
    if(nameExists(name)){
         document.getElementById("nextbutton").disabled = true;
         document.getElementById("orgname").classList.add("has-error")
