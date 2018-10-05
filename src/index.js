@@ -14,6 +14,7 @@ var AgencyNewProgramContactInfo = require("./views/AgencyNewProgramContactInfo")
 var AgencyNewProgramReferral = require("./views/AgencyNewProgramReferral")
 var AgencyNewReview = require("./views/AgencyNewReview")
 var ProgramNewReview = require("./views/ProgramNewReview")
+var AgencyReview = require("./views/AgencyReview")
 // var Login = require("./views/Login")
 
 
@@ -86,6 +87,12 @@ m.route(document.body, "/selectagency", {
     "/editprogramreferral":{
         render: function(vnode){
             return m(Layout, m(EditProgramReferral, vnode.attrs))
+        }
+    },
+
+    "/agencyreview": {
+        render: function(){
+            return m(Layout, m(AgencyReview))
         }
     },
 

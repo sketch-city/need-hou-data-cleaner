@@ -13,15 +13,36 @@ function parse_date(dt){
   return(newdate)
 }
 
+function setlink() { 
+  href = ""
+  if(Agency.selected_program.name === undefined){
+    href = "/agencyreview"
+  } else{
+   href = "/editprogramcontact"
+  }
+  return(href)
+}
+
 
 function selectProgram(){
   program_name = document.getElementById('programselect').value;
   datestamp = document.getElementById('datestamp').hidden = false;
+
   var filteredArr = Agency.programs.filter(function (el) {
   return el.name === program_name      
     });
+
+  console.log(program_name)
+  if(program_name === ""){
+    return(Agency.selected_program = "")
+  }
+
+  else{
   program_id = filteredArr[0].id
   Agency.loadProgram(program_id).then(Agency.loadLanguages(program_id))
+  
+  }
+
 }
 
 
@@ -65,9 +86,8 @@ module.exports = {
                         },"Previous"),
 
                   m("button.btn btn-default[type=submit][style=margin-left:10px]", {
-                        href: "/editprogramcontact", 
+                        href: setlink(),
                         oncreate: m.route.link,
-                        disabled: Agency.selected_program.name === undefined
                         },"Next")
                     )
         ])
