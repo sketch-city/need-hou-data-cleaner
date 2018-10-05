@@ -2,6 +2,19 @@ var m = require("mithril")
 var Agency = require("../models/Agency")
 var helper = require("../helper")
 
+
+function validateLanguage(languages){
+  language_arr = languages.split(" ")
+  if(language_arr.length > 1 &&  !languages.includes(',')) {
+    console.log('not gooch')
+
+  }
+
+
+}
+
+
+
 function getSelectedOptions(sel) {
 
   var opts = [],
@@ -65,7 +78,8 @@ view: function(vnode) {
               m("label", "Program Languages Spoken"),
               m("input.form-control[type=text][id=languages]",{ value: vnode.attrs.program.language_arr,
                                           oninput: function(e) { vnode.attrs.program.language_arr = e.currentTarget.value;
-                                                                }
+                                                                },
+                                          onblur: function() { validateLanguage(vnode.attrs.program.language_arr) } 
                                                               }),
               m("label", "How to refer"),
               m("textarea.form-control application_process",{ value: vnode.attrs.program.application_process,

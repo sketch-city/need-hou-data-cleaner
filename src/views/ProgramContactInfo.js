@@ -61,7 +61,7 @@ view: function(vnode) {
               		m("label", "Program Name"),
 							m("input.form-control[type=text][id=programname]",{ value: vnode.attrs.program.name,
 																onchange: function(e) { 
-		                                                    vnode.attrs.program.name = validateName(e.currentTarget.value);
+		                                                    vnode.attrs.program.name = e.currentTarget.value;
 		                                                                    } }),
 					m("label", "Program Description"),
 							m("textarea.form-control",{ 

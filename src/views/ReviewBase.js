@@ -74,7 +74,7 @@ view: function(vnode) {
 						else if(vnode.attrs.agencyFunction === "existing_program"){
 							Agency.updateAgency(vnode.attrs.agency)
 							.then(Agency.updateProgram(vnode.attrs.program))
-							.then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, language_arr: vnode.attrs.program.language_arr.split(", ")}))	
+							.then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')}))	
 						}
 
 					document.getElementById("submitfinal").disabled = true;
