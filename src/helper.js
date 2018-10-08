@@ -4,8 +4,22 @@ var m = require('mithril')
 module.exports = {
 	moveProgress,
 	guid,
-  autocomplete
+  autocomplete,
+  parse_date
+
 };
+
+
+function parse_date(dt){
+  var mydate = new Date(dt);
+  var month = mydate.getUTCMonth() + 1; //months from 1-12
+  var day = mydate.getUTCDate();
+  var year = mydate.getUTCFullYear();
+
+  newdate = year + "-" + month + "-" + day;
+
+  return(newdate)
+}
 
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,

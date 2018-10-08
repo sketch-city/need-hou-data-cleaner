@@ -152,10 +152,20 @@ var Agency = {
     	}).catch(function(error){
     		console.log(error)
     	})
+    },
+
+
+    addQueueItem: function(queue_data) {
+        return m.request({
+            method: "POST",
+            mode: "cors",
+            url: "https://need-hou-api.herokuapp.com/api/queue",
+            data: queue_data,
+            withCredentials: false,
+        }).catch(function(error){
+            console.log(error)
+        })
     }
-
-
-
 }
 
 module.exports = Agency;

@@ -15,6 +15,8 @@ var AgencyNewProgramReferral = require("./views/AgencyNewProgramReferral")
 var AgencyNewReview = require("./views/AgencyNewReview")
 var ProgramNewReview = require("./views/ProgramNewReview")
 var AgencyReview = require("./views/AgencyReview")
+var QueueList = require("./views/QueueList")
+var QueueItem = require("./views/QueueItem")
 // var Login = require("./views/Login")
 
 
@@ -112,7 +114,20 @@ m.route(document.body, "/selectagency", {
         render: function(vnode){
             return m(Layout, m(ProgramNewReview, vnode.attrs))
         }
+    },
+    
+    "/queue":{
+        render: function(){
+            return  m(QueueList)
+        }
+    },
+
+    "/queue/:id":{
+        render: function(vnode){
+            return m(QueueItem, vnode.attrs)
+        }
     }
+
 
     })
 

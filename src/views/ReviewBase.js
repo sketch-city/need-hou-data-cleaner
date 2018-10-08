@@ -59,36 +59,73 @@ view: function(vnode) {
 			m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
-							Agency.addNewAgency(vnode.attrs.agency)
-							.then(Agency.addNewProgram(vnode.attrs.program))
-							//.then(Agency.addNewLanguage({program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
+							Agency.addQueueItem({
+								submission_type: "new_agency", 
+								submission: { 
+								agency_data: vnode.attrs.agency,
+								program_data: vnode.attrs.program,
+								language_data: {
+									program_id: vnode.attrs.program.id,
+									language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')
+									}
+								}
+
+							})
 							
 						}
 
+
 						else if(vnode.attrs.agencyFunction === "new_program"){
-							Agency.updateAgency(vnode.attrs.agency)
-							.then(Agency.addNewProgram(vnode.attrs.program))
-							//.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))							
+							Agency.addQueueItem({
+								submission_type: "new_program", 
+								submission: { 
+								agency_data: vnode.attrs.agency,
+								program_data: vnode.attrs.program,
+								language_data: {
+									program_id: vnode.attrs.program.id,
+									language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')
+									}
+								}
+
+							})
+							
 						}
 
 						else if(vnode.attrs.agencyFunction === "existing_program"){
-							Agency.updateAgency(vnode.attrs.agency)
-							.then(Agency.updateProgram(vnode.attrs.program))
-							.then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')}))	
+							Agency.addQueueItem({
+								submission_type: "existing_program", 
+								submission: { 
+								agency_data: vnode.attrs.agency,
+								program_data: vnode.attrs.program,
+								language_data: {
+									program_id: vnode.attrs.program.id,
+									language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')
+									}
+								}
+
+							})
+							
 						}
+
+
+
+
+
+
 
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
-					document.getElementById("editfinal").classList.remove("hidden")
-                },
+					document.getElementById("editfinal").classList.remove("hidden");
+
+					}
 
 			},
 				"Submit"),
 			m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
-				href: "/selectagency", 
+				href: "/queue", 
 				oncreate: m.route.link 
 
-			}, "Edit Additional Program")
+			}, "View Queue")
 
 			),
 			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")

@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
+var Queue = require("../models/Queue")
 
 module.exports = {
     view: function(vnode) {
