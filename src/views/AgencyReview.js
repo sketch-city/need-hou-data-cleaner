@@ -25,7 +25,16 @@ view: function() {
 			m("div.reviewbuttons",
 			m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
-					Agency.updateAgency(Agency.selected)
+						Agency.addQueueItem({
+								submission_type: "existing_agency", 
+								submission: { 
+								agency_data: Agency.selected,
+								program_data: {}
+					
+								}
+
+							})
+
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
 					document.getElementById("editfinal").classList.remove("hidden")

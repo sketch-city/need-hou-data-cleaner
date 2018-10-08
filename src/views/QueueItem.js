@@ -4,7 +4,8 @@ var Agency = require("../models/Agency")
 var helper = require("../helper")
 
 module.exports = {
-oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id)} ,
+oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id).then(function() { document.getElementById("queuesubmit").disabled = false;}
+)  } ,
 view: function(vnode) {
 		return(
 			m("section", 
@@ -46,7 +47,7 @@ view: function(vnode) {
 				
 				
 			m("div.reviewbuttons",
-			m("button[type=submit][id=submitfinal][style=color:green;].btn btn-default", {
+			m("button[type=submit][id=queuesubmit][style=color:green;].btn btn-default", {
 				onclick: function(e) {
 					if(Queue.type_submission === "new_agency"){
 							 Agency.addNewAgency(Queue.queueAgency)
@@ -59,17 +60,24 @@ view: function(vnode) {
 						else if(Queue.type_submission === "new_program"){
 							Agency.updateAgency(Queue.queueAgency)
 							.then(Agency.addNewProgram(Queue.queueProgram))
-							.then(Agency.addNewLanguage(Queue.queueLanguage))							
+							.then(Agency.addNewLanguage(Queue.queueLanguage))
+							.then(Queue.deleteQueueItem(vnode.attrs.id))							
 						}
 
-						// else if(vnode.attrs.agencyFunction === "existing_program"){
-						// 	// Agency.updateAgency(vnode.attrs.agency)
-						// 	// .then(Agency.updateProgram(vnode.attrs.program))
-						// 	// .then(Agency.updateLanguage({ program_id: vnode.attrs.program.id, language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')}))	
-						// }
+						else if(Queue.type_submission === "existing_program"){
+							Agency.updateAgency(Queue.queueAgency)
+							.then(Agency.updateProgram(Queue.queueProgram))
+							.then(Agency.updateLanguage(Queue.queueLanguage))
+							.then(Queue.deleteQueueItem(vnode.attrs.id))	
+						}
 
-				
-    //             },
+						else if(Queue.type_submission === "existing_agency") {
+							Agency.updateAgency(Queue.queueAgency)
+							.then(Queue.deleteQueueItem(vnode.attrs.id))
+						}
+
+
+						document.getElementById("queuesubmit").disabled = true;
 
 			}},
 				"Accept")
