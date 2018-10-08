@@ -6,7 +6,11 @@ module.exports = {
 oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id)} ,
 view: function(vnode) {
 		return(
-			m("div.queuepage",
+			m("section", 
+			m("ul",
+        			m("li",
+        				m("a", "Logout"))),
+			m("div.queuepage[id=wrap_all]",
 				m("div.orgqueue", [
 					m("p", m("strong", "Name: " ), Queue.queueAgency.name),
 					m("p", m("strong", "Full Physical 	Address: "), Queue.queueAgency.physical_address),
@@ -81,7 +85,8 @@ view: function(vnode) {
 			// ])
 
 			)
-			)
+		)
 
+	  )
 	}
 }

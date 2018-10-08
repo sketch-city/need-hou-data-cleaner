@@ -107,12 +107,6 @@ view: function(vnode) {
 							
 						}
 
-
-
-
-
-
-
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
 					document.getElementById("editfinal").classList.remove("hidden");

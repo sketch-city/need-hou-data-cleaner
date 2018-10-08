@@ -8,27 +8,33 @@ oninit: Queue.getQueue,
 view: function() { 
 
 		return(
-
+		  m("section", 
+			m("ul",
+        			m("li",
+        				m("a", "Logout"))),
 			m("div.queue_list",
 				m("table.table table-striped",
+				  m("thead",
 					m("tr",
-						m("th", "Date Submitted")),
-				Queue.queue_list.map(function(item) {
+						m("th[scope=col]", "#"),
+						m("th[scope=col]", "ID"),
+						m("th[scope=col]", "Date"))),
+				  m("tbody",
+				Queue.queue_list.map(function(item, index) {
 					return(
-					m("tr",
-						m("td", 
-							m("a",{ href: "/queue/" + item.id, oncreate: m.route.link }, item.posted_date))
+							
+							m("tr",
+								m("th[scope=row]", index + 1),
+								m("td[id=queueid]", m("a", { href: "/queue/" + item.id, oncreate: m.route.link}, item.id )),
+								m("td", helper.parse_date(item.posted_date)))
 
+									)
+								
+							})
 						)
 					)
-				})
-				
 				)
 			)
-
-
-
-
 		)		
 	}	
 }
