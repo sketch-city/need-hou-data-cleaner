@@ -1,10 +1,5 @@
 var m = require('mithril')
 
-var selected_program_ids = []
-var selected_agency_ids = []
-
-
-
 var Agency = {
 
 	list: [],
@@ -15,7 +10,6 @@ var Agency = {
 			withCredentials: false
 		}).then(function(result){
 			 if(Agency.list === undefined || Agency.list.length == 0 ){
-			 	console.log('initializing agency list')
 			   Agency.list = result 
 			}
 
@@ -30,8 +24,6 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/agencies?name=" + name,
 			withCredentials: false,
 		}).then(function(result){
-			selected_agency_ids.push(result[0].id)
-			console.log('select agency fires')
 			Agency.selected = result[0]
 			
 		})
@@ -44,7 +36,6 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/programs?agency_id=" + Agency.selected.id,
 			withCredentials: false,
 		}).then(function(result){
-			console.log(result)
 			Agency.programs = result
 
 
@@ -64,10 +55,8 @@ var Agency = {
 			withCredentials: false,
 		}).then(function(result){
 			if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
-				console.log('init program since it has not been initialized before')
 				Agency.selected_program = result[0]	
 			}
-			selected_program_ids.push(result[0].id)
 		}).catch(function(error) {
 			console.log(error)
 
@@ -81,7 +70,7 @@ var Agency = {
 			url: "https://need-hou-api.herokuapp.com/api/languages?program_id=" + program_id,
 			withCredentials: false,
 		}).then(function(result){
-			Agency.selected_program.languages = result.language_arr.join(', ')
+			Agency.selected_program.language_arr = result.language_arr.join(', ')
 			}).catch(function(error){
 				console.log(error)
 			})
@@ -163,13 +152,22 @@ var Agency = {
     	}).catch(function(error){
     		console.log(error)
     	})
+    },
+
+
+    addQueueItem: function(queue_data) {
+        return m.request({
+            method: "POST",
+            mode: "cors",
+            url: "https://need-hou-api.herokuapp.com/api/queue",
+            data: queue_data,
+            withCredentials: false,
+        }).catch(function(error){
+            console.log(error)
+        })
     }
-
-
-
 }
 
-module.exports = Agency, selected_program_ids, selected_agency_ids;
-window.selected_program_ids = selected_program_ids
-window.Agency = Agency
-window.selected_agency_ids = selected_agency_ids
+module.exports = Agency;
+window.Agency = Agency; 
+

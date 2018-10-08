@@ -1,8 +1,81 @@
 <!doctype html>
 <html>
     <head>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <style>
+  <style>
+
+ul {
+    list-style-type: none;
+    padding: 15px;
+    overflow: hidden;
+    background-color: #0078e7;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1px 2px;
+    text-decoration: none;
+}
+
+li a:hover {
+    
+}
+
+
+
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 100px;
+  overflow-y: auto
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9; 
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+#myProgress {
+    width: 500px;
+    background-color: grey;
+    margin-left: 370px;
+    margin-top:100px;
+}
+#myBar {
+    width: 10%;
+    height: 30px;
+    background-color: #0078e7;
+}
+
+
 
 .sticky {
     position: -webkit-sticky; /* Safari */
@@ -21,13 +94,12 @@ input.invalid {
 }
 
 .login {
-
   margin-top: 200px;
   margin-left: 500px;
 }
 
 
-.programreview, .orgreview{
+.programreview, .orgreview, .orgqueue, .programqueue {
    padding: 35px;
 }
 
@@ -46,6 +118,7 @@ input.invalid {
   margin-left: 175px;
   margin-right: auto;
 }
+
 .programcontactinfo {
   margin-bottom: 50px;
 }
@@ -98,65 +171,10 @@ input.invalid {
 /*  margin-right: 200px;*/*/
 }
 
-
-/*#agencyreviewtabl{
-  width: 400px;
-  font-size: 13px;
-  margin-top: 0px;
-  margin-bottom: 40px;
-  margin-left: 175px;
-  margin-right: auto;
-}
-
-#programreviewtabl{
-  width: 400px; 
-  font-size: 12px;
-  margin-top: 0px;
-  margin-bottom: 40px;
-  margin-left: 175px;
-  margin-right: auto;
-}
-*/
-/* Style the list */
-ul.breadcrumb {
-    margin-top: 0px;
-    padding: 10px 16px;
-    list-style: none;
-    background-color: #eee;
-}
-
-/* Display list items side by side */
-ul.breadcrumb li {
-    display: inline;
-    font-size: 18px;
-}
-
-/* Add a slash symbol (/) before/behind each list item */
-ul.breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
-}
-
-/* Add a color to all links inside the list */
-ul.breadcrumb li a {
-    color: #0275d8;
-    text-decoration: none;
-}
-
-/* Add a color on mouse-over */
-ul.breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
-}
-
-
-
-.page { 
-   width:70%;
-        margin-left:auto;
-        margin-right:auto;
-
+.programselect, .agencyedit, .agencyselect, .queue_list { 
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 50px;
  }
  
 .custom-restricted1 {
@@ -177,13 +195,12 @@ ul.breadcrumb li a:hover {
     border: 1px solid gray;
     border-radius: 4px;
     font-size: 13px;
-    /*margin-top: 60px;*/
 }
 
 
 #continue1, .missingOrg{
   margin-bottom: 5px;
-  margin-left: 175px;
+  margin-left: 520px;
   margin-right: auto
 }
 
@@ -206,15 +223,13 @@ ul.breadcrumb li a:hover {
   margin-bottom: 40px;
   margin-left: 175px;
   margin-right: auto;
-  }
+}
 
 #agencysearch {
-
   margin-top: 0px;
   margin-bottom: 20px;
   margin-left: 175px;
   margin-right: auto;
-
 }
 
 
@@ -244,8 +259,6 @@ textarea.programdesc {
     float: right;
     margin-right: 350px;
     margin-top: 6px;
-   /*     position: relative;
-        z-index: 2;*/
     color: #0953D7  ;
 }
 
@@ -258,7 +271,7 @@ textarea.programdesc {
 
 
 
-input.agency_address, input.agency_phone, input#agencysearch{
+input.agency_address, input.agency_phone, input#agencysearch, input.agency_name{
   font-size: 13px;
 }
 
@@ -270,18 +283,14 @@ input.agency_address, input.agency_phone, input#agencysearch{
 }
 
     </style>
-      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1,  maximum-scale=1, user-scalable=no" />
         <title>NEEDHOU Data Cleaner</title>
     </head>
     <body>
         <script src="main.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-       
-
     </body>
 </html>
