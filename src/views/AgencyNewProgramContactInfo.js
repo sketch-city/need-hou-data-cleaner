@@ -6,7 +6,7 @@ var helper = require("../helper")
 
 module.exports = {
 oninit: function(){
-        newAgency.selected_program.agency_id = helper.guid()
+        newAgency.selected_program.agency_id = newAgency.id
 },
 view: function() {
 	return(m(ProgramContactInfo, { program: newAgency.selected_program, previous_link: "/newagency", next_link: "/newagencyprogramreferral"})

@@ -36,6 +36,17 @@ queue_list: [],
 			console.log(error)
 		})
     
+    },
+
+   deleteQueueItem: function(queue_id){
+        return m.request({
+            method: "DELETE",
+            url: "https://need-hou-api.herokuapp.com/api/queue?queue_id=" + queue_id,
+            withCredentials: false,
+        }).then(function(result){
+
+            
+        })
     }
 
 

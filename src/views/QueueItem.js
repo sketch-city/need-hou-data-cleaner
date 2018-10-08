@@ -1,5 +1,6 @@
 var m = require("mithril")
 var Queue = require("../models/Queue")
+var Agency = require("../models/Agency")
 var helper = require("../helper")
 
 module.exports = {
@@ -45,21 +46,21 @@ view: function(vnode) {
 				
 				
 			m("div.reviewbuttons",
-			m("button[type=submit][id=submitfinal].btn btn-default", {
+			m("button[type=submit][id=submitfinal][style=color:green;].btn btn-default", {
 				onclick: function(e) {
-
-							// Agency.addNewAgency(vnode.attrs.agency)
-							// .then(Agency.addNewProgram(vnode.attrs.program))
-							//.then(Agency.addNewLanguage({program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))
-							
+					if(Queue.type_submission === "new_agency"){
+							 Agency.addNewAgency(Queue.queueAgency)
+							.then(Agency.addNewProgram(Queue.queueProgram))
+							.then(Agency.addNewLanguage(Queue.queueLanguage))
+							.then(Queue.deleteQueueItem(vnode.attrs.id))
 
 					}
 
-						// else if(vnode.attrs.agencyFunction === "new_program"){
-						// 	// Agency.updateAgency(vnode.attrs.agency)
-						// 	// .then(Agency.addNewProgram(vnode.attrs.program))
-						// 	//.then(Agency.addNewLanguage({ program_id: vnode.attrs.program.id, languages: vnode.attrs.program.languages}))							
-						// }
+						else if(Queue.type_submission === "new_program"){
+							Agency.updateAgency(Queue.queueAgency)
+							.then(Agency.addNewProgram(Queue.queueProgram))
+							.then(Agency.addNewLanguage(Queue.queueLanguage))							
+						}
 
 						// else if(vnode.attrs.agencyFunction === "existing_program"){
 						// 	// Agency.updateAgency(vnode.attrs.agency)
@@ -70,8 +71,8 @@ view: function(vnode) {
 				
     //             },
 
-			},
-				"Submit")
+			}},
+				"Accept")
 			)
 
 			// m("button[type=submit][id=editfinal].btn btn-default hidden" , { 

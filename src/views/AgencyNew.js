@@ -4,9 +4,11 @@ var Agency = require("../models/Agency")
 var AgencyForm = require("./AgencyForm")
 var helper = require("../helper")
 
-var agency_id = helper.guid();
+var agencyID = helper.guid();
+
+
 var newAgency = {
-	id: agency_id,
+	id: agencyID ,
     name: "",
     physical_address: "",
     description: "",
@@ -15,7 +17,7 @@ var newAgency = {
     disability: "",
     hours: "",
     selected_program:{
-        agency_id: agency_id,
+        agency_id: "",
         error: "",
         id: helper.guid(),
     	name: "",
