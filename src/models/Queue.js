@@ -9,10 +9,9 @@ queue_list: [],
             url: "https://need-hou-api.herokuapp.com/api/queue",
             withCredentials: false
         }).then(function(result){
-
-               Queue.queue_list = result 
+                Queue.queue_list = result 
         }).catch(function(error){
-			console.log(error)
+			
 		})
     
     },

@@ -4,7 +4,10 @@ var Agency = require("../models/Agency")
 var helper = require("../helper")
 
 module.exports = {
-oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id).then(function() { document.getElementById("queuesubmit").disabled = false;}
+oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id).then(function() { 
+	document.getElementById("queuesubmit").disabled = false;
+	document.getElementById("queuereject").disabled = false;
+}
 )  } ,
 view: function(vnode) {
 		return(
@@ -47,40 +50,53 @@ view: function(vnode) {
 				
 				
 			m("div.reviewbuttons",
-			m("button[type=submit][id=queuesubmit][style=color:green;].btn btn-default", {
-				onclick: function(e) {
-					if(Queue.type_submission === "new_agency"){
-							 Agency.addNewAgency(Queue.queueAgency)
-							.then(Agency.addNewProgram(Queue.queueProgram))
-							.then(Agency.addNewLanguage(Queue.queueLanguage))
-							.then(Queue.deleteQueueItem(vnode.attrs.id))
+				m("button[type=submit][id=queuesubmit][style=color:green;].btn btn-default", {
+					onclick: function(e) {
+						if(Queue.type_submission === "new_agency"){
+								 Agency.addNewAgency(Queue.queueAgency)
+								.then(Agency.addNewProgram(Queue.queueProgram))
+								.then(Agency.addNewLanguage(Queue.queueLanguage))
+								.then(Queue.deleteQueueItem(vnode.attrs.id))
 
-					}
-
-						else if(Queue.type_submission === "new_program"){
-							Agency.updateAgency(Queue.queueAgency)
-							.then(Agency.addNewProgram(Queue.queueProgram))
-							.then(Agency.addNewLanguage(Queue.queueLanguage))
-							.then(Queue.deleteQueueItem(vnode.attrs.id))							
 						}
 
-						else if(Queue.type_submission === "existing_program"){
-							Agency.updateAgency(Queue.queueAgency)
-							.then(Agency.updateProgram(Queue.queueProgram))
-							.then(Agency.updateLanguage(Queue.queueLanguage))
-							.then(Queue.deleteQueueItem(vnode.attrs.id))	
-						}
+							else if(Queue.type_submission === "new_program"){
+								Agency.updateAgency(Queue.queueAgency)
+								.then(Agency.addNewProgram(Queue.queueProgram))
+								.then(Agency.addNewLanguage(Queue.queueLanguage))
+								.then(Queue.deleteQueueItem(vnode.attrs.id))							
+							}
 
-						else if(Queue.type_submission === "existing_agency") {
-							Agency.updateAgency(Queue.queueAgency)
-							.then(Queue.deleteQueueItem(vnode.attrs.id))
-						}
+							else if(Queue.type_submission === "existing_program"){
+								Agency.updateAgency(Queue.queueAgency)
+								.then(Agency.updateProgram(Queue.queueProgram))
+								.then(Agency.updateLanguage(Queue.queueLanguage))
+								.then(Queue.deleteQueueItem(vnode.attrs.id))	
+							}
+
+							else if(Queue.type_submission === "existing_agency") {
+								Agency.updateAgency(Queue.queueAgency)
+								.then(Queue.deleteQueueItem(vnode.attrs.id))
+							}
 
 
+							document.getElementById("queuesubmit").disabled = true;
+							document.getElementById("queuereject").disabled = true;
+
+				}},
+					"Accept"),
+				m("button[type=submit][id=queuereject][style=color:red;].btn btn-default", {
+					onclick: function(e) {
+						Queue.deleteQueueItem(vnode.attrs.id)
 						document.getElementById("queuesubmit").disabled = true;
+						document.getElementById("queuereject").disabled = true;
+					}
+				}, "Reject")
 
-			}},
-				"Accept")
+
+
+
+
 			)
 
 			// m("button[type=submit][id=editfinal].btn btn-default hidden" , { 

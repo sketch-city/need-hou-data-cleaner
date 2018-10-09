@@ -34,7 +34,7 @@ function getSelectedOptions(sel) {
     }
   }
 
-  return opts;
+  return opts.join(', ');
 }
 
 
