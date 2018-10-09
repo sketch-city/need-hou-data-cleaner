@@ -48,38 +48,39 @@ view: function(vnode) {
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
                   m("label", "Program Need Domain"),
-                  // m("div.checkbox",
-                  //   m("label",m("input[type=checkbox]"), "Education"),
-                  //   m("label",m("input[type=checkbox]"), "Legal"),
-                  //   m("label",m("input[type=checkbox]"), "Food"),
-                  //   m("label",m("input[type=checkbox]"), "Health")
-                  //   ),
-                  // m("div.checkbox",
-                  //   m("label",m("input[type=checkbox]"), "Housing"),
-                  //   m("label",m("input[type=checkbox]"), "Employment"),
-                  //   m("label",m("input[type=checkbox]"), "Family")
-                  //   ),
+                  m("ul.checkbox-grid",
+                    m("li",m("input[type=checkbox]"), "Education"),
+                    m("li",m("input[type=checkbox]"), "Legal"),
+                    m("li",m("input[type=checkbox]"), "Food"),
+                    m("li",m("input[type=checkbox]"), "Health"),
+                    //),
+                  //m("div.checkbox",
+                    m("li",m("input[type=checkbox]"), "Housing"),
+                    m("li",m("input[type=checkbox]"), "Employment"),
+                    m("li",m("input[type=checkbox]"), "Family"),
+                       m("li",m("input[type=checkbox]"), "Money")
+                    ),
             
 
-                   m("select.form-control[name=needareaselect][multiple=multiple][id=needareaselect]",
-                      { 
-                        onblur: function(e) { 
-                          vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('needareaselect'))
-                        }
+              //      m("select.form-control[name=needareaselect][multiple=multiple][id=needareaselect]",
+              //         { 
+              //           onblur: function(e) { 
+              //             vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('needareaselect'))
+              //           }
 
-                      },
+              //         },
               
-              [
-                m("option[value=1]", "Education"),
-                m("option[value=2]" , "Legal"),
-                m("option[value=3]", "Food"),
-                m("option[value=4]", "Housing"),
-                m("option[value=5]", "Employment"),
-                m("option[value=6]", "Family"),
-                m("option[value=7]", "Health"),
+              // [
+              //   m("option[value=1]", "Education"),
+              //   m("option[value=2]" , "Legal"),
+              //   m("option[value=3]", "Food"),
+              //   m("option[value=4]", "Housing"),
+              //   m("option[value=5]", "Employment"),
+              //   m("option[value=6]", "Family"),
+              //   m("option[value=7]", "Health"),
 
 
-                ]),
+              //   ]),
 
             m("div.form-group[id=languages]",
               m("label.control-label", "Program Languages Spoken"),

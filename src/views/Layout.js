@@ -8,7 +8,8 @@ module.exports = {
 
             m("section", 
             	m("ul",
-        			m("li",
+                    m("li[id=title]", "Organization & Service Update Tool"),
+        			m("li[id=logout]",
         				m("a", "Logout"))), vnode.children,
             m("div[id=myProgress]",
                 m("div[id=myBar]"))
