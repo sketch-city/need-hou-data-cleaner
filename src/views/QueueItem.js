@@ -17,6 +17,7 @@ view: function(vnode) {
         				m("a", "Logout"))),
 			m("div.queuepage[id=wrap_all]",
 				m("div.orgqueue", [
+					m("h2", "Organization Details. "),
 					m("p", m("strong", "Name: " ), Queue.queueAgency.name),
 					m("p", m("strong", "Full Physical 	Address: "), Queue.queueAgency.physical_address),
 					m("p", m("strong", "Phone Number: "), Queue.queueAgency.phone_number),
@@ -24,6 +25,7 @@ view: function(vnode) {
 				]),
 
 				m("div.programqueue", [
+					m("h2", "Program Details. "),
 					m("p", m("strong", "Name: "), Queue.queueProgram.name),
 					m("p", m("strong", "Description: "), Queue.queueProgram.description),
 					m("p", m("strong", "Full Physical Address: "), Queue.queueProgram.physical_address),
