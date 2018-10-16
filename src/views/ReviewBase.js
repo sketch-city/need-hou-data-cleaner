@@ -40,6 +40,8 @@ oninit: function(vnode) {
 	 	vnode.attrs.service_types.push('family')
 	 }
 
+
+
 	} ,
 view: function(vnode) {
 		return(
@@ -93,6 +95,8 @@ view: function(vnode) {
 			m("div.reviewbuttons",
 			m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
+						vnode.attrs.program.service_type = vnode.attrs.service_types
+
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addQueueItem({
 								submission_type: "new_agency", 
