@@ -1,6 +1,7 @@
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var helper = require("../helper")
+var Choices = require("choices.js")
 
 
 function validateLanguage(languages){
@@ -20,23 +21,23 @@ function validateLanguage(languages){
 
 }
 
-function checkBoxes(){
- list_items = document.getElementsByClassName("checkbox-grid")[0].children
+// function checkBoxes(){
+//  list_items = document.getElementsByClassName("checkbox-grid")[0].children
 
- for(var i = 0; i < list_items.length; i++){
+//  for(var i = 0; i < list_items.length; i++){
 
-    if(list_items[i].children[0].value === "true"){
-      list_items[i].children[0].checked = true
-    } 
+//     if(list_items[i].children[0].value === "true"){
+//       list_items[i].children[0].checked = true
+//     } 
 
-    else if(list_items[i].children[0].value === "false") {
-      list_items[i].children[0].checked = false
-    }
+//     else if(list_items[i].children[0].value === "false") {
+//       list_items[i].children[0].checked = false
+//     }
  
 
- }
+//  }
   
-}
+// }
 
 
 function getSelectedOptions(sel) {
@@ -60,7 +61,7 @@ oninit: function(vnode) {
   helper.moveProgress(50, 50, 70)
 },
 oncreate: function(){
-  checkBoxes()
+  multipleDefault = new Choices(document.getElementById('service_type_select'));
 },
 view: function(vnode) {	
 	return(
@@ -70,20 +71,29 @@ view: function(vnode) {
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
                   m("label", "Program Need Domain"),
-                  m("p", "Currently: " + vnode.attrs.program.service_type),
-                  m("p", "Select all that apply:"),
-                  m("ul.checkbox-grid",
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.education,  onclick: function(e) { vnode.attrs.program.service_type.education = e.target.checked }}), "Education"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.legal,
-                                                       onclick: function(e) { vnode.attrs.program.service_type.legal = e.target.checked } }), "Legal"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.food,  onclick: function(e) { vnode.attrs.program.service_type.food = e.target.checked }}), "Food"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.health,  onclick: function(e) { vnode.attrs.program.service_type.health = e.target.checked }}), "Health"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.housing,  onclick: function(e) { vnode.attrs.program.service_type.housing = e.target.checked }}), "Housing"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.employment,  onclick: function(e) { vnode.attrs.program.service_type.employment= e.target.checked }}), "Employment"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.family,  onclick: function(e) { vnode.attrs.program.service_type.family = e.target.checked }}), "Family"),
-                    m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.money,  onclick: function(e) { vnode.attrs.program.service_type.money = e.target.checked }}), "Money")
+                  m("select[id=service_type_select][multiple=multiple]",
+                    m("option[value=1]", "Education"),
+                    m("option[value=2]" , "Legal"),
+                    m("option[value=3]", "Food"),
+                    m("option[value=4]", "Housing"),
+                    m("option[value=5]", "Employment"),
+                    m("option[value=6]", "Family"),
+                    m("option[value=7]", "Health")),
+                  
+                  // m("p", "Currently: " + vnode.attrs.program.service_type),
+                  // m("p", "Select all that apply:"),
+                  // m("ul.checkbox-grid",
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.education,  onclick: function(e) { vnode.attrs.program.service_type.education = e.target.checked }}), "Education"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.legal,
+                  //                                      onclick: function(e) { vnode.attrs.program.service_type.legal = e.target.checked } }), "Legal"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.food,  onclick: function(e) { vnode.attrs.program.service_type.food = e.target.checked }}), "Food"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.health,  onclick: function(e) { vnode.attrs.program.service_type.health = e.target.checked }}), "Health"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.housing,  onclick: function(e) { vnode.attrs.program.service_type.housing = e.target.checked }}), "Housing"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.employment,  onclick: function(e) { vnode.attrs.program.service_type.employment= e.target.checked }}), "Employment"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.family,  onclick: function(e) { vnode.attrs.program.service_type.family = e.target.checked }}), "Family"),
+                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.money,  onclick: function(e) { vnode.attrs.program.service_type.money = e.target.checked }}), "Money")
                        
-                    ),
+                  //   ),
             
 
               //      m("select.form-control[name=needareaselect][multiple=multiple][id=needareaselect]",
@@ -188,4 +198,3 @@ view: function(vnode) {
 
 }
 
-window.checkBoxes = checkBoxes
