@@ -3,9 +3,44 @@ var Agency = require("../models/Agency")
 var helper = require("../helper") 
 
 
-
 module.exports = {
-oninit: function() { helper.moveProgress(70, 70, 90) } ,
+oninit: function(vnode) {
+	 helper.moveProgress(70, 70, 90) 
+	
+	 
+	 if(vnode.attrs.program.service_type.food) {
+	 	vnode.attrs.service_types.push('food')
+	 }
+
+	 if(vnode.attrs.program.service_type.education) {
+	 	vnode.attrs.service_types.push('education')
+	 }
+ 	
+ 	if(vnode.attrs.program.service_type.employment) {
+	 	vnode.attrs.service_types.push('employment')
+	 }
+
+	 if(vnode.attrs.program.service_type.legal) {
+	 	vnode.attrs.service_types.push('legal')
+	 }
+
+	 if(vnode.attrs.program.service_type.health) {
+	 	vnode.attrs.service_types.push('health')
+	 }
+
+	 if(vnode.attrs.program.service_type.money) {
+	 	vnode.attrs.service_types.push('money')
+	 }
+
+	 if(vnode.attrs.program.service_type.housing) {
+	 	vnode.attrs.service_types.push('housing')
+	 }
+
+	 if(vnode.attrs.program.service_type.family) {
+	 	vnode.attrs.service_types.push('family')
+	 }
+
+	} ,
 view: function(vnode) {
 		return(
 
@@ -42,7 +77,7 @@ view: function(vnode) {
 					m("p", m("strong", "Contact Title: "), vnode.attrs.program.contact_title),
 					m("p", m("strong", "Contact Email: "), vnode.attrs.program.contact_email),
 					m("p", m("strong", "Contact Phone: "), vnode.attrs.program.contact_phonenumber),
-					m("p", m("strong", "Need Domain: "), vnode.attrs.program.service_type),
+					m("p", m("strong", "Need Domain: "), vnode.attrs.service_types.join(', ')),
 					m("p", m("strong", "Languages: "), vnode.attrs.program.language_arr),
 					m("p", m("strong", "How to Refer: "), vnode.attrs.program.application_process),
 					m("p", m("strong", "Required Document Links: "), vnode.attrs.program.documents_required),
@@ -130,3 +165,6 @@ view: function(vnode) {
 
 	}
 }
+
+
+
