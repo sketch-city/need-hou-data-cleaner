@@ -77,19 +77,19 @@ view: function(vnode) {
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
                   m("label", "Program Need Domain(s)"),
-                  //m("p", "Currently: " + vnode.attrs.program.service_type.join(', ')),
+                  m("p", "Currently: " + vnode.attrs.program.service_type.join(', ')),
                   m("select[id=service_type_select][multiple=multiple]", { 
                            
                             onchange: function(e) { 
                            vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
                          }},
-                    m("option[value=1]", "Education"),
-                    m("option[value=2]" , "Legal"),
-                    m("option[value=3]", "Food"),
-                    m("option[value=4]", "Housing"),
-                    m("option[value=5]", "Employment"),
-                    m("option[value=6]", "Family"),
-                    m("option[value=7]", "Health")),
+                    m("option[value=1]", "education"),
+                    m("option[value=2]" , "legal"),
+                    m("option[value=3]", "food"),
+                    m("option[value=4]", "housing"),
+                    m("option[value=5]", "employment"),
+                    m("option[value=6]", "family"),
+                    m("option[value=7]", "health")),
                 
 
             m("div.form-group[id=languages]",
