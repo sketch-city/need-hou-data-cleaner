@@ -21,6 +21,9 @@ function validateLanguage(languages){
 
 }
 
+
+
+
 // function checkBoxes(){
 //  list_items = document.getElementsByClassName("checkbox-grid")[0].children
 
@@ -40,8 +43,11 @@ function validateLanguage(languages){
 // }
 
 
-function getSelectedOptions(sel) {
+//single select
 
+
+function getSelectedOptions(sel) {
+console.log(sel)
   var opts = [],
     opt;
   var len = sel.options.length;
@@ -52,7 +58,7 @@ function getSelectedOptions(sel) {
     }
   }
 
-  return opts.join(', ');
+  return opts;
 }
 
 
@@ -70,8 +76,13 @@ view: function(vnode) {
     		    m("form", [
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
-                  m("label", "Program Need Domain"),
-                  m("select[id=service_type_select][multiple=multiple]",
+                  m("label", "Program Need Domain(s)"),
+                  //m("p", "Currently: " + vnode.attrs.program.service_type.join(', ')),
+                  m("select[id=service_type_select][multiple=multiple]", { 
+                           
+                            onchange: function(e) { 
+                           vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
+                         }},
                     m("option[value=1]", "Education"),
                     m("option[value=2]" , "Legal"),
                     m("option[value=3]", "Food"),
@@ -79,42 +90,7 @@ view: function(vnode) {
                     m("option[value=5]", "Employment"),
                     m("option[value=6]", "Family"),
                     m("option[value=7]", "Health")),
-                  
-                  // m("p", "Currently: " + vnode.attrs.program.service_type),
-                  // m("p", "Select all that apply:"),
-                  // m("ul.checkbox-grid",
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.education,  onclick: function(e) { vnode.attrs.program.service_type.education = e.target.checked }}), "Education"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.legal,
-                  //                                      onclick: function(e) { vnode.attrs.program.service_type.legal = e.target.checked } }), "Legal"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.food,  onclick: function(e) { vnode.attrs.program.service_type.food = e.target.checked }}), "Food"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.health,  onclick: function(e) { vnode.attrs.program.service_type.health = e.target.checked }}), "Health"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.housing,  onclick: function(e) { vnode.attrs.program.service_type.housing = e.target.checked }}), "Housing"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.employment,  onclick: function(e) { vnode.attrs.program.service_type.employment= e.target.checked }}), "Employment"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.family,  onclick: function(e) { vnode.attrs.program.service_type.family = e.target.checked }}), "Family"),
-                  //   m("li",m("input[type=checkbox]", { value: vnode.attrs.program.service_type.money,  onclick: function(e) { vnode.attrs.program.service_type.money = e.target.checked }}), "Money")
-                       
-                  //   ),
-            
-
-              //      m("select.form-control[name=needareaselect][multiple=multiple][id=needareaselect]",
-              //         { 
-              //           onblur: function(e) { 
-              //             vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('needareaselect'))
-              //           }
-
-              //         },
-              
-              // [
-              //   m("option[value=1]", "Education"),
-              //   m("option[value=2]" , "Legal"),
-              //   m("option[value=3]", "Food"),
-              //   m("option[value=4]", "Housing"),
-              //   m("option[value=5]", "Employment"),
-              //   m("option[value=6]", "Family"),
-              //   m("option[value=7]", "Health"),
-
-
-              //   ]),
+                
 
             m("div.form-group[id=languages]",
               m("label.control-label", "Program Languages Spoken"),
@@ -197,4 +173,5 @@ view: function(vnode) {
 	}	
 
 }
+
 

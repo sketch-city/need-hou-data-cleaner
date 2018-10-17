@@ -32,7 +32,7 @@ function selectProgram(){
   return el.name === program_name      
     });
 
-  console.log(program_name)
+
   if(program_name === ""){
     return(Agency.selected_program = "")
   }
