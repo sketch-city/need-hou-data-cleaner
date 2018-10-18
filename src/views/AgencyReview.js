@@ -2,9 +2,12 @@ var m = require("mithril")
 var Agency = require("../models/Agency")
 var helper = require("../helper") 
 
-
 module.exports = {
 oninit: function() { helper.moveProgress(70, 70, 90) } ,
+oncreate: function() { 
+	helper.difftext(Agency.original_selected.physical_address, Agency.selected.physical_address, "address") 
+	helper.difftext(Agency.original_selected.phone_number, Agency.selected.phone_number, "phone") 
+},
 view: function() {
 		return(
 
@@ -17,8 +20,9 @@ view: function() {
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
 					m("p", m("strong", "Name: " ), Agency.selected.name),
-					m("p", m("strong", "Full Physical 	Address: "), Agency.selected.physical_address),
-					m("p", m("strong", "Phone Number: "), Agency.selected.phone_number),
+					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
+					//m("p", m("strong", "Full Physical 	Address: "), Agency.selected.physical_address),
+					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
 					
 					]),
 				

@@ -1,13 +1,33 @@
 var m = require('mithril')
-
+require('colors')
+var jsdiff = require('diff')
 
 module.exports = {
 	moveProgress,
 	guid,
   autocomplete,
-  parse_date
+  parse_date,
+  difftext
 
 };
+
+function difftext(oldText, newText, el){
+  var diff = jsdiff.diffWords(oldText, newText),
+    display = document.getElementById(el),
+      fragment = document.createDocumentFragment();
+
+  diff.forEach(function(part){
+      color = part.added ? 'green' :
+        part.removed ? 'red' : 'grey';
+      span = document.createElement('span');
+      span.style.color = color;
+      span.appendChild(document
+        .createTextNode(part.value));
+      fragment.appendChild(span);
+    });
+
+  display.appendChild(fragment);
+}
 
 
 function parse_date(dt){

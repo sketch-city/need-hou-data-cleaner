@@ -30,6 +30,7 @@ queue_list: [],
         	  Queue.type_submission = result[0].submission_type
               Queue.queueAgency = result[0].submission.agency_data
               Queue.queueProgram = result[0].submission.program_data
+
               Queue.queueLanguage = result[0].submission.language_data
         }).catch(function(error){
 			console.log(error)

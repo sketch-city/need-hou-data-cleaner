@@ -3,12 +3,20 @@ var Queue = require("../models/Queue")
 var Agency = require("../models/Agency")
 var helper = require("../helper")
 
-module.exports = {
-oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id).then(function() { 
-	document.getElementById("queuesubmit").disabled = false;
-	document.getElementById("queuereject").disabled = false;
+
+function printArray(arr){
+	return(arr.join(', '))
 }
-)  } ,
+
+
+module.exports = {
+oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id) },
+
+// 	then(function() { 
+// 	document.getElementById("queuesubmit").disabled = false;
+// 	document.getElementById("queuereject").disabled = false;
+// }
+
 view: function(vnode) {
 		return(
 			m("section", 
@@ -38,7 +46,10 @@ view: function(vnode) {
 					m("p", m("strong", "Contact Title: "), Queue.queueProgram.contact_title),
 					m("p", m("strong", "Contact Email: "), Queue.queueProgram.contact_email),
 					m("p", m("strong", "Contact Phone: "), Queue.queueProgram.contact_phonenumber),
-					m("p", m("strong", "Need Domain: "), Queue.queueProgram.service_type.join(', ')),
+					// Queue.queueProgram.service_type.map(function(item){ return(
+					// 															m("li", item)
+					// 															)}),
+					//m("p", m("strong", "Need Domain: "),  Queue.queueProgram.service_type ),
 					m("p", m("strong", "Languages: "), Queue.queueProgram.language_arr),
 					m("p", m("strong", "How to Refer: "), Queue.queueProgram.application_process),
 					m("p", m("strong", "Required Document Links: "), Queue.queueProgram.documents_required),
@@ -99,20 +110,11 @@ view: function(vnode) {
 
 
 
+					)
+
+
+				)
 			)
-
-			// m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
-			// 	href: "/queue", 
-			// 	oncreate: m.route.link 
-
-			// }, "View Queue")
-
-			// ),
-			// m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
-			// ])
-
-			)
-		)
 
 	  )
 	}

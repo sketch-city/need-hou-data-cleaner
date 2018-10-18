@@ -6,11 +6,12 @@ var helper = require("../helper")
 module.exports = {
 oninit: function(vnode) {
 	 helper.moveProgress(70, 70, 90) 
-	
-	 
-
-
-	} ,
+	},
+oncreate: function(vnode) { 
+	helper.difftext(Agency.original_selected.physical_address, vnode.attrs.agency.physical_address, "address") 
+	helper.difftext(Agency.original_selected.phone_number,vnode.attrs.agency.phone_number, "phone") 
+	helper.difftext(Agency.original_selected_program.description,vnode.attrs.program.description, "description") 
+},	
 view: function(vnode) {
 		return(
 
@@ -23,8 +24,8 @@ view: function(vnode) {
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
 					m("p", m("strong", "Name: " ), vnode.attrs.agency.name),
-					m("p", m("strong", "Full Physical 	Address: "), vnode.attrs.agency.physical_address),
-					m("p", m("strong", "Phone Number: "), vnode.attrs.agency.phone_number),
+					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
+					m("p", m("strong", "Full Physical Address: "), m("pre[id=phone]")),
 					
 					]),
 
@@ -36,7 +37,7 @@ view: function(vnode) {
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
 					m("p", m("strong", "Name: "), vnode.attrs.program.name),
-					m("p", m("strong", "Description: "), vnode.attrs.program.description),
+					m("p", m("strong", "Description: "), m("pre[id=description]")),
 					m("p", m("strong", "Full Physical Address: "), vnode.attrs.program.physical_address),
 					m("p", m("strong", "Website: "), vnode.attrs.program.website),
 					m("p", m("strong", "Schedule: "), vnode.attrs.program.hours),

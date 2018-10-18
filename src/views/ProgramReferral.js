@@ -17,11 +17,7 @@ function validateLanguage(languages){
     document.getElementById("languageerror").innerHTML = ""
 
   }
-
-
 }
-
-
 
 
 // function checkBoxes(){
@@ -40,14 +36,12 @@ function validateLanguage(languages){
 
 //  }
   
-// }
-
 
 //single select
 
 
 function getSelectedOptions(sel) {
-console.log(sel)
+
   var opts = [],
     opt;
   var len = sel.options.length;
@@ -78,12 +72,11 @@ view: function(vnode) {
                   m("legend[style=font-size:16px]", Agency.selected.name),
                   m("label", "Program Need Domain(s)"),
                   m("p", "Currently: " + vnode.attrs.program.service_type.join(', ')),
-                  m("select[id=service_type_select][multiple=multiple]", { 
-                           
-                            onchange: function(e) { 
+                  m("select[id=service_type_select][multiple=multiple]", {  
+                          onchange: function(e) { 
                            vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
                          }},
-                    m("option[value=1]", "education"),
+                    m("option[value=1][id=education]", {  }, "education"),
                     m("option[value=2]" , "legal"),
                     m("option[value=3]", "food"),
                     m("option[value=4]", "housing"),
@@ -112,7 +105,6 @@ view: function(vnode) {
                                                                             vnode.attrs.program.documents_required  = e.currentTarget.value;
                                                                         }
                                                                         }),
-              //]),
               m("label", "Program Payment Options"),
               m("textarea.form-control payment options",{ value: vnode.attrs.program.fee_structure,
                                           oninput: function(e) {
@@ -138,10 +130,7 @@ view: function(vnode) {
                           vnode.attrs.program.eligibility  = e.currentTarget.value;
                           }
                      })
-              		
-
                     ),
-
                 	]),
 
                   m("div.buttons",
@@ -157,18 +146,7 @@ view: function(vnode) {
                         },"Next")
                     )
     		    ])
-            ])
-
-
-
-
-
-
-
-
-
-
-
+          ])
 		)
 	}	
 

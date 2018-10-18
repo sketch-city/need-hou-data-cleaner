@@ -1,5 +1,6 @@
 var m = require('mithril')
 
+
 var Agency = {
 
 	list: [],
@@ -18,6 +19,7 @@ var Agency = {
 
 
 	selected: {},
+    original_selected: {},
 	loadAgency: function(name){
 		return m.request({
 			method: "GET",
@@ -25,7 +27,7 @@ var Agency = {
 			withCredentials: false,
 		}).then(function(result){
 			Agency.selected = result[0]
-			
+            Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
 		})
 	},
 
@@ -46,8 +48,7 @@ var Agency = {
 	},
 
 	selected_program: {},
-	new_program: {},
-	
+	original_selected_program: {},
 	loadProgram: function(id){
 		return m.request({ 
 			method: "GET",
@@ -56,6 +57,7 @@ var Agency = {
 		}).then(function(result){
 			if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
 				Agency.selected_program = result[0]	
+                Agency.original_selected_program = JSON.parse(JSON.stringify(result[0]));
 			}
 		}).catch(function(error) {
 			console.log(error)
@@ -169,5 +171,6 @@ var Agency = {
 }
 
 module.exports = Agency;
-window.Agency = Agency; 
+window.Agency = Agency;
+
 
