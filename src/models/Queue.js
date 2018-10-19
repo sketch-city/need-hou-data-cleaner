@@ -21,6 +21,7 @@ queue_list: [],
 	queueProgram: {},
 	queueLanguage: {},
 	type_submission: "",
+    serviceTypes: "",
     getQueueItem: function(queue_id) {
         return m.request({
             method: "GET",
@@ -30,6 +31,7 @@ queue_list: [],
         	  Queue.type_submission = result[0].submission_type
               Queue.queueAgency = result[0].submission.agency_data
               Queue.queueProgram = result[0].submission.program_data
+              //Queue.serviceTypes = result[0].submission.program_data.service_type.join(', ')
 
               Queue.queueLanguage = result[0].submission.language_data
         }).catch(function(error){

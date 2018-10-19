@@ -3,14 +3,12 @@ var Queue = require("../models/Queue")
 var Agency = require("../models/Agency")
 var helper = require("../helper")
 
-
-function printArray(arr){
-	return(arr.join(', '))
-}
-
-
 module.exports = {
-oninit: function(vnode) { Queue.getQueueItem(vnode.attrs.id) },
+oninit: function(vnode) { 
+	Queue.getQueueItem(vnode.attrs.id)
+	// Queue.queueProgram.service_type.join(', ')
+
+},
 
 // 	then(function() { 
 // 	document.getElementById("queuesubmit").disabled = false;
@@ -46,10 +44,11 @@ view: function(vnode) {
 					m("p", m("strong", "Contact Title: "), Queue.queueProgram.contact_title),
 					m("p", m("strong", "Contact Email: "), Queue.queueProgram.contact_email),
 					m("p", m("strong", "Contact Phone: "), Queue.queueProgram.contact_phonenumber),
+					//m("ul", )
 					// Queue.queueProgram.service_type.map(function(item){ return(
 					// 															m("li", item)
 					// 															)}),
-					//m("p", m("strong", "Need Domain: "),  Queue.queueProgram.service_type ),
+					m("p", m("strong", "Need Domain: "), (Queue.queueProgram.service_type || []).join(', ')),
 					m("p", m("strong", "Languages: "), Queue.queueProgram.language_arr),
 					m("p", m("strong", "How to Refer: "), Queue.queueProgram.application_process),
 					m("p", m("strong", "Required Document Links: "), Queue.queueProgram.documents_required),
