@@ -19,19 +19,20 @@ function validateLanguage(languages){
   }
 }
 
-// function setSelectedIndex(s, v) {
-//     document.getElementById('service_type_select').options
-//     for ( var i = 0; i < s.length; i++ ) {
-//         if ( s[i].textContent.trim() == v ) {
-//           var option = document.createElement("option");
-//             option.text = v;
-//             x.add(option);
-          
-//         }
 
-//     }
+function getSelectedOption(sel) {
+  var opts = [],
+      opt;
+  var len = sel.options.length;
+  for (var i = 0; i < len; i++) {
+    opt = sel.options[i];
+    if (opt.selected) {
+      console.log(opt.label)
+      return(opt.label)
+    }
+  }
+}
 
-// }
 
 
 function getSelectedOptions(sel) {
@@ -105,17 +106,30 @@ view: function(vnode) {
                                                                         }
                                                                         }),
               m("label", "Accepting Clients?"),
-              m("input.form-control[type=text]",{ value: vnode.attrs.program.accepting_clients,
-                                          oninput: function(e) {
-                                                                            vnode.attrs.program.accepting_clients = e.currentTarget.value;
-                                                                        }
-                                                              }),
+              m("select.form-control[id=accepting_clients]", { 
+                      value: vnode.attrs.program.accepting_clients,
+                        onchange: function(e) { 
+                      vnode.attrs.program.accepting_clients = getSelectedOption(document.getElementById('accepting_clients')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+              ),   
+                                                     
             m("label", "Appointment Required?"),
-            m("input.form-control[type=text]",{ value: vnode.attrs.program.appointment_required,
-                                          oninput: function(e) {
-                                                                            vnode.attrs.program.appointment_required = e.currentTarget.value;
-                                                                        }
-                                                              }),
+                       m("select.form-control[id=appointment_required]", { 
+                      value: vnode.attrs.program.appointment_required,
+                        onchange: function(e) { 
+                      vnode.attrs.program.appointment_required = getSelectedOption(document.getElementById('appointment_required')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+              ),
 
               m("label", "Program Eligibility"),
               m("textarea.form-control eligibility",{ value: vnode.attrs.program.eligibility,

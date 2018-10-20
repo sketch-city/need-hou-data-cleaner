@@ -8,7 +8,6 @@ oninit: function(vnode) {
 	 helper.moveProgress(70, 70, 90) 
 	},
 oncreate: function(vnode) { 
-	agency_fields = document.querySelectorAll('pre.agency')
 	program_fields = document.querySelectorAll('pre.program')
 
 	agency = Agency.original_selected
