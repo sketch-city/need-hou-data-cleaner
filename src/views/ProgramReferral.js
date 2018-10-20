@@ -65,7 +65,6 @@ view: function(vnode) {
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
                   m("label", "Program Need Domain(s)"),
-                  m("p", "Currently: " + vnode.attrs.program.service_type.join(', ')),
                   m("select[id=service_type_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))

@@ -8,13 +8,27 @@ oninit: function(vnode) {
 	 helper.moveProgress(70, 70, 90) 
 	},
 oncreate: function(vnode) { 
-	helper.difftext(Agency.original_selected.physical_address, vnode.attrs.agency.physical_address, "address") 
-	helper.difftext(Agency.original_selected.phone_number,vnode.attrs.agency.phone_number, "phone") 
-	helper.difftext(Agency.original_selected_program.description,vnode.attrs.program.description, "description") 
+	agency_fields = document.querySelectorAll('pre.agency')
+	program_fields = document.querySelectorAll('pre.program')
+
+	agency = Agency.original_selected
+	program = Agency.original_selected_program
+
+	helper.difftext(agency["name"], vnode.attrs.agency["name"], "agency_name") 
+	helper.difftext(agency["physical_address"], vnode.attrs.agency["physical_address"], "agency_physical_address") 
+	helper.difftext(agency["phone_number"], vnode.attrs.agency["phone_number"], "agency_phone_number") 
+	
+
+	for(i = 0; i < program_fields.length; i++){
+		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
+			helper.difftext(program[program_fields[i].id].join(', ') || "", vnode.attrs.program[program_fields[i].id].join(', ') || "", program_fields[i].id) 			
+		} else{
+			helper.difftext(program[program_fields[i].id] || "", vnode.attrs.program[program_fields[i].id] || "", program_fields[i].id) 
+		}
+	}
 },	
 view: function(vnode) {
 		return(
-
 			m("div.reviewpage[id=wrap_all]", [
 				m("div.orgreview", [
 					m("h2", "Organization Details. ",
@@ -23,9 +37,9 @@ view: function(vnode) {
 							 	 href: vnode.attrs.org_route, 
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
-					m("p", m("strong", "Name: " ), vnode.attrs.agency.name),
-					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					m("p", m("strong", "Full Physical Address: "), m("pre[id=phone]")),
+					m("p", m("strong", "Name: " ), m("pre.agency[id=agency_name]")),
+					m("p", m("strong", "Full Physical Address: "), m("pre.agency[id=agency_physical_address]")),
+					m("p", m("strong", "Phone Number: "), m("pre.agency[id=agency_phone_number]")),
 					
 					]),
 
@@ -36,26 +50,26 @@ view: function(vnode) {
 							 	 href: vnode.attrs.program_route, 
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
-					m("p", m("strong", "Name: "), vnode.attrs.program.name),
-					m("p", m("strong", "Description: "), m("pre[id=description]")),
-					m("p", m("strong", "Full Physical Address: "), vnode.attrs.program.physical_address),
-					m("p", m("strong", "Website: "), vnode.attrs.program.website),
-					m("p", m("strong", "Schedule: "), vnode.attrs.program.hours),
-					m("p", m("strong", "Holiday Schedule: "), vnode.attrs.program.holiday_schedule),
-					m("p", m("strong", "Transportation: "), vnode.attrs.program.transportation),
-					m("p", m("strong", "Contact First Name: "), vnode.attrs.program.contact_firstname),
-					m("p", m("strong", "Contact Last Name: "), vnode.attrs.program.contact_lastname),
-					m("p", m("strong", "Contact Title: "), vnode.attrs.program.contact_title),
-					m("p", m("strong", "Contact Email: "), vnode.attrs.program.contact_email),
-					m("p", m("strong", "Contact Phone: "), vnode.attrs.program.contact_phonenumber),
-					m("p", m("strong", "Need Domain: "), vnode.attrs.program.service_type.join(', ')),
-					m("p", m("strong", "Languages: "), vnode.attrs.program.language_arr),
-					m("p", m("strong", "How to Refer: "), vnode.attrs.program.application_process),
-					m("p", m("strong", "Required Document Links: "), vnode.attrs.program.documents_required),
-					m("p", m("strong", "Payment Options: "), vnode.attrs.program.fee_structure),
-					m("p", m("strong", "Accepting Clients?: "), vnode.attrs.program.accepting_clients),				
-					m("p", m("strong", "Appointment Required?: "), vnode.attrs.program.appointment_required),
-					m("p", m("strong", "Eligibility: "), vnode.attrs.program.eligibility),
+					m("p", m("strong", "Name: "),m("pre.program[id=name]")),
+					m("p", m("strong", "Description: "), m("pre.program[id=description]")),
+					m("p", m("strong", "Full Physical Address: "), m("pre.program[id=physical_address]")),
+					m("p", m("strong", "Website: "), m("pre.program[id=website]")),
+					m("p", m("strong", "Schedule: "), m("pre.program[id=hours]")),
+					m("p", m("strong", "Holiday Schedule: "), m("pre.program[id=holiday_schedule]")),
+					m("p", m("strong", "Transportation: "), m("pre.program[id=transportation]")),
+					m("p", m("strong", "Contact First Name: "),m("pre.program[id=contact_firstname]")),
+					m("p", m("strong", "Contact Last Name: "), m("pre.program[id=contact_lastname]")),
+					m("p", m("strong", "Contact Title: "), m("pre.program[id=contact_title]")),
+					m("p", m("strong", "Contact Email: "), m("pre.program[id=contact_email]")),
+					m("p", m("strong", "Contact Phone: "), m("pre.program[id=phone_number]")),
+					m("p", m("strong", "Need Domain: "), m("pre.program[id=service_type]")),
+					m("p", m("strong", "Languages: "), m("pre.program[id=language_arr]")),
+					m("p", m("strong", "How to Refer: "), m("pre.program[id=application_process]")),
+					m("p", m("strong", "Required Document Links: "), m("pre.program[id=documents_required]")),
+					m("p", m("strong", "Payment Options: "),m("pre.program[id=fee_structure]")),
+					m("p", m("strong", "Accepting Clients?: "), m("pre.program[id=accepting_clients]")),				
+					m("p", m("strong", "Appointment Required?: "), m("pre.program[id=appointment_required]")),
+					m("p", m("strong", "Eligibility: "), m("pre.program[id=eligibility]")),
 				
 
 					]),

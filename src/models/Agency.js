@@ -65,7 +65,7 @@ var Agency = {
 		})
 	},
 
-	languages:[],
+	language_arr:[],
 	loadLanguages: function(program_id){
 		return m.request({
 			method: "GET",
@@ -73,6 +73,7 @@ var Agency = {
 			withCredentials: false,
 		}).then(function(result){
 			Agency.selected_program.language_arr = result.language_arr.join(', ')
+            Agency.original_selected_program.language_arr = result.language_arr.join(', ')
 			}).catch(function(error){
 				console.log(error)
 			})
