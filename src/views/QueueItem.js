@@ -5,14 +5,15 @@ var helper = require("../helper")
 
 module.exports = {
 oninit: function(vnode) { 
-	Queue.getQueueItem(vnode.attrs.id)
+	Queue.getQueueItem(vnode.attrs.id).
+		then(function() { 
+	document.getElementById("queuesubmit").disabled = false;
+	document.getElementById("queuereject").disabled = false;
+})
 
 },
 
-// 	then(function() { 
-// 	document.getElementById("queuesubmit").disabled = false;
-// 	document.getElementById("queuereject").disabled = false;
-// }
+
 
 view: function(vnode) {
 		return(
