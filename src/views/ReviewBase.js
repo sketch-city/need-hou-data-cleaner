@@ -10,8 +10,11 @@ oninit: function(vnode) {
 	},
 oncreate: function(vnode) { 
 	program_fields = document.querySelectorAll('pre.program')
-	agency = Agency.original_selected
-	program = Agency.original_selected_program
+
+	//abstract agency and program
+	agency = vnode.attrs.original_agency
+	program = vnode.attrs.original_program
+
 	helper.difftext(agency["name"], vnode.attrs.agency["name"], "agency_name") 
 	helper.difftext(agency["physical_address"], vnode.attrs.agency["physical_address"], "agency_physical_address") 
 	helper.difftext(agency["phone_number"], vnode.attrs.agency["phone_number"], "agency_phone_number") 

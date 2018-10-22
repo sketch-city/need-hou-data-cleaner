@@ -2,6 +2,7 @@ var m = require("mithril")
 var Queue = require("../models/Queue")
 var Agency = require("../models/Agency")
 var helper = require("../helper")
+var ReviewFields = require("./ReviewFields")
 
 module.exports = {
 oninit: function(vnode) { 
@@ -9,11 +10,28 @@ oninit: function(vnode) {
 		then(function() { 
 	document.getElementById("queuesubmit").disabled = false;
 	document.getElementById("queuereject").disabled = false;
+}).then(function(){ 
+	Agency.loadAgency(Queue.queueAgency.name)
 })
+.then(function(){ Agency.loadProgram(Queue.queueProgram.id)})
 
 },
+// oncreate: function(vnode) { 
+// 	program_fields = document.querySelectorAll('pre.program')
+// 	agency = Agency.selected
+// 	program = Agency.selected_program
+// 	helper.difftext(agency["name"], vnode.attrs.agency["name"], "agency_name") 
+// 	// helper.difftext(agency["physical_address"], vnode.attrs.agency["physical_address"], "agency_physical_address") 
+// 	// helper.difftext(agency["phone_number"], vnode.attrs.agency["phone_number"], "agency_phone_number") 
 
-
+// 	// for(i = 0; i < program_fields.length; i++){
+// 	// 	if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
+// 	// 		helper.difftext(program[program_fields[i].id].join(', ') || "", vnode.attrs.program[program_fields[i].id].join(', ') || "", program_fields[i].id) 			
+// 	// 	} else{
+// 	// 		helper.difftext(program[program_fields[i].id] || "", vnode.attrs.program[program_fields[i].id] || "", program_fields[i].id) 
+// 	// 	}
+// 	// }
+// },
 
 view: function(vnode) {
 		return(
@@ -22,6 +40,7 @@ view: function(vnode) {
         			m("li",
         				m("a", "Logout"))),
 			m("div.queuepage[id=wrap_all]",
+				//m(ReviewFields, {agency: Queue.queueAgency, program:  Queue.queueProgram }),
 				m("div.orgqueue", [
 					m("h2", "Organization Details. "),
 					m("p", m("strong", "Name: " ), Queue.queueAgency.name),

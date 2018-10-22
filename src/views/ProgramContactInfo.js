@@ -57,7 +57,7 @@ view: function(vnode) {
                 m("div.agencyedit col-md-12",[                 
     		    m("form", [
                 m("div.form-group[style=width:400px]",
-                  m("legend[style=font-size:16px]"),
+                  m("legend[style=font-size:16px]", Agency.selected.name),
               		m("label", "Program Name"),
 							m("input.form-control[type=text][id=programname]",{ value: vnode.attrs.program.name,
 																onchange: function(e) { 
