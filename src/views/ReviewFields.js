@@ -9,7 +9,7 @@ view: function(vnode) {
 			m("div.review_content",
 				m("div.orgreview", [
 					m("h2", "Organization Details. ",
-						m("button[type=submit][style=font-size:10px; margin-left:50px;].btn btn-default", 
+						m("button[type=submit][id=editorg][style=font-size:10px; margin-left:50px;].btn btn-default", 
 								{
 							 	 href: vnode.attrs.org_route, 
 							 	 oncreate: m.route.link 
@@ -22,7 +22,7 @@ view: function(vnode) {
 
 				m("div.programreview", [
 					m("h2", "Program Details. ",
-						m("button[type=submit][style=font-size:10px;margin-left:50px;].btn btn-default", 
+						m("button[type=submit][id=editprogram][style=font-size:10px;margin-left:50px;].btn btn-default", 
 								{
 							 	 href: vnode.attrs.program_route, 
 							 	 oncreate: m.route.link 
