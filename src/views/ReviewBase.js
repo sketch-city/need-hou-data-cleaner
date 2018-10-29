@@ -10,8 +10,6 @@ oninit: function(vnode) {
 	},
 oncreate: function(vnode) { 
 	program_fields = document.querySelectorAll('pre.program')
-
-	//abstract agency and program
 	agency = vnode.attrs.original_agency
 	program = vnode.attrs.original_program
 
@@ -35,16 +33,16 @@ view: function(vnode) {
 				m("div.reviewbuttons",
 				m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
-
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addQueueItem({
+								status: "new",
 								submission_type: "new_agency", 
 								submission: { 
 								agency_data: vnode.attrs.agency,
 								program_data: vnode.attrs.program,
 								language_data: {
 									program_id: vnode.attrs.program.id,
-									language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')
+									language_arr: vnode.attrs.program.language_arr
 									}
 								}
 
@@ -55,13 +53,14 @@ view: function(vnode) {
 
 						else if(vnode.attrs.agencyFunction === "new_program"){
 							Agency.addQueueItem({
+								status: "new",
 								submission_type: "new_program", 
 								submission: { 
 								agency_data: vnode.attrs.agency,
 								program_data: vnode.attrs.program,
 								language_data: {
 									program_id: vnode.attrs.program.id,
-									language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')
+									language_arr: vnode.attrs.program.language_arr
 									}
 								}
 
@@ -71,13 +70,14 @@ view: function(vnode) {
 
 						else if(vnode.attrs.agencyFunction === "existing_program"){
 							Agency.addQueueItem({
+								status: "new",
 								submission_type: "existing_program", 
 								submission: { 
 								agency_data: vnode.attrs.agency,
 								program_data: vnode.attrs.program,
 								language_data: {
 									program_id: vnode.attrs.program.id,
-									language_arr: vnode.attrs.program.language_arr.replace(/ /g,'').split(',')
+									language_arr: vnode.attrs.program.language_arr
 									}
 								}
 
@@ -95,6 +95,7 @@ view: function(vnode) {
 			},
 				"Submit"),
 			m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
+				
 				href: "/queue", 
 				oncreate: m.route.link 
 

@@ -4,22 +4,6 @@ var helper = require("../helper")
 var Choices = require("choices.js")
 
 
-function validateLanguage(languages){
-  language_arr = languages.split(" ")
-  if(language_arr.length > 1 &&  !languages.includes(',')) {
-    document.getElementById("nextbutton").disabled = true;
-    document.getElementById("languages").classList.add("has-error")
-    document.getElementById("languageerror").innerHTML = "Please separate multiple languages with a comma."
-
-  } else{
-    document.getElementById("nextbutton").disabled = false;
-    document.getElementById("languages").classList.remove("has-error")
-    document.getElementById("languageerror").innerHTML = ""
-
-  }
-}
-
-
 function getSelectedOption(sel) {
   var opts = [],
       opt;
@@ -55,8 +39,8 @@ oninit: function(vnode) {
   helper.moveProgress(50, 50, 70)
 },
 oncreate: function(vnode){
- choices = new Choices('#service_type_select');
- //setSelectedIndex(document.getElementsByClassName('choices__item choices__item--choice choices__item--selectable'),"legal");
+ service_type_choices = new Choices('#service_type_select');
+ program_language_choices = new Choices('#program_languages_select');
 },
 view: function(vnode) {	
 	return(
@@ -70,7 +54,7 @@ view: function(vnode) {
                           onchange: function(e) { 
                            vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
                          }},
-                    m("option[value=1][id=education]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
+                    m("option[value=1]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
                     m("option[value=2]",{ selected: vnode.attrs.program.service_type.includes('legal')},  "legal"),
                     m("option[value=3]",{ selected: vnode.attrs.program.service_type.includes('food')}, "food"),
                     m("option[value=4]",{ selected: vnode.attrs.program.service_type.includes('housing')}, "housing"),
@@ -81,11 +65,21 @@ view: function(vnode) {
 
             m("div.form-group[id=languages]",
               m("label.control-label", "Program Languages Spoken"),
-              m("input.form-control[type=text][id=languages]",{ value: vnode.attrs.program.language_arr,
-                                          oninput: function(e) { vnode.attrs.program.language_arr = e.currentTarget.value;
-                                                                },
-                                          onblur: function() { validateLanguage(vnode.attrs.program.language_arr) } 
-                                                              }),
+               m("select[id=program_languages_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('program_languages_select'))
+                         }},
+                    m("option[value=1]",{ selected: vnode.attrs.program.language_arr.includes('English')}, "English"),
+                    m("option[value=2]",{ selected: vnode.attrs.program.language_arr.includes('Spanish')},  "Spanish"),
+                    m("option[value=3]",{ selected: vnode.attrs.program.language_arr.includes('Vietnamese')}, "Vietnamese"),
+                    m("option[value=4]",{ selected: vnode.attrs.program.language_arr.includes('Chinese')}, "Chinese"),
+                    m("option[value=5]",{ selected: vnode.attrs.program.language_arr.includes('Arabic')}, "Arabic"),
+                    m("option[value=6]",{ selected: vnode.attrs.program.language_arr.includes('French')}, "French")),
+
+
+
+
+         
               m("span[id=languageerror]")),
               m("label", "How to refer"),
               m("textarea.form-control application_process",{ value: vnode.attrs.program.application_process,

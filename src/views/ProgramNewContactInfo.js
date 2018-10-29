@@ -22,7 +22,7 @@ var newProgram = {
     accepting_clients: "",
     holiday_schedule:"",
     transportation: "",
-    language_arr: "",
+    language_arr: [],
     contact_firstname: "",
     contact_lastname: "",
     contact_title: "",
