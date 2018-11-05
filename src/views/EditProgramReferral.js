@@ -6,6 +6,6 @@ var ProgramReferral = require("./ProgramReferral")
 module.exports = {
 
 view: function() {
-	return m(ProgramReferral , { agency: Agency.selected, program: Agency.selected_program, previous_link: "/editprogramcontact" , next_link: "/review"})
+	return m(ProgramReferral , { agency: Agency.selected, program: Agency.selected_program, previous_link: "/editprogramcontact" , next_link: "/editprogrameligibility"})
 	}	
 }

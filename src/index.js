@@ -7,6 +7,7 @@ var ProgramNewContactInfo = require('./views/ProgramNewContactInfo')
 var ProgramNewReferral = require('./views/ProgramNewReferral')
 var EditProgramContact = require('./views/EditProgramContact')
 var EditProgramReferral = require('./views/EditProgramReferral')
+var EditProgramEligibility = require('./views/EditProgramEligibility')
 var Layout = require("./views/Layout")
 var Review = require("./views/Review")
 var AgencyNew = require("./views/AgencyNew")
@@ -92,6 +93,13 @@ m.route(document.body, "/selectagency", {
         }
     },
 
+    "/editprogrameligibility":{
+        render: function(vnode){
+            return m(Layout, m(EditProgramEligibility, vnode.attrs))
+        }
+    },
+
+
     "/agencyreview": {
         render: function(){
             return m(Layout, m(AgencyReview))
@@ -121,6 +129,8 @@ m.route(document.body, "/selectagency", {
             return  m(QueueList)
         }
     },
+
+
 
     "/queue/:id":{
         render: function(vnode){

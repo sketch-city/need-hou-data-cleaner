@@ -18,7 +18,7 @@ function setlink() {
   if(Agency.selected_program.name === undefined){
     href = "/agencyreview"
   } else{
-   href = "/editprogramcontact"
+   href = "/editprogramreferral"
   }
   return(href)
 }
