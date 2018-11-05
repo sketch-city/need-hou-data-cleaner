@@ -7,7 +7,7 @@ module.exports = {
         return (
 
             m("section", 
-            	m("ul",
+            	m("ul[id=navbar]",
                     m("li[id=title]", "Organization & Service Update Tool"),
         			m("li[id=logout]",
         				m("a", "Logout")),

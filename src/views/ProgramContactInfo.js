@@ -54,9 +54,11 @@ function validateName(name) {
 module.exports = {
 oninit: function() { helper.moveProgress(40, 40, 50) } ,
 oncreate: function(vnode){
-  picker = new Picker(document.getElementById('schedule'), {
-    format: 'YYYY/MM/DD HH:mm'
-  })
+  schedule_fields = document.querySelectorAll('input.schedule')
+  for(i = 0; i < schedule_fields.length; i++){
+    picker = new Picker(document.getElementById(schedule_fields[i].id), {format: 'HH:mm'})
+  }
+
 },
 view: function(vnode) {	
 	return(
@@ -91,9 +93,54 @@ view: function(vnode) {
                           vnode.attrs.program.website  = e.currentTarget.value;
                           }
                      }),
-
             m("label", "Program Schedule"),
-            m("input.form-control[id=schedule]"),
+            m("table.table",
+              m("thead",
+                m("tr",
+                  m("th", "Day"),
+                  m("th", "Start Time"),
+                  m("th", "End Time"))),
+                m("tbody",
+                  m("tr", 
+                    m("td", "Monday"),
+                    m("td", m("input.form-control schedule[id=monday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule[id=monday_end][style=width:50%]"))
+                    ),
+                  m("tr", 
+                    m("td", "Tuesday"),
+                    m("td", m("input.form-control schedule[id=tuesday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule [id=tuesday_end][style=width:50%]"))
+                    ),
+                  m("tr", 
+                    m("td", "Wednesday"),
+                    m("td", m("input.form-control schedule[id=wednesday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule[id=wednesday_end][style=width:50%]"))
+                    ),
+                  m("tr", 
+                    m("td", "Thursday"),
+                    m("td", m("input.form-control schedule[id=thursday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule[id=thursday_end][style=width:50%]"))
+                    ),
+                  m("tr", 
+                    m("td", "Friday"),
+                    m("td", m("input.form-control schedule[id=friday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule[id=friday_end][style=width:50%]"))
+                    ),
+                  m("tr", 
+                    m("td", "Saturday"),
+                    m("td", m("input.form-control schedule[id=saturday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule[id=saturday_end][style=width:50%]"))
+                    ),
+                  m("tr", 
+                    m("td", "Sunday"),
+                    m("td", m("input.form-control schedule[id=sunday_start][style=width:50%]")),
+                    m("td", m("input.form-control schedule[id=sunday_end][style=width:50%]"))
+                    )
+
+
+
+
+                  )),
 
             m("label", "Program Holiday Schedule"),
               m("textarea.form-control",{ value: vnode.attrs.program.holiday_schedule,
