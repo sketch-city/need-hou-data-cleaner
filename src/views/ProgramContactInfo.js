@@ -2,7 +2,7 @@ var m = require("mithril")
 var Agency = require("../models/Agency")
 var helper = require("../helper")
 var TimePicker = require("pickerjs")
-
+var Choices = require("choices.js")
 
 function formatMapQuery(address){
   var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="
@@ -54,6 +54,8 @@ function validateName(name) {
 module.exports = {
 oninit: function() { helper.moveProgress(40, 40, 50) } ,
 oncreate: function(vnode){
+  service_type_choices = new Choices('#service_type_select')
+  website_languages_choices = new Choices('#website_languages_select')
   schedule_fields = document.querySelectorAll('input.schedule')
   for(i = 0; i < schedule_fields.length; i++){
     picker = new Picker(document.getElementById(schedule_fields[i].id), {format: 'HH:mm'})
@@ -66,21 +68,8 @@ view: function(vnode) {
                 m("div.agencyedit col-md-12",[                 
     		    m("form", [
                 m("div.form-group[style=width:400px]",
-                  m("legend[style=font-size:16px]", Agency.selected.name),
-              		m("label", "Program Name"),
-							m("input.form-control[type=text][id=programname]",{ value: vnode.attrs.program.name,
-																onchange: function(e) { 
-		                                                    vnode.attrs.program.name = e.currentTarget.value;
-		                                                                    } }),
-					m("label", "Program Description"),
-							m("textarea.form-control",{ 
-								value: vnode.attrs.program.description, 
-								//oninput: m.withAttr("value", function(v) {state.term = v}), value: state.term}
-								//value: state.description,
-								oninput: function(e) {
-													vnode.attrs.program.description  = e.currentTarget.value;
-													}
-																}),
+                  m("legend[style=font-size:16px]"),
+           
           m("label", "Program Full Physical Address"),
             m("input.form-control[type=text]",{ value: vnode.attrs.program.physical_address,
                                           oninput: function(e) {
@@ -93,6 +82,19 @@ view: function(vnode) {
                           vnode.attrs.program.website  = e.currentTarget.value;
                           }
                      }),
+
+            m("label", "Keyword(s)"),
+                  m("select[id=service_type_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
+                         }},
+                    m("option[value=1]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
+                    m("option[value=2]",{ selected: vnode.attrs.program.service_type.includes('legal')},  "legal"),
+                    m("option[value=3]",{ selected: vnode.attrs.program.service_type.includes('food')}, "food"),
+                    m("option[value=4]",{ selected: vnode.attrs.program.service_type.includes('housing')}, "housing"),
+                    m("option[value=5]",{ selected: vnode.attrs.program.service_type.includes('employment')}, "employment"),
+                    m("option[value=6]",{ selected: vnode.attrs.program.service_type.includes('family')}, "family"),
+                    m("option[value=7]",{ selected: vnode.attrs.program.service_type.includes('health')}, "health")),
             m("label", "Program Schedule"),
             m("table.table",
               m("thead",
@@ -190,6 +192,12 @@ view: function(vnode) {
 
 
                   )),
+           m("label", "Schedule Notes"),
+              m("input.form-control[type=text]",{ value: vnode.attrs.program.schedule_notes,
+                oninput: function(e) {
+                          vnode.attrs.program.schedule_notes  = e.currentTarget.value;
+                          }
+                     }),
 
             m("label", "Program Holiday Schedule"),
               m("textarea.form-control",{ value: vnode.attrs.program.holiday_schedule,
@@ -200,6 +208,20 @@ view: function(vnode) {
             m("label", "Program Transportation"),
               m("textarea.form-control",{ value: vnode.attrs.program.transportation  = formatMapQuery(vnode.attrs.program.physical_address)
                      }),
+
+            m("label", "Website Languages"),
+            m("select[id=website_languages_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.website_languages  = getSelectedOptions(document.getElementById('website_languages_select'))
+                         }},
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('English')}, "English"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Spanish')},  "Spanish"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Vietnamese')}, "Vietnamese"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Chinese')}, "Chinese"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Arabic')}, "Arabic"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('French')}, "French"))
+
+
          
                     ),
 

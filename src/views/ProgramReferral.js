@@ -39,7 +39,6 @@ oninit: function(vnode) {
   helper.moveProgress(50, 50, 70)
 },
 oncreate: function(vnode){
- service_type_choices = new Choices('#service_type_select')
  program_language_choices = new Choices('#program_languages_select')
  current_id_choices = new Choices('#current_id_select')
  expired_id_choices = new Choices('#expired_id_select')
@@ -51,6 +50,64 @@ view: function(vnode) {
     		    m("form", [
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]", Agency.selected.name),
+                   m("label", "Program Name"),
+            m("input.form-control[type=text][id=programname]",{ value: vnode.attrs.program.name,
+                                onchange: function(e) { 
+                                                        vnode.attrs.program.name = e.currentTarget.value;
+                                                                        } }),
+          m("label", "Program Neighbhorhood/Area"),
+          m("input.form-control[type=text][id=service_area]",{ value: vnode.attrs.program.service_area,
+                                onchange: function(e) { 
+                                                        vnode.attrs.program.service_area = e.currentTarget.value;
+                                                                        } }),
+
+          m("label", "Program Description"),
+              m("textarea.form-control",{ 
+                value: vnode.attrs.program.description, 
+                oninput: function(e) {
+                          vnode.attrs.program.description  = e.currentTarget.value;
+                          }
+                }),
+            m("label", "Accepting Clients?"),
+              m("select.form-control[id=accepting_clients]", { 
+                      value: vnode.attrs.program.accepting_clients,
+                        onchange: function(e) { 
+                      vnode.attrs.program.accepting_clients = getSelectedOption(document.getElementById('accepting_clients')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No"),
+                         m("option", "Waitlist")
+               
+              ),
+            m("label", "If you selected 'waitlist', how many days till service?"),
+            m("input.form-control", { value: vnode.attrs.program.waitlist_wait, 
+                                       oninput: function(e){
+                                        vnode.attrs.program.waitlist_wait = e.currentTarget.value
+                                      }
+                                       }),
+            m("label", "Next steps for client to take:"),
+            m("textarea.form-control[id=next_steps]",{ value: vnode.attrs.program.next_steps,
+                                onchange: function(e) { 
+                                                        vnode.attrs.program.next_steps = e.currentTarget.value;
+                                                                        } }),
+
+            m("div.form-group[id=languages]",
+              m("label.control-label", "Program Languages Spoken"),
+               m("select[id=program_languages_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('program_languages_select'))
+                         }},
+                    m("option[value=1]",{ selected: vnode.attrs.program.language_arr.includes('English')}, "English"),
+                    m("option[value=2]",{ selected: vnode.attrs.program.language_arr.includes('Spanish')},  "Spanish"),
+                    m("option[value=3]",{ selected: vnode.attrs.program.language_arr.includes('Vietnamese')}, "Vietnamese"),
+                    m("option[value=4]",{ selected: vnode.attrs.program.language_arr.includes('Chinese')}, "Chinese"),
+                    m("option[value=5]",{ selected: vnode.attrs.program.language_arr.includes('Arabic')}, "Arabic"),
+                    m("option[value=6]",{ selected: vnode.attrs.program.language_arr.includes('French')}, "French")),
+
+              ),
+
                     m("label.control-label", "Select all current accepted ID's"),
                     m("select[id=current_id_select][multiple=multiple]", {  
                           onchange: function(e) { 
@@ -75,34 +132,8 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Any government-issued non-photo document')}, "Any government-issued non-photo document"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Alternative evidence')}, "Alternative evidence")
                     ),
-                  m("label", "Keyword(s)"),
-                  m("select[id=service_type_select][multiple=multiple]", {  
-                          onchange: function(e) { 
-                           vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
-                         }},
-                    m("option[value=1]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
-                    m("option[value=2]",{ selected: vnode.attrs.program.service_type.includes('legal')},  "legal"),
-                    m("option[value=3]",{ selected: vnode.attrs.program.service_type.includes('food')}, "food"),
-                    m("option[value=4]",{ selected: vnode.attrs.program.service_type.includes('housing')}, "housing"),
-                    m("option[value=5]",{ selected: vnode.attrs.program.service_type.includes('employment')}, "employment"),
-                    m("option[value=6]",{ selected: vnode.attrs.program.service_type.includes('family')}, "family"),
-                    m("option[value=7]",{ selected: vnode.attrs.program.service_type.includes('health')}, "health")),
                 
 
-            m("div.form-group[id=languages]",
-              m("label.control-label", "Program Languages Spoken"),
-               m("select[id=program_languages_select][multiple=multiple]", {  
-                          onchange: function(e) { 
-                           vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('program_languages_select'))
-                         }},
-                    m("option[value=1]",{ selected: vnode.attrs.program.language_arr.includes('English')}, "English"),
-                    m("option[value=2]",{ selected: vnode.attrs.program.language_arr.includes('Spanish')},  "Spanish"),
-                    m("option[value=3]",{ selected: vnode.attrs.program.language_arr.includes('Vietnamese')}, "Vietnamese"),
-                    m("option[value=4]",{ selected: vnode.attrs.program.language_arr.includes('Chinese')}, "Chinese"),
-                    m("option[value=5]",{ selected: vnode.attrs.program.language_arr.includes('Arabic')}, "Arabic"),
-                    m("option[value=6]",{ selected: vnode.attrs.program.language_arr.includes('French')}, "French")),
-
-              ),
           m("label.control-label", "Does program required proof of address?"),
           m("select.form-control[id=proof_address]", { 
                       value: vnode.attrs.program.proof_address,
@@ -119,37 +150,28 @@ view: function(vnode) {
               ), 
     
             m("label", "Program Required Document Links"),
-              m("textarea.form-control application_process",{ value: vnode.attrs.program.documents_required,
+              m("textarea.form-control",{ value: vnode.attrs.program.documents_required,
                                           oninput: function(e) {
                                                                             vnode.attrs.program.documents_required  = e.currentTarget.value;
                                                                         }
                                                                         }),
+              m("label", "Program Service Cost"),
+              m("textarea.form-control", { value: vnode.attrs.program.service_cost,
+                                        oninput: function(e) {
+                                          vnode.attrs.program.service_cost = e.currentTarget.value;
+
+                                         } 
+                                       }),
+
               m("label", "Program Payment Options"),
               m("textarea.form-control payment options",{ value: vnode.attrs.program.fee_structure,
                                           oninput: function(e) {
                                                                            vnode.attrs.program.fee_structure  = e.currentTarget.value;
                                                                         }
                                                                         }),
-              m("label", "Accepting Clients?"),
-              m("select.form-control[id=accepting_clients]", { 
-                      value: vnode.attrs.program.accepting_clients,
-                        onchange: function(e) { 
-                      vnode.attrs.program.accepting_clients = getSelectedOption(document.getElementById('accepting_clients')) 
-                    }}, 
-                      
-                         m("option", ""), 
-                         m("option", "Yes" ),
-                         m("option", "No"),
-                         m("option", "Waitlist")
-               
-              ), 
 
-            m("label", "If you selected 'waitlist', how many days till service?"),
-            m("input.form-control", { value: vnode.attrs.program.waitlist_wait, 
-                                       oninput: function(e){
-                                        vnode.attrs.program.waitlist_wait = e.currentTarget.value
-                                      }
-                                       }),  
+            
+    
                                                      
             m("label", "Appointment Required?"),
                        m("select.form-control[id=appointment_required]", { 

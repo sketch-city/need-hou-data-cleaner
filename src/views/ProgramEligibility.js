@@ -43,6 +43,7 @@ oncreate: function(vnode){
  income_choices = new Choices('#income_select');
  age_choices = new Choices('#age_select');
  immigration_choices = new Choices('#immigration_select')
+ frontline_languages
 },
 view: function(vnode) {	
 	return(
@@ -109,6 +110,38 @@ view: function(vnode) {
                         m("option",{ selected: vnode.attrs.program.immigration_status.includes('Undocumented ')}, "Undocumented"),
 
                     ),
+
+                    m("label", "Are services available the same day as intake?"),
+                    m("select.form-control[id=service_available_intake]", { 
+                      value: vnode.attrs.program.service_available_intake,
+                        onchange: function(e) { 
+                      vnode.attrs.program.service_available_intake = getSelectedOption(document.getElementById('service_available_intake')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                      ),
+                    m("label", "Intake Notes"),
+                    m("textarea.form-control",{ value: vnode.attrs.program.service_available_intake_notes,
+                                          oninput: function(e) {
+                                                                    vnode.attrs.program.service_available_intake_notes  = e.currentTarget.value;
+                                                                        }
+                        }),
+                    m("label.control-label", "Frontline Staff Languages"),
+                    m("select[id=frontline_languages_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.frontline_languages  = getSelectedOptions(document.getElementById('frontline_languages_select')) 
+                         }},
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('English')}, "English"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Spanish')},  "Spanish"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Vietnamese')}, "Vietnamese"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Chinese')}, "Chinese"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Arabic')}, "Arabic"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('French')}, "French")),
+
+
         
 
                   m("div.buttons",
