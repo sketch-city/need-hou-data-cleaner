@@ -34,19 +34,15 @@ view: function(vnode) {
 					m("p", m("strong", "Schedule: "), m("pre.program[id=hours]")),
 					m("p", m("strong", "Holiday Schedule: "), m("pre.program[id=holiday_schedule]")),
 					m("p", m("strong", "Transportation: "), m("pre.program[id=transportation]")),
-					m("p", m("strong", "Contact First Name: "),m("pre.program[id=contact_firstname]")),
-					m("p", m("strong", "Contact Last Name: "), m("pre.program[id=contact_lastname]")),
-					m("p", m("strong", "Contact Title: "), m("pre.program[id=contact_title]")),
-					m("p", m("strong", "Contact Email: "), m("pre.program[id=contact_email]")),
-					m("p", m("strong", "Contact Phone: "), m("pre.program[id=phone_number]")),
+			
 					m("p", m("strong", "Need Domain: "), m("pre.program[id=service_type]")),
-					m("p", m("strong", "Languages: "), m("pre.program[id=language_arr]")),
-					m("p", m("strong", "How to Refer: "), m("pre.program[id=application_process]")),
+					m("p", m("strong", "Program Languages: "), m("pre.program[id=language_arr]")),
+		
 					m("p", m("strong", "Required Document Links: "), m("pre.program[id=documents_required]")),
 					m("p", m("strong", "Payment Options: "),m("pre.program[id=fee_structure]")),
 					m("p", m("strong", "Accepting Clients?: "), m("pre.program[id=accepting_clients]")),				
 					m("p", m("strong", "Appointment Required?: "), m("pre.program[id=appointment_required]")),
-					m("p", m("strong", "Eligibility: "), m("pre.program[id=eligibility]")),
+		
 				
 
 					])

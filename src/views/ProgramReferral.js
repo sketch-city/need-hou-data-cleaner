@@ -60,7 +60,7 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Any photo ID')}, "Any photo ID"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Visas')}, "Visas"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Foreign-government issued ID')}, "Foreign-government issued ID"),
-                    m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Any government-issued, non-photo documents')}, "Any government-issued, non-photo documents"),
+                    m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Any government-issued non-photo document')}, "Any government-issued non-photo document"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Alternative evidence')}, "Alternative evidence")
                     ),
                    m("label.control-label", "Select all expired accepted ID's"),
@@ -72,7 +72,7 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Any photo ID')}, "Any photo ID"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Visas')}, "Visas"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Foreign-government issued ID')}, "Foreign-government issued ID"),
-                    m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Any government-issued, non-photo documents')}, "Any government-issued, non-photo documents"),
+                    m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Any government-issued non-photo document')}, "Any government-issued non-photo document"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_expired.includes('Alternative evidence')}, "Alternative evidence")
                     ),
                   m("label", "Keyword(s)"),

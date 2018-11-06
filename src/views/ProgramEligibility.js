@@ -78,6 +78,10 @@ view: function(vnode) {
                            vnode.attrs.program.age_eligibility  = getSelectedOptions(document.getElementById('age_select'))
                          }},
                     m("option",{ selected: vnode.attrs.program.service_type.includes('early childhood (approximately 0-4yrs)')}, "early childhood (approximately 0-4yrs)"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('kids (approximately 5-12yrs)')}, "kids (approximately 5-12yrs)"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('youth (approximately 13-18yrs)')}, "youth (approximately 13-18yrs)"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('adult (approximately 19-64yrs)')}, "adult (approximately 19-64yrs)"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('seniors (approximately 65+yrs)')}, "seniors (approximately 65+yrs)"),
                     ),
                      m("label", "Requires enrollment in: "),
                           m("textarea.form-control",{ value: vnode.attrs.program.other_program_enrollment,
@@ -96,7 +100,14 @@ view: function(vnode) {
                           onchange: function(e) { 
                            vnode.attrs.program.immigration_status  = getSelectedOptions(document.getElementById('immigration_status'))
                          }},
-                    //m("option[value=1]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('U.S. Citizen')}, "U.S. Citizen"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Legal Permanent Resident')}, "Legal Permanent Resident"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Temporary Work permit')}, "Temporary Work permit"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Non-immigrant Visa')}, "Non-immigrant Visa"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Immigrant Visa')}, "Immigrant Visa"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Status in process')}, "Status in process"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Undocumented ')}, "Undocumented"),
+
                     ),
         
 

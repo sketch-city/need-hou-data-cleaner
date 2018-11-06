@@ -103,38 +103,87 @@ view: function(vnode) {
                 m("tbody",
                   m("tr", 
                     m("td", "Monday"),
-                    m("td", m("input.form-control schedule[id=monday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule[id=monday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=monday_start][style=width:50%]", { value: vnode.attrs.program.schedule.monday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.monday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule[id=monday_end][style=width:50%]", { value: vnode.attrs.program.schedule.monday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.monday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     ),
                   m("tr", 
                     m("td", "Tuesday"),
-                    m("td", m("input.form-control schedule[id=tuesday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule [id=tuesday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=tuesday_start][style=width:50%]", { value: vnode.attrs.program.schedule.tuesday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.tuesday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule [id=tuesday_end][style=width:50%]", { value: vnode.attrs.program.schedule.tuesday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.tuesday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     ),
                   m("tr", 
                     m("td", "Wednesday"),
-                    m("td", m("input.form-control schedule[id=wednesday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule[id=wednesday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=wednesday_start][style=width:50%]", { value: vnode.attrs.program.schedule.wednesday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.wednesday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule[id=wednesday_end][style=width:50%]", { value: vnode.attrs.program.schedule.wednesday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.wednesday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     ),
                   m("tr", 
                     m("td", "Thursday"),
-                    m("td", m("input.form-control schedule[id=thursday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule[id=thursday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=thursday_start][style=width:50%]", 
+                                      { value: vnode.attrs.program.schedule.thursday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.thursday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule[id=thursday_end][style=width:50%]", 
+                                          { value: vnode.attrs.program.schedule.thursday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.thursday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     ),
                   m("tr", 
                     m("td", "Friday"),
-                    m("td", m("input.form-control schedule[id=friday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule[id=friday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=friday_start][style=width:50%]",
+                      { value: vnode.attrs.program.schedule.friday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.friday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule[id=friday_end][style=width:50%]", 
+                      { value: vnode.attrs.program.schedule.friday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.friday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     ),
                   m("tr", 
                     m("td", "Saturday"),
-                    m("td", m("input.form-control schedule[id=saturday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule[id=saturday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=saturday_start][style=width:50%]",
+                      { value: vnode.attrs.program.schedule.saturday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.saturday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule[id=saturday_end][style=width:50%]",
+                      { value: vnode.attrs.program.schedule.saturday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.saturday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     ),
                   m("tr", 
                     m("td", "Sunday"),
-                    m("td", m("input.form-control schedule[id=sunday_start][style=width:50%]")),
-                    m("td", m("input.form-control schedule[id=sunday_end][style=width:50%]"))
+                    m("td", m("input.form-control schedule[id=sunday_start][style=width:50%]",
+                      { value: vnode.attrs.program.schedule.sunday[0],
+                                          onchange: function(e) { vnode.attrs.program.schedule.sunday[0] = e.currentTarget.value;
+                                                                        }
+                                                              })),
+                    m("td", m("input.form-control schedule[id=sunday_end][style=width:50%]",{ value: vnode.attrs.program.schedule.sunday[1],
+                                          onchange: function(e) { vnode.attrs.program.schedule.sunday[1] = e.currentTarget.value;
+                                                                        }
+                                                              }))
                     )
 
 
