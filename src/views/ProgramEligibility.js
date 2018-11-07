@@ -43,7 +43,10 @@ oncreate: function(vnode){
  income_choices = new Choices('#income_select');
  age_choices = new Choices('#age_select');
  immigration_choices = new Choices('#immigration_select')
- frontline_languages
+ frontline_languages_choices = new Choices('#frontline_languages_select')
+ interpretation_offered_choices = new Choices('#interpretation_offered_select')
+ crisis_services_offered_choices = new Choices('#crisis_services_offered_select')
+
 },
 view: function(vnode) {	
 	return(
@@ -140,6 +143,83 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Chinese')}, "Chinese"),
                     m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Arabic')}, "Arabic"),
                     m("option",{ selected: vnode.attrs.program.frontline_languages.includes('French')}, "French")),
+
+                    m("label.control-label", "Interpretation Offered"),
+                    m("select[id=interpretation_offered_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.interpretation_offered  = getSelectedOptions(document.getElementById('interpretation_offered_select')) 
+                         }},
+                    m("option",{ selected: vnode.attrs.program.interpretation_offered.includes('Yes, for frontline staff')}, "Yes, for frontline staff"),
+                    m("option",{ selected: vnode.attrs.program.interpretation_offered.includes('Yes, for program staff')},  "Yes, for program staff"),
+                    m("option",{ selected: vnode.attrs.program.interpretation_offered.includes('Yes, for billing staff')}, "Yes, for billing staff"),
+                    m("option",{ selected: vnode.attrs.program.interpretation_offered.includes('No, not available')}, "No, not available"),
+                    m("option",{ selected: vnode.attrs.program.interpretation_offered.includes('No, not required')}, "No, not required")),
+
+                    m("label.control-label", "Emergency Crisis-Services Offered"),
+                    m("select[id=crisis_services_offered_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.crisis_services_offered  = getSelectedOptions(document.getElementById('crisis_services_offered_select')) 
+                         }},
+                    m("option",{ selected: vnode.attrs.program.crisis_services_offered.includes('Yes, during service hours')}, "Yes, during service hours"),
+                    m("option",{ selected: vnode.attrs.program.crisis_services_offered.includes('Yes, 24 hour')},  "Yes, 24 hour"),
+                    m("option",{ selected: vnode.attrs.program.crisis_services_offered.includes('Yes, disaster response/recovery')}, "Yes, disaster response/recovery"),
+                    m("option",{ selected: vnode.attrs.program.crisis_services_offered.includes('No')}, "No")),
+
+                    m("label.control-label", "Visual aids offered for low-literacy clients and/or children?"),
+                    m("select.form-control[id=visual_aids_offered]", { 
+                      value: vnode.attrs.program.visual_aids_offered,
+                        onchange: function(e) { 
+                      vnode.attrs.program.visual_aids_offered = getSelectedOption(document.getElementById('visual_aids_offered')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                    ),
+
+                    m("label.control-label", "Does program offer clients an opportunity for consultation before filling out paperwork?"),
+                    m("select.form-control[id=consultation_opportunity]", { 
+                      value: vnode.attrs.program.consultation_opportunity,
+                        onchange: function(e) { 
+                      vnode.attrs.program.consultation_opportunity = getSelectedOption(document.getElementById('consultation_opportunity')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                  ),
+
+                    m("label.control-label", "Does program have a policy to respond to Immigrations and Customs Enforcement requests?"),
+                    m("select.form-control[id=enforcement_request_policy]", { 
+                      value: vnode.attrs.program.enforcement_request_policy,
+                        onchange: function(e) { 
+                      vnode.attrs.program.enforcement_request_policy = getSelectedOption(document.getElementById('enforcement_request_policy')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                  ),
+                    m("label.control-label", "Does program offer a cultural competency/effectiveness training?"),
+                    m("select.form-control[id=cultural_competency_offered]", { 
+                      value: vnode.attrs.program.cultural_competency_offered,
+                        onchange: function(e) { 
+                      vnode.attrs.program.cultural_competency_offered = getSelectedOption(document.getElementById('cultural_competency_offered')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes, required for client-facing staff" ),
+                         m("option", "Yes, optional for client-facing staff"),
+                         m("option", "No, but we are interested in a cultural competency training" ),
+                         m("option", "No, we are not interested in a training" ),
+               
+                  ),
+
+
+
 
 
         

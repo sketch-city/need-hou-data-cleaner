@@ -31,7 +31,6 @@ view: function(vnode) {
 					m("p", m("strong", "Description: "), m("pre.program[id=description]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre.program[id=physical_address]")),
 					m("p", m("strong", "Website: "), m("pre.program[id=website]")),
-					m("p", m("strong", "Schedule: "), m("pre.program[id=hours]")),
 					m("p", m("strong", "Holiday Schedule: "), m("pre.program[id=holiday_schedule]")),
 					m("p", m("strong", "Transportation: "), m("pre.program[id=transportation]")),
 			

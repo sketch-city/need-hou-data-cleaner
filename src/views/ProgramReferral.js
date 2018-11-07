@@ -42,6 +42,7 @@ oncreate: function(vnode){
  program_language_choices = new Choices('#program_languages_select')
  current_id_choices = new Choices('#current_id_select')
  expired_id_choices = new Choices('#expired_id_select')
+ document_language_choices = new Choices('#document_languages_select')
 },
 view: function(vnode) {	
 	return(
@@ -155,6 +156,31 @@ view: function(vnode) {
                                                                             vnode.attrs.program.documents_required  = e.currentTarget.value;
                                                                         }
                                                                         }),
+              m("label", "Document Languages"),
+              m("select[id=document_languages_select][multiple=multiple]", {  
+                          onchange: function(e) { 
+                           vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('document_languages_select'))
+                         }},
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('English')}, "English"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Spanish')},  "Spanish"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Vietnamese')}, "Vietnamese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Chinese')}, "Chinese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Arabic')}, "Arabic"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('French')}, "French")),
+
+              m("label", "Form assistance offered?"),
+              m("select.form-control[id=document_assistance]", { 
+                      value: vnode.attrs.program.document_assistance,
+                        onchange: function(e) { 
+                      vnode.attrs.program.document_assistance = getSelectedOption(document.getElementById('document_assistance')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+              ),
+
               m("label", "Program Service Cost"),
               m("textarea.form-control", { value: vnode.attrs.program.service_cost,
                                         oninput: function(e) {

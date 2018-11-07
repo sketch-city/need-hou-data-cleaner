@@ -83,6 +83,19 @@ view: function(vnode) {
                           }
                      }),
 
+            m("label", "ADA accessible?"),
+            m("select.form-control[id=ada]", { 
+                      value: vnode.attrs.program.ada,
+                        onchange: function(e) { 
+                      vnode.attrs.program.ada = getSelectedOption(document.getElementById('ada')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+              ),
+
             m("label", "Keyword(s)"),
                   m("select[id=service_type_select][multiple=multiple]", {  
                           onchange: function(e) { 
