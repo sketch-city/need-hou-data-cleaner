@@ -7,7 +7,9 @@ oninit: function() { helper.moveProgress(70, 70, 90) } ,
 oncreate: function() { 
 	helper.difftext(Agency.original_selected.physical_address, Agency.selected.physical_address, "address") 
 	helper.difftext(Agency.original_selected.phone_number, Agency.selected.phone_number, "phone") 
+	helper.difftext(Agency.original_selected.website, Agency.selected.website, "website") 
 },
+
 view: function() {
 		return(
 
@@ -21,8 +23,8 @@ view: function() {
 							 	}, "Edit")),
 					m("p", m("strong", "Name: " ), Agency.selected.name),
 					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					//m("p", m("strong", "Full Physical 	Address: "), Agency.selected.physical_address),
 					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
+					m("p", m("strong", "Website: "), m("pre[id=website]"))
 					
 					]),
 				

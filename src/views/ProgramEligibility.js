@@ -142,7 +142,29 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Vietnamese')}, "Vietnamese"),
                     m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Chinese')}, "Chinese"),
                     m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Arabic')}, "Arabic"),
-                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('French')}, "French")),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('French')}, "French"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Hindi')}, "Hindi"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Urdu')},  "Urdu"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Tagalog')}, "Tagalog"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Persian')}, "Persian"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Korean')}, "Korean"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('German')}, "German"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Russian')}, "Russian"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Portuguese')},  "Portuguese"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Gujarati')}, "Gujarati"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Japanese')}, "Japanese"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Serbo-Croatian')}, "Serbo-Croatian"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Italian')}, "Italian"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('French Creole')}, "French Creole"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Thai')},  "Thai"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Hebrew')}, "Hebrew"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Greek')}, "Greek"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Polish')}, "Polish"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Cambodian')}, "Cambodian"),
+                    m("option",{ selected: vnode.attrs.program.frontline_languages.includes('Hungarian')}, "Hungarian")
+
+
+                    ),
 
                     m("label.control-label", "Interpretation Offered"),
                     m("select[id=interpretation_offered_select][multiple=multiple]", {  
@@ -219,10 +241,6 @@ view: function(vnode) {
                   ),
 
 
-
-
-
-        
 
                   m("div.buttons",
                   m("button.btn btn-default[type=submit]", {

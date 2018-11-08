@@ -100,12 +100,35 @@ view: function(vnode) {
                           onchange: function(e) { 
                            vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('program_languages_select'))
                          }},
-                    m("option[value=1]",{ selected: vnode.attrs.program.language_arr.includes('English')}, "English"),
-                    m("option[value=2]",{ selected: vnode.attrs.program.language_arr.includes('Spanish')},  "Spanish"),
-                    m("option[value=3]",{ selected: vnode.attrs.program.language_arr.includes('Vietnamese')}, "Vietnamese"),
-                    m("option[value=4]",{ selected: vnode.attrs.program.language_arr.includes('Chinese')}, "Chinese"),
-                    m("option[value=5]",{ selected: vnode.attrs.program.language_arr.includes('Arabic')}, "Arabic"),
-                    m("option[value=6]",{ selected: vnode.attrs.program.language_arr.includes('French')}, "French")),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('English')}, "English"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Spanish')},  "Spanish"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Vietnamese')}, "Vietnamese"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Chinese')}, "Chinese"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Arabic')}, "Arabic"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('French')}, "French"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Hindi')}, "Hindi"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Urdu')},  "Urdu"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Tagalog')}, "Tagalog"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Persian')}, "Persian"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Korean')}, "Korean"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('German')}, "German"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Russian')}, "Russian"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Portuguese')},  "Portuguese"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Gujarati')}, "Gujarati"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Japanese')}, "Japanese"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Serbo-Croatian')}, "Serbo-Croatian"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Italian')}, "Italian"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('French Creole')}, "French Creole"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Thai')},  "Thai"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Hebrew')}, "Hebrew"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Greek')}, "Greek"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Polish')}, "Polish"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Cambodian')}, "Cambodian"),
+                    m("option",{ selected: vnode.attrs.program.language_arr.includes('Hungarian')}, "Hungarian")
+
+
+
+                    ),
 
               ),
 
@@ -122,7 +145,7 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Alternative evidence')}, "Alternative evidence")
                     ),
                    m("label.control-label", "Select all expired accepted ID's"),
-                    m("select[id=current_id_select][multiple=multiple]", {  
+                    m("select[id=expired_id_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.id_accepted_expired  = getSelectedOptions(document.getElementById('expired_id_select'))
                          }},
@@ -166,7 +189,29 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.document_languages.includes('Vietnamese')}, "Vietnamese"),
                     m("option",{ selected: vnode.attrs.program.document_languages.includes('Chinese')}, "Chinese"),
                     m("option",{ selected: vnode.attrs.program.document_languages.includes('Arabic')}, "Arabic"),
-                    m("option",{ selected: vnode.attrs.program.document_languages.includes('French')}, "French")),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('French')}, "French"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Hindi')}, "Hindi"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Urdu')},  "Urdu"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Tagalog')}, "Tagalog"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Persian')}, "Persian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Korean')}, "Korean"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('German')}, "German"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Russian')}, "Russian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Portuguese')},  "Portuguese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Gujarati')}, "Gujarati"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Japanese')}, "Japanese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Serbo-Croatian')}, "Serbo-Croatian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Italian')}, "Italian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('French Creole')}, "French Creole"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Thai')},  "Thai"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Hebrew')}, "Hebrew"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Greek')}, "Greek"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Polish')}, "Polish"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Cambodian')}, "Cambodian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Hungarian')}, "Hungarian")
+
+
+                    ),
 
               m("label", "Form assistance offered?"),
               m("select.form-control[id=document_assistance]", { 

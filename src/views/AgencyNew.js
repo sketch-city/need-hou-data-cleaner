@@ -60,14 +60,14 @@ var newAgency = {
         id_accepted_expired: [],
         gender_eligibility: "",
         schedule: {
-                                                                monday : [], 
-                                                                tuesday : [], 
-                                                                wednesday : [], 
-                                                                thursday : [], 
-                                                                friday : [],
-                                                                saturday : [], 
-                                                                sunday : []
-                                                                },
+                monday : [], 
+                tuesday : [], 
+                wednesday : [], 
+                thursday : [], 
+                friday : [],
+                saturday : [], 
+                sunday : []
+                },
         service_cost: ""
     }
 

@@ -4,6 +4,36 @@ var helper = require("../helper")
 var TimePicker = require("pickerjs")
 var Choices = require("choices.js")
 
+
+function getSelectedOption(sel) {
+  var opts = [],
+      opt;
+  var len = sel.options.length;
+  for (var i = 0; i < len; i++) {
+    opt = sel.options[i];
+    if (opt.selected) {
+      console.log(opt.label)
+      return(opt.label)
+    }
+  }
+}
+
+
+
+function getSelectedOptions(sel) {
+  var opts = [],
+    opt;
+  var len = sel.options.length;
+  for (var i = 0; i < len; i++) {
+    opt = sel.options[i];
+    if (opt.selected) {
+      opts.push(opt.label);
+    }
+  }
+
+  return opts;
+}
+
 function formatMapQuery(address){
   var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="
   var queryp2 = "&travelmode=transit"
@@ -227,12 +257,38 @@ view: function(vnode) {
                           onchange: function(e) { 
                            vnode.attrs.program.website_languages  = getSelectedOptions(document.getElementById('website_languages_select'))
                          }},
+
                     m("option",{ selected: vnode.attrs.program.website_languages.includes('English')}, "English"),
                     m("option",{ selected: vnode.attrs.program.website_languages.includes('Spanish')},  "Spanish"),
                     m("option",{ selected: vnode.attrs.program.website_languages.includes('Vietnamese')}, "Vietnamese"),
                     m("option",{ selected: vnode.attrs.program.website_languages.includes('Chinese')}, "Chinese"),
                     m("option",{ selected: vnode.attrs.program.website_languages.includes('Arabic')}, "Arabic"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('French')}, "French"))
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('French')}, "French"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Hindi')}, "Hindi"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Urdu')},  "Urdu"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Tagalog')}, "Tagalog"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Persian')}, "Persian"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Korean')}, "Korean"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('German')}, "German"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Russian')}, "Russian"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Portuguese')},  "Portuguese"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Gujarati')}, "Gujarati"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Japanese')}, "Japanese"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Serbo-Croatian')}, "Serbo-Croatian"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Italian')}, "Italian"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('French Creole')}, "French Creole"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Thai')},  "Thai"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Hebrew')}, "Hebrew"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Greek')}, "Greek"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Polish')}, "Polish"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Cambodian')}, "Cambodian"),
+                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Hungarian')}, "Hungarian")
+
+
+
+
+
+                    )
 
 
          
