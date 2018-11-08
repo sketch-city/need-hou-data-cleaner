@@ -45,7 +45,7 @@ view: function(vnode) {
                 m("div.form-group[style=width:300px]",
                     m("legend[style=font-size:16px]"),
                         m("div.form-group[id=orgname]",
-                            m("label.control-label", "Organization Name *"),
+                            m("label.control-label", "Organization Name"),
                             m("input.form-control[type=text][id=agencyname]", {value: vnode.attrs.agency.name,
                                             oninput: function(e) {
                                                     vnode.attrs.agency.name = validateName(e.currentTarget.value);
@@ -67,6 +67,13 @@ view: function(vnode) {
                             m("input.form-control[type=text]", { value:  vnode.attrs.agency.phone_number ,
                                                 oninput: function(e) {
                                                    vnode.attrs.agency.phone_number = e.currentTarget.value;
+                                                    }
+                                            }
+                        ),
+                        m("label.control-label", "Website"),
+                            m("input.form-control[type=text]", { value:  vnode.attrs.agency.website ,
+                                                oninput: function(e) {
+                                                   vnode.attrs.agency.website = e.currentTarget.value;
                                                     }
                                             }
                                     )
