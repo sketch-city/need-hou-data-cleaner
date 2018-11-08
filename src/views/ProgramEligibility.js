@@ -102,7 +102,7 @@ view: function(vnode) {
                       m("label", "Immigration Status"),
                       m("select[id=immigration_select][multiple=multiple]", {  
                           onchange: function(e) { 
-                           vnode.attrs.program.immigration_status  = getSelectedOptions(document.getElementById('immigration_status'))
+                           vnode.attrs.program.immigration_status  = getSelectedOptions(document.getElementById('immigration_select'))
                          }},
                         m("option",{ selected: vnode.attrs.program.immigration_status.includes('U.S. Citizen')}, "U.S. Citizen"),
                         m("option",{ selected: vnode.attrs.program.immigration_status.includes('Legal Permanent Resident')}, "Legal Permanent Resident"),
@@ -110,7 +110,7 @@ view: function(vnode) {
                         m("option",{ selected: vnode.attrs.program.immigration_status.includes('Non-immigrant Visa')}, "Non-immigrant Visa"),
                         m("option",{ selected: vnode.attrs.program.immigration_status.includes('Immigrant Visa')}, "Immigrant Visa"),
                         m("option",{ selected: vnode.attrs.program.immigration_status.includes('Status in process')}, "Status in process"),
-                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Undocumented ')}, "Undocumented"),
+                        m("option",{ selected: vnode.attrs.program.immigration_status.includes('Undocumented ')}, "Undocumented")
 
                     ),
 

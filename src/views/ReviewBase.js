@@ -16,6 +16,7 @@ oncreate: function(vnode) {
 	helper.difftext(agency["name"], vnode.attrs.agency["name"], "agency_name") 
 	helper.difftext(agency["physical_address"], vnode.attrs.agency["physical_address"], "agency_physical_address") 
 	helper.difftext(agency["phone_number"], vnode.attrs.agency["phone_number"], "agency_phone_number") 
+	helper.difftext(agency["website"], vnode.attrs.agency["website"], "agency_website") 
 
 
 	for(i = 0; i < program_fields.length; i++){
