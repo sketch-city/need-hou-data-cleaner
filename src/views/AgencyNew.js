@@ -89,7 +89,7 @@ view: function() {
 
                   m("button.btn btn-default[type=submit][id=nextbutton][style=margin-left:10px]", {
                         disabled: true,
-                        href: "/newagencyprogramcontact", 
+                        href: "/newagencyprogramreferral", 
                         oncreate: m.route.link
                         },"Next")
                     )

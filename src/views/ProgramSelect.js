@@ -77,7 +77,7 @@ module.exports = {
 
           ]),
               m("span", "Don't see your program? Click ", 
-                        m("a", {href: "/newprogramcontact", oncreate: m.route.link }, "here"), " to add a new program."),
+                        m("a", {href: "/newprogramreferral", oncreate: m.route.link }, "here"), " to add a new program."),
               m("p", "Program no longer offered? Click ",
                       m("a", {href: "#", oncreate: m.route.link, 
                         onclick: function(){

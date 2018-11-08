@@ -67,7 +67,7 @@ oninit: function(){
         
 },
 view: function() {
-	return(m(ProgramContactInfo, { program: newProgram, previous_link: "/selectprogram", next_link: "/newprogramreferral"})
+	return(m(ProgramContactInfo, { program: newProgram, previous_link: "/newprogrameligibility", next_link: "/newprogramreview"})
 	 	)
 	}
 }

@@ -5,6 +5,7 @@ var AgencyEdit = require('./views/AgencyEdit')
 var ProgramSelect = require('./views/ProgramSelect')
 var ProgramNewContactInfo = require('./views/ProgramNewContactInfo')
 var ProgramNewReferral = require('./views/ProgramNewReferral')
+var ProgramNewEligibility = require('./views/ProgramNewEligibility')
 var EditProgramContact = require('./views/EditProgramContact')
 var EditProgramReferral = require('./views/EditProgramReferral')
 var EditProgramEligibility = require('./views/EditProgramEligibility')
@@ -13,11 +14,13 @@ var Review = require("./views/Review")
 var AgencyNew = require("./views/AgencyNew")
 var AgencyNewProgramContactInfo = require("./views/AgencyNewProgramContactInfo")
 var AgencyNewProgramReferral = require("./views/AgencyNewProgramReferral")
+var AgencyNewProgramEligibility = require("./views/AgencyNewProgramEligibility")
 var AgencyNewReview = require("./views/AgencyNewReview")
 var ProgramNewReview = require("./views/ProgramNewReview")
 var AgencyReview = require("./views/AgencyReview")
 var QueueList = require("./views/QueueList")
 var QueueItem = require("./views/QueueItem")
+
 // var Login = require("./views/Login")
 
 
@@ -59,6 +62,18 @@ m.route(document.body, "/selectagency", {
 
     },
 
+    "/newagencyprogrameligibility": {
+        render: function(vnode){
+            return m(Layout, m(AgencyNewProgramEligibility, vnode.attrs))
+
+        }
+
+    },
+
+
+
+
+
     "/selectprogram": {
         render: function(){
            return m(Layout,  m(ProgramSelect))
@@ -76,6 +91,13 @@ m.route(document.body, "/selectagency", {
     "/newprogramreferral": {
         render: function(vnode){
             return m(Layout, m(ProgramNewReferral, vnode.attrs))
+        }
+    },
+
+
+    "/newprogrameligibility": {
+        render: function(vnode){
+            return m(Layout, m(ProgramNewEligibility, vnode.attrs))
         }
     },
 
