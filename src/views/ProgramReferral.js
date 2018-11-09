@@ -95,7 +95,7 @@ view: function(vnode) {
                                                                         } }),
 
             m("div.form-group[id=languages]",
-              m("label.control-label", "Program Languages Spoken"),
+              m("label.control-label", "Program Languages Spoken ★"),
                m("select[id=program_languages_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('program_languages_select'))
@@ -132,7 +132,7 @@ view: function(vnode) {
 
               ),
 
-                    m("label.control-label", "Select all current accepted ID's"),
+                    m("label.control-label", "Select all current accepted ID's ★"),
                     m("select[id=current_id_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.id_accepted_current  = getSelectedOptions(document.getElementById('current_id_select'))
@@ -144,7 +144,7 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Any government-issued non-photo document')}, "Any government-issued non-photo document"),
                     m("option",{ selected: vnode.attrs.program.id_accepted_current.includes('Alternative evidence')}, "Alternative evidence")
                     ),
-                   m("label.control-label", "Select all expired accepted ID's"),
+                   m("label.control-label", "Select all expired accepted ID's ★"),
                     m("select[id=expired_id_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.id_accepted_expired  = getSelectedOptions(document.getElementById('expired_id_select'))
@@ -158,7 +158,7 @@ view: function(vnode) {
                     ),
                 
 
-          m("label.control-label", "Does program required proof of address?"),
+          m("label.control-label", "Does program required proof of address? ★"),
           m("select.form-control[id=proof_address]", { 
                       value: vnode.attrs.program.proof_address,
                         onchange: function(e) { 
@@ -213,7 +213,7 @@ view: function(vnode) {
 
                     ),
 
-              m("label", "Form assistance offered?"),
+              m("label", "Form assistance offered? ★"),
               m("select.form-control[id=document_assistance]", { 
                       value: vnode.attrs.program.document_assistance,
                         onchange: function(e) { 

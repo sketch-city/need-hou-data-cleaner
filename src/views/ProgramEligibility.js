@@ -99,7 +99,7 @@ view: function(vnode) {
                                                                     vnode.attrs.program.other_eligibility  = e.currentTarget.value;
                                                                         }
                         }),
-                      m("label", "Immigration Status"),
+                      m("label", "Immigration Status ★"),
                       m("select[id=immigration_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.immigration_status  = getSelectedOptions(document.getElementById('immigration_select'))
@@ -114,7 +114,7 @@ view: function(vnode) {
 
                     ),
 
-                    m("label", "Are services available the same day as intake?"),
+                    m("label", "Are services available the same day as intake? ★"),
                     m("select.form-control[id=service_available_intake]", { 
                       value: vnode.attrs.program.service_available_intake,
                         onchange: function(e) { 
@@ -166,7 +166,7 @@ view: function(vnode) {
 
                     ),
 
-                    m("label.control-label", "Interpretation Offered"),
+                    m("label.control-label", "Interpretation Offered ★"),
                     m("select[id=interpretation_offered_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.interpretation_offered  = getSelectedOptions(document.getElementById('interpretation_offered_select')) 
@@ -187,7 +187,7 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.crisis_services_offered.includes('Yes, disaster response/recovery')}, "Yes, disaster response/recovery"),
                     m("option",{ selected: vnode.attrs.program.crisis_services_offered.includes('No')}, "No")),
 
-                    m("label.control-label", "Visual aids offered for low-literacy clients and/or children?"),
+                    m("label.control-label", "Visual aids offered for low-literacy clients? ★"),
                     m("select.form-control[id=visual_aids_offered]", { 
                       value: vnode.attrs.program.visual_aids_offered,
                         onchange: function(e) { 
@@ -200,7 +200,7 @@ view: function(vnode) {
                
                     ),
 
-                    m("label.control-label", "Does program offer clients an opportunity for consultation before filling out paperwork?"),
+                    m("label.control-label", "Does program offer clients an opportunity for consultation before filling out paperwork? ★"),
                     m("select.form-control[id=consultation_opportunity]", { 
                       value: vnode.attrs.program.consultation_opportunity,
                         onchange: function(e) { 
@@ -213,7 +213,7 @@ view: function(vnode) {
                
                   ),
 
-                    m("label.control-label", "Does program have a policy to respond to Immigrations and Customs Enforcement requests?"),
+                    m("label.control-label", "Does program have a policy to respond to Immigrations and Customs Enforcement requests? ★"),
                     m("select.form-control[id=enforcement_request_policy]", { 
                       value: vnode.attrs.program.enforcement_request_policy,
                         onchange: function(e) { 
@@ -225,7 +225,7 @@ view: function(vnode) {
                          m("option", "No")
                
                   ),
-                    m("label.control-label", "Does program offer a cultural competency/effectiveness training?"),
+                    m("label.control-label", "Does program offer a cultural competency/effectiveness training? ★"),
                     m("select.form-control[id=cultural_competency_offered]", { 
                       value: vnode.attrs.program.cultural_competency_offered,
                         onchange: function(e) { 

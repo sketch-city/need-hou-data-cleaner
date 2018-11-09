@@ -138,7 +138,7 @@ view: function(vnode) {
                     m("option[value=5]",{ selected: vnode.attrs.program.service_type.includes('employment')}, "employment"),
                     m("option[value=6]",{ selected: vnode.attrs.program.service_type.includes('family')}, "family"),
                     m("option[value=7]",{ selected: vnode.attrs.program.service_type.includes('health')}, "health")),
-            m("label", "Program Schedule"),
+            m("label", "Program Schedule ★"),
             m("table.table",
               m("thead",
                 m("tr",
@@ -252,7 +252,7 @@ view: function(vnode) {
               m("textarea.form-control",{ value: vnode.attrs.program.transportation  = formatMapQuery(vnode.attrs.program.physical_address)
                      }),
 
-            m("label", "Website Languages"),
+            m("label", "Website Languages ★"),
             m("select[id=website_languages_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.website_languages  = getSelectedOptions(document.getElementById('website_languages_select'))
