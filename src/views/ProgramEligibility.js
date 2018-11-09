@@ -11,7 +11,6 @@ function getSelectedOption(sel) {
   for (var i = 0; i < len; i++) {
     opt = sel.options[i];
     if (opt.selected) {
-      console.log(opt.label)
       return(opt.label)
     }
   }

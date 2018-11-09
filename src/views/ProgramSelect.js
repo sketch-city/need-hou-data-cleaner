@@ -79,20 +79,7 @@ module.exports = {
               m("span", "Don't see your program? Click ", 
                         m("a", {href: "/newprogramreferral", oncreate: m.route.link }, "here"), " to add a new program."),
               m("p", "Program no longer offered? Click ",
-                      m("a", {href: "#", oncreate: m.route.link, 
-                        onclick: function(){
-                                Agency.addQueueItem({
-                                  submission_type: "delete_program", 
-                                  submission: { 
-                                  agency_data:{},
-                                  program_data: Agency.selected_program
-                            
-                                  }
-                                })
-
-
-
-                              }}, "here"), " to delete program selected."),
+                      m("a", {href: "#", oncreate: m.route.link }, "here"), " to delete a program."),
                m("div.buttons",
                   m("button.btn btn-default[type=submit]", {
                         href: "/selectagency", 

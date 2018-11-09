@@ -80,6 +80,10 @@ view: function(vnode) {
 								//.then(Queue.deleteQueueItem(vnode.attrs.id))
 							}
 
+							else if(Queue.type_submission === "delete_program") {
+								Agency.deleteProgram(Queue.queueProgram.id)
+							}
+
 
 							document.getElementById("queuesubmit").disabled = true;
 							document.getElementById("queuereject").disabled = true;

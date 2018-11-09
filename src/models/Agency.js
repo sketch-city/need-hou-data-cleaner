@@ -168,7 +168,20 @@ var Agency = {
         }).catch(function(error){
             console.log(error)
         })
+    },
+
+
+    deleteProgram: function(program_id){
+        return m.request({
+            method: "DELETE",
+            url: "https://need-hou-api.herokuapp.com/api/program?program_id=" + program_id,
+            withCredentials: false,
+        }).then(function(result){
+
+            
+        })
     }
+
 }
 
 module.exports = Agency;

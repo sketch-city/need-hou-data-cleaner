@@ -47,7 +47,7 @@ function autocomplete(inp, arr) {
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
-      console.log('input event')
+     
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
@@ -76,7 +76,7 @@ function autocomplete(inp, arr) {
               inp.value = this.getElementsByTagName("input")[0].value;
               Agency.selected.name = inp.value
               Agency.loadAgency(Agency.selected.name).then(Agency.loadPrograms)
-              console.log(inp.value)
+        
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();

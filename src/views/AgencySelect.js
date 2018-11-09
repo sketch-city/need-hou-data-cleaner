@@ -23,9 +23,8 @@ module.exports = {
 
                   ]),
                       m("span", m("a", {href: "/newagency", oncreate: m.route.link }, "Don't see your organization? Click to ADD a new org")),
-                      m("p", m("a", {href: "#", oncreate: m.route.link }, "Organization no longer exists? Click to DELETE organization selected.")),
+                      m("p", m("a", {href: "#", oncreate: m.route.link }, "Organization no longer exists? Click to DELETE an organization.")),
                     m("div.row"),
-
                     m("button.btn btn-default[type=submit][style=margin-top:50px]", {
                   
                         href: "/editagency", 
