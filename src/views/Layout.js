@@ -16,8 +16,16 @@ module.exports = {
 
                     ), vnode.children,
             m("div[id=myProgress]",
-                m("div[id=myBar]"))
-            ))
+                m("div[id=myBar]")),
+            m("footer",
+  
+
+            m("p[id=iap_interest]", "Click", m("a[href='mailto:gunjen@houstonimmgration.org']", " here "), " to learn more about the Immigrant Accessibility Profile.")))
+
+
+
+            )
+        
         
     }
 }
