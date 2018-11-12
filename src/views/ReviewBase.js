@@ -32,6 +32,11 @@ view: function(vnode) {
 			m("div.reviewpage[id=wrap_all]", [
 				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
 				m("div.reviewbuttons",
+				m("button[type=submit][style=margin-left:50px;].btn btn-default", 
+								{
+							 	 href: vnode.attrs.previous_link, 
+							 	 oncreate: m.route.link 
+							 	}, "Previous"),
 				m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
