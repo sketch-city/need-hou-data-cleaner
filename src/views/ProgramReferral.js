@@ -94,7 +94,6 @@ oncreate: function(vnode){
  
 
  zipcode_choices = new Choices('#zipcode_select');
- income_choices = new Choices('#income_select');
  age_choices = new Choices('#age_select');
  immigration_choices = new Choices('#immigration_select')
 },
@@ -199,10 +198,11 @@ view: function(vnode) {
 
                     ),
                     m("label", "Eligible Incomes (% of federal poverty level)"),
-                    m("select[id=income_select][multiple=multiple]", {  
+                    m("select[id=income_select]", {  
                           onchange: function(e) { 
-                           vnode.attrs.program.income_eligibility  = getSelectedOptions(document.getElementById('income_select'))
+                           vnode.attrs.program.income_eligibility  = getSelectedOption(document.getElementById('income_select'))
                          }},
+                    m("option", ""),
                     m("option",{ selected: vnode.attrs.program.service_type.includes('20%')}, "20%"),
                     m("option",{ selected: vnode.attrs.program.service_type.includes('40%')}, "40%"),
                     m("option",{ selected: vnode.attrs.program.service_type.includes('60%')}, "60%"),
