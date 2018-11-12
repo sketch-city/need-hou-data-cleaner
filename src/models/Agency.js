@@ -1,5 +1,12 @@
 var m = require('mithril')
 
+function withToken(requestOptions) {
+	return Object.assign({
+		headers: {
+			'Authorization': `Bearer ${localStorage.getItem('token')}`,
+		},
+	}, requestOptions)
+}
 
 var Agency = {
 
@@ -80,25 +87,25 @@ var Agency = {
 	},
 
 	addNewAgency: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "POST",
             mode :'cors',
             url: "https://need-hou-api.herokuapp.com/api/agencies",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
         })
     },
 
 	updateAgency: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "PUT",
             mode :'cors',
             url: "https://need-hou-api.herokuapp.com/api/agencies",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
         })
     },
@@ -108,51 +115,51 @@ var Agency = {
     	delete new_data['longitude']
     	delete new_data['latitude']
 
-        return m.request({
+        return m.request(withToken({
             method: "PUT",
             mode :'cors',
             url: "https://need-hou-api.herokuapp.com/api/programs",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
         })
     },
 
      updateLanguage: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "PUT",
             mode :'cors',
             url: "https://need-hou-api.herokuapp.com/api/languages",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
         })
     },
 
 
     addNewProgram: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "POST",
             mode :'cors',
             url: "https://need-hou-api.herokuapp.com/api/programs",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
         })
     },
 
 
     addNewLanguage: function(new_data) {
-    	return m.request({
+    	return m.request(withToken({
     		method: "POST",
     		mode: 'cors',
     		url: "https://need-hou-api.herokuapp.com/api/languages",
     		data: new_data,
     		withCredentials: false,
-    	}).catch(function(error){
+    	})).catch(function(error){
     		console.log(error)
     	})
     },
