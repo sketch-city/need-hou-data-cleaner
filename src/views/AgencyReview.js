@@ -22,9 +22,10 @@ view: function() {
 							 	 oncreate: m.route.link 
 							 	}, "Edit")),
 					m("p", m("strong", "Name: " ), Agency.selected.name),
+					m("p", m("strong", "Website: "), m("pre[id=website]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
-					m("p", m("strong", "Website: "), m("pre[id=website]"))
+					m("p", m("strong", "Phone Number: "), m("pre[id=phone]"))
+					
 					
 					]),
 				

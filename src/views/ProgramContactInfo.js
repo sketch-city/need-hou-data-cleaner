@@ -33,12 +33,7 @@ function getSelectedOptions(sel) {
   return opts;
 }
 
-function formatMapQuery(address){
-  var queryp1 = "https://www.google.com/maps/dir/?api=1&destination="
-  var queryp2 = "&travelmode=transit"
-  var formatted = queryp1 + escape(address) + queryp2
-  return(formatted)
-}
+
 
 
 
@@ -83,8 +78,7 @@ function validateName(name) {
 module.exports = {
 oninit: function() { helper.moveProgress(40, 40, 50) } ,
 oncreate: function(vnode){
-  service_type_choices = new Choices('#service_type_select')
-  website_languages_choices = new Choices('#website_languages_select')
+document_language_choices = new Choices('#document_languages_select')
   schedule_fields = document.querySelectorAll('input.schedule')
   for(i = 0; i < schedule_fields.length; i++){
     picker = new Picker(document.getElementById(schedule_fields[i].id), {format: 'HH:mm'})
@@ -98,45 +92,9 @@ view: function(vnode) {
     		    m("form", [
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]"),
-           
-          m("label", "Program Full Physical Address"),
-            m("input.form-control[type=text]",{ value: vnode.attrs.program.physical_address,
-                                          oninput: function(e) {
-                                                                            vnode.attrs.program.physical_address = e.currentTarget.value;
-                                                                        }
-                                                              }),
-            m("label", "Program Webpage"),
-              m("input.form-control[type=text]",{ value: vnode.attrs.program.website,
-                oninput: function(e) {
-                          vnode.attrs.program.website  = e.currentTarget.value;
-                          }
-                     }),
 
-            m("label", "ADA accessible?"),
-            m("select.form-control[id=ada]", { 
-                      value: vnode.attrs.program.ada,
-                        onchange: function(e) { 
-                      vnode.attrs.program.ada = getSelectedOption(document.getElementById('ada')) 
-                    }}, 
-                      
-                         m("option", ""), 
-                         m("option", "Yes" ),
-                         m("option", "No")
-               
-              ),
 
-            m("label", "Keyword(s)"),
-                  m("select[id=service_type_select][multiple=multiple]", {  
-                          onchange: function(e) { 
-                           vnode.attrs.program.service_type  = getSelectedOptions(document.getElementById('service_type_select'))
-                         }},
-                    m("option[value=1]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
-                    m("option[value=2]",{ selected: vnode.attrs.program.service_type.includes('legal')},  "legal"),
-                    m("option[value=3]",{ selected: vnode.attrs.program.service_type.includes('food')}, "food"),
-                    m("option[value=4]",{ selected: vnode.attrs.program.service_type.includes('housing')}, "housing"),
-                    m("option[value=5]",{ selected: vnode.attrs.program.service_type.includes('employment')}, "employment"),
-                    m("option[value=6]",{ selected: vnode.attrs.program.service_type.includes('family')}, "family"),
-                    m("option[value=7]",{ selected: vnode.attrs.program.service_type.includes('health')}, "health")),
+                
             m("label", "Program Schedule ★"),
             m("table.table",
               m("thead",
@@ -247,50 +205,128 @@ view: function(vnode) {
                           vnode.attrs.program.holiday_schedule  = e.currentTarget.value;
                           }
                      }),
-            m("label", "Program Transportation"),
-              m("textarea.form-control",{ value: vnode.attrs.program.transportation  = formatMapQuery(vnode.attrs.program.physical_address)
-                     }),
 
-            m("label", "Website Languages ★"),
-            m("select[id=website_languages_select][multiple=multiple]", {  
+              m("label", "Program Required Document Links"),
+              m("textarea.form-control",{ value: vnode.attrs.program.documents_required,
+                                          oninput: function(e) {
+                                                                            vnode.attrs.program.documents_required  = e.currentTarget.value;
+                                                                        }
+                                                                        }),
+
+               m("label", "Document Languages"),
+              m("select[id=document_languages_select][multiple=multiple]", {  
                           onchange: function(e) { 
-                           vnode.attrs.program.website_languages  = getSelectedOptions(document.getElementById('website_languages_select'))
+                           vnode.attrs.program.language_arr  = getSelectedOptions(document.getElementById('document_languages_select'))
                          }},
-
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('English')}, "English"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Spanish')},  "Spanish"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Vietnamese')}, "Vietnamese"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Chinese')}, "Chinese"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Arabic')}, "Arabic"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('French')}, "French"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Hindi')}, "Hindi"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Urdu')},  "Urdu"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Tagalog')}, "Tagalog"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Persian')}, "Persian"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Korean')}, "Korean"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('German')}, "German"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Russian')}, "Russian"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Portuguese')},  "Portuguese"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Gujarati')}, "Gujarati"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Japanese')}, "Japanese"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Serbo-Croatian')}, "Serbo-Croatian"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Italian')}, "Italian"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('French Creole')}, "French Creole"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Thai')},  "Thai"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Hebrew')}, "Hebrew"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Greek')}, "Greek"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Polish')}, "Polish"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Cambodian')}, "Cambodian"),
-                    m("option",{ selected: vnode.attrs.program.website_languages.includes('Hungarian')}, "Hungarian")
-
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('English')}, "English"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Spanish')},  "Spanish"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Vietnamese')}, "Vietnamese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Chinese')}, "Chinese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Arabic')}, "Arabic"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('French')}, "French"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Hindi')}, "Hindi"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Urdu')},  "Urdu"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Tagalog')}, "Tagalog"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Persian')}, "Persian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Korean')}, "Korean"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('German')}, "German"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Russian')}, "Russian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Portuguese')},  "Portuguese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Gujarati')}, "Gujarati"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Japanese')}, "Japanese"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Serbo-Croatian')}, "Serbo-Croatian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Italian')}, "Italian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('French Creole')}, "French Creole"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Thai')},  "Thai"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Hebrew')}, "Hebrew"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Greek')}, "Greek"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Polish')}, "Polish"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Cambodian')}, "Cambodian"),
+                    m("option",{ selected: vnode.attrs.program.document_languages.includes('Hungarian')}, "Hungarian")
 
 
+                    ),
 
+              m("label", "Form assistance offered? ★"),
+              m("select.form-control[id=document_assistance]", { 
+                      value: vnode.attrs.program.document_assistance,
+                        onchange: function(e) { 
+                      vnode.attrs.program.document_assistance = getSelectedOption(document.getElementById('document_assistance')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+              ),
 
-                    )
+              m("label.control-label", "Visual aids offered for low-literacy clients? ★"),
+                    m("select.form-control[id=visual_aids_offered]", { 
+                      value: vnode.attrs.program.visual_aids_offered,
+                        onchange: function(e) { 
+                      vnode.attrs.program.visual_aids_offered = getSelectedOption(document.getElementById('visual_aids_offered')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                    ),
 
+                    m("label", "ADA accessible?"),
+            m("select.form-control[id=ada]", { 
+                      value: vnode.attrs.program.ada,
+                        onchange: function(e) { 
+                      vnode.attrs.program.ada = getSelectedOption(document.getElementById('ada')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+              ),
 
-         
+                    m("label.control-label", "Does program offer clients an opportunity for consultation before filling out paperwork? ★"),
+                    m("select.form-control[id=consultation_opportunity]", { 
+                      value: vnode.attrs.program.consultation_opportunity,
+                        onchange: function(e) { 
+                      vnode.attrs.program.consultation_opportunity = getSelectedOption(document.getElementById('consultation_opportunity')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                  ),
+
+                    m("label.control-label", "Does program have a policy to respond to Immigrations and Customs Enforcement requests? ★"),
+                    m("select.form-control[id=enforcement_request_policy]", { 
+                      value: vnode.attrs.program.enforcement_request_policy,
+                        onchange: function(e) { 
+                      vnode.attrs.program.enforcement_request_policy = getSelectedOption(document.getElementById('enforcement_request_policy')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes" ),
+                         m("option", "No")
+               
+                  ),
+                    m("label.control-label", "Does program offer a cultural competency/effectiveness training? ★"),
+                    m("select.form-control[id=cultural_competency_offered]", { 
+                      value: vnode.attrs.program.cultural_competency_offered,
+                        onchange: function(e) { 
+                      vnode.attrs.program.cultural_competency_offered = getSelectedOption(document.getElementById('cultural_competency_offered')) 
+                    }}, 
+                      
+                         m("option", ""), 
+                         m("option", "Yes, required for client-facing staff" ),
+                         m("option", "Yes, optional for client-facing staff"),
+                         m("option", "No, but we are interested in a cultural competency training" ),
+                         m("option", "No, we are not interested in a training" ),
+               
+                  ),
+          
+       
                     ),
 
                 	]),

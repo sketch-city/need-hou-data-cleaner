@@ -17,9 +17,10 @@ view: function(vnode) {
 
 						),
 					m("p", m("strong", "Name: " ), m("pre.agency[id=agency_name]")),
+					m("p", m("strong", "Website: "), m("pre.agency[id=agency_website]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre.agency[id=agency_physical_address]")),
-					m("p", m("strong", "Phone Number: "), m("pre.agency[id=agency_phone_number]")),
-					m("p", m("strong", "Website: "), m("pre.agency[id=agency_website]"))
+					m("p", m("strong", "Phone Number: "), m("pre.agency[id=agency_phone_number]"))
+					
 					
 					]),
 

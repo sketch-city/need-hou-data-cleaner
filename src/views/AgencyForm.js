@@ -52,10 +52,18 @@ view: function(vnode) {
                                                 }
 
                                             }
-                        ),
+                            ),
                             m("span[id=errormessage]")
                 
                             ),
+                        m("label.control-label", "Website"),
+                            m("input.form-control[type=text]", { value:  vnode.attrs.agency.website ,
+                                                oninput: function(e) {
+                                                   vnode.attrs.agency.website = e.currentTarget.value;
+                                                    }
+                                            }
+                                    ),
+
                             m("label.control-label", "Full Physical Address"),
                             m("input.form-control[type=text]", {value: vnode.attrs.agency.physical_address,
                                             oninput: function(e) {
@@ -69,14 +77,7 @@ view: function(vnode) {
                                                    vnode.attrs.agency.phone_number = e.currentTarget.value;
                                                     }
                                             }
-                        ),
-                        m("label.control-label", "Website"),
-                            m("input.form-control[type=text]", { value:  vnode.attrs.agency.website ,
-                                                oninput: function(e) {
-                                                   vnode.attrs.agency.website = e.currentTarget.value;
-                                                    }
-                                            }
-                                    )
+                        )
                     ),
 
                     ])
