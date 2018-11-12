@@ -198,12 +198,26 @@ view: function(vnode) {
                     
 
                     ),
-                    m("label", "Eligible Incomes"),
+                    m("label", "Eligible Incomes (% of federal poverty level)"),
                     m("select[id=income_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.income_eligibility  = getSelectedOptions(document.getElementById('income_select'))
                          }},
-                    //m("option[value=1]",{ selected: vnode.attrs.program.service_type.includes('education')}, "education"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('20%')}, "20%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('40%')}, "40%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('60%')}, "60%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('80%')}, "80%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('100%')}, "100%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('120%')}, "120%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('140%')}, "140%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('160%')}, "160%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('180%')}, "180%"),
+                    m("option",{ selected: vnode.attrs.program.service_type.includes('200%')}, "200%"),
+
+
+
+
+
                     ),
                     m("label", "Eligible Gender"),
                       m("textarea.form-control gender",{ value: vnode.attrs.program.gender_eligibility,
