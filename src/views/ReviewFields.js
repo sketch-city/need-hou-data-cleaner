@@ -66,6 +66,13 @@ view: function(vnode) {
 					m("p", m("strong", "Key words: "), m("pre.program[id=service_type]")),
 					m("p", m("strong", "Crisis-services offered: "), m("pre.program[id=crisis_services_offered]")),
 					m("p", m("strong", "Transportation: "), m("pre.program[id=transportation]")),
+					//print table values of schedule
+
+
+
+
+
+					//m("p", m("strong", "Schedule: "), m("pre.program[id=schedule]")),
 					m("p", m("strong", "Schedule Notes: "), m("pre.program[id=schedule_notes]")),
 					m("p", m("strong", "Holiday Schedule: "), m("pre.program[id=holiday_schedule]")),
 					m("p", m("strong", "Required document links: "), m("pre.program[id=documents_required]")),
@@ -78,12 +85,7 @@ view: function(vnode) {
 					m("p", m("strong", "Cultural competency training offered: "), m("pre.program[id=cultural_competency_offered]")),
 
 					
-					
-					
-					
 			
-					
-				
 					])
 				)
 				

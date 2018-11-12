@@ -21,11 +21,22 @@ oncreate: function(vnode) {
 
 	for(i = 0; i < program_fields.length; i++){
 		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
-			helper.difftext(program[program_fields[i].id].join(', ') || "", vnode.attrs.program[program_fields[i].id].join(', ') || "", program_fields[i].id) 			
+			if(program_fields[i].id === "schedule") {
+
+				helper.difftext(program.schedule.monday.join(" - ") || "", vnode.attrs.program.schedule.monday.join(" - ") || "", "schedule")
+
+
+
+			} else{
+			helper.difftext(program[program_fields[i].id].join(', ') || "", vnode.attrs.program[program_fields[i].id].join(', ') || "", program_fields[i].id) 
+			}			
 		} else{
 			helper.difftext(program[program_fields[i].id] || "", vnode.attrs.program[program_fields[i].id] || "", program_fields[i].id) 
 		}
 	}
+
+
+
 },	
 view: function(vnode) {
 		return(
