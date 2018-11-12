@@ -21,6 +21,7 @@ oncreate: function(vnode) {
 		program_fields = document.querySelectorAll('pre.program')
 		program = Agency.selected_program
 		helper.difftext(Agency.selected.name, Queue.queueAgency.name, "agency_name") 
+		helper.difftext(Agency.selected.website, Queue.queueAgency.website, "agency_website") 
 		helper.difftext(Agency.selected.physical_address, Queue.queueAgency.physical_address, "agency_physical_address") 
 		helper.difftext(Agency.selected.phone_number, Queue.queueAgency.phone_number, "agency_phone_number") 
 
