@@ -67,6 +67,57 @@ view: function(vnode) {
 					m("p", m("strong", "Crisis-services offered: "), m("pre.program[id=crisis_services_offered]")),
 					m("p", m("strong", "Transportation: "), m("pre.program[id=transportation]")),
 					//print table values of schedule
+					m("table.table",
+             		 m("thead",
+               			 m("tr",
+		                  m("th", "Day"),
+		                  m("th", "Start Time"),
+		                  m("th", "End Time"))),
+                	m("tbody",
+                  		m("tr", 
+                    	m("td", "Monday"),
+                    	m("td", m("pre.schedule[id=monday_start]")),
+                    	m("td", m("pre.schedule[id=monday_end]"))
+
+                    	),
+                    	m("tr", 
+                    	m("td", "Tuesday"),
+                    	m("td", m("pre.schedule[id=tuesday_start]")),
+                    	m("td", m("pre.schedule[id=tuesday_end]"))
+
+                    	),
+                    	m("tr", 
+                    	m("td", "Wednesday"),
+                    	m("td", m("pre.schedule[id=wednesday_start]")),
+                    	m("td", m("pre.schedule[id=wednesday_end]"))
+
+                    	),
+                    	m("tr", 
+                    	m("td", "Thursday"),
+                    	m("td", m("pre.schedule[id=thursday_start]")),
+                    	m("td", m("pre.schedule[id=thursday_end]"))
+
+                    	),
+                    	m("tr", 
+                    	m("td", "Friday"),
+                    	m("td", m("pre.schedule[id=friday_start]")),
+                    	m("td", m("pre.schedule[id=friday_end]"))
+
+                    	),
+                    	m("tr", 
+                    	m("td", "Saturday"),
+                    	m("td", m("pre.schedule[id=saturday_start]")),
+                    	m("td", m("pre.schedule[id=saturday_end]"))
+
+                    	),
+                    	m("tr", 
+                    	m("td", "Sunday"),
+                    	m("td", m("pre.schedule[id=sunday_start]")),
+                    	m("td", m("pre.schedule[id=sunday_end]"))
+
+                    	),
+                	)
+                	),
 
 
 

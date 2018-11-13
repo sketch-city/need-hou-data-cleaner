@@ -25,6 +25,29 @@ oncreate: function(vnode) {
 		helper.difftext(Agency.selected.physical_address, Queue.queueAgency.physical_address, "agency_physical_address") 
 		helper.difftext(Agency.selected.phone_number, Queue.queueAgency.phone_number, "agency_phone_number") 
 
+
+
+	helper.difftext(program.schedule.monday[0] || "", Queue.queueProgram.schedule.monday[0] || "" , "monday_start")
+	helper.difftext(program.schedule.monday[1] || "", Queue.queueProgram.schedule.monday[1] || "" , "monday_end")
+
+	helper.difftext(program.schedule.tuesday[0] || "", Queue.queueProgram.schedule.tuesday[0] || "" , "tuesday_start")
+	helper.difftext(program.schedule.tuesday[1] || "", Queue.queueProgram.schedule.tuesday[1] || "" , "tuesday_end")
+
+	helper.difftext(program.schedule.wednesday[0] || "", Queue.queueProgram.schedule.wednesday[0] || "" , "wednesday_start")
+	helper.difftext(program.schedule.wednesday[1] || "", Queue.queueProgram.schedule.wednesday[1] || "" , "wednesday_end")
+
+	helper.difftext(program.schedule.thursday[0] || "", Queue.queueProgram.schedule.thursday[0] || "" , "thursday_start")
+	helper.difftext(program.schedule.thursday[1] || "", Queue.queueProgram.schedule.thursday[1] || "" , "thursday_end")
+
+	helper.difftext(program.schedule.friday[0] || "", Queue.queueProgram.schedule.friday[0] || "" , "friday_start")
+	helper.difftext(program.schedule.friday[1] || "", Queue.queueProgram.schedule.friday[1] || "" , "friday_end")
+
+	helper.difftext(program.schedule.saturday[0] || "", Queue.queueProgram.schedule.saturday[0] || "" , "saturday_start")
+	helper.difftext(program.schedule.saturday[1] || "", Queue.queueProgram.schedule.saturday[1] || "" , "saturday_end")
+
+	helper.difftext(program.schedule.sunday[0] || "", Queue.queueProgram.schedule.sunday[0] || "" , "sunday_start")
+	helper.difftext(program.schedule.sunday[1] || "", Queue.queueProgram.schedule.sunday[1] || "" , "sunday_end")
+
 	for(i = 0; i < program_fields.length; i++){
 		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
 			helper.difftext(program[program_fields[i].id].join(', ') || "", Queue.queueProgram[program_fields[i].id].join(', ') || "", program_fields[i].id) 			

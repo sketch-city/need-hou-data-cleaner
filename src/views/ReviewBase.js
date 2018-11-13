@@ -10,6 +10,7 @@ oninit: function(vnode) {
 	},
 oncreate: function(vnode) { 
 	program_fields = document.querySelectorAll('pre.program')
+	schedule_fields = document.querySelectorAll('pre.schedule')
 	agency = vnode.attrs.original_agency
 	program = vnode.attrs.original_program
 
@@ -19,17 +20,33 @@ oncreate: function(vnode) {
 	helper.difftext(agency["website"], vnode.attrs.agency["website"], "agency_website") 
 
 
+	helper.difftext(program.schedule.monday[0] || "", vnode.attrs.program.schedule.monday[0] || "" , "monday_start")
+	helper.difftext(program.schedule.monday[1] || "", vnode.attrs.program.schedule.monday[1] || "" , "monday_end")
+
+	helper.difftext(program.schedule.tuesday[0] || "", vnode.attrs.program.schedule.tuesday[0] || "" , "tuesday_start")
+	helper.difftext(program.schedule.tuesday[1] || "", vnode.attrs.program.schedule.tuesday[1] || "" , "tuesday_end")
+
+	helper.difftext(program.schedule.wednesday[0] || "", vnode.attrs.program.schedule.wednesday[0] || "" , "wednesday_start")
+	helper.difftext(program.schedule.wednesday[1] || "", vnode.attrs.program.schedule.wednesday[1] || "" , "wednesday_end")
+
+	helper.difftext(program.schedule.thursday[0] || "", vnode.attrs.program.schedule.thursday[0] || "" , "thursday_start")
+	helper.difftext(program.schedule.thursday[1] || "", vnode.attrs.program.schedule.thursday[1] || "" , "thursday_end")
+
+	helper.difftext(program.schedule.friday[0] || "", vnode.attrs.program.schedule.friday[0] || "" , "friday_start")
+	helper.difftext(program.schedule.friday[1] || "", vnode.attrs.program.schedule.friday[1] || "" , "friday_end")
+
+	helper.difftext(program.schedule.saturday[0] || "", vnode.attrs.program.schedule.saturday[0] || "" , "saturday_start")
+	helper.difftext(program.schedule.saturday[1] || "", vnode.attrs.program.schedule.saturday[1] || "" , "saturday_end")
+
+	helper.difftext(program.schedule.sunday[0] || "", vnode.attrs.program.schedule.sunday[0] || "" , "sunday_start")
+	helper.difftext(program.schedule.sunday[1] || "", vnode.attrs.program.schedule.sunday[1] || "" , "sunday_end")
+
+
 	for(i = 0; i < program_fields.length; i++){
 		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
-			if(program_fields[i].id === "schedule") {
-
-				helper.difftext(program.schedule.monday.join(" - ") || "", vnode.attrs.program.schedule.monday.join(" - ") || "", "schedule")
-
-
-
-			} else{
+			 
 			helper.difftext(program[program_fields[i].id].join(', ') || "", vnode.attrs.program[program_fields[i].id].join(', ') || "", program_fields[i].id) 
-			}			
+				
 		} else{
 			helper.difftext(program[program_fields[i].id] || "", vnode.attrs.program[program_fields[i].id] || "", program_fields[i].id) 
 		}
