@@ -7,10 +7,10 @@ module.exports = {
 
             m("section", 
             	m("ul[id=navbar]",
-                    m("li[id=title]", "Organization & Service Update Tool"),
+                    m("li[id=title]", "NeedHOU: Organization & Service Update Tool"),
         			m(LogoutButton),
                     m("li[id=needhou]",
-                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "Houston Social Services Database"))
+                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Social Services Database"))
 
                 ),
                 m('div.container',

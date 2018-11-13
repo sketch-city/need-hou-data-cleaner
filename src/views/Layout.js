@@ -10,7 +10,7 @@ module.exports = {
                     m("li[id=title]", "Organization & Service Update Tool"),
         			m(LogoutButton),
                     m("li[id=needhou]",
-                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "Houston Social Services Database"))
+                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Houston Social Services Database"))
 
                     ), vnode.children,
             m("div[id=myProgress]",
