@@ -12,14 +12,11 @@ module.exports = {
                     m("li[id=needhou]",
                         m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "Houston Social Services Database"))
 
-                    ), vnode.children,
-            m("div[id=myProgress]",
-                m("div[id=myBar]"))
-            ))
-        
+                ),
+                m('div.container',
+                    vnode.children,
+                )
+            )
+        )
     }
 }
-
-
-
-

@@ -20,7 +20,8 @@
     "express": "^4.16.3",
     "mithril": "^1.1.6",
     "path": "^0.12.7",
-    "pickerjs": "^1.0.0"
+    "pickerjs": "^1.0.0",
+    "validator": "^10.9.0"
   },
   "devDependencies": {
     "webpack": "^4.16.5",
