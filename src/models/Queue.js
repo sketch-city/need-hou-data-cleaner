@@ -11,7 +11,7 @@ var Queue = {
             withCredentials: false
         }).then(function(result){
                 Queue.queue_list = result.filter(function(item){
-                    return item.status != "rejected"
+                    return item.status === "new"
                 }) 
                 //just show queue items that don't have status rejected
 

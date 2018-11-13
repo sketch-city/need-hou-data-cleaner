@@ -77,7 +77,7 @@ view: function(vnode) {
 								 Agency.addNewAgency(Queue.queueAgency)
 								.then(Agency.addNewProgram(Queue.queueProgram))
 								.then(Agency.addNewLanguage(Queue.queueLanguage))
-								//.then(Queue.deleteQueueItem(vnode.attrs.id))
+								
 
 						}
 
@@ -85,19 +85,19 @@ view: function(vnode) {
 								Agency.updateAgency(Queue.queueAgency)
 								.then(Agency.addNewProgram(Queue.queueProgram))
 								.then(Agency.addNewLanguage(Queue.queueLanguage))
-								//.then(Queue.deleteQueueItem(vnode.attrs.id))							
+														
 							}
 
 							else if(Queue.type_submission === "existing_program"){
 								Agency.updateAgency(Queue.queueAgency)
 								.then(Agency.updateProgram(Queue.queueProgram))
 								.then(Agency.updateLanguage(Queue.queueLanguage))
-								//.then(Queue.deleteQueueItem(vnode.attrs.id))	
+								
 							}
 
 							else if(Queue.type_submission === "existing_agency") {
 								Agency.updateAgency(Queue.queueAgency)
-								//.then(Queue.deleteQueueItem(vnode.attrs.id))
+								
 							}
 
 							else if(Queue.type_submission === "delete_program") {
@@ -107,6 +107,7 @@ view: function(vnode) {
 
 							document.getElementById("queuesubmit").disabled = true;
 							document.getElementById("queuereject").disabled = true;
+							document.getElementById("acceptmessage").hidden = false;
 
 				}},
 					"Accept"),
@@ -119,8 +120,11 @@ view: function(vnode) {
 						//add logic that when rejected, set status of queue item. only show queue items wihtout a status
 						document.getElementById("queuesubmit").disabled = true;
 						document.getElementById("queuereject").disabled = true;
+						document.getElementById("rejectmessage").hidden = false;
 					}
-				}, "Reject")
+				}, "Reject"),
+				m("p[id=rejectmessage][style=color:green;]",{ hidden: true  } , "Submission Rejected"),
+				m("p[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
 			)
 		))
 	}
