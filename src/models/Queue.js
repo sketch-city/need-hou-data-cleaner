@@ -29,6 +29,7 @@ var Queue = {
     queueId: "",
     serviceTypes: "",
     status: "",
+    source: "",
     getQueueItem: function(queue_id) {
         return m.request({
             method: "GET",
@@ -40,6 +41,8 @@ var Queue = {
               Queue.queueProgram = result[0].submission.program_data
               Queue.queueId = result[0].id
               Queue.status = result[0].status
+              Queue.source = result[0].submission.source
+
               //Queue.serviceTypes = result[0].submission.program_data.service_type.join(', ')
 
               Queue.queueLanguage = result[0].submission.language_data
