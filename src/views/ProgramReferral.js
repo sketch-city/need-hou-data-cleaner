@@ -110,9 +110,9 @@ view: function(vnode) {
                                                         vnode.attrs.program.name = e.currentTarget.value;
                                                                         } }),
           m("label", "Program Neighbhorhood/Area"),
-          m("input.form-control[type=text][id=service_area]",{ value: vnode.attrs.program.service_area,
+          m("input.form-control[type=text][id=coverage_area]",{ value: vnode.attrs.program.coverage_area,
                                 onchange: function(e) { 
-                                                        vnode.attrs.program.service_area = e.currentTarget.value;
+                                                        vnode.attrs.program.coverage_area = e.currentTarget.value;
                                                                         } }),
 
           m("label", "Program Description"),
