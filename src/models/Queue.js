@@ -1,12 +1,13 @@
+const { BASE_API_URL } = require('../constants')
 var m = require('mithril')
 
 var Queue = {
 
-queue_list: [],
+    queue_list: [],
     getQueue: function() {
         return m.request({
             method: "GET",
-            url: "https://need-hou-api.herokuapp.com/api/queue",
+            url: BASE_API_URL + "/queue",
             withCredentials: false
         }).then(function(result){
                 Queue.queue_list = result.filter(function(item){
@@ -31,7 +32,7 @@ queue_list: [],
     getQueueItem: function(queue_id) {
         return m.request({
             method: "GET",
-            url: "https://need-hou-api.herokuapp.com/api/queue?queue_id=" + queue_id,
+            url: BASE_API_URL + "/queue?queue_id=" + queue_id,
             withCredentials: false
         }).then(function(result){
         	  Queue.type_submission = result[0].submission_type
@@ -52,7 +53,7 @@ queue_list: [],
         return m.request({
             method: "PUT",
             mode: 'cors',
-            url: "https://need-hou-api.herokuapp.com/api/queue",
+            url: BASE_API_URL + "/queue",
             data: queue_data,
             withCredentials: false,
         }).catch(function(error) {
@@ -65,7 +66,7 @@ queue_list: [],
    deleteQueueItem: function(queue_id){
         return m.request({
             method: "DELETE",
-            url: "https://need-hou-api.herokuapp.com/api/queue?queue_id=" + queue_id,
+            url: BASE_API_URL + "/queue?queue_id=" + queue_id,
             withCredentials: false,
         }).then(function(result){
 

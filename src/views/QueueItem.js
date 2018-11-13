@@ -61,12 +61,8 @@ oncreate: function(vnode) {
 },
 
 view: function(vnode) {
-		return(
-			m("section", 
-			m("ul",
-        			m("li",
-        				m("a", "Logout"))),
-				m(ReviewFields),
+		return (m('section',
+			m(ReviewFields),
 
 				
 			m("div.reviewbuttons",
@@ -125,12 +121,7 @@ view: function(vnode) {
 						document.getElementById("queuereject").disabled = true;
 					}
 				}, "Reject")
-
-
-				)
-
-
 			)
-		)
+		))
 	}
 }

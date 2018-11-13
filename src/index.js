@@ -1,4 +1,5 @@
 var m = require("mithril")
+var User = require("./models/User")
 
 var AgencySelect = require('./views/AgencySelect')
 var AgencyEdit = require('./views/AgencyEdit')
@@ -18,10 +19,10 @@ var AgencyNewProgramEligibility = require("./views/AgencyNewProgramEligibility")
 var AgencyNewReview = require("./views/AgencyNewReview")
 var ProgramNewReview = require("./views/ProgramNewReview")
 var AgencyReview = require("./views/AgencyReview")
+var QueueLayout = require("./views/QueueLayout")
 var QueueList = require("./views/QueueList")
 var QueueItem = require("./views/QueueItem")
-
-// var Login = require("./views/Login")
+var Login = require("./views/Login")
 
 
 m.route(document.body, "/selectagency", {
@@ -146,17 +147,27 @@ m.route(document.body, "/selectagency", {
         }
     },
     
+    "/login":{
+        render: function(vnode){
+            return m(QueueLayout, m(Login, vnode.attrs))
+        }
+    },
+    
     "/queue":{
-        render: function(){
-            return  m(QueueList)
+        onmatch: function() {
+            if (!User.getIsLoggedIn()) m.route.set("/login")
+        },
+        render: function(vnode){
+            return m(QueueLayout, m(QueueList, vnode.attrs))
         }
     },
 
-
-
     "/queue/:id":{
+        onmatch: function() {
+            if (!User.getIsLoggedIn()) m.route.set("/login")
+        },
         render: function(vnode){
-            return m(QueueItem, vnode.attrs)
+            return m(QueueLayout, m(QueueItem, vnode.attrs))
         }
     }
 

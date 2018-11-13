@@ -7,9 +7,17 @@ module.exports = {
 	guid,
   autocomplete,
   parse_date,
-  difftext
-
+  difftext,
+  withToken,
 };
+
+function withToken(requestOptions) {
+	return Object.assign({
+		headers: {
+			'Authorization': `Bearer ${localStorage.getItem('token')}`,
+		},
+	}, requestOptions)
+}
 
 function difftext(oldText, newText, el){
   var diff = jsdiff.diffWords(oldText, newText),
