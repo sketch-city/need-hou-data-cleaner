@@ -62,7 +62,7 @@ view: function(vnode) {
                   
 
 
-                    m("label", "Are services available the same day as intake? ★"),
+                    m("label", "★ Are services available the same day as intake?"),
                     m("select.form-control[id=service_available_intake]", { 
                       value: vnode.attrs.program.service_available_intake,
                         onchange: function(e) { 
@@ -92,7 +92,7 @@ view: function(vnode) {
                                 vnode.attrs.program.website  = e.currentTarget.value;
                                 }
                            }),
-                    m("label", "Website Languages ★"),
+                    m("label", "★ Website Languages"),
                     m("select[id=website_languages_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.website_languages  = getSelectedOptions(document.getElementById('website_languages_select'))
@@ -175,7 +175,7 @@ view: function(vnode) {
 
 
                     ),
-                    m("label.control-label", "Interpretation Offered ★"),
+                    m("label.control-label", "★ Interpretation Offered"),
                     m("select[id=interpretation_offered_select][multiple=multiple]", {  
                           onchange: function(e) { 
                            vnode.attrs.program.interpretation_offered  = getSelectedOptions(document.getElementById('interpretation_offered_select')) 

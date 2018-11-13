@@ -95,7 +95,7 @@ view: function(vnode) {
 
 
                 
-            m("label", "Program Schedule ★"),
+            m("label", "★ Program Schedule"),
             m("table.table",
               m("thead",
                 m("tr",
@@ -247,7 +247,7 @@ view: function(vnode) {
 
                     ),
 
-              m("label", "Form assistance offered? ★"),
+              m("label", "★ Form assistance offered?"),
               m("select.form-control[id=document_assistance]", { 
                       value: vnode.attrs.program.document_assistance,
                         onchange: function(e) { 
@@ -260,7 +260,7 @@ view: function(vnode) {
                
               ),
 
-              m("label.control-label", "Visual aids offered for low-literacy clients? ★"),
+              m("label.control-label", "★ Visual aids offered for low-literacy clients?"),
                     m("select.form-control[id=visual_aids_offered]", { 
                       value: vnode.attrs.program.visual_aids_offered,
                         onchange: function(e) { 
@@ -286,7 +286,7 @@ view: function(vnode) {
                
               ),
 
-                    m("label.control-label", "Does program offer clients an opportunity for consultation before filling out paperwork? ★"),
+                    m("label.control-label", "★ Does program offer clients an opportunity for consultation before filling out paperwork?"),
                     m("select.form-control[id=consultation_opportunity]", { 
                       value: vnode.attrs.program.consultation_opportunity,
                         onchange: function(e) { 
@@ -299,7 +299,7 @@ view: function(vnode) {
                
                   ),
 
-                    m("label.control-label", "Does program have a policy to respond to Immigrations and Customs Enforcement requests? ★"),
+                    m("label.control-label", "★ Does program have a policy to respond to Immigrations and Customs Enforcement requests?"),
                     m("select.form-control[id=enforcement_request_policy]", { 
                       value: vnode.attrs.program.enforcement_request_policy,
                         onchange: function(e) { 
@@ -311,7 +311,7 @@ view: function(vnode) {
                          m("option", "No")
                
                   ),
-                    m("label.control-label", "Does program offer a cultural competency/effectiveness training? ★"),
+                    m("label.control-label", "★ Does program offer a cultural competency/effectiveness training?"),
                     m("select.form-control[id=cultural_competency_offered]", { 
                       value: vnode.attrs.program.cultural_competency_offered,
                         onchange: function(e) { 
