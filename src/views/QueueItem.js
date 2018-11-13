@@ -66,7 +66,12 @@ view: function(vnode) {
 
 				
 			m("div.reviewbuttons",
-				m("button[type=submit][id=queuesubmit][style=color:green;].btn btn-default", {
+				m("button[type=submit][style= margin: 20px;].btn btn-default", 
+								{
+							 	 href: "/queue", 
+							 	 oncreate: m.route.link 
+							 	}, "Back to Queue"),
+				m("button[type=submit][id=queuesubmit][style=color:green; margin: 20px;].btn btn-default", {
 					onclick: function(e) {
 							Queue.updateQueueItem({
 								id: Queue.queueId,
@@ -111,13 +116,12 @@ view: function(vnode) {
 
 				}},
 					"Accept"),
-				m("button[type=submit][id=queuereject][style=color:red;].btn btn-default", {
+				m("button[type=submit][id=queuereject][style=color:red; margin: 20px;].btn btn-default", {
 					onclick: function(e) {
 						Queue.updateQueueItem({
 								id: Queue.queueId,
 								status: "rejected" 
 							})
-						//add logic that when rejected, set status of queue item. only show queue items wihtout a status
 						document.getElementById("queuesubmit").disabled = true;
 						document.getElementById("queuereject").disabled = true;
 						document.getElementById("rejectmessage").hidden = false;
