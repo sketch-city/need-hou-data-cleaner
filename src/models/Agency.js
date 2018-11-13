@@ -1,5 +1,7 @@
+const { BASE_API_URL } = require('../constants')
+const { withToken } = require('../helper')
 var m = require('mithril')
-
+var User = require("./User")
 
 var Agency = {
 
@@ -7,7 +9,7 @@ var Agency = {
 	loadList: function() {
 		return m.request({
 			method: "GET",
-			url: "https://need-hou-api.herokuapp.com/api/agencies",
+			url: BASE_API_URL + "/agencies",
 			withCredentials: false
 		}).then(function(result){
 			 if(Agency.list === undefined || Agency.list.length == 0 ){
@@ -23,7 +25,7 @@ var Agency = {
 	loadAgency: function(name){
 		return m.request({
 			method: "GET",
-			url: "https://need-hou-api.herokuapp.com/api/agencies?name=" + name,
+			url: BASE_API_URL + "/agencies?name=" + name,
 			withCredentials: false,
 		}).then(function(result){
 			Agency.selected = result[0]
@@ -35,7 +37,7 @@ var Agency = {
 	loadPrograms: function(){
 		return m.request({
 			method: "GET",
-			url: "https://need-hou-api.herokuapp.com/api/programs?agency_id=" + Agency.selected.id,
+			url: BASE_API_URL + "/programs?agency_id=" + Agency.selected.id,
 			withCredentials: false,
 		}).then(function(result){
 			Agency.programs = result
@@ -52,7 +54,7 @@ var Agency = {
 	loadProgram: function(id){
 		return m.request({ 
 			method: "GET",
-			url: "https://need-hou-api.herokuapp.com/api/programs?id=" + id,
+			url: BASE_API_URL + "/programs?id=" + id,
 			withCredentials: false,
 		}).then(function(result){
 			if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
@@ -69,7 +71,7 @@ var Agency = {
 	loadLanguages: function(program_id){
 		return m.request({
 			method: "GET",
-			url: "https://need-hou-api.herokuapp.com/api/languages?program_id=" + program_id,
+			url: BASE_API_URL + "/languages?program_id=" + program_id,
 			withCredentials: false,
 		}).then(function(result){
 			Agency.selected_program.language_arr = result.language_arr
@@ -80,26 +82,38 @@ var Agency = {
 	},
 
 	addNewAgency: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "POST",
             mode :'cors',
-            url: "https://need-hou-api.herokuapp.com/api/agencies",
+            url: BASE_API_URL + "/agencies",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
-        	console.log(error)
+        })).catch(function(error){
+			console.log(error)
+			if (error.status === 403) {
+				User.logout()
+					.then(function(){
+						m.route.set('/login')
+					})
+			}
         })
     },
 
 	updateAgency: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "PUT",
             mode :'cors',
-            url: "https://need-hou-api.herokuapp.com/api/agencies",
+            url: BASE_API_URL + "/agencies",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
-        	console.log(error)
+        })).catch(function(error){
+			console.log(error)
+			if (error.status === 403) {
+				User.logout()
+					.then(function(){
+						m.route.set('/login')
+					})
+			}
         })
     },
 
@@ -108,52 +122,76 @@ var Agency = {
     	delete new_data['longitude']
     	delete new_data['latitude']
 
-        return m.request({
+        return m.request(withToken({
             method: "PUT",
             mode :'cors',
-            url: "https://need-hou-api.herokuapp.com/api/programs",
+            url: BASE_API_URL + "/programs",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
+			if (error.status === 403) {
+				User.logout()
+					.then(function(){
+						m.route.set('/login')
+					})
+			}
         })
     },
 
      updateLanguage: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "PUT",
             mode :'cors',
-            url: "https://need-hou-api.herokuapp.com/api/languages",
+            url: BASE_API_URL + "/languages",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
+			if (error.status === 403) {
+				User.logout()
+					.then(function(){
+						m.route.set('/login')
+					})
+			}
         })
     },
 
 
     addNewProgram: function(new_data) {
-        return m.request({
+        return m.request(withToken({
             method: "POST",
             mode :'cors',
-            url: "https://need-hou-api.herokuapp.com/api/programs",
+            url: BASE_API_URL + "/programs",
             data: new_data,
             withCredentials: false,
-        }).catch(function(error){
+        })).catch(function(error){
         	console.log(error)
+			if (error.status === 403) {
+				User.logout()
+					.then(function(){
+						m.route.set('/login')
+					})
+			}
         })
     },
 
 
     addNewLanguage: function(new_data) {
-    	return m.request({
+    	return m.request(withToken({
     		method: "POST",
     		mode: 'cors',
-    		url: "https://need-hou-api.herokuapp.com/api/languages",
+    		url: BASE_API_URL + "/languages",
     		data: new_data,
     		withCredentials: false,
-    	}).catch(function(error){
+    	})).catch(function(error){
     		console.log(error)
+			if (error.status === 403) {
+				User.logout()
+					.then(function(){
+						m.route.set('/login')
+					})
+			}
     	})
     },
 
@@ -162,7 +200,7 @@ var Agency = {
         return m.request({
             method: "POST",
             mode: "cors",
-            url: "https://need-hou-api.herokuapp.com/api/queue",
+            url: BASE_API_URL + "/queue",
             data: queue_data,
             withCredentials: false,
         }).catch(function(error){

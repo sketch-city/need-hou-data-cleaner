@@ -8,10 +8,6 @@ oninit: Queue.getQueue,
 view: function() { 
 
 		return(
-		  m("section", 
-			m("ul",
-        			m("li",
-        				m("a", "Logout"))),
 			m("div.queue_list",
 				m("table.table table-striped",
 				  m("thead",
@@ -36,7 +32,6 @@ view: function() {
 						)
 					)
 				)
-			)
 		)		
 	}	
 }
