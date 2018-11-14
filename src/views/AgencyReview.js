@@ -38,13 +38,13 @@ view: function() {
 			m("button[type=submit][id=submitfinal].btn btn-default", {
 				onclick: function(e) {
 						Agency.addQueueItem({
+								status: "new",
 								submission_type: "existing_agency", 
 								submission: { 
 								agency_data: Agency.selected,
-								program_data: {}
-					
+								program_data: {},
+								source: localStorage.username
 								}
-
 							})
 
 					document.getElementById("submitfinal").disabled = true;
