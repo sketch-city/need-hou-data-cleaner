@@ -30,6 +30,9 @@ var Agency = {
 		}).then(function(result){
 			Agency.selected = result[0]
             Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
+		}).catch(function(error){
+
+
 		})
 	},
 
@@ -62,7 +65,7 @@ var Agency = {
                 Agency.original_selected_program = JSON.parse(JSON.stringify(result[0]));
 			}
 		}).catch(function(error) {
-			console.log(error)
+			//Agency.selected_program = {}
 
 		})
 	},

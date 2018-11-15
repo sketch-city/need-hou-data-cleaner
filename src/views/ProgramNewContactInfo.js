@@ -19,7 +19,7 @@ var newProgram = {
         holiday_schedule:"",
         transportation: "",
         language_arr: [],
-        service_area: "",
+        coverage_area: "",
         next_steps: "",
         waitlist_wait: "",
         other_program_enrollment: "",

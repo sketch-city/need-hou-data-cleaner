@@ -3,6 +3,7 @@ var Queue = require("../models/Queue")
 var helper = require("../helper")
 
 
+
 module.exports = {
 oninit: Queue.getQueue,
 view: function() { 
@@ -23,12 +24,13 @@ view: function() {
 							
 							m("tr",
 								m("th[scope=row]", index + 1),
-								m("td[id=queueid]", m("a", { href: "/queue/" + item.id, oncreate: m.route.link}, item.id )),
+								m("td[id=queueid]", m("a", { href: "/queue/" + item.id,
+									oncreate: m.route.link}, item.id )),
 								m("td", item.submission_type),
 								m("td", item.submission.source),
 								m("td", helper.parse_date(item.posted_date)))
 
-									)
+								)
 								
 							})
 						)

@@ -36,7 +36,7 @@ view: function(vnode) {
 
 					//referral fields
 					m("p", m("strong", "Name: "),m("pre.program[id=name]")),
-					m("p", m("strong", "Neighborhood/Area"), m("pre.program[id=service_area]")),
+					m("p", m("strong", "Neighborhood/Area"), m("pre.program[id=coverage_area]")),
 					m("p", m("strong", "Description: "), m("pre.program[id=description]")),
 					m("p", m("strong", "Accepting clients?: "), m("pre.program[id=accepting_clients]")),
 					m("p", m("strong", "Waitlist wait: "), m("pre.program[id=waitlist_wait]")),

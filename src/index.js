@@ -24,7 +24,8 @@ var QueueList = require("./views/QueueList")
 var QueueItem = require("./views/QueueItem")
 var Login = require("./views/Login")
 var DeleteAgency = require("./views/DeleteAgency")
-
+var NewAgencyQueue = require("./views/NewAgencyQueue")
+var ExistingProgramQueue = require("./views/ExistingProgramQueue")
 
 m.route(document.body, "/selectagency", {
     "/selectagency" : {
@@ -177,7 +178,16 @@ m.route(document.body, "/selectagency", {
         render: function(vnode){
             return m(QueueLayout, m(QueueItem, vnode.attrs))
         }
-    }
+    },
+
+    "/queue/existingprogram/:id":{
+        onmatch: function() {
+            if (!User.getIsLoggedIn()) m.route.set("/login")
+        },
+        render: function(vnode){
+            return m(QueueLayout, m(ExistingProgramQueue, vnode.attrs))
+        }
+    },
 
 
     })

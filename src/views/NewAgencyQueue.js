@@ -1,22 +1,19 @@
-
 var m = require("mithril")
-var Agency = require("../models/Agency")
-var AgencyForm = require("./AgencyForm")
-var helper = require("../helper")
-
-var agencyID = helper.guid();
-
+var QueueItem = require("./QueueItem")
+var Queue = require("../models/Queue")
 
 var newAgency = {
-	id: agencyID ,
+	id: "",
     name: "",
     physical_address: "",
     description: "",
     phone_number: "",
-    website: "",
-    selected_program: {
+    website: ""
+}
+
+var newProgram = {
         agency_id: "",
-        id: helper.guid(),
+        id: "",
     	name: "",
     	description: "",
     	physical_address: "",
@@ -71,33 +68,13 @@ var newAgency = {
         service_cost: ""
     }
 
-}
-    
-
-
 module.exports = {
-view: function() {
-    	return(
-            m("div.row",[  
-                m("div.agencyedit col-md-12",[                 
-                  m(AgencyForm, {agency: newAgency} ),
-                  m("div.buttons",
-                  m("button.btn btn-default[type=submit]", {
-                        href: "/selectagency", 
-                        oncreate: m.route.link
-                        },"Previous"),
 
-                  m("button.btn btn-default[type=submit][id=nextbutton][style=margin-left:10px]", {
-                        href: "/newagencyprogramreferral", 
-                        oncreate: m.route.link
-                        },"Next")
-                    )
-			     ])
-                ])
-    		)
-    }
+view: function(vnode) {
+
+	return(m(QueueItem, { selected_agency: newAgency, selected_program: newProgram }))
+
+
+	}
 
 }
-
-
-window.newAgency = newAgency
