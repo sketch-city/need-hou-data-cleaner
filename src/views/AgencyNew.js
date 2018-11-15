@@ -88,7 +88,6 @@ view: function() {
                         },"Previous"),
 
                   m("button.btn btn-default[type=submit][id=nextbutton][style=margin-left:10px]", {
-                        disabled: true,
                         href: "/newagencyprogramreferral", 
                         oncreate: m.route.link
                         },"Next")
