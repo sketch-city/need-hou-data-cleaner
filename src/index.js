@@ -23,6 +23,7 @@ var QueueLayout = require("./views/QueueLayout")
 var QueueList = require("./views/QueueList")
 var QueueItem = require("./views/QueueItem")
 var Login = require("./views/Login")
+var DeleteAgency = require("./views/DeleteAgency")
 
 
 m.route(document.body, "/selectagency", {
@@ -36,6 +37,13 @@ m.route(document.body, "/selectagency", {
     "/editagency": {
         render: function(){
             return m(Layout, m(AgencyEdit))
+        }
+
+    },
+
+    "/deleteagency": {
+        render: function(){
+            return m(Layout, m(DeleteAgency))
         }
 
     },

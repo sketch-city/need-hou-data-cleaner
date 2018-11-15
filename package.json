@@ -18,6 +18,7 @@
     "cors": "^2.8.4",
     "diff": "^3.5.0",
     "express": "^4.16.3",
+    "micromodal": "^0.3.2",
     "mithril": "^1.1.6",
     "path": "^0.12.7",
     "pickerjs": "^1.0.0",
