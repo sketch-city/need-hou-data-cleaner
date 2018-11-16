@@ -56,10 +56,10 @@ view: function() {
 			},
 				"Submit"),
 			m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
-				href: "/selectagency", 
+				href: "/queue", 
 				oncreate: m.route.link 
 
-			}, "Edit Additional Program")
+			}, "View Queue")
 
 			),
 			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
