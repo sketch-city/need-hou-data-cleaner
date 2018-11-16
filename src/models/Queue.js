@@ -38,7 +38,9 @@ var Queue = {
         }).then(function(result){
         	  Queue.type_submission = result[0].submission_type
               Queue.queueAgency = result[0].submission.agency_data
+              Queue.queueAgency["source"] = result[0].submission.source
               Queue.queueProgram = result[0].submission.program_data
+              Queue.queueProgram["source"] = result[0].submission.source
               Queue.queueId = result[0].id
               Queue.status = result[0].status
               Queue.source = result[0].submission.source

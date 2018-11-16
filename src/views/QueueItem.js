@@ -51,6 +51,7 @@ newProgramDiff = {
         income_eligibility: "",
         id_accepted_expired: [],
         gender_eligibility: "",
+        source:"",
         schedule: {
                 monday : [], 
                 tuesday : [], 
@@ -95,6 +96,7 @@ newAgencyDiff = {
         other_eligibility: "",
         id_accepted_notes: "",
         proof_address: "",
+        source: "",
         appointment_required_notes: "",
         service_available_intake: "",
         service_available_intake_notes: "",
