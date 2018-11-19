@@ -82,8 +82,19 @@ function autocomplete(inp, arr) {
           b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
+
               Agency.selected.name = inp.value
-              Agency.loadAgency(Agency.selected.name).then(Agency.loadPrograms)
+              
+
+              filteredArr = Agency.list.filter(function (item) {
+                  if(item.name === Agency.selected.name) return item.id
+              });
+              
+
+
+              selectedId = filteredArr[0].id
+              
+              Agency.loadAgency(selectedId).then(Agency.loadPrograms)
         
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/

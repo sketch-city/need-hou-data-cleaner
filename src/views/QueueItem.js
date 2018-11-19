@@ -180,7 +180,7 @@ oncreate: function(vnode) {
 	   return(Queue.getQueueItem(vnode.attrs.id))
 
 	.then(function() {
-		return(Agency.loadAgency(Queue.queueAgency.name))
+		return(Agency.loadAgency(Queue.queueAgency.id))
 	})
 	.then(function(){ 
 		return(Agency.loadProgram(Queue.queueProgram.id))

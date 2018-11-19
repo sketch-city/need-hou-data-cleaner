@@ -22,12 +22,13 @@ var Agency = {
 
 	selected: {},
     original_selected: {},
-	loadAgency: function(name){
+	loadAgency: function(id){
 		return m.request({
 			method: "GET",
-			url: BASE_API_URL + "/agencies?name=" + name,
+			url: BASE_API_URL + "/agencies?agency_id=" + id,
 			withCredentials: false,
 		}).then(function(result){
+
 			Agency.selected = result[0]
             Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
 		}).catch(function(error){
