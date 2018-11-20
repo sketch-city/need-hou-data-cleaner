@@ -175,8 +175,13 @@ function diffFields(agency, program){
 
 module.exports = {
 
-oncreate: function(vnode) { 
 
+oninit: function(vnode){
+    
+},
+
+oncreate: function(vnode) { 
+        
 	   return(Queue.getQueueItem(vnode.attrs.id))
 
 	.then(function() {
@@ -263,6 +268,11 @@ view: function(vnode) {
 							else if(Queue.type_submission === "delete_program") {
 								Agency.deleteProgram(Queue.queueProgram.id)
 							}
+
+                            else if(Queue.type_submission === "delete_agency") {
+                                Agency.deleteAgency(Queue.queueAgency.id)
+
+                            }
 
 
 							document.getElementById("queuesubmit").disabled = true;

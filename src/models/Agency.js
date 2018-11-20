@@ -12,9 +12,9 @@ var Agency = {
 			url: BASE_API_URL + "/agencies",
 			withCredentials: false
 		}).then(function(result){
-			 if(Agency.list === undefined || Agency.list.length == 0 ){
+			 //if(Agency.list === undefined || Agency.list.length == 0 ){
 			   Agency.list = result 
-			}
+			//}
 
 		})
 	},
@@ -28,7 +28,6 @@ var Agency = {
 			url: BASE_API_URL + "/agencies?agency_id=" + id,
 			withCredentials: false,
 		}).then(function(result){
-
 			Agency.selected = result[0]
             Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
 		}).catch(function(error){
@@ -61,10 +60,10 @@ var Agency = {
 			url: BASE_API_URL + "/programs?id=" + id,
 			withCredentials: false,
 		}).then(function(result){
-			if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
+			//if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
 				Agency.selected_program = result[0]	
                 Agency.original_selected_program = JSON.parse(JSON.stringify(result[0]));
-			}
+			//}
 		}).catch(function(error) {
 			//Agency.selected_program = {}
 
