@@ -33,14 +33,21 @@ module.exports = {
                       m("main.modal__content[id='modal-1-content']", 
                         m("p", "Type in name of organization you'd like to delete:"),
                         m("input.form-control[id=agencydelete][type=text]",
-                          { oninput: function(e) { Agency.to_delete = e.currentTarget.value } })
+                          { oninput: function(e) { Agency.agency_to_delete = e.currentTarget.value } })
 
                       ),
                       m("footer.modal__footer",
                         [
                           m("button.modal__btn.modal__btn-primary",{
                             onclick: function() {
-                              Agency.loadAgency(Agency.to_delete).then(function() {
+
+                              filteredArr = Agency.list.filter(function (item) {
+                                if(item.name === Agency.agency_to_delete) return item.id
+                            });
+                          
+                            selectedId = filteredArr[0].id
+
+                              Agency.loadAgency(selectedId).then(function() {
                               Agency.addQueueItem({
                                         status: "new",
                                         submission_type: "delete_agency", 
