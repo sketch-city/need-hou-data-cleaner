@@ -132,9 +132,19 @@ newAgencyDiff = {
 
 }
 
+function diffAgency(agency){
+    helper.difftext(agency.name, Queue.queueAgency.name, "agency_name") 
+        helper.difftext(agency.website, Queue.queueAgency.website, "agency_website") 
+        helper.difftext(agency.physical_address, Queue.queueAgency.physical_address, "agency_physical_address") 
+        helper.difftext(agency.phone_number, Queue.queueAgency.phone_number, "agency_phone_number") 
+
+
+
+
+}
+
 
 function diffFields(agency, program){
-
 		program_fields = document.querySelectorAll('pre.program')
 		helper.difftext(agency.name, Queue.queueAgency.name, "agency_name") 
 		helper.difftext(agency.website, Queue.queueAgency.website, "agency_website") 
@@ -193,21 +203,24 @@ oncreate: function(vnode) {
  	// }).then(function(){
 		// return(Agency.loadLanguages(Queue.queueProgram.id))
  	}).then(function(){
+        //new agency & new program
  		if(Agency.selected === undefined){
  			diffFields(newAgencyDiff, newProgramDiff)
-
  		} 
 
+        //existing agency and new program
  		else if(Object.keys(Agency.selected_program).length === 0){
+            if(Queue.type_submission === "delete_agency"){
+                diffAgency(Agency.selected)
+
+            } else{
  			diffFields(Agency.selected, newProgramDiff)
+            }   
  		}
 
- 		//if(AgencyAgency.selected_program === undefined){
- 		// 	diffFields(Agency.selected, newProgramDiff)
- 		// }
-
+        //existing agency and existing program
  		else{
- 		diffFields(Agency.selected, Agency.selected_program)
+ 		 diffFields(Agency.selected, Agency.selected_program)
 
  		}
 
@@ -233,10 +246,11 @@ view: function(vnode) {
 							 	}, "Back to Queue"),
 				m("button[type=submit][id=queuesubmit][style=color:green; margin: 20px;].btn btn-default", {
 					onclick: function(e) {
+
 							Queue.updateQueueItem({
 								id: Queue.queueId,
 								status: "accepted" 
-							})
+							}).then(function(){ 
 							
 						if(Queue.type_submission === "new_agency"){
 								 Agency.addNewAgency(Queue.queueAgency)
@@ -278,6 +292,9 @@ view: function(vnode) {
 							document.getElementById("queuesubmit").disabled = true;
 							document.getElementById("queuereject").disabled = true;
 							document.getElementById("acceptmessage").hidden = false;
+
+
+                        })
 
 				}},
 					"Accept"),

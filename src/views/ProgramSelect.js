@@ -142,8 +142,8 @@ module.exports = {
               m("span", "Don't see your program? Click ", 
                         m("a", {href: "/newprogramreferral", oncreate: m.route.link }, "here"), " to add a new program."),
               
-              m("p", m("a[href=#][data-micromodal-trigger=modal-2]", { onclick: function(){ MicroModal.show('modal-2') } }, "Program no longer exists? Click to DELETE a program.")),
-
+              m("p", m("a[data-micromodal-trigger=modal-2]", { onclick: function(){ MicroModal.show('modal-2') } }, "Program no longer exists? Click to DELETE a program.")),
+              m("div.row"),
 
                m("div.buttons",
                   m("button.btn btn-default[type=submit]", {
@@ -157,6 +157,8 @@ module.exports = {
                         oncreate: m.route.link,
                         },"Next")
                     )
+
+
         ])
 
       ])

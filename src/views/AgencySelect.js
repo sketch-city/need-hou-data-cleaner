@@ -87,7 +87,7 @@ module.exports = {
 
                   ]),
                       m("span", m("a", {href: "/newagency", oncreate: m.route.link }, "Don't see your organization? Click to ADD a new org")),
-                      m("p", m("a[href=#][data-micromodal-trigger=modal-1]", { onclick: function(){ MicroModal.show('modal-1') } }, "Organization no longer exists? Click to DELETE an organization.")),
+                      m("p", m("a[data-micromodal-trigger=modal-1]", { onclick: function(){ MicroModal.show('modal-1') } }, "Organization no longer exists? Click to DELETE an organization.")),
                     m("div.row"),
                     m("button.btn btn-default[type=submit][style=margin-top:50px]", {
                   
