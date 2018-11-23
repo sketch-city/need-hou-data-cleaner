@@ -192,7 +192,7 @@ oninit: function(vnode){
 
 oncreate: function(vnode) { 
         
-	   return(Queue.getQueueItem(vnode.attrs.id))
+	return(Queue.getQueueItem(vnode.attrs.id))
 
 	.then(function() {
 		return(Agency.loadAgency(Queue.queueAgency.id))
@@ -245,19 +245,18 @@ view: function(vnode) {
 							 	 oncreate: m.route.link 
 							 	}, "Back to Queue"),
 				m("button[type=submit][id=queuesubmit][style=color:green; margin: 20px;].btn btn-default", {
-					onclick: function(e) {
+					onclick: function() {
 
 							Queue.updateQueueItem({
 								id: Queue.queueId,
 								status: "accepted" 
 							}).then(function(){ 
+                                console.log('next thing')
 							
 						if(Queue.type_submission === "new_agency"){
 								 Agency.addNewAgency(Queue.queueAgency)
 								.then(Agency.addNewProgram(Queue.queueProgram))
 								.then(Agency.addNewLanguage(Queue.queueLanguage))
-								
-
 						}
 
 							else if(Queue.type_submission === "new_program"){

@@ -215,13 +215,30 @@ var Agency = {
     deleteProgram: function(program_id){
         return m.request({
             method: "DELETE",
-            url: "https://need-hou-api.herokuapp.com/api/programs?id=" + program_id,
+            url: "https://need-hou-api.herokuapp.com/api/programs?program_id=" + program_id,
+            withCredentials: false,
+        }).then(function(result){
+
+            
+        })
+    },
+
+    deleteAgency: function(agency_id){
+        return m.request({
+            method: "DELETE",
+            url: "https://need-hou-api.herokuapp.com/api/agencies?agency_id=" + agency_id,
             withCredentials: false,
         }).then(function(result){
 
             
         })
     }
+
+
+
+
+
+
 
 }
 
