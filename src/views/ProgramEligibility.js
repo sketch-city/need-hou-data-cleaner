@@ -216,7 +216,8 @@ view: function(vnode) {
                      }),
 
 
-                    
+                    ),
+]),
 
 
 
@@ -233,8 +234,7 @@ view: function(vnode) {
                         },"Next")
                       )
 
-                    )
-    		      ])
+            
           ])
 	     ])
 		)
