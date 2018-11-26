@@ -7,7 +7,7 @@ module.exports = {
 
             m("section", 
             	m("ul[id=navbar]",
-                    m("li[id=title]", "Organization & Service Update Tool"),
+                    m("li[id=title]", "NeedHOU: Resource Editing Tool"),
         			m(LogoutButton),
                     m("li[id=needhou]",
                         m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Houston Social Services Database"))
