@@ -10,7 +10,8 @@ module.exports = {
                     m("li[id=title]", "NeedHOU: Resource Editing Tool"),
         			m(LogoutButton),
                     m("li[id=needhou]",
-                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Houston Social Services Database"))
+                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Houston Social Services Database")),
+                    m("li[id=needhou]", m("a", {href: "/queue", oncreate: m.route.link}, "Queue"))
 
                     ), vnode.children,
             m("div[id=myProgress]",
