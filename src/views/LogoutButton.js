@@ -14,7 +14,13 @@ module.exports = {
                             })
                         }
                     },
-                    m("a", "Logout")
+                    m("a", {href: "/"}, "Logout")
+                )
+            )
+        } else {
+            return (
+                m("li[id=login]",
+                    m("a", {href: "/login", oncreate: m.route.link}, "Login")
                 )
             )
         }
