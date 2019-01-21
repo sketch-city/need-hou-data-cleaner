@@ -3,6 +3,19 @@ const { withToken } = require('../helper')
 var m = require('mithril')
 var User = require("./User")
 
+
+function handleUserTimedout(error){
+	console.log(error)
+	if (error.status === 403) {
+		User.logout()
+			.then(function(){
+				m.route.set('/login')
+			})
+	} else {
+		throw error
+	}
+}
+
 var Agency = {
 
 	list: [],
@@ -95,15 +108,7 @@ var Agency = {
             url: BASE_API_URL + "/agencies",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-			console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 	updateAgency: function(new_data) {
@@ -113,15 +118,7 @@ var Agency = {
             url: BASE_API_URL + "/agencies",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-			console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 
@@ -135,15 +132,7 @@ var Agency = {
             url: BASE_API_URL + "/programs",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-        	console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
      updateLanguage: function(new_data) {
@@ -153,15 +142,7 @@ var Agency = {
             url: BASE_API_URL + "/languages",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-        	console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 
@@ -172,15 +153,7 @@ var Agency = {
             url: BASE_API_URL + "/programs",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-        	console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 
@@ -191,15 +164,7 @@ var Agency = {
     		url: BASE_API_URL + "/languages",
     		data: new_data,
     		withCredentials: false,
-    	})).catch(function(error){
-    		console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-    	})
+    	})).catch(handleUserTimedout)
     },
 
 
@@ -223,6 +188,11 @@ var Agency = {
             url: BASE_API_URL + "/programs?program_id=" + program_id,
             withCredentials: false,
         }))
+        .then(function(){
+        	Agency.program_to_delete = {}
+        	Agency.loadPrograms()
+        })
+        .catch(handleUserTimedout)
     },
 
     agency_to_delete: {},
@@ -233,6 +203,11 @@ var Agency = {
             url: BASE_API_URL + "/agencies?agency_id=" + agency_id,
             withCredentials: false,
         }))
+        .then(function(){
+        	Agency.agency_to_delete = {}
+        	Agency.setSelectedAgency([{}])
+        })
+        .catch(handleUserTimedout)
     }
 
 
