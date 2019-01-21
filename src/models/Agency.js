@@ -81,6 +81,7 @@ var Agency = {
 				Agency.selected_program = result[0]	
                 Agency.original_selected_program = JSON.parse(JSON.stringify(result[0]));
 			//}
+			return result
 		}).catch(function(error) {
 			//Agency.selected_program = {}
 

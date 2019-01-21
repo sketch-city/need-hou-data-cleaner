@@ -53,7 +53,23 @@ function selectProgram(){
 
 
 module.exports = {
-  oninit: function() { helper.moveProgress(30, 30, 50) } ,
+  oninit: function(vnode) {
+    helper.moveProgress(30, 30, 50)
+    if (vnode.attrs.id) {
+      let program_id = vnode.attrs.id
+      Agency
+        .loadProgram(program_id)
+        .then(Agency.loadLanguages(program_id))
+        .then(function(){
+          return Agency.loadAgency(Agency.selected_program.agency_id)
+            .then(function(agency){
+              Agency.selected = agency[0]
+              return Agency.loadPrograms()
+            })
+        })
+
+    }
+  } ,
   oncreate: function(){
     MicroModal.init();
   },
