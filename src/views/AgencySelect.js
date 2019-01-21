@@ -8,12 +8,21 @@ var AgencyDeleteModal = require('./AgencyDeleteModal')
 
 
 module.exports = {
-	oninit: function() {
+	oninit: function(vnode) {
           Agency.loadList().then(function() {
             helper.autocomplete(
               document.getElementById("agencyselect"),
               Agency.list.map(function(agency) { return(agency.name) })
             )
+          })
+          .then(function(){
+            if (vnode.attrs.id && vnode.attrs.id !== Agency.selected.id) {
+              Agency.loadAgency(vnode.attrs.id)
+                .then(function(agency){
+                  Agency.selected = agency[0]
+                  return Agency.loadPrograms()
+                })
+            }
           })
     },
 

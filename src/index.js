@@ -28,15 +28,29 @@ var ExistingProgramQueue = require("./views/ExistingProgramQueue")
 
 m.route(document.body, "/selectagency", {
     "/selectagency" : {
-        render:function(){
-            return m(Layout, m(AgencySelect))
+        render:function(vnode){
+            return m(Layout, m(AgencySelect, vnode.attrs))
+        }
+    },
+
+    "/selectagency/:id" : {
+        render:function(vnode){
+            return m(Layout, m(AgencySelect, vnode.attrs))
         }
     },
 
 
     "/editagency": {
-        render: function(){
-            return m(Layout, m(AgencyEdit))
+        render: function(vnode){
+            return m(Layout, m(AgencyEdit, vnode.attrs))
+        }
+
+    },
+
+
+    "/editagency/:id": {
+        render: function(vnode){
+            return m(Layout, m(AgencyEdit, vnode.attrs))
         }
 
     },
@@ -78,8 +92,16 @@ m.route(document.body, "/selectagency", {
 
 
     "/selectprogram": {
-        render: function(){
-           return m(Layout,  m(ProgramSelect))
+        render: function(vnode){
+           return m(Layout,  m(ProgramSelect, vnode.attrs))
+            
+        }
+    },
+
+
+    "/selectprogram/:id": {
+        render: function(vnode){
+           return m(Layout,  m(ProgramSelect, vnode.attrs))
             
         }
     },
