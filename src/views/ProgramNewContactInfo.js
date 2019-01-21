@@ -5,6 +5,8 @@ var helper = require("../helper")
 
 var newProgram = {
     id: helper.guid(),
+        latitude: null,
+        longitude: null,
         name: "",
         description: "",
         physical_address: "",

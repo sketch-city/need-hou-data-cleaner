@@ -11,6 +11,8 @@ var newAgency = {
 }
 
 var newProgram = {
+        latitude: null,
+        longitude: null,
         agency_id: "",
         id: "",
     	name: "",

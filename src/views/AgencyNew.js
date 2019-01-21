@@ -15,6 +15,8 @@ var newAgency = {
     phone_number: "",
     website: "",
     selected_program: {
+        latitude: null,
+        longitude: null,
         agency_id: "",
         id: helper.guid(),
     	name: "",
