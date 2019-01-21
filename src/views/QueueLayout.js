@@ -1,18 +1,11 @@
 var m = require("mithril")
-var LogoutButton = require('./LogoutButton')
+var Navbar = require('./Navbar')
 
 module.exports = {
     view: function(vnode) {
         return (
-
             m("section", 
-            	m("ul[id=navbar]",
-                    m("li[id=title]", "NeedHOU: Organization & Service Update Tool"),
-        			m(LogoutButton),
-                    m("li[id=needhou]",
-                        m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Social Services Database"))
-
-                ),
+            	m(Navbar),
                 m('div.container',
                     vnode.children,
                 )
