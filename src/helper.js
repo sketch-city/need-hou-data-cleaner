@@ -49,7 +49,7 @@ function parse_date(dt){
   return(newdate)
 }
 
-function autocomplete(inp, arr) {
+function autocomplete(inp, arr, selectionKey = 'selected') {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
   var currentFocus;
@@ -83,19 +83,26 @@ function autocomplete(inp, arr) {
               /*insert the value for the autocomplete text field:*/
               inp.value = this.getElementsByTagName("input")[0].value;
 
-              Agency.selected.name = inp.value
-              
+              Agency[selectionKey].name = inp.value
 
               filteredArr = Agency.list.filter(function (item) {
-                  if(item.name === Agency.selected.name) return item.id
+                  if(item.name === Agency[selectionKey].name) return item.id
               });
-              
-
 
               selectedId = filteredArr[0].id
-              
-              Agency.loadAgency(selectedId).then(Agency.loadPrograms)
-        
+
+              Agency
+                .loadAgency(selectedId)
+                .then(function(result){
+                  if (selectionKey === 'selected') {
+                    return Agency.setSelectedAgency(result)
+                  } else {
+                    Agency[selectionKey] = result[0]
+                    return result
+                  }
+                })
+                .then(Agency.loadPrograms)
+
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();

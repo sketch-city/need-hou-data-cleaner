@@ -25,14 +25,17 @@ function setlink() {
   return(href)
 }
 
+function findProgramsByName(name) {
+  return Agency.programs.filter(function (program) {
+    return program.name === name      
+  })
+}
 
 function selectProgram(){
   program_name = document.getElementById('programselect').value;
   datestamp = document.getElementById('datestamp').hidden = false;
 
-  var filteredArr = Agency.programs.filter(function (el) {
-  return el.name === program_name      
-    });
+  var filteredArr = findProgramsByName(program_name)
 
 
   if(program_name === ""){
@@ -50,61 +53,86 @@ function selectProgram(){
 
 
 module.exports = {
-  oninit: function() { helper.moveProgress(30, 30, 50) } ,
+  oninit: function(vnode) {
+    helper.moveProgress(30, 30, 50)
+    if (vnode.attrs.id) {
+      let program_id = vnode.attrs.id
+      Agency
+        .loadProgram(program_id)
+        .then(Agency.loadLanguages(program_id))
+        .then(function(){
+          return Agency.loadAgency(Agency.selected_program.agency_id)
+            .then(function(agency){
+              Agency.selected = agency[0]
+              return Agency.loadPrograms()
+            })
+        })
+
+    }
+  } ,
   oncreate: function(){
     MicroModal.init();
   },
 	view: function() {
     	return(
         m("div.row",[ 
-          m(".modal.micromodal-slide[aria-hidden='true'][id='modal-2']", 
+          m(".modal.micromodal-slide[aria-hidden='true'][id='program-delete-modal']", 
                 m(".modal__overlay[data-micromodal-close=''][tabindex='-1']", 
-                  m(".modal__container[aria-labelledby='modal-2-title'][aria-modal='true'][role='dialog']",
+                  m(".modal__container[aria-labelledby='program-delete-modal-title'][aria-modal='true'][role='dialog']",
                     [
                       m("header.modal__header",
                         [
-                          m("h2.modal__title[id='modal-2-title']", 
+                          m("h2.modal__title[id='program-delete-modal-title']", 
                             "Deleting a program."
                           ),
                           m("button.modal__close[aria-label='Close modal'][data-micromodal-close='']")
                         ]
                       ),
-                      m("main.modal__content[id='modal-2-content']", 
-                        m("p", "Type in name of program you'd like to delete:"),
-                        m("input.form-control[id=programdelete][type=text]",
-                          { oninput: function(e) { Agency.program_to_delete = e.currentTarget.value } })
-
+                      m("main.modal__content[id='program-delete-modal-content']", 
+                        m("p", "Select program to delete:"),
+                        m("select.form-control[id=programdelete]", {
+                          value: Agency.program_to_delete.name,
+                          onchange: function(changeEvent) {
+                            var programs = findProgramsByName(changeEvent.currentTarget.value)
+                            Agency.program_to_delete = programs[0]
+                          }
+                         },
+                         m("option", ""),
+                           Agency.programs.map(function(program){ 
+                            return(
+                              m("option",
+                                program.name)
+                              ) 
+                            })
+                         
+                        )
                       ),
                       m("footer.modal__footer",
                         [
-                          m("button.modal__btn.modal__btn-primary",{
+                          m("button.btn.btn-primary",{
                             onclick: function() {
-
-                              filteredArr = Agency.programs.filter(function (item) {
-                                if(item.name === Agency.program_to_delete) return item.id
-                            });
                           
-                              selectedId = filteredArr[0].id
-
-                              Agency.loadProgram(selectedId).then(function() {
+                              selectedId = Agency.program_to_delete.id
                               Agency.addQueueItem({
-                                        status: "new",
-                                        submission_type: "delete_program", 
-                                        submission: { 
-                                        agency_data: Agency.selected,
-                                        program_data: Agency.selected_program,
-                                        language_data: {},
-                                        source: localStorage.username
-                                              }
-                                      })
+                                      status: "new",
+                                      submission_type: "delete_program", 
+                                      submission: { 
+                                      agency_data: Agency.selected,
+                                      program_data: Agency.selected_program,
+                                      language_data: {},
+                                      source: localStorage.username
                                     }
-                                  )}
-
-                                }, 
+                                })
+                                .then(function(){
+                                  Agency.program_to_delete = {}
+                                  MicroModal.close('agency-delete-modal')
+                                })
+                              }
+                            }, 
 
                             "Submit"
                           ),
-                          m("button.modal__btn[aria-label='Close this dialog window'][data-micromodal-close='']", 
+                          m("button.btn[aria-label='Close this dialog window'][data-micromodal-close='']", 
                             "Close"
                           )
                         ]
@@ -120,7 +148,7 @@ module.exports = {
               m("div.form-group[style=width:310px]",
               m("legend[style=font-size:16px]", Agency.selected.name),
               m("label", "Select program to edit"),
-               m("select.form-control[id=programselect]", {
+              m("select.form-control[id=programselect]", {
                 value: Agency.selected_program.name,
                 onchange: function() { 
                   selectProgram()
@@ -134,15 +162,15 @@ module.exports = {
                     ) 
                   })
                
-               ),
-               m("span[id=datestamp]", {hidden: true}, "Last Updated: " + parse_date(Agency.selected_program.last_updated))
-              )
+              ),
+              m("span[id=datestamp]", {hidden: true}, "Last Updated: " + parse_date(Agency.selected_program.last_updated))
+            )
 
           ]),
               m("span", "Don't see your program? Click ", 
                         m("a", {href: "/newprogramreferral", oncreate: m.route.link }, "here"), " to add a new program."),
               
-              m("p", m("a[data-micromodal-trigger=modal-2]", { onclick: function(){ MicroModal.show('modal-2') } }, "Program no longer exists? Click to DELETE a program.")),
+              m("p", m("a[data-micromodal-trigger=program-delete-modal]", { onclick: function(){ MicroModal.show('program-delete-modal') } }, "Program no longer exists? Click to DELETE a program.")),
               m("div.row"),
 
                m("div.buttons",

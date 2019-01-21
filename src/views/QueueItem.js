@@ -195,7 +195,12 @@ oncreate: function(vnode) {
 	return(Queue.getQueueItem(vnode.attrs.id))
 
 	.then(function() {
-		return(Agency.loadAgency(Queue.queueAgency.id))
+		return Agency
+                .loadAgency(Queue.queueAgency.id)
+                .then(Agency.setSelectedAgency)
+                .catch(function(error){
+                    console.warn(error)
+                })
 	})
 	.then(function(){ 
 		return(Agency.loadProgram(Queue.queueProgram.id))

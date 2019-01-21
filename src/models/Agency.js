@@ -3,6 +3,19 @@ const { withToken } = require('../helper')
 var m = require('mithril')
 var User = require("./User")
 
+
+function handleUserTimedout(error){
+	console.log(error)
+	if (error.status === 403) {
+		User.logout()
+			.then(function(){
+				m.route.set('/login')
+			})
+	} else {
+		throw error
+	}
+}
+
 var Agency = {
 
 	list: [],
@@ -19,6 +32,13 @@ var Agency = {
 		})
 	},
 
+	setSelectedAgency: function(result) {
+		Agency.selected = result[0]
+        Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
+
+        return result
+	},
+
 
 	selected: {},
     original_selected: {},
@@ -27,12 +47,9 @@ var Agency = {
 			method: "GET",
 			url: BASE_API_URL + "/agencies?agency_id=" + id,
 			withCredentials: false,
-		}).then(function(result){
-			Agency.selected = result[0]
-            Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
 		}).catch(function(error){
 
-
+			console.warn(error)
 		})
 	},
 
@@ -64,6 +81,7 @@ var Agency = {
 				Agency.selected_program = result[0]	
                 Agency.original_selected_program = JSON.parse(JSON.stringify(result[0]));
 			//}
+			return result
 		}).catch(function(error) {
 			//Agency.selected_program = {}
 
@@ -91,15 +109,7 @@ var Agency = {
             url: BASE_API_URL + "/agencies",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-			console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 	updateAgency: function(new_data) {
@@ -109,15 +119,7 @@ var Agency = {
             url: BASE_API_URL + "/agencies",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-			console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 
@@ -131,15 +133,7 @@ var Agency = {
             url: BASE_API_URL + "/programs",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-        	console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
      updateLanguage: function(new_data) {
@@ -149,15 +143,7 @@ var Agency = {
             url: BASE_API_URL + "/languages",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-        	console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 
@@ -168,15 +154,7 @@ var Agency = {
             url: BASE_API_URL + "/programs",
             data: new_data,
             withCredentials: false,
-        })).catch(function(error){
-        	console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-        })
+        })).catch(handleUserTimedout)
     },
 
 
@@ -187,15 +165,7 @@ var Agency = {
     		url: BASE_API_URL + "/languages",
     		data: new_data,
     		withCredentials: false,
-    	})).catch(function(error){
-    		console.log(error)
-			if (error.status === 403) {
-				User.logout()
-					.then(function(){
-						m.route.set('/login')
-					})
-			}
-    	})
+    	})).catch(handleUserTimedout)
     },
 
 
@@ -211,27 +181,34 @@ var Agency = {
         })
     },
 
-
+    program_to_delete: {},
     deleteProgram: function(program_id){
-        return m.request({
+        return m.request(withToken({
             method: "DELETE",
-            url: "https://need-hou-api.herokuapp.com/api/programs?program_id=" + program_id,
+        	mode: "cors",
+            url: BASE_API_URL + "/programs?program_id=" + program_id,
             withCredentials: false,
-        }).then(function(result){
-
-            
+        }))
+        .then(function(){
+        	Agency.program_to_delete = {}
+        	Agency.loadPrograms()
         })
+        .catch(handleUserTimedout)
     },
 
+    agency_to_delete: {},
     deleteAgency: function(agency_id){
-        return m.request({
+        return m.request(withToken({
             method: "DELETE",
-            url: "https://need-hou-api.herokuapp.com/api/agencies?agency_id=" + agency_id,
+    		mode: "cors",
+            url: BASE_API_URL + "/agencies?agency_id=" + agency_id,
             withCredentials: false,
-        }).then(function(result){
-
-            
+        }))
+        .then(function(){
+        	Agency.agency_to_delete = {}
+        	Agency.setSelectedAgency([{}])
         })
+        .catch(handleUserTimedout)
     }
 
 
