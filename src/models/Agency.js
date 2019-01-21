@@ -124,8 +124,8 @@ var Agency = {
 
 
     updateProgram: function(new_data) {
-    	delete new_data['longitude']
-    	delete new_data['latitude']
+    	//delete new_data['longitude']
+    	//delete new_data['latitude']
 
         return m.request(withToken({
             method: "PUT",

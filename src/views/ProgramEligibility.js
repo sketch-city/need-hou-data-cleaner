@@ -4,6 +4,37 @@ var helper = require("../helper")
 var Choices = require("choices.js")
 
 
+function initAddressAutocomplete(vnode, inputEl){
+  var houstonBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(30.124519, -95.931476),
+    new google.maps.LatLng(29.522640, -94.975909)
+  );
+  var autocomplete = new google.maps.places.Autocomplete(inputEl, houstonBounds);
+  autocomplete.setFields(
+            ['address_components', 'geometry', 'name']);
+
+  autocomplete.addListener('place_changed', function() {
+    var place = autocomplete.getPlace();
+    window.PLACE = place
+
+    var address = '';
+    if (place.address_components) {
+      address = [
+        (place.address_components[0] && place.address_components[0].short_name || ''),
+        (place.address_components[1] && place.address_components[1].short_name || ''),
+        (place.address_components[2] && place.address_components[2].short_name || '')
+      ].join(' ');
+    }
+    window.VNODE = vnode
+    vnode.attrs.program.physical_address = address
+    vnode.attrs.program.latitude = place.geometry.location.lat()
+    vnode.attrs.program.longitude = place.geometry.location.lng()
+  });
+
+}
+
+
+
 function getSelectedOption(sel) {
   var opts = [],
       opt;
@@ -42,7 +73,6 @@ function getSelectedOptions(sel) {
 
 module.exports = {
 oninit: function(vnode) { 
-
 },
 oncreate: function(vnode){
  service_type_choices = new Choices('#service_type_select')
@@ -50,6 +80,7 @@ oncreate: function(vnode){
  frontline_languages_choices = new Choices('#frontline_languages_select')
  interpretation_offered_choices = new Choices('#interpretation_offered_select')
  crisis_services_offered_choices = new Choices('#crisis_services_offered_select')
+ initAddressAutocomplete(vnode, document.getElementById('pac-input'))
 
 },
 view: function(vnode) {	
@@ -81,11 +112,14 @@ view: function(vnode) {
                                                                         }
                         }),
                     m("label", "Program Full Physical Address"),
-                   m("input.form-control[type=text]",{ value: vnode.attrs.program.physical_address,
-                                          oninput: function(e) {
-                                                                            vnode.attrs.program.physical_address = e.currentTarget.value;
-                                                                        }
-                                                              }),
+                   m("div[id=pac-container]",
+                   m("input.form-control[type=text][id=pac-input]",{ value: vnode.attrs.program.physical_address
+                                          // oninput: function(e) {
+                                          //                         vnode.attrs.program.physical_address = e.currentTarget.value;
+                                          
+                                          //                       }
+                                                              })
+                   ),
                     m("label", "Program Webpage"),
                     m("input.form-control[type=text]",{ value: vnode.attrs.program.website,
                       oninput: function(e) {

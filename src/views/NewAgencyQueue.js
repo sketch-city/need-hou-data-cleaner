@@ -65,7 +65,9 @@ var newProgram = {
                 saturday : [], 
                 sunday : []
                 },
-        service_cost: ""
+        service_cost: "",
+        latitude: null,
+        longitude: null
     }
 
 module.exports = {
