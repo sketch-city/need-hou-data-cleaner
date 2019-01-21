@@ -167,8 +167,7 @@ module.exports = {
             )
 
           ]),
-              m("span", "Don't see your program? Click ", 
-                        m("a", {href: "/newprogramreferral", oncreate: m.route.link }, "here"), " to add a new program."),
+              m("span", m("a",{href: "/newprogramreferral", oncreate: m.route.link }, "Don't see your program? Click here to add a new program.")),
               
               m("p", m("a[data-micromodal-trigger=program-delete-modal]", { onclick: function(){ MicroModal.show('program-delete-modal') } }, "Program no longer exists? Click to DELETE a program.")),
               m("div.row"),
