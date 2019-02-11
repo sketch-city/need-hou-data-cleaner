@@ -14,6 +14,7 @@ var newAgency = {
     description: "",
     phone_number: "",
     website: "",
+    a2s_verified: null,
     selected_program: {
         latitude: null,
         longitude: null,
@@ -70,7 +71,8 @@ var newAgency = {
                 saturday : [], 
                 sunday : []
                 },
-        service_cost: ""
+        service_cost: "",
+        a2s_verified: null
     }
 
 }
@@ -81,7 +83,7 @@ module.exports = {
 view: function() {
     	return(
             m("div.row",[  
-                m("div.agencyedit col-md-12",[                 
+                m("div.col-md-12",[                 
                   m(AgencyForm, {agency: newAgency} ),
                   m("div.buttons",
                   m("button.btn btn-default[type=submit]", {

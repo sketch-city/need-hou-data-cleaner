@@ -14,8 +14,8 @@ oncreate: function() {
 view: function() {
 		return(
 
-			m("div.reviewpage[id=wrap_all]", [
-				m("div.orgreview", [
+			m("div", [
+				m("div", [
 					m("h2", "Organization Details. ",
 						m("button[type=submit][style=font-size:10px; margin-left:50px;].btn btn-default", 
 								{
@@ -31,12 +31,12 @@ view: function() {
 					]),
 				
 			m("div.reviewbuttons",
-			m("button[type=submit][style=margin-left:50px;].btn btn-default", 
+			m("button[type=submit][style=margin-left:50px;].btn btn-success", 
 								{
 							 	 href: "/selectprogram", 
 							 	 oncreate: m.route.link 
 							 	}, "Previous"),
-			m("button[type=submit][id=submitfinal].btn btn-default", {
+			m("button[type=submit][id=submitfinal].btn btn-success", {
 				onclick: function(e) {
 						Agency.addQueueItem({
 								status: "new",
@@ -55,7 +55,7 @@ view: function() {
 
 			},
 				"Submit"),
-			m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
+			m("button[type=submit][id=editfinal].btn btn-success" , { 
 				href: "/queue", 
 				oncreate: m.route.link 
 

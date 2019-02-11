@@ -5,14 +5,14 @@ var QueueButton = require('./QueueButton')
 module.exports = {
     view: function(vnode) {
         return (
-    	   m("ul[id=navbar]",
-                m("li[id=title]",
-                    m("a", {href: "/selectagency", oncreate: m.route.link}, "NeedHOU: Resource Editing Tool")
-                ),
-                m(LogoutButton),
-    			m(QueueButton),
-                m("li[id=needhou]",
-                    m("a", {href: "https://needhouwebsite.herokuapp.com/"}, "NeedHOU: Houston Social Services Database"))
+    	   m("ul[id=navbar][class=navbar fixed-top navbar-expand-lg navbar-light bg-light]",
+                m("a[class=navbar-brand]", {href: "/selectagency", oncreate: m.route.link}, "Resource Editing Tool"),
+                m("ul.navbar-nav",
+                    m("li.nav-item[id=needhou]",
+                        m("a.nav-link", {href: "https://needhouwebsite.herokuapp.com/"}, "Resource Finder")),
+                    m(LogoutButton),
+    			    m(QueueButton)
+                    )
 
                 )
            )

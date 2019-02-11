@@ -8,7 +8,8 @@ var newAgency = {
     physical_address: "",
     description: "",
     phone_number: "",
-    website: ""
+    website: "",
+    a2s_verified: null
 }
 
 var newProgram = {
@@ -67,7 +68,8 @@ var newProgram = {
                 },
         service_cost: "",
         latitude: null,
-        longitude: null
+        longitude: null,
+        a2s_verified: null
     }
 
 module.exports = {

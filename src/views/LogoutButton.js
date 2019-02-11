@@ -5,7 +5,7 @@ module.exports = {
     view: function() {
         if (User.getIsLoggedIn()) {
             return (
-                m("li[id=logout]", {
+                m("li.nav-item[id=logout]", {
                     onclick: function(e) {
                         e.preventDefault()
                         User.logout()
@@ -14,13 +14,13 @@ module.exports = {
                             })
                         }
                     },
-                    m("a", {href: "/"}, "Logout")
+                    m("a.nav-link", {href: "/"}, "Logout")
                 )
             )
         } else {
             return (
-                m("li[id=login]",
-                    m("a", {href: "/login", oncreate: m.route.link}, "Login")
+                m("li.nav-item[id=login]",
+                    m("a.nav-link", {href: "/login", oncreate: m.route.link}, "Login")
                 )
             )
         }

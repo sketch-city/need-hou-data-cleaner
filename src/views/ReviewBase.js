@@ -41,7 +41,6 @@ oncreate: function(vnode) {
 	helper.difftext(program.schedule.sunday[0] || "", vnode.attrs.program.schedule.sunday[0] || "" , "sunday_start")
 	helper.difftext(program.schedule.sunday[1] || "", vnode.attrs.program.schedule.sunday[1] || "" , "sunday_end")
 
-
 	for(i = 0; i < program_fields.length; i++){
 		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
 			 
@@ -51,21 +50,28 @@ oncreate: function(vnode) {
 			helper.difftext(program[program_fields[i].id] || "", vnode.attrs.program[program_fields[i].id] || "", program_fields[i].id) 
 		}
 	}
-
-
-
 },	
 view: function(vnode) {
 		return(
-			m("div.reviewpage[id=wrap_all]", [
+			m("div.reviewpage", [
 				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
-				m("div.reviewbuttons",
-				m("button[type=submit][style=margin-left:50px;].btn btn-default", 
+				m("div[style=margin-left:50px;].form-check",
+					m("input[type=checkbox][id=a2scheck][class=form-check-input]",
+						 	{   checked: vnode.attrs.program.a2s_verified,
+						 		onchange: function(e) {
+						 				  vnode.attrs.program.a2s_verified  = document.getElementById("a2scheck").checked ? true:false
+                                          vnode.attrs.agency.a2s_verified  = document.getElementById("a2scheck").checked? true:false
+                                     }
+                                 }
+						 	),
+				m("label.form-check-label[for=defaultCheck1]", "A2S Verified")),
+				m("div[style=margin-top:50px;].reviewbuttons",
+				m("button[type=submit][style=margin-left:50px;].btn btn-success", 
 								{
 							 	 href: vnode.attrs.previous_link, 
 							 	 oncreate: m.route.link 
 							 	}, "Previous"),
-				m("button[type=submit][id=submitfinal].btn btn-default", {
+				m("button[type=submit][id=submitfinal].btn btn-success", {
 				onclick: function(e) {
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addQueueItem({
@@ -131,7 +137,8 @@ view: function(vnode) {
 
 			},
 				"Submit"),
-			m("button[type=submit][id=editfinal].btn btn-default hidden" , { 
+
+			m("button[type=submit][id=editfinal].btn btn-success hidden" , { 
 				
 				href: "/queue", 
 				oncreate: m.route.link 

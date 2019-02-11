@@ -58,7 +58,8 @@ var newProgram = {
                                                                 saturday : [], 
                                                                 sunday : []
                                                                 },
-        service_cost: ""
+        service_cost: "",
+        a2s_verified: null
  }
 
 

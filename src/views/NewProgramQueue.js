@@ -7,7 +7,8 @@ var newAgency = {
     physical_address: "",
     description: "",
     phone_number: "",
-    website: ""
+    website: "",
+    a2s_verified: null
 }
 
 var newProgram = {
@@ -66,7 +67,8 @@ var newProgram = {
                 saturday : [], 
                 sunday : []
                 },
-        service_cost: ""
+        service_cost: "",
+        a2s_verified: null
     }
 
 module.exports = {

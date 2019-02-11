@@ -35,19 +35,19 @@ module.exports = {
             
             m("div.row",[  
               m(AgencyDeleteModal),
-              m("div.agencyselect col-md-12",[                  
+              m("div.col-md-12",[                  
     		      m("form[autocomplete=off]", [
-                m("div.autocomplete form-group[style=width:300px]",
+                m("div.autocomplete form-group",
                     m("label", "Enter the organization you'd like to edit."),
                     m("input.form-control[id=agencyselect][type=text]", {
                      value: Agency.selected.name,
                     })
                     )
                   ]),
-                      m("span", m("a", {href: "/newagency", oncreate: m.route.link }, "Don't see your organization? Click to ADD a new org")),
+                      m("p", m("a", {href: "/newagency", oncreate: m.route.link }, "Don't see your organization? Click to ADD a new org")),
                       m(AgencyDeleteTrigger),
                     m("div.row"),
-                    m("button.btn btn-default[type=submit][style=margin-top:50px]", {
+                    m("button.btn btn-success[type=submit]", {
                   
                         href: "/editagency", 
                         oncreate: m.route.link,

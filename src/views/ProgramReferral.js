@@ -51,7 +51,7 @@ oncreate: function(vnode){
 view: function(vnode) {	
 	return(
 		    m("div.row",[  
-                m("div.agencyedit col-md-12",[                 
+                m("div.col-md-12",[                 
     		    m("form", [
                 m("div.form-group[style=width:400px]",
                   m("legend[style=font-size:16px]"),
@@ -280,13 +280,13 @@ view: function(vnode) {
                 	]),
 
                   m("div.buttons",
-                  m("button.btn btn-default[type=submit]", {
+                  m("button.btn btn-success[type=submit]", {
                         href: vnode.attrs.previous_link, 
                         oncreate: m.route.link
 
                         },"Previous"),
 
-                  m("button[id = nextbutton].btn btn-default[type=submit][style=margin-left:10px]", {
+                  m("button[id = nextbutton].btn btn-success[type=submit][style=margin-left:10px]", {
                         href: vnode.attrs.next_link, 
                         oncreate: m.route.link
                         },"Next")

@@ -17,17 +17,17 @@ module.exports = {
     view: function() {
     	return( 
     		m("div.row",[  
-                m("div.agencyedit col-md-12",[  
+                m("div.col-md-12",[  
                     m(AgencyForm, {agency: Agency.selected} ),
 
                   m("div.buttons",
-                  m("button.btn btn-default[type=submit]", {
+                  m("button.btn btn-success[type=submit]", {
                         href: "/selectagency", 
                         oncreate: m.route.link
 
                         },"Previous"),
 
-                  m("button.btn btn-default[type=submit][style=margin-left:10px]", {
+                  m("button.btn btn-success[type=submit][style=margin-left:10px]", {
                         href: "/selectprogram", 
                         oncreate: m.route.link
                         },"Next")
