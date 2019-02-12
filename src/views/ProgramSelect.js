@@ -88,7 +88,7 @@ module.exports = {
                           m("button.modal__close[aria-label='Close modal'][data-micromodal-close='']")
                         ]
                       ),
-                      m("main.modal__content[id='program-delete-modal-content']", 
+                      m("main.modal__content[id='program-delete-modal-content'][style=min-height: 50px]", 
                         m("p", "Select program to delete:"),
                         m("select.form-control[id=programdelete]", {
                           value: Agency.program_to_delete.name,

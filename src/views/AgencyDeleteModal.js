@@ -32,7 +32,9 @@ module.exports = {
                           m("button.modal__close[aria-label='Close modal'][data-micromodal-close='']")
                         ]
                       ),
-                      m("main.modal__content[id='agency-delete-modal-content']", 
+                      m("main.modal__content[id='agency-delete-modal-content'][style=min-height: 50px]", 
+                        m("form[autocomplete=off]", [
+                              m("div.autocomplete form-group",
                         m("p", "Type in name of organization you'd like to delete:"),
                         m("input.form-control[id=agencyselectfordelete][type=text]",
                           {
@@ -40,6 +42,8 @@ module.exports = {
                             value: Agency.agency_to_delete.name
                           }
                         )
+                        )
+                              ])
 
                       ),
                       m("footer.modal__footer",
