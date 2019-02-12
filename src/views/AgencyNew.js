@@ -86,12 +86,12 @@ view: function() {
                 m("div.col-md-12",[                 
                   m(AgencyForm, {agency: newAgency} ),
                   m("div.buttons",
-                  m("button.btn btn-default[type=submit]", {
+                  m("button.btn btn-success[type=submit]", {
                         href: "/selectagency", 
                         oncreate: m.route.link
                         },"Previous"),
 
-                  m("button.btn btn-default[type=submit][id=nextbutton][style=margin-left:10px]", {
+                  m("button.btn btn-success[type=submit][id=nextbutton][style=margin-left:10px]", {
                         href: "/newagencyprogramreferral", 
                         oncreate: m.route.link
                         },"Next")

@@ -9,7 +9,7 @@ module.exports = {
                 m("a[class=navbar-brand]", {href: "/selectagency", oncreate: m.route.link}, "Resource Editing Tool"),
                 m("ul.navbar-nav",
                     m("li.nav-item[id=needhou]",
-                        m("a.nav-link", {href: "https://needhouwebsite.herokuapp.com/"}, "Resource Finder")),
+                        m("a.nav-link", {href: "https://januaryadvisors.github.io/needhouwebsite-redesign/"}, "Resource Finder")),
                     m(LogoutButton),
     			    m(QueueButton)
                     )

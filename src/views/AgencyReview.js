@@ -25,13 +25,22 @@ view: function() {
 					m("p", m("strong", "Name: " ), m("pre[id=name]")),
 					m("p", m("strong", "Website: "), m("pre[id=website]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					m("p", m("strong", "Phone Number: "), m("pre[id=phone]"))
+					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
+					m("div.form-check",
+					m("input[type=checkbox][id=a2scheck_two][class=form-check-input]",
+						 	{   checked: Agency.selected.a2s_verified,
+						 		onchange: function(e) {
+                                          Agency.selected.a2s_verified  = document.getElementById("a2scheck").checked? true:false
+                                     }
+                                 }
+						 	),
+				m("label.form-check-label[for=defaultCheck1]", "A2S Verified")),
 					
 					
 					]),
 				
 			m("div.reviewbuttons",
-			m("button[type=submit][style=margin-left:50px;].btn btn-success", 
+			m("button[type=submit].btn btn-success", 
 								{
 							 	 href: "/selectprogram", 
 							 	 oncreate: m.route.link 

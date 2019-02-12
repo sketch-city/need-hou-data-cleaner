@@ -124,7 +124,7 @@ view: function(vnode) {
                         }),
                     m("label", "Program Full Physical Address"),
                    m("div[id=pac-container]",
-                   m("input.form-control[type=text][id=pac-input]",{ value: vnode.attrs.program.physical_address
+                   m("input.form-control[type=text]",{ value: vnode.attrs.program.physical_address
                                           // oninput: function(e) {
                                           //                         vnode.attrs.program.physical_address = e.currentTarget.value;
                                           
