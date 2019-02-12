@@ -36,7 +36,7 @@ function getSelectedOptions(sel) {
 
 module.exports = {
 oninit: function(vnode) { 
-  helper.moveProgress(50, 50, 70)
+  //helper.moveProgress(50, 50, 70)
 },
 oncreate: function(vnode){
  program_language_choices = new Choices('#program_languages_select')

@@ -5,7 +5,8 @@ var helper = require("../helper")
 
 module.exports = {
     oninit: function(vnode) {
-        helper.moveProgress(10, 10, 30)
+        
+        //helper.moveProgress(10, 10, 30)
         if (vnode.attrs.id && vnode.attrs.id !== Agency.selected.id) {
           Agency.loadAgency(vnode.attrs.id)
             .then(function(agency){

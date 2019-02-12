@@ -54,7 +54,7 @@ function selectProgram(){
 
 module.exports = {
   oninit: function(vnode) {
-    helper.moveProgress(30, 30, 50)
+    //helper.moveProgress(30, 30, 50)
     if (vnode.attrs.id) {
       let program_id = vnode.attrs.id
       Agency

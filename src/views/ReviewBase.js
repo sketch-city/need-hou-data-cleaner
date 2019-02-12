@@ -6,7 +6,7 @@ var ReviewFields = require("./ReviewFields")
 
 module.exports = {
 oninit: function(vnode) {
-	 helper.moveProgress(70, 70, 90) 
+	 //helper.moveProgress(70, 70, 90) 
 	},
 oncreate: function(vnode) { 
 	program_fields = document.querySelectorAll('pre.program')
@@ -66,7 +66,7 @@ view: function(vnode) {
 						 	),
 				m("label.form-check-label[for=defaultCheck1]", "A2S Verified")),
 				m("div[style=margin-top:50px;].reviewbuttons",
-				m("button[type=submit][style=margin-left:50px;].btn btn-success", 
+					m("button[type=submit].btn btn-success", 
 								{
 							 	 href: vnode.attrs.previous_link, 
 							 	 oncreate: m.route.link 
