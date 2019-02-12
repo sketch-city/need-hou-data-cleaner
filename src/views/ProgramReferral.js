@@ -150,6 +150,7 @@ view: function(vnode) {
                     ),
                     m("label", "Eligible Incomes (% of federal poverty level)"),
                     m("select[id=income_select]", {  
+                          value: vnode.attrs.program.income_eligibility,
                           onchange: function(e) { 
                            vnode.attrs.program.income_eligibility  = getSelectedOption(document.getElementById('income_select'))
                          }},
@@ -164,10 +165,6 @@ view: function(vnode) {
                     m("option",{ selected: vnode.attrs.program.service_type.includes('160%')}, "160%"),
                     m("option",{ selected: vnode.attrs.program.service_type.includes('180%')}, "180%"),
                     m("option",{ selected: vnode.attrs.program.service_type.includes('200%')}, "200%"),
-
-
-
-
 
                     ),
                     m("label", "Eligible Gender"),
