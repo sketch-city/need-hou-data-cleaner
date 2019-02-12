@@ -77,7 +77,11 @@ function validateName(name) {
 
 
 module.exports = {
-oninit: function() { helper.moveProgress(40, 40, 50) } ,
+oninit: function() 
+{
+// helper.moveProgress(40, 40, 50) 
+}
+ ,
 oncreate: function(vnode){   
 document_language_choices = new Choices('#document_languages_select')
 //   schedule_fields = document.querySelectorAll('input.schedule')

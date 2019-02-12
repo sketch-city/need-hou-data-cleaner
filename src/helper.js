@@ -3,7 +3,7 @@ require('colors')
 var jsdiff = require('diff')
 
 module.exports = {
-	moveProgress,
+	//moveProgress,
 	guid,
   autocomplete,
   parse_date,
