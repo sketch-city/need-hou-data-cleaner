@@ -9,7 +9,6 @@ oninit: Queue.getQueue,
 view: function() { 
 
 		return(
-			//m("div.queue_list",
 				m("table.table table-striped",
 				  m("thead",
 					m("tr",
@@ -35,7 +34,6 @@ view: function() {
 							})
 						)
 					)
-				//)
 		)		
 	}	
 }

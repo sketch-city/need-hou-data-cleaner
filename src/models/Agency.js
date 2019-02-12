@@ -78,6 +78,8 @@ var Agency = {
 			withCredentials: false,
 		}).then(function(result){
 			//if(result[0].id !== Agency.selected_program.id && result[0].id !== undefined){
+                result[0].latitude = parseFloat(result[0].latitude)
+                result[0].longitude = parseFloat(result[0].longitude)
 				Agency.selected_program = result[0]	
                 Agency.original_selected_program = JSON.parse(JSON.stringify(result[0]));
 			//}
