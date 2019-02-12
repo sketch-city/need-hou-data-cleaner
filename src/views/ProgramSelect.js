@@ -173,7 +173,7 @@ module.exports = {
               m("div.row"),
 
                m("div.buttons",
-                  m("button.btn btn-success[type=submit]", {
+                  m("button.btn btn-outline-success[type=submit]", {
                         href: "/selectagency", 
                         oncreate: m.route.link
 

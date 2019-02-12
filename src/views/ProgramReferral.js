@@ -280,7 +280,7 @@ view: function(vnode) {
                 	]),
 
                   m("div.buttons",
-                  m("button.btn btn-success[type=submit]", {
+                  m("button.btn btn-outline-success[type=submit]", {
                         href: vnode.attrs.previous_link, 
                         oncreate: m.route.link
 

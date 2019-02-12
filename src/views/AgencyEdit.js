@@ -1,3 +1,4 @@
+
 var m = require("mithril")
 var Agency = require("../models/Agency")
 var AgencyForm = require("./AgencyForm")
@@ -22,7 +23,7 @@ module.exports = {
                     m(AgencyForm, {agency: Agency.selected} ),
 
                   m("div.buttons",
-                  m("button.btn btn-success[type=submit]", {
+                  m("button.btn btn-outline-success[type=submit]", {
                         href: "/selectagency", 
                         oncreate: m.route.link
 

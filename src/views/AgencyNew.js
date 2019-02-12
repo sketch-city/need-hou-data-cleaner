@@ -86,7 +86,7 @@ view: function() {
                 m("div.col-md-12",[                 
                   m(AgencyForm, {agency: newAgency} ),
                   m("div.buttons",
-                  m("button.btn btn-success[type=submit]", {
+                  m("button.btn btn-outline-success[type=submit]", {
                         href: "/selectagency", 
                         oncreate: m.route.link
                         },"Previous"),

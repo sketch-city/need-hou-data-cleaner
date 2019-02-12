@@ -40,7 +40,7 @@ view: function() {
 					]),
 				
 			m("div.reviewbuttons",
-			m("button[type=submit].btn btn-success", 
+			m("button[type=submit].btn btn-outline-success", 
 								{
 							 	 href: "/selectprogram", 
 							 	 oncreate: m.route.link 

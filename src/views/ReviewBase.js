@@ -66,7 +66,7 @@ view: function(vnode) {
 						 	),
 				m("label.form-check-label[for=defaultCheck1]", "A2S Verified")),
 				m("div[style=margin-top:50px;].reviewbuttons",
-					m("button[type=submit].btn btn-success", 
+					m("button[type=submit].btn btn-outline-success", 
 								{
 							 	 href: vnode.attrs.previous_link, 
 							 	 oncreate: m.route.link 
