@@ -213,12 +213,6 @@ var Agency = {
         .catch(handleUserTimedout)
     }
 
-
-
-
-
-
-
 }
 
 module.exports = Agency;

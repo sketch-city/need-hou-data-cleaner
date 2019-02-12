@@ -1,30 +1,39 @@
 var m = require("mithril")
 var User = require("./models/User")
 
-var AgencySelect = require('./views/AgencySelect')
-var AgencyEdit = require('./views/AgencyEdit')
-var ProgramSelect = require('./views/ProgramSelect')
-var ProgramNewContactInfo = require('./views/ProgramNewContactInfo')
-var ProgramNewReferral = require('./views/ProgramNewReferral')
-var ProgramNewEligibility = require('./views/ProgramNewEligibility')
-var EditProgramContact = require('./views/EditProgramContact')
-var EditProgramReferral = require('./views/EditProgramReferral')
-var EditProgramEligibility = require('./views/EditProgramEligibility')
+var AgencySelect = require('./views/agency_components/AgencySelect')
+var AgencyEdit = require('./views/agency_components/AgencyEdit')
+var AgencyNew = require("./views/agency_components/AgencyNew")
+var AgencyNewProgramContactInfo = require("./views/agency_components/AgencyNewProgramContactInfo")
+var AgencyNewProgramReferral = require("./views/agency_components/AgencyNewProgramReferral")
+var AgencyNewProgramEligibility = require("./views/agency_components/AgencyNewProgramEligibility")
+
+
+var ProgramSelect = require('./views/program_components/ProgramSelect')
+var ProgramNewContactInfo = require('./views/program_components/ProgramNewContactInfo')
+var ProgramNewReferral = require('./views/program_components/ProgramNewReferral')
+var ProgramNewEligibility = require('./views/program_components/ProgramNewEligibility')
+var EditProgramContact = require('./views/program_components/EditProgramContact')
+var EditProgramReferral = require('./views/program_components/EditProgramReferral')
+var EditProgramEligibility = require('./views/program_components/EditProgramEligibility')
+
+
+var Review = require("./views/review_components/Review")
+var AgencyNewReview = require("./views/review_components/AgencyNewReview")
+var ProgramNewReview = require("./views/review_components/ProgramNewReview")
+var AgencyReview = require("./views/review_components/AgencyReview")
+
+
+
+var QueueLayout = require("./views/queue_components/QueueLayout")
+var QueueList = require("./views/queue_components/QueueList")
+var QueueItem = require("./views/queue_components/QueueItem")
+var NewAgencyQueue = require("./views/queue_components/NewAgencyQueue")
+var ExistingProgramQueue = require("./views/queue_components/ExistingProgramQueue")
+
 var Layout = require("./views/Layout")
-var Review = require("./views/Review")
-var AgencyNew = require("./views/AgencyNew")
-var AgencyNewProgramContactInfo = require("./views/AgencyNewProgramContactInfo")
-var AgencyNewProgramReferral = require("./views/AgencyNewProgramReferral")
-var AgencyNewProgramEligibility = require("./views/AgencyNewProgramEligibility")
-var AgencyNewReview = require("./views/AgencyNewReview")
-var ProgramNewReview = require("./views/ProgramNewReview")
-var AgencyReview = require("./views/AgencyReview")
-var QueueLayout = require("./views/QueueLayout")
-var QueueList = require("./views/QueueList")
-var QueueItem = require("./views/QueueItem")
 var Login = require("./views/Login")
-var NewAgencyQueue = require("./views/NewAgencyQueue")
-var ExistingProgramQueue = require("./views/ExistingProgramQueue")
+
 
 m.route(document.body, "/selectagency", {
     "/selectagency" : {
