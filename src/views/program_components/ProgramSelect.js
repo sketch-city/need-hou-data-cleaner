@@ -63,7 +63,7 @@ module.exports = {
         .then(function(){
           return Agency.loadAgency(Agency.selected_program.agency_id)
             .then(function(agency){
-              Agency.selected = agency[0]
+              Agency.setSelectedAgency(agency)
               return Agency.loadPrograms()
             })
         })
