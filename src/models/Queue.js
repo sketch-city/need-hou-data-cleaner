@@ -13,6 +13,11 @@ var Queue = {
                 Queue.queue_list = result.filter(function(item){
                     return item.status === "new"
                 }) 
+               Queue.queue_list.sort ( function (a, b){
+                return new Date(b.posted_date) - new Date(a.posted_date);
+            });
+
+
                 //just show queue items that don't have status rejected
 
         }).catch(function(error){
