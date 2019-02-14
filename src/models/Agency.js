@@ -60,6 +60,7 @@ var Agency = {
 			url: BASE_API_URL + "/programs?agency_id=" + Agency.selected.id,
 			withCredentials: false,
 		}).then(function(result){
+            Agency.selected_program = {}
 			Agency.programs = result
 
 
