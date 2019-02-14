@@ -210,21 +210,21 @@ view: function(vnode) {
 
                   )),
            m("label", "Schedule Notes"),
-              m("input.form-control[id=schedule_notes][type=text]",{ value: vnode.attrs.program.schedule_notes,
+              m("input.form-control form-horizontal[id=schedule_notes][type=text]",{ value: vnode.attrs.program.schedule_notes,
                 oninput: function(e) {
                           vnode.attrs.program.schedule_notes  = e.currentTarget.value;
                           }
                      }),
 
             m("label", "Program Holiday Schedule"),
-              m("textarea.form-control[holiday_schedule]",{ value: vnode.attrs.program.holiday_schedule,
+              m("textarea.form-control form-horizontal[holiday_schedule]",{ value: vnode.attrs.program.holiday_schedule,
                 oninput: function(e) {
                           vnode.attrs.program.holiday_schedule  = e.currentTarget.value;
                           }
                      }),
 
               m("label", "Program Required Document Links"),
-              m("textarea.form-control",{ value: vnode.attrs.program.documents_required,
+              m("textarea.form-control form-horizontal",{ value: vnode.attrs.program.documents_required,
                                           oninput: function(e) {
                                                                             vnode.attrs.program.documents_required  = e.currentTarget.value;
                                                                         }

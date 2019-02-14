@@ -146,7 +146,7 @@ module.exports = {
           m("div.col-md-12",[
              m("form", [
               m("div.form-group[style=width:310px]",
-              m("legend[style=font-size:16px]", Agency.selected.name),
+              m("legend[style=font-size:16px]",m("strong", Agency.selected.name)),
               m("label", "Select program to edit"),
               m("select.form-control[id=programselect]", {
                 value: Agency.selected_program.name,
