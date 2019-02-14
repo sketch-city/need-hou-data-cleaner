@@ -259,7 +259,6 @@ view: function(vnode) {
 								id: Queue.queueId,
 								status: "accepted" 
 							}).then(function(){ 
-                                console.log('next thing')
 							
 						if(Queue.type_submission === "new_agency"){
 								 Agency.addNewAgency(Queue.queueAgency)
@@ -316,7 +315,7 @@ view: function(vnode) {
 						document.getElementById("rejectmessage").hidden = false;
 					}
 				}, "Reject"),
-				m("p[id=rejectmessage][style=color:green;]",{ hidden: true  } , "Submission Rejected"),
+				m("p[id=rejectmessage][style=color:red;]",{ hidden: true  } , "Submission Rejected"),
 				m("p[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
 			)
 		))
