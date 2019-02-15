@@ -178,11 +178,11 @@ view: function(vnode) {
                           onchange: function(e) { 
                            vnode.attrs.program.age_eligibility  = getSelectedOptions(document.getElementById('age_select'))
                          }},
-                    m("option",{ selected: vnode.attrs.program.service_type.includes('early childhood (approximately 0-4yrs)')}, "early childhood (approximately 0-4yrs)"),
-                    m("option",{ selected: vnode.attrs.program.service_type.includes('kids (approximately 5-12yrs)')}, "kids (approximately 5-12yrs)"),
-                    m("option",{ selected: vnode.attrs.program.service_type.includes('youth (approximately 13-18yrs)')}, "youth (approximately 13-18yrs)"),
-                    m("option",{ selected: vnode.attrs.program.service_type.includes('adult (approximately 19-64yrs)')}, "adult (approximately 19-64yrs)"),
-                    m("option",{ selected: vnode.attrs.program.service_type.includes('seniors (approximately 65+yrs)')}, "seniors (approximately 65+yrs)"),
+                    m("option",{ selected: vnode.attrs.program.age_eligibility.includes('early childhood (approximately 0-4yrs)')}, "early childhood (approximately 0-4yrs)"),
+                    m("option",{ selected: vnode.attrs.program.age_eligibility.includes('kids (approximately 5-12yrs)')}, "kids (approximately 5-12yrs)"),
+                    m("option",{ selected: vnode.attrs.program.age_eligibility.includes('youth (approximately 13-18yrs)')}, "youth (approximately 13-18yrs)"),
+                    m("option",{ selected: vnode.attrs.program.age_eligibility.includes('adult (approximately 19-64yrs)')}, "adult (approximately 19-64yrs)"),
+                    m("option",{ selected: vnode.attrs.program.age_eligibility.includes('seniors (approximately 65+yrs)')}, "seniors (approximately 65+yrs)"),
                     ),
                      m("label", "Requires enrollment in: "),
                           m("textarea.form-control",{ value: vnode.attrs.program.other_program_enrollment,
