@@ -5,8 +5,8 @@ var helper = require("../../helper")
 
 var newProgram = {
     id: helper.guid(),
-        latitude: null,
-        longitude: null,
+        latitude: 0.0,
+        longitude: 0.0,
         name: "",
         description: "",
         physical_address: "",
@@ -59,7 +59,7 @@ var newProgram = {
                                                                 sunday : []
                                                                 },
         service_cost: "",
-        a2s_verified: null
+        a2s_verified: false
  }
 
 

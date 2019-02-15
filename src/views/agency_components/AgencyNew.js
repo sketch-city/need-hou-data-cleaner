@@ -14,10 +14,10 @@ var newAgency = {
     description: "",
     phone_number: "",
     website: "",
-    a2s_verified: null,
+    a2s_verified: false,
     selected_program: {
-        latitude: null,
-        longitude: null,
+        latitude: 0.0,
+        longitude: 0.0,
         agency_id: "",
         id: helper.guid(),
     	name: "",
@@ -72,7 +72,7 @@ var newAgency = {
                 sunday : []
                 },
         service_cost: "",
-        a2s_verified: null
+        a2s_verified: false
     }
 
 }

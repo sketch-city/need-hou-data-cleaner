@@ -3,10 +3,6 @@ var Agency = require("../../models/Agency")
 var ReviewBase = require("./ReviewBase")
 
 
-
-
-
-
 module.exports = {
 
 view: function() {

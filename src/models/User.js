@@ -55,3 +55,4 @@ var User = {
 }
 
 module.exports = User;
+window.User = User; 

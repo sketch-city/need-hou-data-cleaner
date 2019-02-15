@@ -6,7 +6,6 @@ var A2S_Verified_Checkbox = require("./A2S_Verified_Checkbox")
 
 module.exports = {
 oninit: function(vnode) {
-	 //helper.moveProgress(70, 70, 90) 
 	},
 oncreate: function(vnode) { 
 	program_fields = document.querySelectorAll('pre.program')
@@ -56,18 +55,6 @@ view: function(vnode) {
 			m("div.reviewpage", [
 				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
 				m(A2S_Verified_Checkbox, { program: vnode.attrs.program, agency: vnode.attrs.agency} ),
-				// m("div[style=margin-left:50px;].form-check",
-				// 	m("input[type=checkbox][id=a2scheck][class=form-check-input]",
-				// 		 	{   checked: vnode.attrs.program.a2s_verified,
-				// 		 		onchange: function(e) {
-				// 		 				  vnode.attrs.program.a2s_verified  = document.getElementById("a2scheck").checked ? true:false
-    //                                       vnode.attrs.agency.a2s_verified  = document.getElementById("a2scheck").checked? true:false
-    //                                  }
-    //                              }
-				// 		 	),
-				// m("label.form-check-label[for=defaultCheck1]", "A2S Verified")),
-
-
 
 				m("div[style=margin-top:50px;].reviewbuttons",
 					m("button[type=submit].btn btn-outline-success", 
@@ -77,6 +64,7 @@ view: function(vnode) {
 							 	}, "Previous"),
 				m("button[type=submit][id=submitfinal].btn btn-success", {
 				onclick: function(e) {
+
 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addQueueItem({
 								status: "new",

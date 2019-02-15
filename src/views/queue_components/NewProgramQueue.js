@@ -8,12 +8,12 @@ var newAgency = {
     description: "",
     phone_number: "",
     website: "",
-    a2s_verified: null
+    a2s_verified: false
 }
 
 var newProgram = {
-        latitude: null,
-        longitude: null,
+        latitude: 0.0,
+        longitude: 0.0,
         agency_id: "",
         id: "",
     	name: "",
@@ -68,7 +68,7 @@ var newProgram = {
                 sunday : []
                 },
         service_cost: "",
-        a2s_verified: null
+        a2s_verified: false
     }
 
 module.exports = {

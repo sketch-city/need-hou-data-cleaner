@@ -62,7 +62,7 @@ newProgramDiff = {
                 sunday : []
                 },
         service_cost: "",
-        a2s_verified: null
+        a2s_verified: false
    
 }
 
@@ -73,7 +73,7 @@ newAgencyDiff = {
     description: "",
     phone_number: "",
     website: "",
-    a2s_verified: null,
+    a2s_verified: false,
     selected_program: {
         agency_id: "",
         id: "",
@@ -120,7 +120,7 @@ newAgencyDiff = {
         income_eligibility: "",
         id_accepted_expired: [],
         gender_eligibility: "",
-        a2s_verified: null,
+        a2s_verified: false,
         schedule: {
                 monday : [], 
                 tuesday : [], 

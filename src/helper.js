@@ -53,6 +53,10 @@ function parse_date(dt){
   return(newdate)
 }
 
+
+
+
+
 function autocomplete(inp, arr, selectionKey = 'selected') {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
