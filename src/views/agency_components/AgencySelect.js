@@ -27,12 +27,10 @@ module.exports = {
     },
 
   oncreate: function(){
-    MicroModal.init();
+    MicroModal.init()
   },
     view: function() {
     	return( 
-        
-            
             m("div.row",[  
               m(AgencyDeleteModal),
               m("div.col-md-12",[                  
@@ -53,14 +51,10 @@ module.exports = {
                         oncreate: m.route.link,
                         disabled: Agency.selected.name === undefined
                         },"Next")
-
           
                 ])
 
             ])
-
-
-
     	   ) 
     }
 }

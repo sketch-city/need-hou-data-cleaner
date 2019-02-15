@@ -29,17 +29,7 @@ view: function() {
 					m("p", m("strong", "Website: "), m("pre[id=website]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
 					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
-					m(A2S_Verified_Checkbox, { program: null, agency: Agency.selected } ),
-
-				// 	m("div.form-check",
-				// 	m("input[type=checkbox][id=a2scheck_two][class=form-check-input]",
-				// 		 	{   checked: Agency.selected.a2s_verified,
-				// 		 		onchange: function(e) {
-    //                                       Agency.selected.a2s_verified  = document.getElementById("a2scheck").checked? true:false
-    //                                  }
-    //                              }
-				// 		 	),
-				// m("label.form-check-label[for=defaultCheck1]", "A2S Verified")),
+					m(A2S_Verified_Checkbox, { program: {}, agency: Agency.selected } )
 					
 					
 					]),

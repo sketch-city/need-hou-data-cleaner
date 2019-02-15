@@ -5,10 +5,13 @@ var helper = require("../../helper")
 
 
 module.exports = {
-oninit: Queue.getQueue,
-view: function() { 
+oninit: Queue.getQueue().then(function(){ vnode.attrs.submitted = false }),
+view: function(vnode) { 
 
 		return(
+		  m("div",
+			m("div[role=alert].alert alert-success", { hidden: !vnode.attrs.submitted },
+					m("strong[id=acceptmessage]", "Submission Accepted")),
 				m("table.table table-striped",
 				  m("thead",
 					m("tr",
@@ -34,6 +37,9 @@ view: function() {
 							})
 						)
 					)
+
+
+				)
 		)		
 	}	
 }
