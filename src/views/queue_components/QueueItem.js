@@ -231,10 +231,6 @@ oncreate: function(vnode) {
  		 diffFields(Agency.selected, Agency.selected_program)
 
  		}
-
-
- 	
-
 	})
 
 },
@@ -254,6 +250,9 @@ view: function(vnode) {
 							 	}, "Back to Queue"),
 				m("button[type=submit][id=queuesubmit][style=color:green; margin: 20px;].btn btn-default", {
 					onclick: function() {
+                        document.getElementById("queuesubmit").disabled = true;
+                        document.getElementById("queuereject").disabled = true;
+                        document.getElementById("acceptmessage").hidden = false;
 
 							Queue.updateQueueItem({
 								id: Queue.queueId,
@@ -294,29 +293,29 @@ view: function(vnode) {
 
                             }
 
-
-							document.getElementById("queuesubmit").disabled = true;
-							document.getElementById("queuereject").disabled = true;
-							document.getElementById("acceptmessage").hidden = false;
-
-
+                        }).then(function(){ 
+                             m.route.set('/queue')
                         })
+				},
 
-				}},
-					"Accept"),
+            },"Accept"),
 				m("button[type=submit][id=queuereject][style=color:red; margin: 20px;].btn btn-default", {
 					onclick: function(e) {
+                        document.getElementById("queuesubmit").disabled = true;
+                        document.getElementById("queuereject").disabled = true;
+                        document.getElementById("rejectmessage").hidden = false;
+
 						Queue.updateQueueItem({
 								id: Queue.queueId,
 								status: "rejected" 
 							})
-						document.getElementById("queuesubmit").disabled = true;
-						document.getElementById("queuereject").disabled = true;
-						document.getElementById("rejectmessage").hidden = false;
-					}
+						
+					},
+                
+
 				}, "Reject"),
 				m("p[id=rejectmessage][style=color:red;]",{ hidden: true  } , "Submission Rejected"),
-				m("p[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
+				m("[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
 			)
 		))
 	}
