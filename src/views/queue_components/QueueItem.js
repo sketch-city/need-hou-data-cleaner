@@ -140,10 +140,6 @@ function diffAgency(agency){
         helper.difftext(agency.website, Queue.queueAgency.website, "agency_website") 
         helper.difftext(agency.physical_address, Queue.queueAgency.physical_address, "agency_physical_address") 
         helper.difftext(agency.phone_number, Queue.queueAgency.phone_number, "agency_phone_number") 
-
-
-
-
 }
 
 
@@ -295,6 +291,7 @@ view: function(vnode) {
 
                         }).then(function(){ 
                              m.route.set('/queue')
+                             m.redraw()
                         })
 				},
 
@@ -315,7 +312,7 @@ view: function(vnode) {
 
 				}, "Reject"),
 				m("p[id=rejectmessage][style=color:red;]",{ hidden: true  } , "Submission Rejected"),
-				m("[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
+				m("p[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
 			)
 		))
 	}
