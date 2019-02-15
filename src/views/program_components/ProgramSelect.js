@@ -61,10 +61,14 @@ module.exports = {
         .loadProgram(program_id)
         .then(Agency.loadLanguages(program_id))
         .then(function(){
+          const { selected_program } = Agency
           return Agency.loadAgency(Agency.selected_program.agency_id)
             .then(function(agency){
               Agency.setSelectedAgency(agency)
               return Agency.loadPrograms()
+            })
+            .then(function() {
+              Agency.selected_program = selected_program
             })
         })
 
