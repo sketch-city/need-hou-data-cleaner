@@ -181,8 +181,8 @@ function diffFields(agency, program){
 	}
 }
 
-function returnToQueue(){ 
-    m.route.set('/queue', { submitted: true})
+function returnToQueue(val){ 
+    m.route.set('/queue', { submitted: val})
 }
 
 function resetModels() {
@@ -290,7 +290,7 @@ view: function(vnode) {
                             }
 
                         })
-                        .then(returnToQueue)
+                        .then(returnToQueue(true))
                         .then(resetModels)
 				},
 
@@ -303,6 +303,8 @@ view: function(vnode) {
 								id: Queue.queueId,
 								status: "rejected" 
 							})
+                        .then(returnToQueue(false))
+                        .then(resetModels)
 						
 					},
                 

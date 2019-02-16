@@ -18,12 +18,15 @@ oninit: Queue.getQueue,
 onupdate: function(vnode){ 
 	$('#queuetable').DataTable();
 },
+
 view: function(vnode) { 
 
 		return(
 		  m("div",
-			m("div[role=alert].alert alert-success", { hidden: !vnode.attrs.submitted },
+			m("div[role=alert].alert alert-success", { hidden: vnode.attrs.submitted === null || vnode.attrs.submitted != true},
 					m("strong[id=acceptmessage]", "Submission Accepted")),
+			m("div[role=alert].alert alert-danger", { hidden: vnode.attrs.submitted === null || vnode.attrs.submitted != false},
+					m("strong[id=rejectmessage]", "Submission Rejected")),
 				m("table[id=queuetable].table table-striped",
 				{
 				
