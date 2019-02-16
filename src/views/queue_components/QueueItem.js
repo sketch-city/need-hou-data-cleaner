@@ -143,32 +143,34 @@ function diffAgency(agency){
 
 
 function diffFields(agency, program){
+        const programSchedule = program.schedule || Object.assign({}, newAgencyDiff.selected_program.schedule)
+        const queueProgramSchedule = Queue.queueProgram.schedule || Object.assign({}, newAgencyDiff.selected_program.schedule)
 		program_fields = document.querySelectorAll('pre.program')
 		helper.difftext(agency.name, Queue.queueAgency.name, "agency_name") 
 		helper.difftext(agency.website, Queue.queueAgency.website, "agency_website") 
 		helper.difftext(agency.physical_address, Queue.queueAgency.physical_address, "agency_physical_address") 
 		helper.difftext(agency.phone_number, Queue.queueAgency.phone_number, "agency_phone_number") 
 
-		helper.difftext(program.schedule.monday[0] || "", Queue.queueProgram.schedule.monday[0] || "" , "monday_start")
-		helper.difftext(program.schedule.monday[1] || "", Queue.queueProgram.schedule.monday[1] || "" , "monday_end")
+		helper.difftext(programSchedule.monday[0] || "", queueProgramSchedule.monday[0] || "" , "monday_start")
+		helper.difftext(programSchedule.monday[1] || "", queueProgramSchedule.monday[1] || "" , "monday_end")
 
-		helper.difftext(program.schedule.tuesday[0] || "", Queue.queueProgram.schedule.tuesday[0] || "" , "tuesday_start")
-		helper.difftext(program.schedule.tuesday[1] || "", Queue.queueProgram.schedule.tuesday[1] || "" , "tuesday_end")
+		helper.difftext(programSchedule.tuesday[0] || "", queueProgramSchedule.tuesday[0] || "" , "tuesday_start")
+		helper.difftext(programSchedule.tuesday[1] || "", queueProgramSchedule.tuesday[1] || "" , "tuesday_end")
 
-		helper.difftext(program.schedule.wednesday[0] || "", Queue.queueProgram.schedule.wednesday[0] || "" , "wednesday_start")
-		helper.difftext(program.schedule.wednesday[1] || "", Queue.queueProgram.schedule.wednesday[1] || "" , "wednesday_end")
+		helper.difftext(programSchedule.wednesday[0] || "", queueProgramSchedule.wednesday[0] || "" , "wednesday_start")
+		helper.difftext(programSchedule.wednesday[1] || "", queueProgramSchedule.wednesday[1] || "" , "wednesday_end")
 
-		helper.difftext(program.schedule.thursday[0] || "", Queue.queueProgram.schedule.thursday[0] || "" , "thursday_start")
-		helper.difftext(program.schedule.thursday[1] || "", Queue.queueProgram.schedule.thursday[1] || "" , "thursday_end")
+		helper.difftext(programSchedule.thursday[0] || "", queueProgramSchedule.thursday[0] || "" , "thursday_start")
+		helper.difftext(programSchedule.thursday[1] || "", queueProgramSchedule.thursday[1] || "" , "thursday_end")
 
-		helper.difftext(program.schedule.friday[0] || "", Queue.queueProgram.schedule.friday[0] || "" , "friday_start")
-		helper.difftext(program.schedule.friday[1] || "", Queue.queueProgram.schedule.friday[1] || "" , "friday_end")
+		helper.difftext(programSchedule.friday[0] || "", queueProgramSchedule.friday[0] || "" , "friday_start")
+		helper.difftext(programSchedule.friday[1] || "", queueProgramSchedule.friday[1] || "" , "friday_end")
 
-		helper.difftext(program.schedule.saturday[0] || "", Queue.queueProgram.schedule.saturday[0] || "" , "saturday_start")
-		helper.difftext(program.schedule.saturday[1] || "", Queue.queueProgram.schedule.saturday[1] || "" , "saturday_end")
+		helper.difftext(programSchedule.saturday[0] || "", queueProgramSchedule.saturday[0] || "" , "saturday_start")
+		helper.difftext(programSchedule.saturday[1] || "", queueProgramSchedule.saturday[1] || "" , "saturday_end")
 
-		helper.difftext(program.schedule.sunday[0] || "", Queue.queueProgram.schedule.sunday[0] || "" , "sunday_start")
-		helper.difftext(program.schedule.sunday[1] || "", Queue.queueProgram.schedule.sunday[1] || "" , "sunday_end")
+		helper.difftext(programSchedule.sunday[0] || "", queueProgramSchedule.sunday[0] || "" , "sunday_start")
+		helper.difftext(programSchedule.sunday[1] || "", queueProgramSchedule.sunday[1] || "" , "sunday_end")
 
 	for(i = 0; i < program_fields.length; i++){
 		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
@@ -179,7 +181,14 @@ function diffFields(agency, program){
 	}
 }
 
+function returnToQueue(){ 
+    m.route.set('/queue', { submitted: true})
+}
 
+function resetModels() {
+    Agency.reset()
+    Queue.reset()
+}
 
 module.exports = {
 
@@ -241,9 +250,6 @@ view: function(vnode) {
 				m("button[type=submit][id=queuesubmit][style=color:green; margin: 20px;].btn btn-default", {
 					onclick: function() {
                         document.getElementById("queuesubmit").disabled = true;
-                        //document.getElementById("queuereject").disabled = true;
-                        //document.getElementById("acceptmessage").hidden = false;
-
 							Queue.updateQueueItem({
 								id: Queue.queueId,
 								status: "accepted" 
@@ -283,18 +289,15 @@ view: function(vnode) {
 
                             }
 
-                        }).then(function(){ 
-                             m.route.set('/queue', { submitted: true})
-                             m.redraw()
                         })
+                        .then(returnToQueue)
+                        .then(resetModels)
 				},
 
             },"Accept"),
 				m("button[type=submit][id=queuereject][style=color:red; margin: 20px;].btn btn-default", {
 					onclick: function(e) {
                         document.getElementById("queuesubmit").disabled = true;
-                        // document.getElementById("queuereject").disabled = true;
-                        // document.getElementById("rejectmessage").hidden = false;
 
 						Queue.updateQueueItem({
 								id: Queue.queueId,
@@ -303,10 +306,7 @@ view: function(vnode) {
 						
 					},
                 
-
 				}, "Reject"),
-				//m("p[id=rejectmessage][style=color:red;]",{ hidden: true  } , "Submission Rejected"),
-				//m("p[id=acceptmessage][style=color:green;]",{ hidden: true  } , "Submission Accepted")
 			)
 		))
 	}

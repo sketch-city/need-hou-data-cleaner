@@ -1,5 +1,5 @@
 const { BASE_API_URL } = require('../constants')
-const { withToken } = require('../helper')
+const { withToken, getModelDefaults } = require('../helper')
 var m = require('mithril')
 var User = require("./User")
 
@@ -16,8 +16,9 @@ function handleUserTimedout(error){
 	}
 }
 
-var Agency = {
 
+
+var Agency = {
 	list: [],
 	loadList: function() {
 		return m.request({
@@ -33,8 +34,9 @@ var Agency = {
 	},
 
 	setSelectedAgency: function(result) {
-		Agency.selected = result[0]
-        Agency.original_selected = JSON.parse(JSON.stringify(result[0]));
+        const agency = result[0] || {}
+		Agency.selected = agency
+        Agency.original_selected = JSON.parse(JSON.stringify(agency));
 
         return result
 	},
@@ -66,6 +68,8 @@ var Agency = {
 
 		}).catch(function(error){
 			Agency.programs = []
+            Agency.selected_program = {}
+
 
 		})
 	},
@@ -214,6 +218,10 @@ var Agency = {
         .catch(handleUserTimedout)
     }
 
+}
+Agency.defaults = getModelDefaults(Agency, 'list')
+Agency.reset = function() {
+    Object.assign(Agency, Agency.defaults)
 }
 
 module.exports = Agency;

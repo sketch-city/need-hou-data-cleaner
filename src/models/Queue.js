@@ -1,5 +1,6 @@
 const { BASE_API_URL } = require('../constants')
 var m = require('mithril')
+const { getModelDefaults } = require('../helper')
 
 var Queue = {
 
@@ -85,6 +86,11 @@ var Queue = {
     }
 
 
+}
+
+Queue.defaults = getModelDefaults(Queue, 'queue_list')
+Queue.reset = function() {
+    Object.assign(Queue, Queue.defaults)
 }
 
 module.exports = Queue;

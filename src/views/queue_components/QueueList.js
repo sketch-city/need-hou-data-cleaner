@@ -1,18 +1,34 @@
 var m = require("mithril")
 var Queue = require("../../models/Queue")
 var helper = require("../../helper")
+var DataTable = {
+	oncreate: function(vnode){
+		$(vnode.dom).DataTable()
+	},
 
+	view: function(vnode) {
+		return m('div')
+	}
+}
 
 
 module.exports = {
-oninit: Queue.getQueue().then(function(){ vnode.attrs.submitted = false }),
+
+oninit: Queue.getQueue,
+onupdate: function(vnode){ 
+	$('#queuetable').DataTable();
+},
 view: function(vnode) { 
 
 		return(
 		  m("div",
 			m("div[role=alert].alert alert-success", { hidden: !vnode.attrs.submitted },
 					m("strong[id=acceptmessage]", "Submission Accepted")),
-				m("table.table table-striped",
+				m("table[id=queuetable].table table-striped",
+				{
+				
+				},
+
 				  m("thead",
 					m("tr",
 						m("th[scope=col]", "#"),
@@ -37,9 +53,7 @@ view: function(vnode) {
 							})
 						)
 					)
-
-
-				)
+			)
 		)		
 	}	
 }

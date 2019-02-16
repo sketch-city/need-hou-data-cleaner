@@ -8,11 +8,26 @@ module.exports = {
   autocomplete,
   parse_date,
   difftext,
-  withToken
+  withToken,
+  getModelDefaults,
 };
 
 
+function getModelDefaults(model, listKey) {
+    return Object.keys(model).reduce((collector, property) => {
+       let emptyData = {}
+        if (property === listKey) {
+          emptyData = {[property]: []}
+       }else if (typeof model[property] !== 'function') {
+          emptyData = {
+            [property]: model[property]
+          }
+       }
 
+       return Object.assign(collector, JSON.parse(JSON.stringify(emptyData)))
+
+    }, {})
+}
 
 
 function withToken(requestOptions) {
@@ -23,7 +38,7 @@ function withToken(requestOptions) {
 	}, requestOptions)
 }
 
-function difftext(oldText, newText, el){
+function difftext(oldText = '', newText = '', el){
   var diff = jsdiff.diffWords(oldText, newText),
     display = document.getElementById(el),
       fragment = document.createDocumentFragment();
