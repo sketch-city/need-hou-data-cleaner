@@ -28,8 +28,8 @@ view: function() {
 					m("p", m("strong", "Name: " ), m("pre[id=name]")),
 					m("p", m("strong", "Website: "), m("pre[id=website]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
-					m(A2S_Verified_Checkbox, { program: {}, agency: Agency.selected } )
+					m("p", m("strong", "Phone Number: "), m("pre[id=phone]"))
+					//m(A2S_Verified_Checkbox, { program: {}, agency: Agency.selected } )
 					
 					
 					]),

@@ -3,6 +3,7 @@ var Queue = require("../../models/Queue")
 var Agency = require("../../models/Agency")
 var helper = require("../../helper")
 var ReviewFields = require("../review_components/ReviewFields")
+var A2S_Verified_Checkbox = require("./A2S_Verified_Checkbox")
 
 
 newProgramDiff = {
@@ -239,8 +240,7 @@ oncreate: function(vnode) {
 view: function(vnode) {
 		return (m('section',
 			m(ReviewFields),
-
-				
+			m(A2S_Verified_Checkbox,{ agency: Queue.queueAgency, program: Queue.queueProgram}),	
 			m("div.reviewbuttons",
 				m("button[type=submit][style= margin: 20px;].btn btn-default", 
 								{

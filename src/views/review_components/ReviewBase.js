@@ -2,7 +2,6 @@ var m = require("mithril")
 var Agency = require("../../models/Agency")
 var helper = require("../../helper") 
 var ReviewFields = require("./ReviewFields")
-var A2S_Verified_Checkbox = require("./A2S_Verified_Checkbox")
 
 module.exports = {
 oninit: function(vnode) {
@@ -54,8 +53,8 @@ view: function(vnode) {
 		return(
 			m("div.reviewpage", [
 				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
-				m(A2S_Verified_Checkbox, { program: vnode.attrs.program, agency: vnode.attrs.agency} ),
-
+				//m(A2S_Verified_Checkbox, { program: vnode.attrs.program } ),
+				//m(A2S_Verified_Checkbox, { agency: vnode.attrs.agency } ),
 				m("div[style=margin-top:50px;].reviewbuttons",
 					m("button[type=submit].btn btn-outline-success", 
 								{
