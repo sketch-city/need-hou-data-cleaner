@@ -53,8 +53,12 @@ view: function(vnode) {
 		return(
 			m("div.reviewpage", [
 				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
-				//m(A2S_Verified_Checkbox, { program: vnode.attrs.program } ),
-				//m(A2S_Verified_Checkbox, { agency: vnode.attrs.agency } ),
+				m("label", "If not logged in, please enter your name and email"),
+				m("input.form-control[type=text]",{ value: Agency.source,
+                      oninput: function(e) {
+                                Agency.source  = e.currentTarget.value;
+                                }
+                           }),
 				m("div[style=margin-top:50px;].reviewbuttons",
 					m("button[type=submit].btn btn-outline-success", 
 								{
@@ -75,7 +79,7 @@ view: function(vnode) {
 									program_id: vnode.attrs.program.id,
 									language_arr: vnode.attrs.program.language_arr
 									},
-								source: localStorage.username
+								source: localStorage.username || Agency.source
 								}
 
 							})
@@ -94,7 +98,7 @@ view: function(vnode) {
 									program_id: vnode.attrs.program.id,
 									language_arr: vnode.attrs.program.language_arr
 									},
-								source: localStorage.username
+								source: localStorage.username || Agency.source
 								}
 
 							})
@@ -112,7 +116,7 @@ view: function(vnode) {
 									program_id: vnode.attrs.program.id,
 									language_arr: vnode.attrs.program.language_arr
 									},
-								source: localStorage.username
+								source: localStorage.username || Agency.source
 								}
 
 							})
@@ -122,7 +126,7 @@ view: function(vnode) {
 					document.getElementById("submitfinal").disabled = true;
 					document.getElementById("submitmessage").hidden = false;
 					document.getElementById("editfinal").classList.remove("hidden");
-					//helper.moveProgress(90, 90, 100)
+
 
 					}
 

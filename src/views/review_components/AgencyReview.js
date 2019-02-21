@@ -28,8 +28,13 @@ view: function() {
 					m("p", m("strong", "Name: " ), m("pre[id=name]")),
 					m("p", m("strong", "Website: "), m("pre[id=website]")),
 					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					m("p", m("strong", "Phone Number: "), m("pre[id=phone]"))
-					//m(A2S_Verified_Checkbox, { program: {}, agency: Agency.selected } )
+					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
+					m("label", "If not logged in, please enter your name and email"),
+				    m("input.form-control[type=text]",{ value: Agency.source,
+                      oninput: function(e) {
+                                Agency.source  = e.currentTarget.value;
+                                }
+                           }),
 					
 					
 					]),
@@ -48,7 +53,7 @@ view: function() {
 								submission: { 
 								agency_data: Agency.selected,
 								program_data: {},
-								source: localStorage.username
+								source: localStorage.username || Agency.source
 								}
 							})
 
