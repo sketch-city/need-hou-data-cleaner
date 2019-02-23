@@ -58,7 +58,7 @@ view: function(vnode) {
                    m("label", "Program Name"),
             m("input.form-control[type=text][id=programname]",{ value: vnode.attrs.program.name,
                                 onchange: function(e) { 
-                                                        vnode.attrs.program.name = e.currentTarget.value;
+                                                        vnode.attrs.program.name = e.currentTarget.value.trim()
                                                                         } }),
           m("label", "Program Neighbhorhood/Area"),
           m("input.form-control[type=text][id=coverage_area]",{ value: vnode.attrs.program.coverage_area,
