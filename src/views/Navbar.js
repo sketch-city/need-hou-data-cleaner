@@ -11,7 +11,7 @@ module.exports = {
                 }, "Resource Editing Tool"),
                 m("ul.navbar-nav",
                     m("li.nav-item[id=needhou]",
-                        m("a.nav-link", {href: "http://needhou.org/", oncreate: m.route.link}, "Resource Finder")),
+                        m("a.nav-link", {href: "http://needhou.org/"}, "Resource Finder")),
                     m(LogoutButton),
     			    m(QueueButton)
                     )
