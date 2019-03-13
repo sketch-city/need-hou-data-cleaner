@@ -189,6 +189,7 @@ function returnToQueue(val){
 function resetModels() {
     Agency.reset()
     Queue.reset()
+    m.redraw()
 }
 
 module.exports = {
@@ -292,6 +293,7 @@ view: function(vnode) {
                         })
                         .then(returnToQueue(true))
                         .then(resetModels)
+
 				},
 
             },"Accept"),
