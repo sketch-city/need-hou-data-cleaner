@@ -5,7 +5,9 @@ var A2S_Verified_Checkbox = require("./A2S_Verified_Checkbox")
 
 module.exports = {
 oninit: function() { 
-	//helper.moveProgress(70, 70, 90) 
+
+
+
 } ,
 oncreate: function() { 
 	helper.difftext(Agency.original_selected.name, Agency.selected.name, "name") 
@@ -18,63 +20,70 @@ view: function() {
 		return(
 
 			m("div", [
-				m("div", [
-					m("h2", "Organization Details. ",
-						m("button[type=submit][style=font-size:10px; margin-left:50px;].btn btn-default", 
-								{
-							 	 href: "/editagency", 
-							 	 oncreate: m.route.link 
-							 	}, "Edit")),
-					m("p", m("strong", "Name: " ), m("pre[id=name]")),
-					m("p", m("strong", "Website: "), m("pre[id=website]")),
-					m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
-					m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
-					m("label", "If not logged in, please enter your name and email"),
-				    m("input.form-control[type=text]",{ value: Agency.source,
-                      oninput: function(e) {
-                                Agency.source  = e.currentTarget.value;
-                                }
-                           }),
-					
-					
-					]),
+				m("form", {
+								onsubmit: function(e) {
+								 	e.preventDefault()
+									Agency.addQueueItem({
+											status: "new",
+											submission_type: "existing_agency", 
+											submission: { 
+											agency_data: Agency.selected,
+											program_data: {},
+											source: localStorage.username || Agency.source
+											}
+										})
+
+								document.getElementById("submitfinal").disabled = true;
+								document.getElementById("submitmessage").hidden = false;
+								document.getElementById("editfinal").classList.remove("hidden")
+			                }
+			            }, [
+					m("div", [
+						m("h2", "Organization Details. ",
+							m("button[style=font-size:10px; margin-left:50px;].btn btn-default", 
+									{
+								 	 href: "/editagency", 
+								 	 oncreate: m.route.link 
+								 	}, "Edit")),
+						m("p", m("strong", "Name: " ), m("pre[id=name]")),
+						m("p", m("strong", "Website: "), m("pre[id=website]")),
+						m("p", m("strong", "Full Physical Address: "), m("pre[id=address]")),
+						m("p", m("strong", "Phone Number: "), m("pre[id=phone]")),
+						m("label", "If not logged in, please enter your name and email"),
+
+
+
+					    m("input[id=check_source].form-control[type=text]",{ value: Agency.source, required: localStorage.username === undefined,
+	                      oninput: function(e) {
+	                            Agency.source  = e.currentTarget.value;
+	                          }
+	                        }),
+						
+						]),
 				
-			m("div.reviewbuttons",
-			m("button[type=submit].btn btn-outline-success", 
-								{
-							 	 href: "/selectprogram", 
-							 	 oncreate: m.route.link 
-							 	}, "Previous"),
-			m("button[type=submit][id=submitfinal].btn btn-success", {
-				onclick: function(e) {
-						Agency.addQueueItem({
-								status: "new",
-								submission_type: "existing_agency", 
-								submission: { 
-								agency_data: Agency.selected,
-								program_data: {},
-								source: localStorage.username || Agency.source
-								}
-							})
+					m("div.reviewbuttons",
+						m("button.btn btn-outline-success", 
+											{
+										 	 href: "/selectprogram", 
+										 	 oncreate: m.route.link 
+										 	}, "Previous"),
+						m("button[type=submit][id=submitfinal].btn btn-success", {
 
-					document.getElementById("submitfinal").disabled = true;
-					document.getElementById("submitmessage").hidden = false;
-					document.getElementById("editfinal").classList.remove("hidden")
-                },
+						},
+							"Submit"),
+						m("button[id=editfinal].btn btn-success" , { 
+							href: "/queue", 
+							oncreate: m.route.link 
 
-			},
-				"Submit"),
-			m("button[type=submit][id=editfinal].btn btn-success" , { 
-				href: "/queue", 
-				oncreate: m.route.link 
+						}, "View Queue")
 
-			}, "View Queue")
+					),
+				m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
 
-			),
-			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
+
+				])
+
 			])
-
-			)
-
+		)
 	}
 }

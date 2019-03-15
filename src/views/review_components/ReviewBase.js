@@ -52,23 +52,10 @@ oncreate: function(vnode) {
 view: function(vnode) {
 		return(
 			m("div.reviewpage", [
-				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
-				m("label", "If not logged in, please enter your name and email"),
-				m("input.form-control[type=text]",{ value: Agency.source,
-                      oninput: function(e) {
-                                Agency.source  = e.currentTarget.value;
-                                }
-                           }),
-				m("div[style=margin-top:50px;].reviewbuttons",
-					m("button[type=submit].btn btn-outline-success", 
-								{
-							 	 href: vnode.attrs.previous_link, 
-							 	 oncreate: m.route.link 
-							 	}, "Previous"),
-				m("button[type=submit][id=submitfinal].btn btn-success", {
-				onclick: function(e) {
-
-						if(vnode.attrs.agencyFunction === "new_agency"){
+				m("form", {
+						onsubmit: function(e) {
+								 	e.preventDefault()
+								 						if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addQueueItem({
 								status: "new",
 								submission_type: "new_agency", 
@@ -123,17 +110,34 @@ view: function(vnode) {
 							
 						}
 
-					document.getElementById("submitfinal").disabled = true;
-					document.getElementById("submitmessage").hidden = false;
-					document.getElementById("editfinal").classList.remove("hidden");
+					document.getElementById("submitfinal").disabled = true
+					document.getElementById("submitmessage").hidden = false
+					document.getElementById("editfinal").classList.remove("hidden")
+									
+			                }
+			            }, [
+
+				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
+				m("label", "If not logged in, please enter your name and email"),
+				m("input[id=check_source].form-control[type=text]",{ value: Agency.source, required: localStorage.username === undefined,
+                      oninput: function(e) {
+                      	
+                                Agency.source  = e.currentTarget.value;
+                                }
+                           }),
+				m("div[style=margin-top:50px;].reviewbuttons",
+					m("button.btn btn-outline-success", 
+								{
+							 	 href: vnode.attrs.previous_link, 
+							 	 oncreate: m.route.link 
+							 	}, "Previous"),
+					m("button[type=submit][id=submitfinal].btn btn-success",
+							"Submit"),
+
+					
 
 
-					}
-
-			},
-				"Submit"),
-
-			m("button[type=submit][id=editfinal].btn btn-success hidden" , { 
+			m("button[id=editfinal].btn btn-success hidden" , { 
 				
 				href: "/queue", 
 				oncreate: m.route.link 
@@ -144,6 +148,7 @@ view: function(vnode) {
 			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
 	
 			])
+		])
 
 		)
 
