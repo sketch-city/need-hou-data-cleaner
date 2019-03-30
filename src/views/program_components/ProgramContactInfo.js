@@ -79,7 +79,7 @@ function validateName(name) {
 module.exports = {
 oninit: function() 
 {
-// helper.moveProgress(40, 40, 50) 
+  scroll(0,0)
 }
  ,
 oncreate: function(vnode){   

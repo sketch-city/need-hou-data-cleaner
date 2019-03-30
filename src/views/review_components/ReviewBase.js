@@ -5,6 +5,7 @@ var ReviewFields = require("./ReviewFields")
 
 module.exports = {
 oninit: function(vnode) {
+	scroll(0,0)
 	},
 oncreate: function(vnode) { 
 	program_fields = document.querySelectorAll('pre.program')

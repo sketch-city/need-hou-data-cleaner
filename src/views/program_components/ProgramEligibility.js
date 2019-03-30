@@ -84,6 +84,7 @@ function getSelectedOptions(sel) {
 
 module.exports = {
 oninit: function(vnode) { 
+  scroll(0,0)
 },
 oncreate: function(vnode){
  service_type_choices = new Choices('#service_type_select')
