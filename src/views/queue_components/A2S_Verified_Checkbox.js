@@ -18,7 +18,7 @@ module.exports = {
 				                                     }
 				                                 }
 										 	),
-								m("label.form-check-label[for=defaultCheck1]", "A2S Verified"))
+								m("label.form-check-label[for=defaultCheck1]", "HILSC Verified"))
 				)
 			} else {
 				return
