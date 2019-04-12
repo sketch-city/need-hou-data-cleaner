@@ -178,7 +178,7 @@ function diffFields(agency, program){
 		helper.difftext(programSchedule.sunday[1] || "", queueProgramSchedule.sunday[1] || "" , "sunday_end")
 
 	for(i = 0; i < program_fields.length; i++){
-		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
+		if(typeof(program[program_fields[i].id]) != "string" && typeof(program[program_fields[i].id]) != "boolean"  && program[program_fields[i].id] != undefined) {
 			helper.difftext(program[program_fields[i].id].join(', ') || "", Queue.queueProgram[program_fields[i].id].join(', ') || "", program_fields[i].id) 			
 		} else{
 			helper.difftext(program[program_fields[i].id] || "" , Queue.queueProgram[program_fields[i].id] || "", program_fields[i].id) 
