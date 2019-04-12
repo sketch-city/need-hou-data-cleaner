@@ -73,6 +73,23 @@ view: function(vnode) {
                           vnode.attrs.program.description  = e.currentTarget.value;
                           }
                 }),
+          m("div[style=margin-left:5px; margin-bottom:15px; ].form-check",
+                  m("input[type=checkbox][id=disaster_only][class=form-check-input]",
+                      {   checked: vnode.attrs.program.disaster_only,
+                        onchange: function(e) {
+                            
+                              vnode.attrs.program.disaster_only  = document.getElementById("disaster_only").checked ? true:false
+                            
+                            
+                                             }
+                                         }
+                      ),
+                m("label.form-check-label[for=defaultCheck1]", "Disaster Ready?")),
+
+
+
+
+
             m("label", "Accepting Clients?"),
               m("select.form-control[id=accepting_clients]", { 
                       value: vnode.attrs.program.accepting_clients,
@@ -86,18 +103,7 @@ view: function(vnode) {
                          m("option", "Waitlist")
                
               ),
-              m("div[style=margin-left:10px;].form-check",
-                  m("input[type=checkbox][id=disaster_only][class=form-check-input]",
-                      {   checked: vnode.attrs.program.disaster_only,
-                        onchange: function(e) {
-                            
-                              vnode.attrs.program.disaster_only  = document.getElementById("disaster_only").checked ? true:false
-                            
-                            
-                                             }
-                                         }
-                      ),
-                m("label.form-check-label[for=defaultCheck1]", "Disaster Ready?")),
+              
 
 
             m("label", "If you selected 'waitlist', how many days till service?"),
