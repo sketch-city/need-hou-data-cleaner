@@ -153,6 +153,8 @@ function diffFields(agency, program){
 		helper.difftext(agency.website, Queue.queueAgency.website, "agency_website") 
 		helper.difftext(agency.physical_address, Queue.queueAgency.physical_address, "agency_physical_address") 
 		helper.difftext(agency.phone_number, Queue.queueAgency.phone_number, "agency_phone_number") 
+        helper.difftext(program["disaster_only"].toString(), Queue.queueProgram["disaster_only"].toString(), "disaster_only")
+
 
 		helper.difftext(programSchedule.monday[0] || "", queueProgramSchedule.monday[0] || "" , "monday_start")
 		helper.difftext(programSchedule.monday[1] || "", queueProgramSchedule.monday[1] || "" , "monday_end")
