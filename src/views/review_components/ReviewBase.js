@@ -60,7 +60,8 @@ view: function(vnode) {
 				m("form", {
 						onsubmit: function(e) {
 								 	e.preventDefault()
-								 						if(vnode.attrs.agencyFunction === "new_agency"){
+
+							if(vnode.attrs.agencyFunction === "new_agency"){
 							Agency.addQueueItem({
 								status: "new",
 								submission_type: "new_agency", 
@@ -117,10 +118,13 @@ view: function(vnode) {
 
 					document.getElementById("submitfinal").disabled = true
 					document.getElementById("submitmessage").hidden = false
-					document.getElementById("editfinal").classList.remove("hidden")
+					document.getElementById("editfinal").hidden = false
 									
 			                }
-			            }, [
+			            }, 
+
+
+			    [
 
 				m(ReviewFields, { org_route: "/editagency",  program_route: "/editprogramcontact"}),
 				m("label", "If not logged in, please enter your name and email"),
@@ -130,34 +134,35 @@ view: function(vnode) {
                                 Agency.source  = e.currentTarget.value;
                                 }
                            }),
-				m("div[style=margin-top:50px;].reviewbuttons",
-					m("button.btn btn-outline-success", 
+	
+					m("button[type=submit][id=submitfinal].btn btn-success","Submit"),
+
+			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
+	
+			]),// form page div
+
+
+			m("div[style=margin-top:50px;].reviewbuttons",
+				m("button.btn btn-outline-success", 
 								{
 							 	 href: vnode.attrs.previous_link, 
 							 	 oncreate: m.route.link 
 							 	}, "Previous"),
-					m("button[type=submit][id=submitfinal].btn btn-success",
-							"Submit"),
 
-					
+				m("button[id=editfinal].btn btn-success" , { 
+						href: "/queue", 
+						oncreate: m.route.link,
+						hidden:true
+
+						}, "View Queue")
+				)
 
 
-			m("button[id=editfinal].btn btn-success hidden" , { 
-				
-				href: "/queue", 
-				oncreate: m.route.link 
+		])// review page div
 
-			}, "View Queue")
+		)// return everything
 
-			),
-			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
-	
-			])
-		])
-
-		)
-
-	}
+	}//end of view
 }
 
 

@@ -35,7 +35,7 @@ view: function() {
 
 								document.getElementById("submitfinal").disabled = true;
 								document.getElementById("submitmessage").hidden = false;
-								document.getElementById("editfinal").classList.remove("hidden")
+								document.getElementById("editfinal").hidden = false
 			                }
 			            }, [
 					m("div", [
@@ -73,7 +73,8 @@ view: function() {
 							"Submit"),
 						m("button[id=editfinal].btn btn-success" , { 
 							href: "/queue", 
-							oncreate: m.route.link 
+							oncreate: m.route.link,
+							hidden: true
 
 						}, "View Queue")
 
