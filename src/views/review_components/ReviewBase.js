@@ -137,25 +137,41 @@ view: function(vnode) {
 	
 					m("button[type=submit][id=submitfinal].btn btn-success","Submit"),
 
-			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!")
-	
-			]),// form page div
-
-
-			m("div[style=margin-top:50px;].reviewbuttons",
-				m("button.btn btn-outline-success", 
+			m("p[id=submitmessage][style=color:green;]",{ hidden: true  } , "Your form was succesfully submitted!"),
+				m("div[style=margin-top:50px;].reviewbuttons",
+				m("button[type=button].btn btn-outline-success", 
 								{
 							 	 href: vnode.attrs.previous_link, 
 							 	 oncreate: m.route.link 
 							 	}, "Previous"),
 
-				m("button[id=editfinal].btn btn-success" , { 
+				m("button[type=button][id=editfinal].btn btn-success" , { 
 						href: "/queue", 
 						oncreate: m.route.link,
 						hidden:true
 
 						}, "View Queue")
 				)
+				
+
+
+			]),// form page div
+
+
+			// m("div[style=margin-top:50px;].reviewbuttons",
+			// 	m("button.btn btn-outline-success", 
+			// 					{
+			// 				 	 href: vnode.attrs.previous_link, 
+			// 				 	 oncreate: m.route.link 
+			// 				 	}, "Previous"),
+
+			// 	m("button[id=editfinal].btn btn-success" , { 
+			// 			href: "/queue", 
+			// 			oncreate: m.route.link,
+			// 			hidden:true
+
+			// 			}, "View Queue")
+			// 	)
 
 
 		])// review page div

@@ -40,7 +40,7 @@ view: function() {
 			            }, [
 					m("div", [
 						m("h2", "Organization Details. ",
-							m("button[style=font-size:10px; margin-left:50px;].btn btn-default", 
+							m("button[type=button][style=font-size:10px; margin-left:50px;].btn btn-default", 
 									{
 								 	 href: "/editagency", 
 								 	 oncreate: m.route.link 
@@ -62,7 +62,7 @@ view: function() {
 						]),
 				
 					m("div.reviewbuttons",
-						m("button.btn btn-outline-success", 
+						m("button[type=button].btn btn-outline-success", 
 											{
 										 	 href: "/selectprogram", 
 										 	 oncreate: m.route.link 
@@ -71,7 +71,7 @@ view: function() {
 
 						},
 							"Submit"),
-						m("button[id=editfinal].btn btn-success" , { 
+						m("button[type=button][id=editfinal].btn btn-success" , { 
 							href: "/queue", 
 							oncreate: m.route.link,
 							hidden: true
