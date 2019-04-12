@@ -62,7 +62,8 @@ newProgramDiff = {
                 sunday : []
                 },
         service_cost: "",
-        a2s_verified: false
+        a2s_verified: false,
+        disaster_only: false
    
 }
 
@@ -121,6 +122,7 @@ newAgencyDiff = {
         id_accepted_expired: [],
         gender_eligibility: "",
         a2s_verified: false,
+        disaster_only: false,
         schedule: {
                 monday : [], 
                 tuesday : [], 

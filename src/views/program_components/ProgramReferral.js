@@ -86,6 +86,20 @@ view: function(vnode) {
                          m("option", "Waitlist")
                
               ),
+              m("div[style=margin-left:10px;].form-check",
+                  m("input[type=checkbox][id=disaster_only][class=form-check-input]",
+                      {   checked: vnode.attrs.program.disaster_only,
+                        onchange: function(e) {
+                            
+                              vnode.attrs.program.disaster_only  = document.getElementById("disaster_only").checked ? true:false
+                            
+                            
+                                             }
+                                         }
+                      ),
+                m("label.form-check-label[for=defaultCheck1]", "Disaster Ready?")),
+
+
             m("label", "If you selected 'waitlist', how many days till service?"),
             m("input.form-control", { value: vnode.attrs.program.waitlist_wait, 
                                        oninput: function(e){

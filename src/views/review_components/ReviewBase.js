@@ -19,6 +19,10 @@ oncreate: function(vnode) {
 	helper.difftext(agency["website"], vnode.attrs.agency["website"], "agency_website") 
 
 
+	helper.difftext(program["disaster_only"].toString(), vnode.attrs.program["disaster_only"].toString(), "disaster_only") 
+
+
+
 	helper.difftext(program.schedule.monday[0] || "", vnode.attrs.program.schedule.monday[0] || "" , "monday_start")
 	helper.difftext(program.schedule.monday[1] || "", vnode.attrs.program.schedule.monday[1] || "" , "monday_end")
 
@@ -41,7 +45,7 @@ oncreate: function(vnode) {
 	helper.difftext(program.schedule.sunday[1] || "", vnode.attrs.program.schedule.sunday[1] || "" , "sunday_end")
 
 	for(i = 0; i < program_fields.length; i++){
-		if(typeof(program[program_fields[i].id]) != "string" && program[program_fields[i].id] != undefined) {
+		if(typeof(program[program_fields[i].id]) != "string" && typeof(program[program_fields[i].id]) != "boolean"   &&  program[program_fields[i].id] != undefined) {
 			 
 			helper.difftext(program[program_fields[i].id].join(', ') || "", vnode.attrs.program[program_fields[i].id].join(', ') || "", program_fields[i].id) 
 				

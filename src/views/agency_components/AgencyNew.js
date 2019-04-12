@@ -72,7 +72,8 @@ var newAgency = {
                 sunday : []
                 },
         service_cost: "",
-        a2s_verified: false
+        a2s_verified: false,
+        disaster_only:false
     }
 
 }

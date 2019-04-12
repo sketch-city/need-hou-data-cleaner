@@ -39,6 +39,7 @@ view: function(vnode) {
 					m("p", m("strong", "Neighborhood/Area"), m("pre.program[id=coverage_area]")),
 					m("p", m("strong", "Description: "), m("pre.program[id=description]")),
 					m("p", m("strong", "Accepting clients?: "), m("pre.program[id=accepting_clients]")),
+					m("p", m("strong", "Disaster Ready?: "), m("pre.program[id=disaster_only]")),
 					m("p", m("strong", "Waitlist wait: "), m("pre.program[id=waitlist_wait]")),
 					m("p", m("strong", "Client next steps "), m("pre.program[id=next_steps]")),
 					m("p", m("strong", "Program languages: "), m("pre.program[id=language_arr]")),
